@@ -40,7 +40,8 @@
           <p> <i class="fas fa-map-marker-alt"></i> Lima, Perú</p>
         </div>
         <h1 class="nombre-sitio">APP CONGRESO</h1>
-        <p class="slogan">Los mejores<span>congresos</span></p>
+        <p class="slogan" style="margin-top:15%">
+        Los mejores<span> congresos</span></p>
       </div>
     </div>
   </header>

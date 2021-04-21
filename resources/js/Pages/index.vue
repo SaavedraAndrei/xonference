@@ -7,17 +7,19 @@
             <div class="logo">
               <img src="/img/logo.svg" alt="Logo gdlwebcamp" />
             </div>
-
             <div class="menu-movil">
               <img src="/img/barras.svg" alt="Menu Responsive" />
             </div>
           </div>
-          <nav class="navegacion">
+          <div class="form-row">
+            <nav class="navegacion">
             <a href="conferencias.php">Conferencia</a>
             <a href="#">Calendario</a>
             <a href="#">Invitados</a>
             <a href="registro.php">Reservaciones</a>
           </nav>
+          </div>
+          
         </div>
       </div>
     </section>

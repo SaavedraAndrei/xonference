@@ -2219,6 +2219,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -24354,17 +24356,19 @@ var staticRenderFns = [
             ])
           ]),
           _vm._v(" "),
-          _c("nav", { staticClass: "navegacion" }, [
-            _c("a", { attrs: { href: "conferencias.php" } }, [
-              _vm._v("Conferencia")
-            ]),
-            _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Calendario")]),
-            _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Invitados")]),
-            _vm._v(" "),
-            _c("a", { attrs: { href: "registro.php" } }, [
-              _vm._v("Reservaciones")
+          _c("div", { staticClass: "form-row" }, [
+            _c("nav", { staticClass: "navegacion" }, [
+              _c("a", { attrs: { href: "conferencias.php" } }, [
+                _vm._v("Conferencia")
+              ]),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "#" } }, [_vm._v("Calendario")]),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "#" } }, [_vm._v("Invitados")]),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "registro.php" } }, [
+                _vm._v("Reservaciones")
+              ])
             ])
           ])
         ])

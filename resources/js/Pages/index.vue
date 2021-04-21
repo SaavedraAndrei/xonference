@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <section class="seccion-nav">
       <div class="barra">
         <div class="contenedor contenido-barra">
@@ -13,7 +12,6 @@
               <img src="/img/barras.svg" alt="Menu Responsive" />
             </div>
           </div>
-
           <nav class="navegacion">
             <a href="conferencias.php">Conferencia</a>
             <a href="#">Calendario</a>
@@ -333,7 +331,6 @@
   </div>
   <!-- <?php
 
-
 include('includes/templates/footer.php')
 
 ?> -->
@@ -343,5 +340,4 @@ include('includes/templates/footer.php')
 export default {};
 </script>
 
-<style>
-</style>
+<style></style>

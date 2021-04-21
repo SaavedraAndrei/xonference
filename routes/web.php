@@ -15,4 +15,5 @@ use App\Http\Controllers\IndexController;
 */
 
 // Route::get('/', 'IndexController@Index');
-Route::get('/', [IndexController::class, 'Index'])->name('Index');
+//--------- RUTA PRINCIPAL---------
+Route::GET('/', [IndexController::class, 'Index'])->name('Index');

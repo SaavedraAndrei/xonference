@@ -1,0 +1,8 @@
+/* -----------------------------BUTTON CANCEL------------------------------------- */
+
+.btn-cancel {
+    color: #fff;
+    background-color: var(--plomoOscuroEmpresarial);
+    border-color: var(--plomoOscuroEmpresarial);
+    font-size: var(--tamañoLetraInput);
+}

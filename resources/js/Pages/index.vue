@@ -124,6 +124,7 @@
         <ul class="lista-invitados">
           <li>
             <div class="invitado">
+              
               <img src="/img/invitado1.webp" alt="" />
 
               <p>Rafael Bautista</p>

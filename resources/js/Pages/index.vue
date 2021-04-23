@@ -119,14 +119,16 @@
 
     <section class="invitados">
       <div class="contenido-invitados contenedor">
-        <h2>Nuestros Invitados</h2>
 
+        <nav class="navegacion">
+        <h2><a text-align="center" href="/invitados">Nuestros Invitados</a></h2>
+        </nav>
+
+<br>
         <ul class="lista-invitados">
           <li>
             <div class="invitado">
-              
               <img src="/img/invitado1.webp" alt="" />
-
               <p>Rafael Bautista</p>
             </div>
           </li>

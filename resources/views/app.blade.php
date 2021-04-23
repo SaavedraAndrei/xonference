@@ -7,21 +7,35 @@
   <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Icono -->
+  <link rel="icon" href="{{asset('/icon.png')}}" type="image/png" />
+  <!-- <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png"> -->
+
+  <!-- Para Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+
   <!-- <link rel="stylesheet" href="/build/css/app.css"> -->
   <script src="https://kit.fontawesome.com/1a2bd5a108.js" crossorigin="anonymous"></script>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
+
+  <!-- Estilos propios -->
   <link href="{{ mix('/css/styleVistas.css') }}" rel="stylesheet" />
+
+  <!-- Sweet Alert -->
+  <script src="{{asset('js/sweetalert2.js') }}"></script>
+
+  <!-- Laravel Mixin -->
+  <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
   <script src="{{ mix('/js/app.js') }}" defer></script>
 
   <meta name="theme-color" content="#fafafa">
 </head>
 
 <body>
-  
+
   <header class="site-header">
     <div class="hero">
 
@@ -41,7 +55,7 @@
         </div>
         <h1 class="nombre-sitio">APP CONGRESO</h1>
         <p class="slogan" style="margin-top:15%">
-        Los mejores<span> congresos</span></p>
+          Los mejores<span> congresos</span></p>
       </div>
     </div>
   </header>

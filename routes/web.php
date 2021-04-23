@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\InvitadosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,5 @@ use App\Http\Controllers\IndexController;
 // Route::get('/', 'IndexController@Index');
 //--------- RUTA PRINCIPAL---------
 Route::GET('/', [IndexController::class, 'Index'])->name('Index');
+//-------------------------------INVITADOS--------------------------------------
+Route::GET('/invitados', [InvitadosController::class, 'Principal'])->name('InvitadosPrincipal');

@@ -1,9 +1,32 @@
 <template>
   <div>
+<header class="site-header">
+    <div class="hero">
+
+      <div class="contenido-header contenedor">
+
+        <nav class="redes-sociales">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </nav>
+
+        <div class="informacion-evento">
+          <p> <i class="fas fa-calendar-alt"> </i> 20 - 22 Marzo </p>
+          <p> <i class="fas fa-map-marker-alt"></i> Lima, Perú</p>
+        </div>
+        <h1 class="nombre-sitio">APP CONGRESO</h1>
+        <p class="slogan" >
+          Los mejores<span> congresos</span></p>
+      </div>
+    </div>
+  </header>
     <section class="seccion-nav">
       <div class="barra">
         <div class="contenedor contenido-barra">
-          <div class="derecha">
+          <div class="derecha">         
             <div class="logo">
               <img src="/img/logo.svg" alt="Logo gdlwebcamp" />
             </div>
@@ -345,4 +368,10 @@ include('includes/templates/footer.php')
 export default {};
 </script>
 
-<style></style>
+<style lang="css">
+.site-header .hero{
+  background-image:url(/img/encabezado.webp);
+  background-position:50%;
+  background-size:cover;
+  height:60rem}
+</style>

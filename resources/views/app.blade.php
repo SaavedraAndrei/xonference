@@ -36,7 +36,7 @@
 
 <body>
 
-  <header class="site-header">
+  <!-- <header class="site-header">
     <div class="hero">
 
       <div class="contenido-header contenedor">
@@ -58,7 +58,7 @@
           Los mejores<span> congresos</span></p>
       </div>
     </div>
-  </header>
+  </header> -->
   @inertia
   <footer class="footer">
     <div class="contenedor-footer contenedor">

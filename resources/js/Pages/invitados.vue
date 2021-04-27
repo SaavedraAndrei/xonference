@@ -9,7 +9,12 @@ export default {
 }
 </script>
 
-<style css>
-/* background-image:url(/img/encabezado.webp;
-background-position:50%;background-size:cover;height:60rem}@media (min-width:768px) */
+<style lang="css">
+.site-header .hero{
+  background-image:url(/img/encabezado.webp);
+  background-position:20%;
+  background-size:cover;
+  height:40rem
+  }
+
 </style>

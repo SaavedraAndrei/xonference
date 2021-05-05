@@ -15,8 +15,8 @@ use App\Http\Controllers\InvitadosController;
 |
 */
 
-// Route::get('/', 'IndexController@Index');
+Route::get('/', 'IndexController@Welcome');
 //--------- RUTA PRINCIPAL---------
-Route::GET('/', [IndexController::class, 'Index'])->name('Index');
+Route::GET('/', [IndexController::class, 'Welcome'])->name('Welcome');
 //-------------------------------INVITADOS--------------------------------------
 Route::GET('/invitados', [InvitadosController::class, 'Principal'])->name('InvitadosPrincipal');

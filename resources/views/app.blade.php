@@ -36,59 +36,9 @@
 
 <body>
 
-  <!-- <header class="site-header">
-    <div class="hero">
 
-      <div class="contenido-header contenedor">
-
-        <nav class="redes-sociales">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-pinterest-p"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-        </nav>
-
-        <div class="informacion-evento">
-          <p> <i class="fas fa-calendar-alt"> </i> 20 - 22 Marzo </p>
-          <p> <i class="fas fa-map-marker-alt"></i> Lima, Perú</p>
-        </div>
-        <h1 class="nombre-sitio">APP CONGRESO</h1>
-        <p class="slogan" style="margin-top:15%">
-          Los mejores<span> congresos</span></p>
-      </div>
-    </div>
-  </header> -->
   @inertia
-  <footer class="footer">
-    <div class="contenedor-footer contenedor">
-      <div class="texto-footer">
-        <h3>Sobre <span>GDLWEBCAMP</span></h3>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, omnis, unde earum doloribus perspiciatis quis laboriosam, eius nemo commodi incidunt laborum quae molestiae debitis tempore odit neque expedita obcaecati repellendus.
-        </p>
-      </div>
-      <div class="texto-footer">
-        <h3>Últimos <span>Tweets</span></h3>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, omnis, unde earum doloribus perspiciatis quis laboriosam, eius nemo commodi incidunt laborum quae molestiae debitis tempore odit neque expedita obcaecati repellendus.
-        </p>
-      </div>
-      <div class="texto-footer">
-        <h3>Redes <span>Sociales</span></h3>
-        <nav class="redes-sociales">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-pinterest-p"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-        </nav>
-      </div>
-    </div>
-  </footer>
-  <div class="copyright">
-    <p>Todos los derechos reservados GDLWEBCAMP 2021 &copy;</p>
-  </div>
+
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script>

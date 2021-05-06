@@ -147,7 +147,7 @@ h2 {
 h2::after {
     content: "";
     margin: 0 auto;
-    background-image: url(../img/separador.png);
+    background-image: url(../../public/img/separador.png);
     height: 30px;
     width: 100px;
     display: block;
@@ -248,7 +248,7 @@ h1.nombre-sitio span {
 /** Header **/
 
 div.hero {
-    background-image: url(../img/encabezado.jpg);
+    background-image: url(../../public/img/encabezado.jpg);
     height: 600px;
     background-position: top center;
     background-size: cover;
@@ -530,7 +530,7 @@ nav.menu-programa a.activo::after {
     margin-right: auto;
     height: 20px;
     width: 30px;
-    background-image: url("../img/talleres-flecha.jpg");
+    background-image: url(../../public/img/talleres-flecha.jpg);
     background-position: top center;
     background-repeat: no-repeat;
     bottom: -20px;
@@ -627,7 +627,7 @@ div.contador {
     height: auto;
 }
 div.contador::before {
-    background-image: url(../img/bg-resumen.jpg);
+    background-image: url(../../public/img/bg-resumen.jpg);
     content: "";
 }
 
@@ -782,7 +782,7 @@ div.newsletter {
     height: auto;
 }
 div.newsletter::before {
-    background-image: url(../img/bg-newsletter.jpg);
+    background-image: url(../../public/img/bg-newsletter.jpg);
     content: "";
 }
 div.newsletter .contenido {

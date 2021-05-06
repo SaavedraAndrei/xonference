@@ -1889,7 +1889,246 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    conferencias: Array
+  }
+});
 
 /***/ }),
 
@@ -1930,8 +2169,10 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_1__.InertiaProgress.init();
-vue__WEBPACK_IMPORTED_MODULE_2__.default.use(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_0__.plugin);
-var el = document.getElementById('app');
+vue__WEBPACK_IMPORTED_MODULE_2__.default.use; // Vue.prototype.$route = (...args) => route(...args).url();
+// Vue.prototype.$route = route(plugin);
+
+var el = document.getElementById("app");
 new vue__WEBPACK_IMPORTED_MODULE_2__.default({
   render: function render(h) {
     return h(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_0__.App, {
@@ -21694,9 +21935,12 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 /*!*******************************!*\
   !*** ./resources/css/app.css ***!
   \*******************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/css-loader/dist/cjs.js):\nError: Can't resolve '../img/separador.png' in '/Users/andrei/Desktop/ProyectoCongresoWeb/resources/css'\n    at finishWithoutResolve (/Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/enhanced-resolve/lib/Resolver.js:293:18)\n    at /Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/enhanced-resolve/lib/Resolver.js:362:15\n    at /Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/enhanced-resolve/lib/Resolver.js:410:5\n    at eval (eval at create (/Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at /Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/enhanced-resolve/lib/Resolver.js:410:5\n    at eval (eval at create (/Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at /Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js:87:43\n    at /Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/enhanced-resolve/lib/Resolver.js:410:5\n    at eval (eval at create (/Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at /Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/enhanced-resolve/lib/Resolver.js:410:5\n    at eval (eval at create (/Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at /Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/enhanced-resolve/lib/Resolver.js:410:5\n    at eval (eval at create (/Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at /Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js:87:43\n    at /Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/enhanced-resolve/lib/Resolver.js:410:5\n    at eval (eval at create (/Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at processResult (/Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/webpack/lib/NormalModule.js:676:19)\n    at /Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/webpack/lib/NormalModule.js:778:5\n    at /Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/loader-runner/lib/LoaderRunner.js:399:11\n    at /Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/loader-runner/lib/LoaderRunner.js:251:18\n    at context.callback (/Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/loader-runner/lib/LoaderRunner.js:124:13)\n    at Object.loader (/Users/andrei/Desktop/ProyectoCongresoWeb/node_modules/css-loader/dist/index.js:154:5)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
 
 /***/ }),
 
@@ -24044,9 +24288,402 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("header", { staticClass: "site-header" }, [
+        _c("div", { staticClass: "hero" }, [
+          _c("div", { staticClass: "contenido-header" }, [
+            _c("nav", { staticClass: "redes-sociales" }, [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", {
+                  staticClass: "fa fa-facebook",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", {
+                  staticClass: "fa fa-twitter",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", {
+                  staticClass: "fa fa-pinterest-p",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", {
+                  staticClass: "fa fa-youtube-play",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", {
+                  staticClass: "fa fa-instagram",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "informacion-evento" }, [
+              _c("div", { staticClass: "clearfix" }, [
+                _c("p", { staticClass: "fecha" }, [
+                  _c("i", {
+                    staticClass: "fa fa-calendar",
+                    attrs: { "aria-hidden": "true" }
+                  }),
+                  _vm._v(" 01-02 Julio")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "ciudad" }, [
+                  _c("i", {
+                    staticClass: "fa fa-map-marker",
+                    attrs: { "aria-hidden": "true" }
+                  }),
+                  _vm._v(" Huancayo, Perú")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("h1", { staticClass: "nombre-sitio" }, [
+                _vm._v("App Congreso")
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "slogan" }, [
+                _vm._v("Los mejores congresos de "),
+                _c("span", [_vm._v("Ingeniería")])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "barra" }, [
+        _c("div", { staticClass: "contenedor clearfix" }, [
+          _c("div", { staticClass: "logo" }, [
+            _c("a", { attrs: { href: "/" } }, [
+              _c("img", {
+                attrs: { src: "img/logo.svg", alt: "logo del app congreso" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "menu-movil" }, [
+            _c("span"),
+            _vm._v(" "),
+            _c("span"),
+            _vm._v(" "),
+            _c("span")
+          ]),
+          _vm._v(" "),
+          _c("nav", { staticClass: "navegacion-principal clearfix" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Conferencia")]),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "/calendario" } }, [_vm._v("Calendario")]),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "/invitados" } }, [_vm._v("Invitados")]),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Reservaciones")])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "invitados contenedor seccion" }, [
+        _c("h2", [_vm._v("Nuestros Ponentes")]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "lista-invitados clearfix" }, [
+          _c("li", [
+            _c("div", { staticClass: "invitado" }, [
+              _c(
+                "a",
+                { staticClass: "invitado-info", attrs: { href: "#invitado1" } },
+                [
+                  _c("img", {
+                    attrs: { src: "/img/invitado1.jpg", alt: "Imagen invitado" }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Rafael  Bautista")])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticStyle: { display: "none" } }, [
+            _c(
+              "div",
+              { staticClass: "invitado-info", attrs: { id: "invitado1" } },
+              [
+                _c("h2", [_vm._v("Rafael ")]),
+                _vm._v(" "),
+                _c("img", { attrs: { src: "img/invitado1.jpg", alt: "" } }),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus massa non molestie."
+                  )
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("div", { staticClass: "invitado" }, [
+              _c(
+                "a",
+                { staticClass: "invitado-info", attrs: { href: "#invitado2" } },
+                [
+                  _c("img", {
+                    attrs: { src: "/img/invitado2.jpg", alt: "Imagen invitado" }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Shari Herrera")])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticStyle: { display: "none" } }, [
+            _c(
+              "div",
+              { staticClass: "invitado-info", attrs: { id: "invitado2" } },
+              [
+                _c("h2", [_vm._v("Shari")]),
+                _vm._v(" "),
+                _c("img", { attrs: { src: "img/invitado2.jpg", alt: "" } }),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Curabitur urna metus, placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula. Morbi porttitor tempus euismod."
+                  )
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("div", { staticClass: "invitado" }, [
+              _c(
+                "a",
+                { staticClass: "invitado-info", attrs: { href: "#invitado3" } },
+                [
+                  _c("img", {
+                    attrs: { src: "/img/invitado3.jpg", alt: "Imagen invitado" }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Juan Sanchez")])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticStyle: { display: "none" } }, [
+            _c(
+              "div",
+              { staticClass: "invitado-info", attrs: { id: "invitado3" } },
+              [
+                _c("h2", [_vm._v("Juan")]),
+                _vm._v(" "),
+                _c("img", { attrs: { src: "img/invitado3.jpg", alt: "" } }),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula. Morbi porttitor tempus euismod."
+                  )
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("div", { staticClass: "invitado" }, [
+              _c(
+                "a",
+                { staticClass: "invitado-info", attrs: { href: "#invitado4" } },
+                [
+                  _c("img", {
+                    attrs: { src: "/img/invitado4.jpg", alt: "Imagen invitado" }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Susana Rivera")])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticStyle: { display: "none" } }, [
+            _c(
+              "div",
+              { staticClass: "invitado-info", attrs: { id: "invitado4" } },
+              [
+                _c("h2", [_vm._v("Susana")]),
+                _vm._v(" "),
+                _c("img", { attrs: { src: "img/invitado4.jpg", alt: "" } }),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus"
+                  )
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("div", { staticClass: "invitado" }, [
+              _c(
+                "a",
+                { staticClass: "invitado-info", attrs: { href: "#invitado5" } },
+                [
+                  _c("img", {
+                    attrs: { src: "/img/invitado5.jpg", alt: "Imagen invitado" }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Harold Garcia")])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticStyle: { display: "none" } }, [
+            _c(
+              "div",
+              { staticClass: "invitado-info", attrs: { id: "invitado5" } },
+              [
+                _c("h2", [_vm._v("Harold")]),
+                _vm._v(" "),
+                _c("img", { attrs: { src: "img/invitado5.jpg", alt: "" } }),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula. Morbi porttitor tempus euismod."
+                  )
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("div", { staticClass: "invitado" }, [
+              _c(
+                "a",
+                { staticClass: "invitado-info", attrs: { href: "#invitado6" } },
+                [
+                  _c("img", {
+                    attrs: { src: "/img/invitado6.jpg", alt: "Imagen invitado" }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Susan Sanchez")])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticStyle: { display: "none" } }, [
+            _c(
+              "div",
+              { staticClass: "invitado-info", attrs: { id: "invitado6" } },
+              [
+                _c("h2", [_vm._v("Susan")]),
+                _vm._v(" "),
+                _c("img", { attrs: { src: "img/invitado6.jpg", alt: "" } }),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus massa non molestie. Curabitur urna metus, placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at\n                      ex blandit vehicula. Morbi porttitor tempus euismod."
+                  )
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("footer", { staticClass: "site-footer" }, [
+        _c("div", { staticClass: "contenedor clearfix" }, [
+          _c("div", { staticClass: "footer-informacion" }, [
+            _c("h3", [_vm._v("Sobre "), _c("span", [_vm._v("gdlwebcamp")])]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus massa non molestie. Curabitur urna metus, placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex\n                  blandit vehicula. Morbi porttitor tempus euismod."
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ultimos-tweets" }, [
+            _c("h3", [_vm._v("Últimos "), _c("span", [_vm._v("tweets")])]),
+            _vm._v(" "),
+            _c("a", {
+              staticClass: "twitter-timeline",
+              attrs: {
+                "data-height": "400",
+                "data-theme": "light",
+                "data-link-color": "#fe4918"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "menu" }, [
+            _c("h3", [_vm._v("Redes "), _c("span", [_vm._v("sociales")])]),
+            _vm._v(" "),
+            _c("nav", { staticClass: "redes-sociales" }, [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", {
+                  staticClass: "fa fa-facebook",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", {
+                  staticClass: "fa fa-twitter",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", {
+                  staticClass: "fa fa-pinterest-p",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", {
+                  staticClass: "fa fa-youtube-play",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", {
+                  staticClass: "fa fa-instagram",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "copyright" }, [
+          _vm._v(
+            "\n          Todos los derechos Reservados GDLWEBCAMP 2016.\n      "
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -36354,7 +36991,8 @@ webpackContext.id = "./resources/js/Pages sync recursive ^\\.\\/.*$";
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
-/******/ 			"css/styleVistas": 0
+/******/ 			"css/styleVistas": 0,
+/******/ 			"css/app": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -36402,9 +37040,9 @@ webpackContext.id = "./resources/js/Pages sync recursive ^\\.\\/.*$";
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/styleVistas"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/styleVistas"], () => (__webpack_require__("./resources/css/app.css")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/styleVistas"], () => (__webpack_require__("./resources/css/styleVistas.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/styleVistas","css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/styleVistas","css/app"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/styleVistas","css/app"], () => (__webpack_require__("./resources/css/styleVistas.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

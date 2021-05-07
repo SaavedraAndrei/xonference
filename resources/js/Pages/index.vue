@@ -51,7 +51,7 @@
                 <a href="#">Conferencia</a>
                 <a href="/calendario">Calendario</a>
                 <a href="/invitados">Invitados</a>
-                <a href="#">Reservaciones</a>
+                <a href="/login">Iniciar sesion</a>
             </nav>
 
 

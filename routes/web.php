@@ -17,10 +17,16 @@ use App\Http\Controllers\CalendarioController;
 */
 
 Route::get('/', 'IndexController@Welcome');
-Route::get('/', 'IndexController@Welcome');
-Route::get('/', 'IndexController@Welcome');
+Route::get('/login', 'IndexController@Login');
+Route::get('/home', 'IndexController@home');
+Route::get('usuario/validar', 'IndexController@validarUsuario');
+Route::get('usuario/cerrar_sesion', 'IndexController@cerrar_sesion');
 //--------- RUTA PRINCIPAL---------
 Route::GET('/', [IndexController::class, 'Welcome'])->name('Welcome');
+Route::GET('/login', [IndexController::class, 'Login'])->name('login');
+Route::get('/home', [IndexController::class, 'Home'])->name('home');
+Route::get('usuario/validar', [IndexController::class, 'validarUsuario'])->name('validarUsuario');
+Route::get('usuario/cerrar_sesion', [IndexController::class, 'cerrar_sesion'])->name('cerrar_sesion');
 //-------------------------------INVITADOS--------------------------------------
 // Route::GET('/invitados', [InvitadosController::class, 'Principal'])->name('InvitadosPrincipal');
 //------CALENDARIO DE CONFERENCIAS----//

@@ -4,13 +4,19 @@
 }
 
 body, html {
-    height: 100%;
+    /* height: 100%;
     background:-webkit-linear-gradient(left, #244B9A, #5c86da);
-    font-family: 'Raleway';
+    font-family: 'Raleway'; */
+    background-image: url(../../images/encabezado.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #9a6324;
 }
 
 .navbar-header{
-    background: -webkit-linear-gradient(left, #244B9A, #5c86da);
+    background: -webkit-linear-gradient(left, #9a6b24, #daae5c);
     text-align: center;
 }
 

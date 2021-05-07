@@ -28,7 +28,7 @@
   <div class="container login-container" style="z-index:1;">
             <div class="row">
                 <div class="col-md-6 login-form-1">
-                  <img src="img/foto-usuario.svg" id="imagenContenido"/>
+                  <img src="img/prueba.svg" id="imagenContenido"/>
                 </div>
                 <div class="col-md-6 login-form-2">
                   <form action="/usuario/validar" method="get">

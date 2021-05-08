@@ -11,7 +11,7 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
-html {
+   html {
     color: #222;
     font-size: 1em;
     line-height: 1.4;
@@ -147,7 +147,7 @@ h2 {
 h2::after {
     content: "";
     margin: 0 auto;
-    background-image: url(/images/separador.png?17e4e8a35a1c8c8a78514fffd5f0d12f);
+    background-image: url(/img/separador.png);
     height: 30px;
     width: 100px;
     display: block;
@@ -248,7 +248,7 @@ h1.nombre-sitio span {
 /** Header **/
 
 div.hero {
-    background-image: url(/images/encabezado.jpg?e613ab811a293b703ad3e3d8647f80a8);
+    background-image: url(/img/encabezado.jpg);
     height: 600px;
     background-position: top center;
     background-size: cover;
@@ -530,7 +530,7 @@ nav.menu-programa a.activo::after {
     margin-right: auto;
     height: 20px;
     width: 30px;
-    background-image: url(/images/talleres-flecha.jpg?38a81206bfcb060f6f5999b737222bbc);
+    background-image: url(/img/talleres-flecha.jpg);
     background-position: top center;
     background-repeat: no-repeat;
     bottom: -20px;
@@ -627,7 +627,7 @@ div.contador {
     height: auto;
 }
 div.contador::before {
-    background-image: url(/images/bg-resumen.jpg?9ed91b057b0b66b5d7022b31e5cfeff4);
+    background-image: url(/img/bg-resumen.jpg);
     content: "";
 }
 
@@ -782,7 +782,7 @@ div.newsletter {
     height: auto;
 }
 div.newsletter::before {
-    background-image: url(/images/bg-newsletter.jpg?743b568e48974b5b402b2ec26004a07c);
+    background-image: url(/img/bg-newsletter.jpg);
     content: "";
 }
 div.newsletter .contenido {
@@ -1304,4 +1304,5 @@ table.registrados tr:nth-child(4n-1) {
         page-break-after: avoid;
     }
 }
+
 

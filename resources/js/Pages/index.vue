@@ -242,13 +242,19 @@
 </template>
 
 <script>
-export default {
-
-props:{
-    conferencias: Array
-}
-
-}
+  export default {
+       data: () => ({
+      
+    }),
+    mounted() {
+      let recaptchaScript = document.createElement('script')
+      recaptchaScript.setAttribute('src', '/public/js/jquery.colorbox-min.js')
+      document.footer.appendChild(recaptchaScript)
+    },
+    methods: {
+      
+    }
+  }
 </script>
 
 <style lang='css'>

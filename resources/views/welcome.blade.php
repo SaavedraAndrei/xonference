@@ -50,6 +50,21 @@
                     <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
                     <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
                     <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+
+                    <!-- <ul class = "flex items-center"> -->
+                        <!--<li>
+                            <a href="" class = "p-3">Mario Luna</a>
+                        </li>
+                        <li>
+                            <a href="" class = "p-3">Login</a>
+                        </li>-->
+                        <!--<li>
+                            <a href="{{ route('register') }}" class = "p-3">Register</a>
+                        </li>-->
+                        <!--<li>
+                            <a href="" class = "p-3">Logout</a>
+                        </li>-->
+                    </ul>
                 </nav>
                 <div class="informacion-evento">
                     <div class="clearfix">
@@ -86,6 +101,7 @@
                 <a href="conferencia.php">Conferencia</a>
                 <a href="{{route('calendario')}}">Calendario</a>
                 <a href="{{route('invitados')}}">Invitados</a>
+                <a href="{{route('usuario.registrar')}}">Registrarse</a>
                 <a href="registro.php">Reservaciones</a>
             </nav>
         </div>

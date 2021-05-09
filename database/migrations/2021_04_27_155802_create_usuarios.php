@@ -11,7 +11,7 @@ class CreateUsuarios extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up() 
     {
         $this->down();
         Schema::create('usuarios', function (Blueprint $table) {
@@ -19,7 +19,9 @@ class CreateUsuarios extends Migration
             $table->string('nombres', 100);
             $table->string('apellidoPaterno', 75);
             $table->string('apellidoMaterno', 75);
+            $table->integer('dni');
             $table->string('email', 150);
+            $table->string('clave', 200);
             $table->decimal('totalPago', $precision = 8, $scale = 2)->nullable();
             $table->boolean('pagado');
             $table->integer('id_asistencia');

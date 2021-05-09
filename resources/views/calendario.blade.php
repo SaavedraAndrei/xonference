@@ -7,8 +7,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Icono -->
+    <link rel="icon" href="{{asset('/icon.png')}}" type="image/png" />
     <!-- Place favicon.ico in the root directory -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="{{asset('css/app.css')}}" />
@@ -85,7 +85,8 @@
                 <a href="conferencia.php">Conferencia</a>
                 <a href="{{route('calendario')}}">Calendario</a>
                 <a href="{{route('invitados')}}">Invitados</a>
-                <a href="registro.php">Reservaciones</a>
+                <a href="{{route('usuario.registrar')}}">Registrarse</a>
+                <a href="{{route('usuario.login')}}">Iniciar sesion</a>
             </nav>
         </div>
         <!--.contenedor-->

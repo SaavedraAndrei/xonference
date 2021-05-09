@@ -1,1 +1,0 @@
-ALTER TABLE usuarios ADD COLUMN clave VARCHAR(200)

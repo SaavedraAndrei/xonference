@@ -26,9 +26,9 @@ class IndexController extends Controller
         return view('login');
     }
     
-    public function index()
+    public function invitados()
     {
-        return Inertia::render('index');
+        return Inertia::render('invitados');
     }
 
     public function Home($mensaje = "ACEPTADO")

@@ -1,4 +1,0 @@
-ALTER TABLE usuarios ADD COLUMN clave VARCHAR(50)
-
-INSERT INTO usuarios (nombres, apellidoPaterno, apellidoMaterno, email, totalPago, pagado, clave)
-VALUES ('alvina', 'galvez', 'taipe', 'alvina_@example', '100.00',1,'123')

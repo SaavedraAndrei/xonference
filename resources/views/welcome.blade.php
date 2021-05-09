@@ -2,13 +2,12 @@
 <html class="no-js" lang="">
 
 <head>
-<meta charset="utf-8" />
-
-<title></title>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Icono -->
-<link rel="icon" href="{{asset('/icon.png')}}" type="image/png" />
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Icono -->
+    <link rel="icon" href="{{asset('/icon.png')}}" type="image/png" />
     <!-- Place favicon.ico in the root directory -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="{{asset('css/app.css')}}" />
@@ -72,7 +71,7 @@
     <div class="barra">
         <div class="contenedor clearfix">
             <div class="logo">
-                <a href="/">
+                <a href="{{route('prin.welcome')}}">
                     <img src="img/logo.svg" alt="logo del app congreso">
                 </a>
             </div>
@@ -84,26 +83,24 @@
             </div>
 
             <nav class="navegacion-principal clearfix">
-                <a href="conferencia.php">Conferencia</a>
+                <a href="#">Conferencia</a>
                 <a href="{{route('calendario')}}">Calendario</a>
-                <a href="#">Invitados</a>
-                <a href="/login">Iniciar sesion</a>
                 <a href="{{route('invitados')}}">Invitados</a>
                 <a href="{{route('usuario.registrar')}}">Registrarse</a>
-                <a href="registro.php">Reservaciones</a>
+                <a href="{{route('usuario.login')}}">Iniciar sesion</a>
             </nav>
         </div>
         <!--.contenedor-->
     </div>
     <!--.barra-->
 
-  
+
     <section class="seccion contenedor">
-    <h2>La mejor conferencia de diseño web en español</h2>
-    <p>
-        Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus massa non molestie. Curabitur urna metus, placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula.
-        Morbi porttitor tempus euismod.
-    </p>
+        <h2>La mejor conferencia de diseño web en español</h2>
+        <p>
+            Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus massa non molestie. Curabitur urna metus, placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula.
+            Morbi porttitor tempus euismod.
+        </p>
     </section>
     <!--seccion-->
 
@@ -123,67 +120,67 @@
                     <h2>Programa del Evento</h2>
 
                     <nav class="menu-programa">
-                    <a href="#seminario">
-                                    <i class="fa fa-university" aria-hidden="true"></i> Seminario                                </a>
-                    <a href="#conferencias">
-                                    <i class="fa fa-comment" aria-hidden="true"></i> Conferencias                                </a>
-                    <a href="#talleres">
-                                    <i class="fa fa-code" aria-hidden="true"></i> Talleres                                </a>
-                    
+                        <a href="#seminario">
+                            <i class="fa fa-university" aria-hidden="true"></i> Seminario </a>
+                        <a href="#conferencias">
+                            <i class="fa fa-comment" aria-hidden="true"></i> Conferencias </a>
+                        <a href="#talleres">
+                            <i class="fa fa-code" aria-hidden="true"></i> Talleres </a>
+
                     </nav>
 
 
                     <div id="seminario" class="info-curso ocultar clearfix">
-                    <div class="detalle-evento">
-                        <h3>Diseño UI y UX para móviles</h3>
-                        <p><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00:00</p>
-                        <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-09</p>
-                        <p><i class="fa fa-user" aria-hidden="true"></i> Susan Sanchez</p>
+                        <div class="detalle-evento">
+                            <h3>Diseño UI y UX para móviles</h3>
+                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00:00</p>
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-09</p>
+                            <p><i class="fa fa-user" aria-hidden="true"></i> Susan Sanchez</p>
+                        </div>
+                        <div class="detalle-evento">
+                            <h3>Angular 5</h3>
+                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> 19:00:00</p>
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-10</p>
+                            <p><i class="fa fa-user" aria-hidden="true"></i> Juan Sanchez</p>
+                        </div>
+                        <a href="calendario.html" class="button float-right">Ver todos</a>
                     </div>
-                    <div class="detalle-evento">
-                        <h3>Angular 5</h3>
-                        <p><i class="fa fa-clock-o" aria-hidden="true"></i> 19:00:00</p>
-                        <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-10</p>
-                        <p><i class="fa fa-user" aria-hidden="true"></i> Juan Sanchez</p>
-                    </div>
-                    <a href="calendario.html" class="button float-right">Ver todos</a>
-                </div>
-                <!--#talleres-->
+                    <!--#talleres-->
 
-                <div id="conferencias" class="info-curso ocultar clearfix">
-                    <div class="detalle-evento">
-                        <h3>Como ser freelancer</h3>
-                        <p><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00:00</p>
-                        <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-09</p>
-                        <p><i class="fa fa-user" aria-hidden="true"></i> Susan Sanchez</p>
+                    <div id="conferencias" class="info-curso ocultar clearfix">
+                        <div class="detalle-evento">
+                            <h3>Como ser freelancer</h3>
+                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00:00</p>
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-09</p>
+                            <p><i class="fa fa-user" aria-hidden="true"></i> Susan Sanchez</p>
+                        </div>
+                        <div class="detalle-evento">
+                            <h3>Tecnologías del Futuro PHP</h3>
+                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> 05:00:00</p>
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-09</p>
+                            <p><i class="fa fa-user" aria-hidden="true"></i> Juan Sanchez</p>
+                        </div>
+                        <a href="calendario.html" class="button float-right">Ver todos</a>
                     </div>
-                    <div class="detalle-evento">
-                        <h3>Tecnologías del Futuro PHP</h3>
-                        <p><i class="fa fa-clock-o" aria-hidden="true"></i> 05:00:00</p>
-                        <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-09</p>
-                        <p><i class="fa fa-user" aria-hidden="true"></i> Juan Sanchez</p>
-                    </div>
-                    <a href="calendario.html" class="button float-right">Ver todos</a>
-                </div>
-                <!--#talleres-->
+                    <!--#talleres-->
 
-                <div id="talleres" class="info-curso ocultar clearfix">
-                    <div class="detalle-evento">
-                        <h3>HTML5 y CSS3</h3>
-                        <p><i class="fa fa-clock-o" aria-hidden="true"></i> 02:00:00</p>
-                        <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-09</p>
-                        <p><i class="fa fa-user" aria-hidden="true"></i> Juan Sanchez</p>
+                    <div id="talleres" class="info-curso ocultar clearfix">
+                        <div class="detalle-evento">
+                            <h3>HTML5 y CSS3</h3>
+                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> 02:00:00</p>
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-09</p>
+                            <p><i class="fa fa-user" aria-hidden="true"></i> Juan Sanchez</p>
+                        </div>
+                        <div class="detalle-evento">
+                            <h3>WordPress</h3>
+                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> 19:00:00</p>
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-09</p>
+                            <p><i class="fa fa-user" aria-hidden="true"></i> Harold Garcia</p>
+                        </div>
+                        <a href="calendario.html" class="button float-right">Ver todos</a>
                     </div>
-                    <div class="detalle-evento">
-                        <h3>WordPress</h3>
-                        <p><i class="fa fa-clock-o" aria-hidden="true"></i> 19:00:00</p>
-                        <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-09</p>
-                        <p><i class="fa fa-user" aria-hidden="true"></i> Harold Garcia</p>
-                    </div>
-                    <a href="calendario.html" class="button float-right">Ver todos</a>
-                </div>
-                <!--#talleres-->
-                    
+                    <!--#talleres-->
+
                 </div>
                 <!--.programa-evento-->
             </div>
@@ -194,139 +191,139 @@
     <!--.programa-->
 
     <section class="invitados contenedor seccion">
-    <h2>Nuestros Ponentes</h2>
-    <ul class="lista-invitados clearfix">
+        <h2>Nuestros Ponentes</h2>
+        <ul class="lista-invitados clearfix">
 
 
-        <li>
-            <div class="invitado">
-                <a class="invitado-info" href="#invitado1">
-                                    <img src="/img/invitado1.jpg" alt="Imagen invitado">
-                                    <p>Rafael  Bautista</p>
-                                </a>
-            </div>
-            <!-- END .invitado -->
-        </li>
+            <li>
+                <div class="invitado">
+                    <a class="invitado-info" href="#invitado1">
+                        <img src="/img/invitado1.jpg" alt="Imagen invitado">
+                        <p>Rafael Bautista</p>
+                    </a>
+                </div>
+                <!-- END .invitado -->
+            </li>
 
-        <div style="display:none;">
+            <div style="display:none;">
 
-            <div class="invitado-info" id="invitado1">
-                <h2>Rafael </h2>
-                <img src="img/invitado1.jpg" alt="">
-                <p>Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus massa non molestie.</p>
-            </div>
+                <div class="invitado-info" id="invitado1">
+                    <h2>Rafael </h2>
+                    <img src="img/invitado1.jpg" alt="">
+                    <p>Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus massa non molestie.</p>
+                </div>
 
-        </div>
-
-
-        <li>
-            <div class="invitado">
-                <a class="invitado-info" href="#invitado2">
-                                    <img src="/img/invitado2.jpg" alt="Imagen invitado">
-                                    <p>Shari Herrera</p>
-                                </a>
-            </div>
-            <!-- END .invitado -->
-        </li>
-
-        <div style="display:none;">
-
-            <div class="invitado-info" id="invitado2">
-                <h2>Shari</h2>
-                <img src="img/invitado2.jpg" alt="">
-                <p>Curabitur urna metus, placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula. Morbi porttitor tempus euismod.</p>
             </div>
 
-        </div>
 
+            <li>
+                <div class="invitado">
+                    <a class="invitado-info" href="#invitado2">
+                        <img src="/img/invitado2.jpg" alt="Imagen invitado">
+                        <p>Shari Herrera</p>
+                    </a>
+                </div>
+                <!-- END .invitado -->
+            </li>
 
-        <li>
-            <div class="invitado">
-                <a class="invitado-info" href="#invitado3">
-                                    <img src="/img/invitado3.jpg" alt="Imagen invitado">
-                                    <p>Juan Sanchez</p>
-                                </a>
-            </div>
-            <!-- END .invitado -->
-        </li>
+            <div style="display:none;">
 
-        <div style="display:none;">
+                <div class="invitado-info" id="invitado2">
+                    <h2>Shari</h2>
+                    <img src="img/invitado2.jpg" alt="">
+                    <p>Curabitur urna metus, placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula. Morbi porttitor tempus euismod.</p>
+                </div>
 
-            <div class="invitado-info" id="invitado3">
-                <h2>Juan</h2>
-                <img src="img/invitado3.jpg" alt="">
-                <p>placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula. Morbi porttitor tempus euismod.</p>
-            </div>
-
-        </div>
-
-
-        <li>
-            <div class="invitado">
-                <a class="invitado-info" href="#invitado4">
-                                    <img src="/img/invitado4.jpg" alt="Imagen invitado">
-                                    <p>Susana Rivera</p>
-                                </a>
-            </div>
-            <!-- END .invitado -->
-        </li>
-
-        <div style="display:none;">
-
-            <div class="invitado-info" id="invitado4">
-                <h2>Susana</h2>
-                <img src="img/invitado4.jpg" alt="">
-                <p>Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus</p>
             </div>
 
-        </div>
 
+            <li>
+                <div class="invitado">
+                    <a class="invitado-info" href="#invitado3">
+                        <img src="/img/invitado3.jpg" alt="Imagen invitado">
+                        <p>Juan Sanchez</p>
+                    </a>
+                </div>
+                <!-- END .invitado -->
+            </li>
 
-        <li>
-            <div class="invitado">
-                <a class="invitado-info" href="#invitado5">
-                                    <img src="/img/invitado5.jpg" alt="Imagen invitado">
-                                    <p>Harold Garcia</p>
-                                </a>
-            </div>
-            <!-- END .invitado -->
-        </li>
+            <div style="display:none;">
 
-        <div style="display:none;">
+                <div class="invitado-info" id="invitado3">
+                    <h2>Juan</h2>
+                    <img src="img/invitado3.jpg" alt="">
+                    <p>placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula. Morbi porttitor tempus euismod.</p>
+                </div>
 
-            <div class="invitado-info" id="invitado5">
-                <h2>Harold</h2>
-                <img src="img/invitado5.jpg" alt="">
-                <p>placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula. Morbi porttitor tempus euismod.</p>
-            </div>
-
-        </div>
-
-
-        <li>
-            <div class="invitado">
-                <a class="invitado-info" href="#invitado6">
-                                    <img src="/img/invitado6.jpg" alt="Imagen invitado">
-                                    <p>Susan Sanchez</p>
-                                </a>
-            </div>
-            <!-- END .invitado -->
-        </li>
-
-        <div style="display:none;">
-
-            <div class="invitado-info" id="invitado6">
-                <h2>Susan</h2>
-                <img src="img/invitado6.jpg" alt="">
-                <p>Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus massa non molestie. Curabitur urna metus, placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at
-                    ex blandit vehicula. Morbi porttitor tempus euismod.</p>
             </div>
 
-        </div>
+
+            <li>
+                <div class="invitado">
+                    <a class="invitado-info" href="#invitado4">
+                        <img src="/img/invitado4.jpg" alt="Imagen invitado">
+                        <p>Susana Rivera</p>
+                    </a>
+                </div>
+                <!-- END .invitado -->
+            </li>
+
+            <div style="display:none;">
+
+                <div class="invitado-info" id="invitado4">
+                    <h2>Susana</h2>
+                    <img src="img/invitado4.jpg" alt="">
+                    <p>Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus</p>
+                </div>
+
+            </div>
 
 
-    </ul>
-    <!-- END lista-invitados -->
+            <li>
+                <div class="invitado">
+                    <a class="invitado-info" href="#invitado5">
+                        <img src="/img/invitado5.jpg" alt="Imagen invitado">
+                        <p>Harold Garcia</p>
+                    </a>
+                </div>
+                <!-- END .invitado -->
+            </li>
+
+            <div style="display:none;">
+
+                <div class="invitado-info" id="invitado5">
+                    <h2>Harold</h2>
+                    <img src="img/invitado5.jpg" alt="">
+                    <p>placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula. Morbi porttitor tempus euismod.</p>
+                </div>
+
+            </div>
+
+
+            <li>
+                <div class="invitado">
+                    <a class="invitado-info" href="#invitado6">
+                        <img src="/img/invitado6.jpg" alt="Imagen invitado">
+                        <p>Susan Sanchez</p>
+                    </a>
+                </div>
+                <!-- END .invitado -->
+            </li>
+
+            <div style="display:none;">
+
+                <div class="invitado-info" id="invitado6">
+                    <h2>Susan</h2>
+                    <img src="img/invitado6.jpg" alt="">
+                    <p>Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus massa non molestie. Curabitur urna metus, placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at
+                        ex blandit vehicula. Morbi porttitor tempus euismod.</p>
+                </div>
+
+            </div>
+
+
+        </ul>
+        <!-- END lista-invitados -->
     </section>
     <!-- END .invitados -->
 
@@ -472,7 +469,7 @@
             </ul>
         </div>
     </section>
-    
+
     <footer class="site-footer">
         <div class="contenedor clearfix">
             <div class="footer-informacion">
@@ -496,13 +493,13 @@
                 </nav>
             </div>
         </div>
-    
+
         <p class="copyright">
             Todos los derechos Reservados GDLWEBCAMP 2016.
         </p>
-    
-    
-    
+
+
+
         <!-- Begin MailChimp Signup Form -->
         <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
         <style type="text/css">
@@ -511,7 +508,7 @@
                 clear: left;
                 font: 14px Helvetica, Arial, sans-serif;
             }
-    
+
             /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
              We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
         </style>
@@ -553,18 +550,18 @@
             <!--End mc_embed_signup-->
         </div>
     </footer>
-    
-    
-    
+
+
+
     <script src="{{asset('js/vendor/modernizr-3.8.0.min.js')}}"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-  
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>
         (window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>'))
     </script>
-    
-    
+
+
     <?php
     $archivo = basename($_SERVER['PHP_SELF']);
     $pagina = str_replace(".php", "", $archivo);
@@ -574,15 +571,15 @@
         echo '<script src="js/lightbox.js"></script>';
     }
     ?>
-    
+
     <script src="{{asset('js/plugins.js')}}"></script>
     <script src="{{asset('js/jquery.animateNumber.min.js')}}"></script>
     <script src="{{asset('js/jquery.countdown.min.js')}}"></script>
     <script src="{{asset('js/jquery.waypoints.min.js')}}"></script>
     <script src="{{asset('/js/main.js')}}"></script>
-    
 
-    
+
+
     <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
     <script>
         window.ga = function() {
@@ -595,6 +592,6 @@
         ga('send', 'pageview')
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async></script>
-    </body>
-    
-    </html>
+</body>
+
+</html>

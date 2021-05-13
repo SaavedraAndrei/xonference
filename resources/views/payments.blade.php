@@ -6,13 +6,14 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Icono -->
     <link rel="icon" href="{{asset('/icon.png')}}" type="image/png" />
     <!-- Place favicon.ico in the root directory -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="{{asset('css/app.css')}}" />
     <link rel="stylesheet" href="{{asset('css/normalize.css')}}" />
+    
 
 
     <?php
@@ -41,12 +42,10 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-        @if (session('status'))
+    @if (session('status'))
             <h3>Buen Trabajooooooo</h3>
             <h3>{{session('status')}}</h3>
-        @endif
-
-
+    @endif
 
     <header class="site-header">
         <div class="hero">
@@ -99,57 +98,124 @@
         <!--.contenedor-->
     </div>
     <!--.barra-->
-
-    {{-- <div class="calendario">
-        <h1>Calendariooooooo</h1>
-    </div> --}}
     
+   
+
+    
+
     <section class="seccion contenedor">
+        <h2>Pasarela de Pagos</h2>
+        <form id="registro" class="registro" action="{{url('/paypal/pay')}}" method="post">
+            <div id="datos_usuario" class="registro caja clearfix">
+                <div class="campo">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu Nombre">
+                </div>
+                <div class="campo">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" placeholder="Tu Apellido">
+                </div>
+                <div class="campo">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Tu Email">
+                </div>
+                <div id="error"></div>
+            </div>
+            <!--#datos_usuario-->
 
-        <h2>Calendario de Conferencias</h2>
+            <div id="paquetes" class="paquetes">
+                <h3>Pase para el Congreso</h3>
+                <ul class="lista-precios clearfix">
+                    
+                    <li>
+                        <div class="tabla-precio">
+                            <h3>Todos los días</h3>
+                            <p class="numero">$10</p>
+                            <ul>
+                                <li>Todos los seminarios</li>
+                                <li>Todas las conferencias</li>
+                                <li>Todos los talleres</li>
+                            </ul>
+                            
+                        </div>
+                    </li>
 
-        
+                </ul>
+            </div>
+            <!--#paquetes-->
 
-        <div class="calendario">
 
-            @foreach ($calendario as $dia => $lista_eventos)
-            <h3>
-                <i class="fa fa-calendar"></i>
-                <?php
-                // LINUX
-                setlocale(LC_TIME, 'es_ES.UTF-8');
-                // Windows
-                setlocale(LC_TIME, 'spanish');
-
-                echo utf8_encode(strftime("%A, %d de %B del %Y", strtotime($dia)));  ?>
-            </h3>
-                @foreach ($lista_eventos as $evento)
-                    <div class="dia">
-                        <p class="titulo">{{$evento->evento}}</p>
-                        <p class="hora">
-                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                            {{$evento->fecha_evento}}
-                            {{$evento->hora_evento}}
-                        </p>
-                        <p>
-                            <i class="fa fa-code" aria-hidden="true"></i>
-                            {{$evento->categoria}}
-                        </p>
-                        <p>
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                            {{$evento->ponentenombre}}
-                            {{$evento->ponenteapellido}}
-                        </p>
-                        </p>
+            <div id="eventos" class="eventos clearfix">
+                <h3>Eventos Disponibles</h3>
+                
+                <div class="seccion contenedor">
+                    <div class="calendario">
+                        @foreach ($calendario as $dia => $lista_eventos)
+                            <h3>
+                                <i class="fa fa-calendar"></i>
+                                <?php
+                                // LINUX
+                                setlocale(LC_TIME, 'es_ES.UTF-8');
+                                // Windows
+                                setlocale(LC_TIME, 'spanish');
+                
+                                echo utf8_encode(strftime("%A, %d de %B del %Y", strtotime($dia)));  ?>
+                            </h3>
+                                @foreach ($lista_eventos as $evento)
+                                    <div class="dia">
+                                        <p class="titulo">{{$evento->evento}}</p>
+                                        <p class="hora">
+                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                            {{$evento->fecha_evento}}
+                                            {{$evento->hora_evento}}
+                                        </p>
+                                        <p>
+                                            <i class="fa fa-code" aria-hidden="true"></i>
+                                            {{$evento->categoria}}
+                                        </p>
+                                        <p>
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            {{$evento->ponentenombre}}
+                                            {{$evento->ponenteapellido}}
+                                        </p>
+                                        </p>
+                                    </div>
+                                @endforeach
+                            @endforeach
                     </div>
-                @endforeach
-            @endforeach
+                </div>
+                
+            </div>
+            <!--#eventos-->
+
+            <div id="resumen" class="resumen">
+                <h3>Realiza el pago</h3>
+                
+                <div class="caja clearfix">
+                    
+                    <div class="total">
+                        <p>Total a Pagar:</p>
+                        <div id="suma-total">
+                            $10.00
+                        </div>
+                        <input type="hidden" name="total_pedido" id="total_pedido">
+                        <input type="hidden" name="total_descuento" id="total_descuento" value="total_descuento">
+                        
+                    </div>
 
 
-        </div>
+                    <a href="{{url('/paypal/pay')}}" class="button btn-center">
+                        Pagar con PayPal
+                    </a>
+                    
+                    
 
+                </div>
+                <!--.caja-->
+            </div>
+
+        </form>
     </section>
-
 
 
 

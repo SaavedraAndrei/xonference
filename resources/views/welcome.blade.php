@@ -40,6 +40,12 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
+
+    @if (session('status'))
+    <h3>Fallo </h3>
+    <h3>{{session('status')}}</h3>
+    @endif
+
     <header class="site-header">
         <div class="hero">
             <div class="contenido-header">

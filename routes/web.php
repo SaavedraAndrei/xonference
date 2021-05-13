@@ -6,7 +6,11 @@ use App\Http\Controllers\InvitadosController;
 use App\Http\Controllers\CalendarioController;
 use App\Http\Controllers\ConferenciaController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\EventoController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\RegistrarController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +36,17 @@ Route::get('/login/usuario/cerrar_sesion', [IndexController::class, 'cerrar_sesi
 Route::GET('/registrar', [RegistrarController::class, 'Registrar'])->name('usuario.registrar');
 Route::get('/home', [IndexController::class, 'Home'])->name('home');
 
-Route::get('/calendario', [ConferenciaController::class, 'index'])->name('calendario');
+Route::get('/calendario', [EventoController::class, 'index'])->name('calendario');
 //------INVITADOS----//
 Route::get('/invitados', [IndexController::class, 'invitados'])->name('invitados');
-Route::get('/register', [RegisterController::class,'intRegistro'])->name('register'); 
-Route::post('/register', [RegisterController::class,'store']);
+Route::get('/register', [RegisterController::class, 'intRegistro'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
+
+//------PAYPAL------------------//
+Route::GET('/pago', [PaymentController::class, 'index'])->name('pago');
+Route::GET('/paypal/pay', [PaymentController::class, 'payWithPaypal'])->name('paypalPay');
+Route::GET('/paypal/status', [PaymentController::class, 'payPalStatus'])->name('paypalStatus');
+
+
+//----CATÁLOGO-----//
+Route::get('/catalogo', [ConferenciaController::class, 'index'])->name('catalogo');

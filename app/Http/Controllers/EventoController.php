@@ -6,24 +6,37 @@ use App\Models\Evento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ConferenciaController extends Controller
+class EventoController extends Controller
 {
     public function index()
     {
-        $eventos = DB::table('eventos')
+        mb_internal_encoding('UTF-8');
+
+        $conferencia = DB::table('eventos')
             ->leftjoin('ponentes', 'eventos.idPonente', '=', 'ponentes.id')
             ->leftjoin('categorias', 'eventos.idCategoria', '=', 'categorias.id')
             ->select(
                 'eventos.nombre as evento',
                 'eventos.fecha_evento',
                 'eventos.hora_evento',
-                'eventos.tematica',
-                'eventos.descripcion',
                 'categorias.nombre as categoria',
                 'ponentes.nombre as ponentenombre',
                 'ponentes.apellidoPaterno as ponenteapellido'
             )
             ->get();
-        return view('catalogo', compact('eventos'));
+
+
+
+        $calendario = array();
+
+        foreach ($conferencia as $confe) {
+            $fecha = $confe->fecha_evento;
+
+            $calendario[$fecha][] = $confe;
+        }
+
+
+
+        return view('calendario', compact('conferencia', 'calendario'));
     }
 }

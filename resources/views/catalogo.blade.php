@@ -7,12 +7,13 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Icono -->
-    <link rel="icon" href="{{asset('/icon.png')}}" type="image/png" />
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
     <!-- Place favicon.ico in the root directory -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="{{asset('css/app.css')}}" />
     <link rel="stylesheet" href="{{asset('css/normalize.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/Estilos.css')}}" />
 
 
     <?php
@@ -40,13 +41,6 @@
     <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
-
-        @if (session('status'))
-            <h3>Buen Trabajooooooo</h3>
-            <h3>{{session('status')}}</h3>
-        @endif
-
-
 
     <header class="site-header">
         <div class="hero">
@@ -92,61 +86,41 @@
                 <a href="conferencia.php">Conferencia</a>
                 <a href="{{route('calendario')}}">Calendario</a>
                 <a href="{{route('invitados')}}">Invitados</a>
-                <a href="{{route('usuario.registrar')}}">Registrarse</a>
-                <a href="{{route('usuario.login')}}">Iniciar sesion</a>
+                <a href="registro.php">Reservaciones</a>
             </nav>
         </div>
         <!--.contenedor-->
     </div>
     <!--.barra-->
 
-    {{-- <div class="calendario">
-        <h1>Calendariooooooo</h1>
-    </div> --}}
-    
-    <section class="seccion contenedor">
-
-        <h2>Calendario de Conferencias</h2>
-
+    <section class="contenedor">
+        <h2>Catalogo de Conferencias</h2>
+        <div class="contenedor-prin-alex">
+            @foreach ($eventos as $eve)
+            <div class="conte-alex">
+                    <div class="catag-alex">
+                        <p class="dia-alex">Nombre:</p>
+                            <p class="texto-alex">{{$eve->evento}}</p>
+                            
+                        <p class="dia-alex">Ponentes: </p>
+                            <p class="texto-alex">{{$eve->ponentenombre}} {{$eve->ponenteapellido}}</p> 
         
-
-        <div class="calendario">
-
-            @foreach ($calendario as $dia => $lista_eventos)
-            <h3>
-                <i class="fa fa-calendar"></i>
-                <?php
-                // LINUX
-                setlocale(LC_TIME, 'es_ES.UTF-8');
-                // Windows
-                setlocale(LC_TIME, 'spanish');
-
-                echo utf8_encode(strftime("%A, %d de %B del %Y", strtotime($dia)));  ?>
-            </h3>
-                @foreach ($lista_eventos as $evento)
-                    <div class="dia">
-                        <p class="titulo">{{$evento->evento}}</p>
-                        <p class="hora">
-                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                            {{$evento->fecha_evento}}
-                            {{$evento->hora_evento}}
-                        </p>
-                        <p>
-                            <i class="fa fa-code" aria-hidden="true"></i>
-                            {{$evento->categoria}}
-                        </p>
-                        <p>
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                            {{$evento->ponentenombre}}
-                            {{$evento->ponenteapellido}}
-                        </p>
-                        </p>
+                        <p class="dia-alex">Tematica: </p>
+                            <p class="texto-alex">{{$eve->tematica}}</p> 
+        
+                        <p class="dia-alex">Fecha: </p>     
+                            <p class="texto-alex">{{$eve->fecha_evento}}</p>
+        
+                        <p class="dia-alex">Descripcion: </p>
+                            <p class="texto-alex">{{$eve->descripcion}}</p>
+                        <!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. <br> -->
+                        
                     </div>
-                @endforeach
+            </div>
             @endforeach
-
-
         </div>
+        
+        
 
     </section>
 
@@ -272,9 +246,9 @@
         ga.l = +new Date;
         ga('create', 'UA-XXXXX-Y', 'auto');
         ga('set', 'transport', 'beacon');
-        ga('send', 'pageview');
+        ga('send', 'pageview')
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async></script>
     </body>
     
-</html>
+    </html>

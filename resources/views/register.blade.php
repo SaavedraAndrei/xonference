@@ -34,7 +34,7 @@
             </div>
 
             <div class="col-md-6 login-form-2">
-                @if(count($errors) > 0) 
+                <!-- @if(count($errors) > 0) 
                 <div class="alert alert-danger">
                     <ul>
                     @foreach($errors -> all() as $error)
@@ -47,10 +47,10 @@
                 <div class="alert alert-success"> 
                     <p>{{\Session::get('success')}}</p>
                 </div>
-                @endif
+                @endif -->
 
                 <!-- <form action="/usuario/validar" method="get"> -->
-                <form action="/registrar" method="post">
+                <form action="{{ route('registrar.guardar_usuario') }}" method="post">
                 {{csrf_field()}}
                     <h3 class="register-heading">REGISTRARSE</h3>
 
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="row form-group">
-                            <input type = "text" name = "nombres"           class="form-control" placeholder ="Nombres Completos"   spellcheck="false" id="txtInputs"/>
+                            <input type = "text" name = "nombres" class="form-control" placeholder ="Nombres Completos"   spellcheck="false" id="txtInputs"/>
                         </div>
                          
                         <div class="row form-group">

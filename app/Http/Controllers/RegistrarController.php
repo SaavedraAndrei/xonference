@@ -49,7 +49,7 @@ class RegistrarController extends Controller
 
     public function guardar_usuario(Request $request)
     {
-        
+        // dd($request);
         $x = session()->all();
         $dni = $request->dni;
         $nombres = $request->nombres;
@@ -57,6 +57,8 @@ class RegistrarController extends Controller
         $apellidoMaterno = $request->apellidoMaterno;
         $email = $request->email;
         $clave = Hash::make($request->clave);
+
+        // if()
         Usuario::create(Array(
             'nombres' => $nombres,
             'apellidoPaterno' => $apellidoPaterno, 

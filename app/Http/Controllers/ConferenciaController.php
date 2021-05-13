@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ConferenciaController extends Controller
 {
-    public function calendario()
+    public function index()
     {
         $eventos = DB::table('eventos')
             ->leftjoin('ponentes', 'eventos.idPonente', '=', 'ponentes.id')

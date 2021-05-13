@@ -1,3 +1,3 @@
-INSERT INTO `categorias` VALUES ('conferencia', 'fa-comment');
-INSERT INTO `categorias` VALUES ('seminario', 'fa-comment');
-INSERT INTO `categorias` VALUES ('taller', 'fa-comment');
+INSERT INTO categorias (nombre,icono) VALUES ('conferencia', 'fa-comment');
+INSERT INTO categorias (nombre,icono) VALUES ('seminario', 'fa-comment');
+INSERT INTO categorias (nombre,icono) VALUES ('taller', 'fa-comment');

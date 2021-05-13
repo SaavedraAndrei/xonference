@@ -1,8 +1,8 @@
-(function() {
+(function () {
     "use strict";
     var regalo = document.getElementById("regalo");
 
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         if (document.getElementById("calcular")) {
             var regalo = document.getElementById("regalo");
 
@@ -17,9 +17,8 @@
             var pase_completo = document.getElementById("pase_completo");
 
             // mostrar en editar
-            var formulario_editar = document.getElementsByClassName(
-                "editar-registrado"
-            );
+            var formulario_editar =
+                document.getElementsByClassName("editar-registrado");
             if (formulario_editar.length > 0) {
                 if (pase_dia.value || pase_dosdias.value || pase_completo) {
                     mostrarDias();
@@ -34,17 +33,9 @@
             var lista_productos = document.getElementById("lista-productos");
             var suma = document.getElementById("suma-total");
 
-            // Extras
-            var camisas = document.getElementById("camisa_evento");
-            var etiquetas = document.getElementById("etiquetas");
-
             botonRegistro.disabled = true;
 
             calcular.addEventListener("click", calcularMontos);
-
-            pase_dia.addEventListener("input", mostrarDias);
-            pase_dosdias.addEventListener("input", mostrarDias);
-            pase_completo.addEventListener("input", mostrarDias);
 
             nombre.addEventListener("blur", validarCampos);
             apellido.addEventListener("blur", validarCampos);
@@ -77,95 +68,35 @@
 
             function calcularMontos(event) {
                 event.preventDefault();
-                if (regalo.value === "") {
-                    alert("Debes elegir un regalo");
-                    regalo.focus();
-                } else {
-                    var boletosDia = parseInt(pase_dia.value, 10) || 0,
-                        boletos2Dias = parseInt(pase_dosdias.value, 10) || 0,
-                        boletoCompleto = parseInt(pase_completo.value, 10) || 0,
-                        cantCamisas = parseInt(camisas.value, 10) || 0,
-                        cantEtiquetas = parseInt(etiquetas.value, 10) || 0;
 
-                    var totalPagar =
-                        boletosDia * 30 +
-                        boletos2Dias * 45 +
-                        boletoCompleto * 50 +
-                        cantCamisas * 10 * 0.93 +
-                        cantEtiquetas * 2;
-
-                    var listadoProductos = [];
-
-                    if (boletosDia >= 1) {
-                        listadoProductos.push(boletosDia + " Pases por día");
-                    }
-                    if (boletos2Dias >= 1) {
-                        listadoProductos.push(
-                            boletos2Dias + " Pases por 2 días"
-                        );
-                    }
-                    if (boletoCompleto >= 1) {
-                        listadoProductos.push(
-                            boletoCompleto + " Pases Completos"
-                        );
-                    }
-                    if (cantCamisas >= 1) {
-                        listadoProductos.push(cantCamisas + " Camisas");
-                    }
-                    if (cantEtiquetas >= 1) {
-                        listadoProductos.push(cantEtiquetas + " Etiquetas");
-                    }
-                    lista_productos.style.display = "block";
-                    lista_productos.innerHTML = "";
-                    for (var i = 0; i < listadoProductos.length; i++) {
-                        lista_productos.innerHTML +=
-                            listadoProductos[i] + "<br/>";
-                    }
-                    suma.innerHTML = "$ " + totalPagar.toFixed(2);
-
-                    botonRegistro.disabled = false;
-                    document.getElementById("total_pedido").value = totalPagar;
-                }
-            }
-
-            function mostrarDias() {
                 var boletosDia = parseInt(pase_dia.value, 10) || 0,
                     boletos2Dias = parseInt(pase_dosdias.value, 10) || 0,
                     boletoCompleto = parseInt(pase_completo.value, 10) || 0;
 
-                console.log(boletoCompleto);
+                var totalPagar =
+                    boletosDia * 30 + boletos2Dias * 45 + boletoCompleto * 50;
 
-                var diasElegidos = [];
+                var listadoProductos = [];
 
-                if (boletosDia > 0) {
-                    diasElegidos.push("viernes");
-                    console.log(diasElegidos);
+                if (boletosDia >= 1) {
+                    listadoProductos.push(boletosDia + " Pases por día");
                 }
-                if (boletos2Dias > 0) {
-                    diasElegidos.push("viernes", "sabado");
-                    console.log(diasElegidos);
+                if (boletos2Dias >= 1) {
+                    listadoProductos.push(boletos2Dias + " Pases por 2 días");
                 }
-                if (boletoCompleto > 0) {
-                    diasElegidos.push("viernes", "sabado", "domingo");
-                    console.log(diasElegidos);
-                }
-                console.log(diasElegidos.length);
-
-                // muestra los seleccionados
-                for (var i = 0; i < diasElegidos.length; i++) {
-                    document.getElementById(diasElegidos[i]).style.display =
-                        "block";
+                if (boletoCompleto >= 1) {
+                    listadoProductos.push(boletoCompleto + " Pases Completos");
                 }
 
-                // los oculta si vuelven a 0
-                if (diasElegidos.length == 0) {
-                    var todosDias = document.getElementsByClassName(
-                        "contenido-dia"
-                    );
-                    for (var i = 0; i < todosDias.length; i++) {
-                        todosDias[i].style.display = "none";
-                    }
+                lista_productos.style.display = "block";
+                lista_productos.innerHTML = "";
+                for (var i = 0; i < listadoProductos.length; i++) {
+                    lista_productos.innerHTML += listadoProductos[i] + "<br/>";
                 }
+                suma.innerHTML = "$ " + totalPagar.toFixed(2);
+
+                botonRegistro.disabled = false;
+                document.getElementById("total_pedido").value = totalPagar;
             }
         }
 
@@ -184,10 +115,10 @@
         }
     });
 
-    $(function() {
+    $(function () {
         var windowHeight = $(window).height();
         var barraAltura = $(".barra").innerHeight();
-        $(window).scroll(function() {
+        $(window).scroll(function () {
             var scroll = $(window).scrollTop();
             if (scroll > windowHeight) {
                 $(".barra").addClass("fixed");
@@ -202,7 +133,7 @@
         $(".programa-evento .info-curso:first").show();
         $(".menu-programa a:first").addClass("activo");
 
-        $(".menu-programa a").on("click", function() {
+        $(".menu-programa a").on("click", function () {
             $(".menu-programa a").removeClass("activo");
             $(this).addClass("activo");
             $(".ocultar").hide();
@@ -216,7 +147,7 @@
         var resumenLista = jQuery(".resumen-evento");
         if (resumenLista.length > 0) {
             $(".resumen-evento").waypoint(
-                function() {
+                function () {
                     $(".resumen-evento li:nth-child(1) p").animateNumber(
                         { number: 6 },
                         1200
@@ -235,25 +166,26 @@
                     );
                 },
                 {
-                    offset: "60%"
+                    offset: "60%",
                 }
             );
         }
 
         // Cuenta Regresiva
 
-        $(".cuenta-regresiva").countdown("2021/07/01 09:00:00", function(
-            event
-        ) {
-            $("#dias").html(event.strftime("%D"));
-            $("#horas").html(event.strftime("%H"));
-            $("#minutos").html(event.strftime("%M"));
-            $("#segundos").html(event.strftime("%S"));
-        });
+        $(".cuenta-regresiva").countdown(
+            "2021/07/01 09:00:00",
+            function (event) {
+                $("#dias").html(event.strftime("%D"));
+                $("#horas").html(event.strftime("%H"));
+                $("#minutos").html(event.strftime("%M"));
+                $("#segundos").html(event.strftime("%S"));
+            }
+        );
 
         // Menu Responsive
 
-        $(".menu-movil").on("click", function() {
+        $(".menu-movil").on("click", function () {
             $(".navegacion-principal").slideToggle();
         });
 

@@ -11,7 +11,7 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
-   html {
+html {
     color: #222;
     font-size: 1em;
     line-height: 1.4;
@@ -662,8 +662,7 @@ ul.lista-precios > li {
 }
 @media only screen and (min-width: 768px) {
     ul.lista-precios > li {
-        float: left;
-        width: 33.3%;
+        width: 100%;
     }
 }
 
@@ -872,7 +871,7 @@ div.galeria {
     display: grid;
     grid-template-columns: repeat(2, 1fr) !important;
     -moz-column-gap: 5px;
-         column-gap: 5px;
+    column-gap: 5px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -903,6 +902,8 @@ div.caja {
     border: 1px solid #e1e1e1;
     padding: 10px;
     margin: 10px;
+    text-align: center !important;
+    margin: 0 auto !important;
 }
 div.campo {
     padding: 20px;
@@ -963,23 +964,6 @@ div.resumen p {
     text-transform: uppercase;
 }
 
-div.resumen div.extras {
-    float: left;
-    width: 50%;
-    padding: 30px;
-}
-div.extras div.orden {
-    text-align: left;
-    margin-bottom: 10px;
-}
-div.extras div.orden input {
-    margin: 10px 0 0 0;
-}
-div.resumen div.total {
-    float: right;
-    width: 50%;
-    padding: 30px;
-}
 div.resumen input {
     display: block;
     margin: 10px auto;
@@ -1138,6 +1122,51 @@ table.registrados thead th {
 table.registrados tr:nth-child(4n),
 table.registrados tr:nth-child(4n-1) {
     background-color: #dcdcdc;
+}
+
+/* PAYPAL */
+
+.paypal {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#paypal-button-container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#btnRegistro {
+    margin: 3rem auto !important;
+    text-align: center !important;
+}
+
+/* Alex */
+
+.contenedor-prin-alex {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.conte-alex {
+    width: 350px;
+}
+
+.catag-alex {
+    text-align: left !important;
+    margin: 10px 0;
+    border: 7px solid #1c6ea4;
+    border-radius: 18px;
+}
+
+.dia-alex {
+    background-color: rgb(210, 210, 210);
+    padding: 20px;
+}
+
+.texto-alex {
+    text-align: center;
 }
 
 /* ==========================================================================
@@ -1304,5 +1333,3 @@ table.registrados tr:nth-child(4n-1) {
         page-break-after: avoid;
     }
 }
-
-

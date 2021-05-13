@@ -9,7 +9,6 @@ class Usuario extends Model
     protected $primaryKey = "id";
 
     protected $fillable = [
-      
         'nombres',
         'apellidoPaterno',
         'apellidoMaterno',
@@ -23,7 +22,5 @@ class Usuario extends Model
         'usuario_creacion',
         'usuario_actualizacion',
         
-    ];
-
-   
+    ];  
 }

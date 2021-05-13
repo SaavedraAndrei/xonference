@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="/css/normalize.css" type="text/css">
     <link rel="stylesheet" href="/css/fonts.css" type="text/css">
     <link rel="stylesheet" href="/css/home/styles.css" type="text/css">
-    <link rel="icon" href="/images/icono.png" type="image/png" />
+    <!-- Icono -->
+    <link rel="icon" href="{{asset('/icon.png')}}" type="image/png" />
 
     <title>Home</title>
     <script src="{{asset('js/sweetalert2.js')}}"></script>
@@ -25,8 +26,10 @@
 
     if (!empty($mensaje)) {
     ?>
+    
         <script>
-            //console.log('<?= $mensaje; ?>');
+            // console.log('<?= $mensaje; ?>');
+           
             if ('<?= $mensaje; ?>' == "ACEPTADO") {
                 Swal.fire({
                     icon: 'success',

@@ -270,7 +270,6 @@ export default {
   methods: {}
 };
 </script>
-
 <style lang="css">
 @media only screen and (min-width: 768px) {
   h1.nombre-sitio {
@@ -279,5 +278,11 @@ export default {
     margin-bottom: 190px;
     line-height: 1;
   }
+}
+h1.nombre-sitio {
+    font-size: 50px;
+    text-transform: uppercase;
+    font-family: "PT Sans", sans-serif;
+    margin-bottom: 95px;
 }
 </style>

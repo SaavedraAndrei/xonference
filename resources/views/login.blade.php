@@ -31,7 +31,7 @@
                   <img src="img/prueba.svg" id="imagenContenido"/>
                 </div>
                 <div class="col-md-6 login-form-2">
-                  <form action="/usuario/validar" method="get">
+                  <form action="/login/usuario/validar" method="get">
                           <h3 class="register-heading">INICIAR SESIÓN</h3>
                               <div class="col register-content">
                                   <div class="row form-group">

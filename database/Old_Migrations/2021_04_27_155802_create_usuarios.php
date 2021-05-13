@@ -23,11 +23,11 @@ class CreateUsuarios extends Migration
             $table->string('email', 150);
             $table->string('clave', 200);
             $table->decimal('totalPago', $precision = 8, $scale = 2)->nullable();
-            $table->boolean('pagado');
-            $table->integer('id_asistencia');
-            $table->integer('id_conferencia');
-            $table->integer('usuario_creacion');
-            $table->integer('usuario_actualizacion');
+            $table->boolean('pagado')->nullable();
+            $table->integer('id_asistencia')->nullable();
+            $table->integer('id_conferencia')->nullable();
+            $table->integer('usuario_creacion')->nullable();
+            $table->integer('usuario_actualizacion')->nullable();
             $table->timestamps();
         });
     }

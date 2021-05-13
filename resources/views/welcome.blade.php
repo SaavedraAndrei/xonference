@@ -86,7 +86,7 @@
                 <a href="#">Conferencia</a>
                 <a href="{{route('calendario')}}">Calendario</a>
                 <a href="{{route('invitados')}}">Invitados</a>
-                <a href="{{route('usuario.registrar')}}">Registrarse</a>
+                <a href="{{route('registrar')}}">Registrarse</a>
                 <a href="{{route('usuario.login')}}">Iniciar sesion</a>
             </nav>
         </div>

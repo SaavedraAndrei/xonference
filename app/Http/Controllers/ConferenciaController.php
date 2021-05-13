@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ConferenciaController extends Controller
 {
-    public function index()
+    public function calendario()
     {
         $conferencia = Conferencia::all();
         

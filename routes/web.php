@@ -30,6 +30,9 @@ Route::GET('/login', [IndexController::class, 'Login'])->name('usuario.login');
 Route::get('/login/usuario/validar', [IndexController::class, 'validarUsuario'])->name('login.validarUsuario');
 Route::get('/login/usuario/cerrar_sesion', [IndexController::class, 'cerrar_sesion'])->name('login.cerrar_sesion');
 Route::GET('/registrar', [RegistrarController::class, 'Registrar'])->name('usuario.registrar');
+///---Mario Añade
+Route::post('/registrar', [RegistrarController::class, 'store']);
+///
 Route::get('/home', [IndexController::class, 'Home'])->name('home');
 
 Route::get('/calendario', [ConferenciaController::class, 'index'])->name('calendario');

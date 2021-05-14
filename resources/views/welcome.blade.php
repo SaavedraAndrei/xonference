@@ -89,7 +89,7 @@
             </div>
 
             <nav class="navegacion-principal clearfix">
-                <a href="{{route('catalogo.index')}}">Conferencia</a>
+                <a href="{{route('catalogo')}}">Conferencia</a>
                 <a href="{{route('calendario')}}">Calendario</a>
                 <a href="{{route('invitados')}}">Invitados</a>
                 <a href="{{route('registrar')}}">Registrarse</a>
@@ -361,39 +361,14 @@
             <ul class="lista-precios clearfix">
                 <li>
                     <div class="tabla-precio">
-                        <h3>Pase por día</h3>
-                        <p class="numero">$30</p>
-                        <ul>
-                            <li>Bocadillos Gratis</li>
-                            <li>Todas las conferencias</li>
-                            <li>Todos los talleres</li>
-                        </ul>
-                        <a href="#" class="button hollow">Comprar</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="tabla-precio">
                         <h3>Todos los días</h3>
-                        <p class="numero">$50</p>
+                        <p class="numero">$10</p>
                         <ul>
                             <li>Bocadillos Gratis</li>
                             <li>Todas las conferencias</li>
                             <li>Todos los talleres</li>
                         </ul>
                         <a href="#" class="button">Comprar</a>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="tabla-precio">
-                        <h3>Pase por 2 días</h3>
-                        <p class="numero">$45</p>
-                        <ul>
-                            <li>Bocadillos Gratis</li>
-                            <li>Todas las conferencias</li>
-                            <li>Todos los talleres</li>
-                        </ul>
-                        <a href="#" class="button hollow">Comprar</a>
                     </div>
                 </li>
             </ul>

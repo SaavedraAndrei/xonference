@@ -34,12 +34,12 @@ Route::GET('/login', [IndexController::class, 'Login'])->name('usuario.login');
 Route::GET('/login/usuario/validar', [IndexController::class, 'validarUsuario'])->name('login.validarUsuario');
 Route::GET('usuario/cerrar_sesion', [IndexController::class, 'cerrar_sesion'])->name('login.cerrar_sesion');
 Route::GET('/registrar', [RegistrarController::class, 'Registrar'])->name('registrar');
-Route::POST('/register', [RegistrarController::class,'guardar_usuario'])->name('registrar.guardar_usuario');
+Route::POST('/register', [RegistrarController::class, 'guardar_usuario'])->name('registrar.guardar_usuario');
 // Route::POST('registrar/verificar_registro',[RegistrarController::class, 'verificar_usuario'])->name('registrar.verificar_usuario');
 Route::GET('/login/usuario/cerrar_sesion', [IndexController::class, 'cerrar_sesion'])->name('login.cerrar_sesion');
 Route::GET('/home', [IndexController::class, 'Home'])->name('home');
 
-Route::GET('/calendario', [ConferenciaController::class, 'calendario'])->name('calendario');
+Route::GET('/calendario', [EventoController::class, 'index'])->name('calendario');
 //------INVITADOS----//
 Route::GET('/invitados', [IndexController::class, 'invitados'])->name('invitados');
 
@@ -49,11 +49,7 @@ Route::GET('/paypal/pay', [PaymentController::class, 'payWithPaypal'])->name('pa
 Route::GET('/paypal/status', [PaymentController::class, 'payPalStatus'])->name('paypalStatus');
 
 //----CATÝLOGO-----//
-Route::get('/catalogo_conferencias', [ConferenciaController::class, 'index'])->name('catalogo.index');
+Route::get('/catalogo_conferencias', [ConferenciaController::class, 'index'])->name('catalogo');
 
 //----------------------------RUTAS PARA LOS USUARIOS REGISTRADOS----------------------------------------
-Route::GET('/usuarios_asistencia',[AsistenciaController::class, 'asistencia_usuarios'])->name('usuario.asistencia');
-
-
-
-
+Route::GET('/usuarios_asistencia', [AsistenciaController::class, 'asistencia_usuarios'])->name('usuario.asistencia');

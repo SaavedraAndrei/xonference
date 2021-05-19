@@ -1,0 +1,1 @@
+ALTER TABLE congresos ADD COLUMN precio DECIMAL(6,2) AFTER fechaFin;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
@@ -45,7 +46,11 @@ class PaymentController extends Controller
             $calendario[$fecha][] = $confe;
         }
 
-        return view('payments', compact('conferencia', 'calendario'));
+        $congreso = DB::table('congresos')->first();
+
+        $data = Usuario::latest('id')->first();
+
+        return view('payments', compact('conferencia', 'calendario', 'congreso', 'data'));
     }
 
 
@@ -61,13 +66,16 @@ class PaymentController extends Controller
         );
     }
 
+
     public function payWithPaypal()
     {
+        $congreso = DB::table('congresos')->first();
+
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
         $amount = new Amount();
-        $amount->setTotal('10.00');
+        $amount->setTotal($congreso->precio);
         $amount->setCurrency('USD');
 
         $transaction = new Transaction();
@@ -101,6 +109,8 @@ class PaymentController extends Controller
 
     public function payPalStatus(Request $request)
     {
+        $congreso = DB::table('congresos')->first();
+
         $paymentId = $request->input('paymentId');
         $payerId = $request->input('PayerID');
         $token = $request->input('token');
@@ -108,7 +118,7 @@ class PaymentController extends Controller
         if (!$paymentId || !$payerId || !$token) {
             // Podríamos redirigir a la página que queramos
             $status = 'No se pudo proceder con el pago a través de Paypal';
-            return redirect('/paypal/failed')->with(compact('status'));
+            return redirect('/')->with(compact('status'));
         }
 
         $payment = Payment::get($paymentId, $this->apiContext);
@@ -119,9 +129,13 @@ class PaymentController extends Controller
         // Ejecutar el pago
         $result = $payment->execute($execution, $this->apiContext);
 
-        //dd($result);
+        // dd($result);
 
         if ($result->getState() === 'approved') {
+
+            DB::table('usuarios')->where('id', 2)
+                ->update(['pagado' => 1, 'totalPago' => $congreso->precio]);
+
             $status = 'Gracias! El pago a través de Paypal se ha realizado correctamente';
             return redirect('/calendario')->with(compact('status'));
         }

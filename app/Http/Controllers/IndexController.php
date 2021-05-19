@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 se indica la ruta a los 'models', de los cuales se obtiene la conexion con la base de datos
 y asi tambien los datos de las tablas
 */
+
 use App\Models\Usuario;
 /*
 El 'request' trae los datos de la vista al controlador
@@ -35,10 +36,12 @@ class IndexController extends Controller
     {
         return view('login');
     }
-    
+
     public function invitados()
     {
-        return Inertia::render('invitados');
+        $ponentes = DB::table('ponentes')->get();
+
+        return view('invitados', compact('ponentes'));
     }
 
     public function Home($mensaje = "ACEPTADO")
@@ -75,7 +78,7 @@ class IndexController extends Controller
         )
             ->where('email', $email)
             ->get();
-        
+
         if (count($validando_usuario) == 1) {
             if (Hash::check($clave, $validando_usuario[0]['clave'])) {
                 // dd("ingreso");

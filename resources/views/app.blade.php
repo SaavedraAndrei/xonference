@@ -23,6 +23,7 @@
 
   <!-- Estilos propios -->
   <link href="{{ mix('/css/styleVistas.css') }}" rel="stylesheet" />
+  <link rel="stylesheet" href="{{asset('css/normalize.css')}}" />
 
   <!-- Sweet Alert -->
   <script src="{{asset('js/sweetalert2.js') }}"></script>
@@ -32,6 +33,7 @@
   <script src="{{ mix('/js/app.js') }}" defer></script>
 
   <meta name="theme-color" content="#fafafa">
+  @routes
 </head>
 
 <body>

@@ -1,264 +1,221 @@
 <template>
-  <div>
-    <header class="container-header-asistencia">
-      <img
-        v-bind:src="'img/logo.svg'"
-        alt="logo-principal"
-      />
-    </header>
-    <div class="container-datetime">
-      <div class="widget">
-        <div class="fecha">
-          <p id="diaSemana" class="diaSemana"></p>
-          <p>,</p>
-          <p id="dia" class="dia"></p>
-          <p>de</p>
-          <p id="mes" class="mes"></p>
-          <p>del</p>
-          <p id="anio" class="anio"></p>
-        </div>
-        <div class="reloj">
-          <p id="horas" class="horas"></p>
-          <p>:</p>
-          <p id="minutos" class="minutos"></p>
-          <p>:</p>
-          <p id="segundos" class="segundos"></p>
-          <p id="ampm" class="ampm"></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container-camara" id="my_camera"></div>
-    <form
-      class="container-register-asistencia"
-      @submit.prevent="RegistrarAsistencia"
-      autocomplete="off"
-    >
-      <h1 class="register-heading">CONTROL DE ASISTENCIA</h1>
-      <input
-        type="number"
-        class="form-control input-number"
-        id="txtAsistenciaDni"
-        name="dni"
-        placeholder="INGRESAR DNI"
-        maxlength="8"
-        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-        required
-      />
-      <button class="btn btn-primary action-button" id="btnFoto">
-        Registrar
-      </button>
-    </form>
-  </div>
+  <layout ref="layout">
+    <div slot="c_mi_menu_materiales">
+       <div class="content" style="display: block">
+         <h1>HOLA MUNDO</h1>
+       </div>
+       </div>
+  </layout>
 </template>
 
 <script>
+import layout from "./Components/layout_usuarios";
 export default {
-  data() {
-    return {
-      dni: null,
-    };
-  },
-  mounted() {
-    document.title = "Registrar asistencia";
-    $(function () {
-      var actualizarHora = function () {
-        var fecha = new Date(),
-          hora = fecha.getHours(),
-          minutos = fecha.getMinutes(),
-          segundos = fecha.getSeconds(),
-          diaSemana = fecha.getDay(),
-          dia = fecha.getDate(),
-          mes = fecha.getMonth(),
-          anio = fecha.getFullYear(),
-          ampm;
+  components: {
+    layout
+  }
+//   data() {
+//     return {
+//       dni: null
+//     };
+//   },
+//   mounted() {
+//     document.title = "Registrar asistencia";
+//     $(function() {
+//       var actualizarHora = function() {
+//         var fecha = new Date(),
+//           hora = fecha.getHours(),
+//           minutos = fecha.getMinutes(),
+//           segundos = fecha.getSeconds(),
+//           diaSemana = fecha.getDay(),
+//           dia = fecha.getDate(),
+//           mes = fecha.getMonth(),
+//           anio = fecha.getFullYear(),
+//           ampm;
 
-        var $pHoras = $("#horas"),
-          $pSegundos = $("#segundos"),
-          $pMinutos = $("#minutos"),
-          $pAMPM = $("#ampm"),
-          $pDiaSemana = $("#diaSemana"),
-          $pDia = $("#dia"),
-          $pMes = $("#mes"),
-          $pAnio = $("#anio");
-        var semana = [
-          "domingo",
-          "lunes",
-          "martes",
-          "miercoles",
-          "jueves",
-          "viernes",
-          "sabado",
-        ];
-        var meses = [
-          "enero",
-          "febrero",
-          "marzo",
-          "abril",
-          "mayo",
-          "junio",
-          "julio",
-          "agosto",
-          "septiembre",
-          "octubre",
-          "noviembre",
-          "diciembre",
-        ];
+//         var $pHoras = $("#horas"),
+//           $pSegundos = $("#segundos"),
+//           $pMinutos = $("#minutos"),
+//           $pAMPM = $("#ampm"),
+//           $pDiaSemana = $("#diaSemana"),
+//           $pDia = $("#dia"),
+//           $pMes = $("#mes"),
+//           $pAnio = $("#anio");
+//         var semana = [
+//           "domingo",
+//           "lunes",
+//           "martes",
+//           "miercoles",
+//           "jueves",
+//           "viernes",
+//           "sabado"
+//         ];
+//         var meses = [
+//           "enero",
+//           "febrero",
+//           "marzo",
+//           "abril",
+//           "mayo",
+//           "junio",
+//           "julio",
+//           "agosto",
+//           "septiembre",
+//           "octubre",
+//           "noviembre",
+//           "diciembre"
+//         ];
 
-        $pDiaSemana.text(semana[diaSemana]);
-        $pDia.text(dia);
-        $pMes.text(meses[mes]);
-        $pAnio.text(anio);
-        if (hora >= 12) {
-          hora = hora - 12;
-          ampm = "PM";
-        } else {
-          ampm = "AM";
-        }
-        if (hora == 0) {
-          hora = 12;
-        }
-        if (hora < 10) {
-          $pHoras.text("0" + hora);
-        } else {
-          $pHoras.text(hora);
-        }
-        if (minutos < 10) {
-          $pMinutos.text("0" + minutos);
-        } else {
-          $pMinutos.text(minutos);
-        }
-        if (segundos < 10) {
-          $pSegundos.text("0" + segundos);
-        } else {
-          $pSegundos.text(segundos);
-        }
-        $pAMPM.text(ampm);
-      };
+//         $pDiaSemana.text(semana[diaSemana]);
+//         $pDia.text(dia);
+//         $pMes.text(meses[mes]);
+//         $pAnio.text(anio);
+//         if (hora >= 12) {
+//           hora = hora - 12;
+//           ampm = "PM";
+//         } else {
+//           ampm = "AM";
+//         }
+//         if (hora == 0) {
+//           hora = 12;
+//         }
+//         if (hora < 10) {
+//           $pHoras.text("0" + hora);
+//         } else {
+//           $pHoras.text(hora);
+//         }
+//         if (minutos < 10) {
+//           $pMinutos.text("0" + minutos);
+//         } else {
+//           $pMinutos.text(minutos);
+//         }
+//         if (segundos < 10) {
+//           $pSegundos.text("0" + segundos);
+//         } else {
+//           $pSegundos.text(segundos);
+//         }
+//         $pAMPM.text(ampm);
+//       };
 
-      actualizarHora();
-      var intervalo = setInterval(actualizarHora, 1000);
-    });
+//       actualizarHora();
+//       var intervalo = setInterval(actualizarHora, 1000);
+//     });
 
-    this.EstablecerCamara();
-  },
+//     this.EstablecerCamara();
+//   },
 
-  methods: {
-    EstablecerCamara() {
-      if (screen.width <= 400) {
-        Webcam.set({
-          width: 150,
-          height: 150,
-          image_format: "jpeg",
-          jpeg_quality: 90,
-        });
-        Webcam.attach("#my_camera");
-      } else {
-        Webcam.set({
-          width: 320,
-          height: 240,
-          image_format: "jpeg",
-          jpeg_quality: 90,
-        });
-        Webcam.attach("#my_camera");
-      }
-    },
-    RegistrarAsistencia() {
-      self = this;
-      Webcam.snap(function (data_uri) {
-        axios
-          .post("/marcado_asistencia/verificar_usuario_asistencia", {
-            dni: $("#txtAsistenciaDni").val(),
-          })
-          .then(function (response) {
-            let resultado = response.data;
-            // console.log(resultado);
-            if (resultado == "SIN TOKEN") {
-              Swal.fire({
-                icon: "info",
-                title: "¡Ups!",
-                text:
-                  "No se puede realizar el proceso, debe validar el token de acceso.",
-              });
-              return false;
-            } else if (resultado == "NO EXISTE") {
-              Swal.fire({
-                icon: "error",
-                title: "¡Ups!",
-                text: "El DNI ingresado no existe, intente nuevamente.",
-              });
-              return false;
-            } else if (resultado == "SI MARCADO") {
-              Swal.fire({
-                icon: "warning",
-                title: "¡Ups!",
-                text:
-                  "Tu asistencia ya está registrada, intente en otro momento.",
-              });
-              return false;
-            } else if (resultado == "FUERA DE HORARIO") {
-              Swal.fire({
-                icon: "warning",
-                title: "¡Ups!",
-                text:
-                  "Usted se encuentra en fuera de horario, la operación no puede continuar.",
-              });
-              return false;
-            } else if (resultado == "NO MARCADO") {
-              let data = new FormData();
+//   methods: {
+//     EstablecerCamara() {
+//       if (screen.width <= 400) {
+//         Webcam.set({
+//           width: 150,
+//           height: 150,
+//           image_format: "jpeg",
+//           jpeg_quality: 90
+//         });
+//         Webcam.attach("#my_camera");
+//       } else {
+//         Webcam.set({
+//           width: 320,
+//           height: 240,
+//           image_format: "jpeg",
+//           jpeg_quality: 90
+//         });
+//         Webcam.attach("#my_camera");
+//       }
+//     },
+//     RegistrarAsistencia() {
+//       self = this;
+//       Webcam.snap(function(data_uri) {
+//         axios
+//           .post("/marcado_asistencia/verificar_usuario_asistencia", {
+//             dni: $("#txtAsistenciaDni").val()
+//           })
+//           .then(function(response) {
+//             let resultado = response.data;
+//             // console.log(resultado);
+//             if (resultado == "SIN TOKEN") {
+//               Swal.fire({
+//                 icon: "info",
+//                 title: "¡Ups!",
+//                 text:
+//                   "No se puede realizar el proceso, debe validar el token de acceso."
+//               });
+//               return false;
+//             } else if (resultado == "NO EXISTE") {
+//               Swal.fire({
+//                 icon: "error",
+//                 title: "¡Ups!",
+//                 text: "El DNI ingresado no existe, intente nuevamente."
+//               });
+//               return false;
+//             } else if (resultado == "SI MARCADO") {
+//               Swal.fire({
+//                 icon: "warning",
+//                 title: "¡Ups!",
+//                 text:
+//                   "Tu asistencia ya está registrada, intente en otro momento."
+//               });
+//               return false;
+//             } else if (resultado == "FUERA DE HORARIO") {
+//               Swal.fire({
+//                 icon: "warning",
+//                 title: "¡Ups!",
+//                 text:
+//                   "Usted se encuentra en fuera de horario, la operación no puede continuar."
+//               });
+//               return false;
+//             } else if (resultado == "NO MARCADO") {
+//               let data = new FormData();
 
-              data.append("dni", $("#txtAsistenciaDni").val());
-              data.append("foto", data_uri);
-              
-              self.$inertia.post(
-                route("registrar_asistencia"),
-                data,
-                {
-                  preserveScroll: true,
-                  onStart: (visit) => {
-                    let timerInterval;
-                    Swal.fire({
-                      title: "REGISTRANDO",
-                      html: "Espere porfavor...",
-                      timer: 5000,
-                      allowOutsideClick: false,
-                      timerProgressBar: true,
-                      didOpen: () => {
-                        Swal.showLoading();
-                        timerInterval = setInterval(() => {
-                          const content = Swal.getContent();
-                          if (content) {
-                            const b = content.querySelector("b");
-                            if (b) {
-                              b.textContent = Swal.getTimerLeft();
-                            }
-                          }
-                        }, 100);
-                      },
-                      willClose: () => {
-                        clearInterval(timerInterval);
-                      },
-                    });
-                  },
-                  onSuccess: () => {
-                    Swal.fire({
-                      icon: "success",
-                      title: "¡ÉXITO!",
-                      allowOutsideClick: false,
-                      preConfirm: (result) => {
-                        $('#txtAsistenciaDni').val(null);
-                      },
-                    });
-                  },
-                }
-              );
-            }
-          });
-      });
-    },
-  },
+//               data.append("dni", $("#txtAsistenciaDni").val());
+//               data.append("foto", data_uri);
+
+//               self.$inertia.post(route("registrar_asistencia"), data, {
+//                 preserveScroll: true,
+//                 onStart: visit => {
+//                   let timerInterval;
+//                   Swal.fire({
+//                     title: "REGISTRANDO",
+//                     html: "Espere porfavor...",
+//                     timer: 5000,
+//                     allowOutsideClick: false,
+//                     timerProgressBar: true,
+//                     didOpen: () => {
+//                       Swal.showLoading();
+//                       timerInterval = setInterval(() => {
+//                         const content = Swal.getContent();
+//                         if (content) {
+//                           const b = content.querySelector("b");
+//                           if (b) {
+//                             b.textContent = Swal.getTimerLeft();
+//                           }
+//                         }
+//                       }, 100);
+//                     },
+//                     willClose: () => {
+//                       clearInterval(timerInterval);
+//                     }
+//                   });
+//                 },
+//                 onSuccess: () => {
+//                   Swal.fire({
+//                     icon: "success",
+//                     title: "¡ÉXITO!",
+//                     allowOutsideClick: false,
+//                     preConfirm: result => {
+//                       $("#txtAsistenciaDni").val(null);
+//                     }
+//                   });
+//                 }
+//               });
+//             }
+//           });
+//       });
+//     }
+//   }
 };
 </script>
+
 
 <style lang="css">
 /*//////////////////////////////////////////////////////////////////

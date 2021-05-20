@@ -28,6 +28,9 @@ use Inertia\Inertia;
 
 class AsistenciaController extends Controller
 {
+    public function principal(){
+        return Inertia::render('Usuarios/usuarios_principal');
+    }
     public function asistencia_usuarios()
     {
         return Inertia::render('Usuarios/asistencia_usuarios');

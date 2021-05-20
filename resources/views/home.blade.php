@@ -66,37 +66,37 @@
                 <i class="fas fa-bars"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item submenu-button" href="/general">GENERAL</a>
+                <a class="dropdown-item submenu-button" href="/#">GENERAL</a>
             </div>
         </div>
     </header>
 
     <div class="content" id='content_Principal' style='display:block'>
-        <div class="btn-group">
+        <!-- <div class="btn-group">
             <a class="btn" href="#">
                 <div class="boton color-creditos" id="btnCreditos">MENU</div>
                 <span class="caret"></span>
             </a>
-        </div>
-        <div class="btn-group">
+        </div> -->
+        <!-- <div class="btn-group">
             <a class="btn " href="#">
                 <div class="boton color-operaciones" id="btnOperaciones">MATERIALES</div>
                 <span class="caret"></span>
             </a>
-        </div>
+        </div> -->
         <div class="btn-group">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" id="contenedor_gth" onClick="mostrarSubItem('btnGth','submenuGth')">
-                <div class="boton color-gth" id="btnGth">algo x</div>
+            <a class="btn" href="{{route('usuario.principal')}}" id="contenedor_gth" >
+                <div class="boton color-gth" id="btnGth">MI MENÚ</div>
                 <span class="caret"></span>
             </a>
-            <ul class="dropdown-menu" id="submenuGth">
+            <!-- <ul class="dropdown-menu" id="submenuGth">
                 <div class="sub_boton color-gth" id="btnAsistencia"><a class="sub_text" href="#" color="white">USUARIOS Y ASISTENCIA</a></div>
                 <div class="sub_boton color-gth" id="btnColaborador"><a class="sub_text" href="#">COLABORADOR DEL MES</a></div>
                 <div class="sub_boton color-gth" id="btnPlanillas"><a class="sub_text" href="#">PLANILLAS</a></div>
                 <div class="sub_boton color-gth" id="btnMiPanel"><a class="sub_text" href="#">MI PANEL</a></div>
-            </ul>
+            </ul> -->
         </div>
-        <div class="btn-group">
+        <!-- <div class="btn-group">
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" onClick="mostrarSubItem('btnLogistica','submenuLogistica')">
                 <div class="boton color-logistica" id="btnLogistica">algo x</div>
                 <span class="caret"></span>
@@ -104,11 +104,11 @@
             <ul class="dropdown-menu" id="submenuLogistica">
                 <div class="sub_boton color-logistica"><a class="sub_text" href="#">GESTIÓN DE ACTIVOS</a></div>
                 <div class="sub_boton color-logistica"><a class="sub_text" href="#">GESTIÓN DE SUMINISTROS</a></div>
-                <!-- <div class="sub_boton color-logistica"><a class="sub_text" href="#"></a></div> -->
+                <div class="sub_boton color-logistica"><a class="sub_text" href="#"></a></div>
                 <div class="sub_boton color-logistica"><a class="sub_text" href="#">MI PANEL</a></div>
             </ul>
-        </div>
-        <div class="btn-group">
+        </div> -->
+        <!-- <div class="btn-group">
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" onClick="mostrarSubItem('btnContabilidad','submenuContabilidad')">
                 <div class="boton color-contabilidad" id="btnContabilidad">algo x</div>
                 <span class="caret"></span>
@@ -119,7 +119,7 @@
                 <div class="sub_boton color-contabilidad"><a class="sub_text" href="#"></a></div>
                 <div class="sub_boton color-contabilidad"><a class="sub_text" href="#"></a></div>
             </ul>
-        </div>
+        </div> -->
     </div>
 
     <span class="version">1.0

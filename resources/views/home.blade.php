@@ -122,6 +122,8 @@
         </div> -->
     </div>
 
+    
+
     <span class="version">1.0
 
 
@@ -185,11 +187,49 @@
             </script>
 
             <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="{{asset('js/push.min.js')}}"></script>
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
             <script type="text/javascript" src="/js/home/scripts.js"></script>
+            <script>
+                var fecha = 'dos horas'
+                
+                // Set the date we're counting down to
+                var countDownDate = new Date("Jul 5, 2021 15:00:00").getTime();
+
+                // Update the count down every 1 second
+                var x = setInterval(function() {
+
+                    // Get today's date and time
+                    var now = new Date().getTime();
+
+                    // Find the distance between now and the count down date
+                    var distance = countDownDate - now;
+
+                    // Time calculations for days, hours, minutes and seconds
+                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+                    Push.create("Recordatorio de inicio del Congreso!", {
+                    body: "El congreso inicia en: " + days + "d " + hours + "h "
+                     + minutes + "m " + seconds + "s ",
+                    icon: '/icon.png',
+                    timeout: 4000,
+                    onClick: function () {
+                        window.focus();
+                        this.close();
+                    }
+                });
+
+                }, 300000);
+
+                
+            </script>
 </body>
 
 </html>

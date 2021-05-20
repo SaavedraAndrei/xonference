@@ -553,6 +553,7 @@
     }
     ?>
 
+
     <script src="{{asset('js/plugins.js')}}"></script>
     <script src="{{asset('js/jquery.animateNumber.min.js')}}"></script>
     <script src="{{asset('js/jquery.countdown.min.js')}}"></script>

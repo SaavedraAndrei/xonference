@@ -59,12 +59,12 @@ class RegistrarController extends Controller
         $clave = Hash::make($request->clave);
 
         // if()
-        Usuario::create(Array(
+        Usuario::create(array(
             'nombres' => $nombres,
-            'apellidoPaterno' => $apellidoPaterno, 
+            'apellidoPaterno' => $apellidoPaterno,
             'apellidoMaterno' => $apellidoMaterno,
-            'dni'=>$dni,
-            'email' =>$email,
+            'dni' => $dni,
+            'email' => $email,
             'clave' => $clave,
         ));
         return redirect('/login');

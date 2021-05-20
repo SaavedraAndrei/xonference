@@ -52,4 +52,5 @@ Route::GET('/paypal/status', [PaymentController::class, 'payPalStatus'])->name('
 Route::get('/catalogo_conferencias', [ConferenciaController::class, 'index'])->name('catalogo');
 
 //----------------------------RUTAS PARA LOS USUARIOS REGISTRADOS----------------------------------------
-Route::GET('/usuarios_asistencia', [AsistenciaController::class, 'asistencia_usuarios'])->name('usuario.asistencia');
+Route::GET('/usuarios/principal', [AsistenciaController::class, 'principal'])->name('usuario.principal');
+Route::GET('/usuarios/asistencia', [AsistenciaController::class, 'asistencia_usuarios'])->name('usuario.asistencia');

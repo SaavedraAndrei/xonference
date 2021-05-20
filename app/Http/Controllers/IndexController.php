@@ -25,6 +25,7 @@ class IndexController extends Controller
 {
     public function Welcome()
     {
+        session()->forget('usuario_dni');
         session()->forget('email');
         session()->forget('clave');
         session()->forget('nombres');
@@ -55,6 +56,7 @@ class IndexController extends Controller
 
     public function cerrar_sesion()
     {
+        session()->forget('usuario_dni');
         session()->forget('email');
         session()->forget('clave');
         session()->forget('nombres');
@@ -64,7 +66,6 @@ class IndexController extends Controller
     {
         $email = $request->email;
         $clave = $request->clave;
-        $dni = $request->dni;
         $validando_usuario = Usuario::select(
             'email',
             'clave',
@@ -80,10 +81,11 @@ class IndexController extends Controller
             if (Hash::check($clave, $validando_usuario[0]['clave'])) {
                 // dd("ingreso");
                 $usuario_encontrado = $validando_usuario[0];
-                // dd($usuario_encontrado);
+                $dni = $usuario_encontrado['dni'];
                 $nombres = $usuario_encontrado['nombres'] . " " . $usuario_encontrado['apellidoPaterno'] . " " . $usuario_encontrado['apellidoMaterno'];
                 $email = $usuario_encontrado['email'];
                 $clave = $usuario_encontrado['clave'];
+                session(['usuario_dni' => $dni]);
                 session(['nombres' => $nombres]);
                 session(['email' => $email]);
                 session(['clave' => $clave]);

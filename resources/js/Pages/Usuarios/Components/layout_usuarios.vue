@@ -4,10 +4,7 @@
       <!-- Sidebar - Brand -->
       <div class="navbar-header">
         <inertia-link class="navbar-brand" href="#"
-          ><img
-            :src="'/img/general/logo-blanco.svg'"
-            alt="Logo"
-            id="logoPrincipal"
+          ><img :src="'/img/logo.svg'" alt="logo" id="logoPrincipal"
         /></inertia-link>
       </div>
 
@@ -16,9 +13,9 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <inertia-link
-          class="nav-link"
-          href="#"
+        <inertia-link 
+        class="nav-link" 
+        :href="$route('usuario.principal')"
           ><i class="fa fa-home"></i><span>Principal</span></inertia-link
         >
         <!-- v-if="$page.props.user_permissions.includes('75515603')" -->
@@ -30,21 +27,20 @@
       <div class="sidebar-heading">Gestiones</div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-
       <li class="nav-item">
         <a
           class="nav-link collapsed"
           href="#"
           data-toggle="collapse"
-          data-target="#menuPermisos"
+          data-target="#menuMenuLista"
           aria-expanded="true"
-          aria-controls="menuPermisos"
+          aria-controls="menuMenuLista"
         >
           <i class="fas fa-user-friends"></i>
-          <span>Permisos</span>
+          <span>Menu</span>
         </a>
         <div
-          id="menuPermisos"
+          id="menuMenuLista"
           class="collapse"
           aria-labelledby="headingTwo"
           data-parent="#accordionSidebar"
@@ -52,24 +48,19 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <inertia-link
               class="collapse-item"
-              href="#"
+              :href="$route('usuario.asistencia')"
               v-if="
                 $page.props.user_permissions.permisos.includes(
-                  'GENERAL/LISTAR PERMISOS'
+                  'ASISTENCIA'
                 )
               "
-              >asistencia</inertia-link
-            >
-            <!-- <inertia-link
-              class="collapse-item"
-              :href="$route('general.permisos_usuarios')"
-              v-if="
-                $page.props.user_permissions.permisos.includes(
-                  'GENERAL/PERMISOS POR USUARIO'
-                )
-              "
-              >Permisos por usuarios</inertia-link
-            > -->
+              >conferencias
+            </inertia-link>
+
+            <inertia-link 
+            class="collapse-item">
+              prueba
+            </inertia-link>
           </div>
         </div>
       </li>
@@ -93,9 +84,7 @@
           data-parent="#accordionSidebar"
         >
           <div class="bg-white py-2 collapse-inner rounded">
-            <inertia-link
-              class="collapse-item"
-              href="#"
+            <inertia-link class="collapse-item" href="#"
               >Listar cargos</inertia-link
             >
           </div>
@@ -121,17 +110,10 @@
           data-parent="#accordionSidebar"
         >
           <div class="bg-white py-2 collapse-inner rounded">
-            <inertia-link
-              class="collapse-item"
-              href="#"
+            <inertia-link class="collapse-item" href="#"
               >Listar feriados</inertia-link
             >
           </div>
-          <!-- <inertia-link
-            class="collapse-item"
-            href="/permisos/permisos_usuarios_editar/{dni}"
-          >
-          </inertia-link> -->
         </div>
       </li>
 
@@ -256,7 +238,7 @@
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
-                onclick="window.open('http://www.credipymesolucion.com.pe/webmail','_blank')"
+                onclick="#"
                 id="messagesDropdown"
                 role="button"
                 data-toggle="dropdown"
@@ -287,9 +269,6 @@
                 aria-expanded="false"
               >
                 <!-- <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{session('usuario')}} </span> -->
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                  {{ $page.props.user_session.usuario }}
-                </span>
                 <img
                   class="img-profile rounded-circle"
                   :src="'/img/general/foto-usuario.svg'"
@@ -327,13 +306,7 @@
         </nav>
 
         <slot name="c_principal"></slot>
-        <slot name="c_gestion_listar_permisos"></slot>
-        <slot name="c_gestion_permisos_usuario"></slot>
-        <slot name="c_gestion_permisos_usuario_editar"></slot>
-        <slot name="c_cargos_listar"></slot>
-        <slot name="c_mantenimiento_listar_feriados"></slot>
-        <slot name="c_gestion_permisos_cargos"></slot>
-        <slot name="c_gestion_permisos_cargos_editar"></slot>
+        <slot name="c_mi_menu_materiales"></slot>
       </div>
 
       <!------------- BOTONES DE NAVEGACIÓN ----------->
@@ -357,286 +330,8 @@
   </div>
 </template>
 
-// <script>
-// export default {
-//   props: {},
-//   mounted() {
-//     (document.title = "Permisos"), this.validarTamaño();
-
-//     (function ($) {
-//       "use strict"; // Start of use strict
-
-//       // Toggle the side navigation
-//       $("#sidebarToggle, #sidebarToggleTop").on("click", function (e) {
-//         $("body").toggleClass("sidebar-toggled");
-//         $(".sidebar").toggleClass("toggled");
-
-//         if ($(".sidebar").hasClass("toggled")) {
-//           $(".sidebar .collapse").collapse("hide");
-//           document
-//             .getElementById("footer-navigator")
-//             .classList.add("footer-nav-full");
-//         } else {
-//           document
-//             .getElementById("footer-navigator")
-//             .classList.remove("footer-nav-full");
-//         }
-
-//         if ($("body").hasClass("sidebar-toggled")) {
-//           document.getElementById("logoPrincipal").src =
-//             "../../img/general/logo-corto-blanco.svg";
-//           if (window.screen.orientation == "landscape") {
-//             document
-//               .getElementById("footer-navigator")
-//               .classList.add("footer-nav-toggled");
-//             document
-//               .getElementById("footer-navigator")
-//               .classList.remove("footer-nav-full");
-//           } else {
-//             document
-//               .getElementById("footer-navigator")
-//               .classList.add("footer-nav-full");
-//             document
-//               .getElementById("footer-navigator")
-//               .classList.remove("footer-nav-toggled");
-//           }
-//         } else {
-//           if (screen.width < 900) {
-//             document.getElementById("logoPrincipal").src =
-//               "../../img/general/logo-corto-blanco.svg";
-//             if (window.screen.orientation == "landscape") {
-//               document
-//                 .getElementById("footer-navigator")
-//                 .classList.remove("footer-nav-toggled");
-//               document
-//                 .getElementById("footer-navigator")
-//                 .classList.remove("footer-nav-full");
-//             } else {
-//               document
-//                 .getElementById("footer-navigator")
-//                 .classList.remove("footer-nav-full");
-//               document
-//                 .getElementById("footer-navigator")
-//                 .classList.add("footer-nav-toggled");
-//             }
-//           } else {
-//             document.getElementById("logoPrincipal").src =
-//               "../../img/general/logo-blanco.svg";
-//             document
-//               .getElementById("footer-navigator")
-//               .classList.remove("footer-nav-toggled");
-//           }
-//         }
-//       });
-
-//       window.onorientationchange = function (event) {
-//         var tabla_1 = document.getElementById("t_permisos");
-//         if (tabla_1 != null) {
-//           if ($("#t_permisos").hasClass("table-responsive")) {
-//             tabla_1.classList.remove("table-responsive");
-//           } else {
-//             tabla_1.classList.add("table-responsive");
-//           }
-//         }
-
-//         if ($(".sidebar").hasClass("toggled")) {
-//           $(".sidebar .collapse").collapse("hide");
-//           document
-//             .getElementById("footer-navigator")
-//             .classList.add("footer-nav-full");
-//         } else {
-//           document
-//             .getElementById("footer-navigator")
-//             .classList.remove("footer-nav-full");
-//         }
-
-//         if ($("body").hasClass("sidebar-toggled")) {
-//           document.getElementById("logoPrincipal").src =
-//             "../../img/general/logo-corto-blanco.svg";
-//           if (screen.height <= 420) {
-//             document
-//               .getElementById("footer-navigator")
-//               .classList.add("footer-nav-toggled");
-//             document
-//               .getElementById("footer-navigator")
-//               .classList.remove("footer-nav-full");
-//           } else {
-//             document
-//               .getElementById("footer-navigator")
-//               .classList.add("footer-nav-full");
-//             document
-//               .getElementById("footer-navigator")
-//               .classList.remove("footer-nav-toggled");
-//           }
-//         } else {
-//           if (screen.width < 900) {
-//             document.getElementById("logoPrincipal").src =
-//               "../../img/general/logo-corto-blanco.svg";
-//             if (screen.height <= 420) {
-//               document
-//                 .getElementById("footer-navigator")
-//                 .classList.remove("footer-nav-toggled");
-//               document
-//                 .getElementById("footer-navigator")
-//                 .classList.remove("footer-nav-full");
-//             } else {
-//               document
-//                 .getElementById("footer-navigator")
-//                 .classList.remove("footer-nav-full");
-//               document
-//                 .getElementById("footer-navigator")
-//                 .classList.add("footer-nav-toggled");
-//             }
-//           } else {
-//             document.getElementById("logoPrincipal").src =
-//               "../../img/general/logo-blanco.svg";
-//             document
-//               .getElementById("footer-navigator")
-//               .classList.remove("footer-nav-toggled");
-//           }
-//         }
-//       };
-
-//       // Close any open menu accordions when window is resized below 768px
-//       $(window).resize(function () {
-//         if ($(window).width() < 900) {
-//           $(".sidebar .collapse").collapse("hide");
-//         }
-//       });
-
-//       // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
-//       $("body.fixed-nav .sidebar").on(
-//         "mousewheel DOMMouseScroll wheel",
-//         function (e) {
-//           if ($(window).width() > 200) {
-//             var e0 = e.originalEvent,
-//               delta = e0.wheelDelta || -e0.detail;
-//             this.scrollTop += (delta < 0 ? 1 : -1) * 30;
-//             e.preventDefault();
-//           }
-//         }
-//       );
-
-//       // Scroll to top button appear
-//       $(document).on("scroll", function () {
-//         var scrollDistance = $(this).scrollTop();
-//         if (scrollDistance > 100) {
-//           $(".scroll-to-top").fadeIn();
-//         } else {
-//           $(".scroll-to-top").fadeOut();
-//         }
-//       });
-
-//       // Smooth scrolling using jQuery easing
-//       $(document).on("click", "a.scroll-to-top", function (e) {
-//         var $anchor = $(this);
-//         $("html, body")
-//           .stop()
-//           .animate(
-//             {
-//               scrollTop: $($anchor.attr("href")).offset().top,
-//             },
-//             1000,
-//             "easeInOutExpo"
-//           );
-//         e.preventDefault();
-//       });
-//     })(jQuery);
-
-//     if (screen.width < 900) {
-//       this.ocultarNavegadorLateral();
-//     }
-//   },
-
-//   methods: {
-//     validarTamaño() {
-//       if (screen.width <= 900) {
-//         document.getElementById("logoPrincipal").src =
-//           "../../img/general/logo-corto-blanco.svg";
-//         document
-//           .getElementById("footer-navigator")
-//           .classList.add("footer-nav-toggled");
-//         if (screen.height <= 420) {
-//           document
-//             .getElementById("footer-navigator")
-//             .classList.remove("footer-nav-full");
-//           document
-//             .getElementById("footer-navigator")
-//             .classList.remove("footer-nav-toggled");
-//         }
-//       } else {
-//         document.getElementById("logoPrincipal").src =
-//           "../../img/general/logo-blanco.svg";
-//         document
-//           .getElementById("footer-navigator")
-//           .classList.remove("footer-nav-toggled");
-//       }
-//     },
-
-//     ocultarNavegadorLateral() {
-//       $("body").toggleClass("sidebar-toggled");
-//       $(".sidebar").toggleClass("toggled");
-//       if ($(".sidebar").hasClass("toggled")) {
-//         $(".sidebar .collapse").collapse("hide");
-//         document
-//           .getElementById("footer-navigator")
-//           .classList.add("footer-nav-full");
-//       } else {
-//         document
-//           .getElementById("footer-navigator")
-//           .classList.remove("footer-nav-full");
-//       }
-//     },
-
-//     TamañoVentana() {
-//       var tam = [0, 0];
-//       if (typeof window.innerWidth != "undefined") {
-//         tam = [window.innerWidth, window.innerHeight];
-//       } else if (
-//         typeof document.documentElement != "undefined" &&
-//         typeof document.documentElement.clientWidth != "undefined" &&
-//         document.documentElement.clientWidth != 0
-//       ) {
-//         tam = [
-//           document.documentElement.clientWidth,
-//           document.documentElement.clientHeight,
-//         ];
-//       } else {
-//         tam = [
-//           document.getElementsByTagName("body")[0].clientWidth,
-//           document.getElementsByTagName("body")[0].clientHeight,
-//         ];
-//       }
-//       return tam;
-//     },
-
-//     hide_nav() {
-//       if (screen.width < 1000) {
-//         parent.document.getElementById("footer-navigator").style.display =
-//           "none";
-//       }
-//     },
-
-//     show_nav() {
-//       if (screen.width < 1000) {
-//         parent.document.getElementById("footer-navigator").style.display =
-//           "flex";
-//       }
-//     },
-//     goBack() {
-//       window.history.back();
-//     },
-
-//     goForward() {
-//       window.history.forward();
-//     },
-
-//     reload() {
-//       location.reload();
-//     },
-//   },
-// };
-// </script>
+<script>
+</script>
 
 <style lang="css">
 :root {

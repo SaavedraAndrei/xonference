@@ -8,9 +8,11 @@ import Vuelidate from 'vuelidate';
 
 InertiaProgress.init();
 
-Vue.use;
+Vue.use(plugin)
 Vue.prototype.$http = axios
 Vue.use(Vuelidate)
+Vue.prototype.$route = (...args) => route(...args).url()
+Vue.prototype.$route = route
 
 const el = document.getElementById("app");
 

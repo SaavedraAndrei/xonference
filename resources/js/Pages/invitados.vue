@@ -46,7 +46,7 @@
     <div class="barra">
       <div class="contenedor clearfix">
         <div class="logo">
-          <a href="/">
+          <a :href="$route('prin.welcome')">
             <img src="img/logo.svg" alt="logo del app congreso" />
           </a>
         </div>
@@ -271,18 +271,5 @@ export default {
 };
 </script>
 <style lang="css">
-@media only screen and (min-width: 768px) {
-  h1.nombre-sitio {
-    font-size: 9.5vw;
-    margin-top: 80px;
-    margin-bottom: 190px;
-    line-height: 1;
-  }
-}
-h1.nombre-sitio {
-    font-size: 50px;
-    text-transform: uppercase;
-    font-family: "PT Sans", sans-serif;
-    margin-bottom: 95px;
-}
+
 </style>

@@ -11,7 +11,7 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
-   html {
+html {
     color: #222;
     font-size: 1em;
     line-height: 1.4;
@@ -662,8 +662,7 @@ ul.lista-precios > li {
 }
 @media only screen and (min-width: 768px) {
     ul.lista-precios > li {
-        float: left;
-        width: 33.3%;
+        width: 100%;
     }
 }
 
@@ -872,7 +871,7 @@ div.galeria {
     display: grid;
     grid-template-columns: repeat(2, 1fr) !important;
     -moz-column-gap: 5px;
-         column-gap: 5px;
+    column-gap: 5px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -958,32 +957,21 @@ div.paquetes .tabla-precio input {
 
 /* Resumen Registro */
 
+.resumen {
+    margin: 0 auto;
+    text-align: center;
+}
+
 div.resumen p {
     font-size: 1.2em;
     text-transform: uppercase;
 }
 
-div.resumen div.extras {
-    float: left;
-    width: 50%;
-    padding: 30px;
-}
-div.extras div.orden {
-    text-align: left;
-    margin-bottom: 10px;
-}
-div.extras div.orden input {
-    margin: 10px 0 0 0;
-}
-div.resumen div.total {
-    float: right;
-    width: 50%;
-    padding: 30px;
-}
 div.resumen input {
     display: block;
     margin: 10px auto;
 }
+
 #lista-productos {
     background-color: #e1e1e1;
     padding: 20px;
@@ -991,9 +979,15 @@ div.resumen input {
 }
 #suma-total {
     text-align: center;
-    font-size: 2em;
+    font-size: 3.2em;
     color: #fe4918;
+    font-weight: bold;
 }
+
+.btn-center {
+    margin: 35px auto 15px auto;
+}
+
 input[disabled].button {
     opacity: 0.5;
 }
@@ -1002,6 +996,32 @@ input[disabled].button {
     padding: 20px;
     text-align: center;
     display: none;
+}
+
+.contenedor-prin-alex {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.conte-alex {
+    width: 350px;
+}
+
+.catag-alex {
+    text-align: left !important;
+    margin: 10px 0;
+    border: 7px solid #1c6ea4;
+    border-radius: 18px;
+}
+
+.dia-alex {
+    background-color: rgb(210, 210, 210);
+    padding: 20px;
+}
+
+.texto-alex {
+    text-align: center;
 }
 
 /** Calendario **/
@@ -1304,4 +1324,3 @@ table.registrados tr:nth-child(4n-1) {
         page-break-after: avoid;
     }
 }
-

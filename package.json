@@ -29,6 +29,7 @@
         "@inertiajs/progress": "^0.2.4",
         "push.js": "^1.0.12",
         "sweetalert": "^2.1.2",
+        "sweetalert2": "^11.0.8",
         "vuelidate": "^0.7.6"
     }
 }

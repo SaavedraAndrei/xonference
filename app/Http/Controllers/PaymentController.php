@@ -6,6 +6,7 @@ use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use PayPal\Api\Amount;
 use PayPal\Api\Payer;
 use PayPal\Api\Payment;
@@ -48,9 +49,7 @@ class PaymentController extends Controller
 
         $congreso = DB::table('congresos')->first();
 
-        $data = Usuario::latest('id')->first();
-
-        return view('payments', compact('conferencia', 'calendario', 'congreso', 'data'));
+        return view('payments', compact('conferencia', 'calendario', 'congreso'));
     }
 
 
@@ -110,7 +109,7 @@ class PaymentController extends Controller
     public function payPalStatus(Request $request)
     {
         $congreso = DB::table('congresos')->first();
-
+        $dni_registrado = Session::get('dni_registrado');
         $paymentId = $request->input('paymentId');
         $payerId = $request->input('PayerID');
         $token = $request->input('token');
@@ -118,7 +117,7 @@ class PaymentController extends Controller
         if (!$paymentId || !$payerId || !$token) {
             // Podríamos redirigir a la página que queramos
             $status = 'No se pudo proceder con el pago a través de Paypal';
-            return redirect('/')->with(compact('status'));
+            return redirect('/pago')->with(compact('status'));
         }
 
         $payment = Payment::get($paymentId, $this->apiContext);
@@ -133,14 +132,14 @@ class PaymentController extends Controller
 
         if ($result->getState() === 'approved') {
 
-            DB::table('usuarios')->where('id', 2)
-                ->update(['pagado' => 1, 'totalPago' => $congreso->precio]);
+            DB::table('usuarios')->where('dni', $dni_registrado)
+                ->update(['pagado' => 1, 'totalPago' => $congreso->precio, 'id_pago' => $result->getId(), 'fecha_pago' => $result->getCreateTime()]);
 
             $status = 'Gracias! El pago a través de Paypal se ha realizado correctamente';
-            return redirect('/calendario')->with(compact('status'));
+            return redirect('/')->with(compact('status'));
         }
 
         $status = 'Lo sentimos! El pago a través de Paypal no se pudo realizar';
-        return redirect('/')->with(compact('status'));
+        return redirect('/pago')->with(compact('status'));
     }
 }

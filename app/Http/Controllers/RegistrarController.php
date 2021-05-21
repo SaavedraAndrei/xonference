@@ -67,6 +67,9 @@ class RegistrarController extends Controller
             'email' => $email,
             'clave' => $clave,
         ));
-        return redirect('/login');
+
+        Session::put('dni_registrado', $dni);
+
+        return redirect('/pago');
     }
 }

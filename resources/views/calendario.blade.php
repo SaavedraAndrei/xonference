@@ -41,10 +41,7 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-        @if (session('status'))
-            <h3>Buen Trabajooooooo</h3>
-            <h3>{{session('status')}}</h3>
-        @endif
+    
 
 
 
@@ -89,7 +86,7 @@
             </div>
 
             <nav class="navegacion-principal clearfix">
-                <a href="conferencia.php">Conferencia</a>
+                <a href="{{route('catalogo')}}">Conferencia</a>
                 <a href="{{route('calendario')}}">Calendario</a>
                 <a href="{{route('invitados')}}">Invitados</a>
                 <a href="{{route('registrar')}}">Registrarse</a>

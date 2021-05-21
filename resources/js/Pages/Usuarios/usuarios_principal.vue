@@ -41,7 +41,7 @@ import layout from "./Components/layout_usuarios";
 export default {
   components: {
     layout
-  }
+  },
 };
 </script>
 

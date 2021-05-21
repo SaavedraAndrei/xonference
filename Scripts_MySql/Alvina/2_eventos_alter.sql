@@ -6,7 +6,7 @@ CREATE TABLE eventos (
   nombre VARCHAR(100) NOT NULL,
   tematica VARCHAR(100) NOT NULL,
   descripcion VARCHAR(100) NOT NULL,
-  fecha_evento DATETIME NOT NULL,
+  fecha_evento date NOT NULL,
   hora_evento TIME NOT NULL,
   hora_fin TIME NOT NULL,
   idPonente BIGINT(20) NULL,

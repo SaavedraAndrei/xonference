@@ -42,9 +42,19 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
+
+   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     @if (session('status'))
-            <h3>Buen Trabajooooooo</h3>
-            <h3>{{session('status')}}</h3>
+        <script>
+            Swal.fire({
+            position: 'top-center',
+            icon: 'error',
+            title: 'Lo sentimos! El pago no se pudo realizar',
+            showConfirmButton: false,
+            timer: 2500
+            });
+        </script>
     @endif
 
     <header class="site-header">
@@ -88,7 +98,7 @@
             </div>
 
             <nav class="navegacion-principal clearfix">
-                <a href="conferencia.php">Conferencia</a>
+                <a href="{{route('catalogo')}}">Conferencia</a>
                 <a href="{{route('calendario')}}">Calendario</a>
                 <a href="{{route('invitados')}}">Invitados</a>
                 <a href="{{route('registrar')}}">Registrarse</a>
@@ -98,17 +108,11 @@
         <!--.contenedor-->
     </div>
     <!--.barra-->
-    
-   
-    <section>
-        <h1>{{$data->id}}</h1>
-    </section>
-    
 
     <section class="seccion contenedor">
         <h2>Pasarela de Pagos</h2>
         <form id="registro" class="registro" action="{{url('/paypal/pay')}}" method="post">
-            <div id="datos_usuario" class="registro caja clearfix">
+            {{-- <div id="datos_usuario" class="registro caja clearfix">
                 <div class="campo">
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" placeholder="Tu Nombre">
@@ -123,7 +127,7 @@
                 </div>
                 <div id="error"></div>
             </div>
-            <!--#datos_usuario-->
+            <!--#datos_usuario--> --}}
 
             <div id="paquetes" class="paquetes">
                 <h3>Pase para el Congreso</h3>
@@ -183,7 +187,6 @@
                             @endforeach
                     </div>
                 </div>
-                
             </div>
             <!--#eventos-->
 
@@ -194,7 +197,7 @@
                     
                     <div class="total">
                         <p>Total a Pagar:</p>
-                        <div id="suma-total">
+                        <div id="suma-total" class="suma-total">
                             ${{$congreso->precio}}
                         </div>
                         <input type="hidden" name="total_pedido" id="total_pedido">
@@ -207,8 +210,6 @@
                         Pagar con PayPal
                     </a>
                     
-                    
-
                 </div>
                 <!--.caja-->
             </div>
@@ -324,9 +325,10 @@
     <script src="{{asset('js/jquery.animateNumber.min.js')}}"></script>
     <script src="{{asset('js/jquery.countdown.min.js')}}"></script>
     <script src="{{asset('js/jquery.waypoints.min.js')}}"></script>
-    <script src="{{asset('/js/main.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
     
-
+    
     
     <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
     <script>

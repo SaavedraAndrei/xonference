@@ -274,7 +274,7 @@ export default {
           return false;
         } else
         
-         if(response.data = 'NO MARCADO') {
+         if(response.data == 'NO MARCADO') {
             console.log('holi no marcado')
         //   console.log("resultado");
         //   let data = new FormData();

@@ -2,14 +2,14 @@
 
 
 return [
-    'cliente_id' => env(key: 'PAYPAL_CLIENT_ID'),
-    'secret' => env(key: 'PAYPAL_SECRET'),
+    'cliente_id' => env( 'PAYPAL_CLIENT_ID'),
+    'secret' => env( 'PAYPAL_SECRET'),
 
     'settings' => [
-        'mode' => env(key: 'PAYPAL_MODE', default: 'sandbox'),
+        'mode' => env( 'PAYPAL_MODE',  'sandbox'),
         'http.ConnectionTimeOut' => 30,
         'log.LogEnabled' => true,
-        'log.FileName' => storage_path(path: '/logs/paypal.log'),
+        'log.FileName' => storage_path( '/logs/paypal.log'),
         'log.LogLevel' => 'ERROR'
     ]
 

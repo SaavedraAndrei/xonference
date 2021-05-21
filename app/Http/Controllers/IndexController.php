@@ -16,6 +16,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+//------------------------Mario
+use App\Models\Congreso;
+//-----------------------
 /*
 Nos permite enrutar facilmente plantillas o interfaces de Vue.js
 */
@@ -25,10 +28,16 @@ class IndexController extends Controller
 {
     public function Welcome()
     {
+//------------------------Mario
+
+        $congresos = Congreso::all();
+
+//------------------------
+
         session()->forget('email');
         session()->forget('clave');
         session()->forget('nombres');
-        return view('welcome');
+        return view('welcome', array('congresos' => $congresos ));
     }
 
     public function Login()

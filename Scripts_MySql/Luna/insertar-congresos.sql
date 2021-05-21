@@ -1,0 +1,4 @@
+INSERT INTO `congresos` (`id`, `nombre`, `fechaInicio`, `fechaFin`, `precio`, `created_at`, `updated_at`) VALUES ('1', 'POO y ASP.NET', '2021-05-21 20:00:00', '2021-05-26 16:00:00', '50.00', NULL, NULL);
+INSERT INTO `congresos` (`id`, `nombre`, `fechaInicio`, `fechaFin`, `precio`, `created_at`, `updated_at`) VALUES ('2', 'Cyber Security - Gestion de Riesgos', '2021-06-01 16:00:00', '2021-06-06 10:00:00', '250.00', NULL, NULL);
+INSERT INTO `congresos` (`id`, `nombre`, `fechaInicio`, `fechaFin`, `precio`, `created_at`, `updated_at`) VALUES ('3', 'SQL Injection', '2021-05-22 20:00:00', '2021-05-25 16:00:00', '100.00', NULL, NULL);
+INSERT INTO `congresos` (`id`, `nombre`, `fechaInicio`, `fechaFin`, `precio`, `created_at`, `updated_at`) VALUES ('4', 'CCNE', '2021-05-21 20:00:00', '2021-06-02 16:00:00', '120.00', NULL, NULL);

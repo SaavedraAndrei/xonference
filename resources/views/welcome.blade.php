@@ -354,25 +354,28 @@
         </div>
     </div>
 
-
+ 
     <section class="precios seccion">
-        <h2>Precios</h2>
+    <h2>Precios</h2>
+    @foreach ($congresos as $congreso)
         <div class="contenedor">
             <ul class="lista-precios clearfix">
                 <li>
                     <div class="tabla-precio">
-                        <h3>Todos los días</h3>
-                        <p class="numero">$10</p>
+                        <h3>{{$congreso->nombre}}</h3>
+                        <p class="numero">S/. {{$congreso->precio}}</p>
                         <ul>
-                            <li>Bocadillos Gratis</li>
-                            <li>Todas las conferencias</li>
-                            <li>Todos los talleres</li>
+                            <li>Inicio: {{$congreso->fechaInicio}}</li>
+                            <li>Fin: {{$congreso->fechaFin}}</li>
+                            <!-- <li>Todos los talleres</li> -->
                         </ul>
                         <a href="#" class="button">Comprar</a>
+                        <!-- <a href="{{url('/paypal/pay')}}" class="button">Comprar</a> -->
                     </div>
                 </li>
             </ul>
         </div>
+    @endforeach
     </section>
 
 

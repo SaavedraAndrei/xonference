@@ -54,3 +54,5 @@ Route::get('/catalogo_conferencias', [ConferenciaController::class, 'index'])->n
 //----------------------------RUTAS PARA LOS USUARIOS REGISTRADOS----------------------------------------
 Route::GET('/usuarios/principal', [AsistenciaController::class, 'principal'])->name('usuario.principal');
 Route::GET('/usuarios/asistencia', [AsistenciaController::class, 'asistencia_usuarios'])->name('usuario.asistencia');
+Route::POST('/usuarios/asistencia/verificar', [AsistenciaController::class, 'verificar_usuario_asistencia'])->name('asistencia.verificar');
+Route::POST('/usuarios/asistencia/guardar', [AsistenciaController::class, 'registrar_asistencia'])->name('asistencia.registrar');

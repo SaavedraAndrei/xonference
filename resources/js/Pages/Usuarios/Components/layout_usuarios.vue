@@ -58,7 +58,9 @@
             </inertia-link>
 
             <inertia-link 
-            class="collapse-item">
+            class="collapse-item"
+            href="#">
+            
               prueba
             </inertia-link>
           </div>
@@ -75,7 +77,7 @@
           aria-controls="menuCargos"
         >
           <i class="fas fa-file-invoice"></i>
-          <span>Cargos</span>
+          <span>Algo a futurp</span>
         </a>
         <div
           id="menuCargos"
@@ -85,7 +87,7 @@
         >
           <div class="bg-white py-2 collapse-inner rounded">
             <inertia-link class="collapse-item" href="#"
-              >Listar cargos</inertia-link
+              >algooo</inertia-link
             >
           </div>
         </div>
@@ -101,7 +103,7 @@
           aria-controls="menuMantenimiento"
         >
           <i class="fas fa-cogs"></i>
-          <span>Mantenimiento</span>
+          <span>ALGO 3</span>
         </a>
         <div
           id="menuMantenimiento"
@@ -111,7 +113,7 @@
         >
           <div class="bg-white py-2 collapse-inner rounded">
             <inertia-link class="collapse-item" href="#"
-              >Listar feriados</inertia-link
+              >lista</inertia-link
             >
           </div>
         </div>
@@ -196,7 +198,7 @@
                       aria-describedby="basic-addon2"
                     />
                     <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
+                      <button class="btn btn-action" type="button">
                         <i class="fas fa-search fa-sm"></i>
                       </button>
                     </div>
@@ -238,7 +240,7 @@
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
-                onclick="#"
+                onclick="window.open('http://www.credipymesolucion.com.pe/webmail','_blank')"
                 id="messagesDropdown"
                 role="button"
                 data-toggle="dropdown"
@@ -269,6 +271,9 @@
                 aria-expanded="false"
               >
                 <!-- <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{session('usuario')}} </span> -->
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                  {{ $page.props.user_session.email }}  
+                </span>
                 <img
                   class="img-profile rounded-circle"
                   :src="'/img/general/foto-usuario.svg'"
@@ -279,6 +284,13 @@
                 class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="userDropdown"
               >
+                <!-- <inertia-link class="dropdown-item" :href="$route('mpl.index')">
+                  <i
+                    class="fas fa-user fa-sm fa-fw mr-2"
+                    style="color: var(--colorMedio)"
+                  ></i>
+                  Mi Panel Logística
+                </inertia-link> -->
                 <a class="dropdown-item" href="#">
                   <i
                     class="fas fa-cogs fa-sm fa-fw mr-2"
@@ -331,6 +343,293 @@
 </template>
 
 <script>
+export default {
+  props: {},
+  mounted() {
+    document.title = "Mi menú";
+    this.validarTamaño();
+
+    (function ($) {
+      "use strict"; // Start of use strict
+
+      // Toggle the side navigation
+      $("#sidebarToggle, #sidebarToggleTop").on("click", function (e) {
+        $("body").toggleClass("sidebar-toggled");
+        $(".sidebar").toggleClass("toggled");
+
+        if ($(".sidebar").hasClass("toggled")) {
+          $(".sidebar .collapse").collapse("hide");
+          document
+            .getElementById("footer-navigator")
+            .classList.add("footer-nav-full");
+        } else {
+          document
+            .getElementById("footer-navigator")
+            .classList.remove("footer-nav-full");
+        }
+
+        if ($("body").hasClass("sidebar-toggled")) {
+          document.getElementById("logoPrincipal").src =
+            "/img/logo.svg";
+          if (window.screen.orientation == "landscape") {
+            document
+              .getElementById("footer-navigator")
+              .classList.add("footer-nav-toggled");
+            document
+              .getElementById("footer-navigator")
+              .classList.remove("footer-nav-full");
+          } else {
+            document
+              .getElementById("footer-navigator")
+              .classList.add("footer-nav-full");
+            document
+              .getElementById("footer-navigator")
+              .classList.remove("footer-nav-toggled");
+          }
+        } else {
+          if (screen.width < 900) {
+            document.getElementById("logoPrincipal").src =
+              "/img/logo.svg";
+            if (window.screen.orientation == "landscape") {
+              document
+                .getElementById("footer-navigator")
+                .classList.remove("footer-nav-toggled");
+              document
+                .getElementById("footer-navigator")
+                .classList.remove("footer-nav-full");
+            } else {
+              document
+                .getElementById("footer-navigator")
+                .classList.remove("footer-nav-full");
+              document
+                .getElementById("footer-navigator")
+                .classList.add("footer-nav-toggled");
+            }
+          } else {
+            document.getElementById("logoPrincipal").src =
+              "/img/logo.svg";
+            document
+              .getElementById("footer-navigator")
+              .classList.remove("footer-nav-toggled");
+          }
+        }
+      });
+
+      window.onorientationchange = function (event) {
+        // var tabla_1 = document.getElementById("t_estados");
+        // if (tabla_1 != null) {
+        //   if ($("#t_estados").hasClass("table-responsive")) {
+        //     tabla_1.classList.remove("table-responsive");
+        //   } else {
+        //     tabla_1.classList.add("table-responsive");
+        //   }
+        // }
+
+        // var tabla_2 = document.getElementById("t_tipo_suministros");
+        // if (tabla_2 != null) {
+        //   if ($("#t_tipo_suministros").hasClass("table-responsive")) {
+        //     tabla_2.classList.remove("table-responsive");
+        //   } else {
+        //     tabla_2.classList.add("table-responsive");
+        //   }
+        // }
+
+        if ($(".sidebar").hasClass("toggled")) {
+          $(".sidebar .collapse").collapse("hide");
+          document
+            .getElementById("footer-navigator")
+            .classList.add("footer-nav-full");
+        } else {
+          document
+            .getElementById("footer-navigator")
+            .classList.remove("footer-nav-full");
+        }
+
+        if ($("body").hasClass("sidebar-toggled")) {
+          document.getElementById("logoPrincipal").src =
+            "/img/logo.svg";
+          if (screen.height <= 420) {
+            document
+              .getElementById("footer-navigator")
+              .classList.add("footer-nav-toggled");
+            document
+              .getElementById("footer-navigator")
+              .classList.remove("footer-nav-full");
+          } else {
+            document
+              .getElementById("footer-navigator")
+              .classList.add("footer-nav-full");
+            document
+              .getElementById("footer-navigator")
+              .classList.remove("footer-nav-toggled");
+          }
+        } else {
+          if (screen.width < 900) {
+            document.getElementById("logoPrincipal").src =
+              "/img/logo.svg";
+            if (screen.height <= 420) {
+              document
+                .getElementById("footer-navigator")
+                .classList.remove("footer-nav-toggled");
+              document
+                .getElementById("footer-navigator")
+                .classList.remove("footer-nav-full");
+            } else {
+              document
+                .getElementById("footer-navigator")
+                .classList.remove("footer-nav-full");
+              document
+                .getElementById("footer-navigator")
+                .classList.add("footer-nav-toggled");
+            }
+          } else {
+            document.getElementById("logoPrincipal").src =
+              "/img/logo.svg";
+            document
+              .getElementById("footer-navigator")
+              .classList.remove("footer-nav-toggled");
+          }
+        }
+      };
+
+      // Close any open menu accordions when window is resized below 768px
+      $(window).resize(function () {
+        if ($(window).width() < 900) {
+          $(".sidebar .collapse").collapse("hide");
+        }
+      });
+
+      // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
+      $("body.fixed-nav .sidebar").on(
+        "mousewheel DOMMouseScroll wheel",
+        function (e) {
+          if ($(window).width() > 200) {
+            var e0 = e.originalEvent,
+              delta = e0.wheelDelta || -e0.detail;
+            this.scrollTop += (delta < 0 ? 1 : -1) * 30;
+            e.preventDefault();
+          }
+        }
+      );
+
+      // Scroll to top button appear
+      $(document).on("scroll", function () {
+        var scrollDistance = $(this).scrollTop();
+        if (scrollDistance > 100) {
+          $(".scroll-to-top").fadeIn();
+        } else {
+          $(".scroll-to-top").fadeOut();
+        }
+      });
+
+      // Smooth scrolling using jQuery easing
+      $(document).on("click", "a.scroll-to-top", function (e) {
+        var $anchor = $(this);
+        $("html, body")
+          .stop()
+          .animate(
+            {
+              scrollTop: $($anchor.attr("href")).offset().top,
+            },
+            1000,
+            "easeInOutExpo"
+          );
+        e.preventDefault();
+      });
+    })(jQuery);
+
+    if (screen.width < 900) {
+      this.ocultarNavegadorLateral();
+    }
+  },
+
+  methods: {
+    validarTamaño() {
+      if (screen.width <= 900) {
+        document.getElementById("logoPrincipal").src =
+          "/img/logo.svg";
+        document
+          .getElementById("footer-navigator")
+          .classList.add("footer-nav-toggled");
+        if (screen.height <= 420) {
+          document
+            .getElementById("footer-navigator")
+            .classList.remove("footer-nav-full");
+          document
+            .getElementById("footer-navigator")
+            .classList.remove("footer-nav-toggled");
+        }
+      } else {
+        document.getElementById("logoPrincipal").src =
+          "/img/logo.svg";
+        document
+          .getElementById("footer-navigator")
+          .classList.remove("footer-nav-toggled");
+      }
+    },
+
+    TamañoVentana() {
+      var tam = [0, 0];
+      if (typeof window.innerWidth != "undefined") {
+        tam = [window.innerWidth, window.innerHeight];
+      } else if (
+        typeof document.documentElement != "undefined" &&
+        typeof document.documentElement.clientWidth != "undefined" &&
+        document.documentElement.clientWidth != 0
+      ) {
+        tam = [
+          document.documentElement.clientWidth,
+          document.documentElement.clientHeight,
+        ];
+      } else {
+        tam = [
+          document.getElementsByTagName("body")[0].clientWidth,
+          document.getElementsByTagName("body")[0].clientHeight,
+        ];
+      }
+      return tam;
+    },
+    ocultarNavegadorLateral() {
+      $("body").toggleClass("sidebar-toggled");
+      $(".sidebar").toggleClass("toggled");
+      if ($(".sidebar").hasClass("toggled")) {
+        $(".sidebar .collapse").collapse("hide");
+        document
+          .getElementById("footer-navigator")
+          .classList.add("footer-nav-full");
+      } else {
+        document
+          .getElementById("footer-navigator")
+          .classList.remove("footer-nav-full");
+      }
+    },
+
+    hide_nav() {
+      if (screen.width < 1000) {
+        parent.document.getElementById("footer-navigator").style.display =
+          "none";
+      }
+    },
+
+    show_nav() {
+      if (screen.width < 1000) {
+        parent.document.getElementById("footer-navigator").style.display =
+          "flex";
+      }
+    },
+    goBack() {
+      window.history.back();
+    },
+
+    goForward() {
+      window.history.forward();
+    },
+
+    reload() {
+      location.reload();
+    },
+  },
+};
 </script>
 
 <style lang="css">

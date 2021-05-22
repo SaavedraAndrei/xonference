@@ -157,7 +157,7 @@
                             <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-10</p>
                             <p><i class="fa fa-user" aria-hidden="true"></i> Juan Sanchez</p>
                         </div>
-                        <a href="calendario.html" class="button float-right">Ver todos</a>
+                        <a href="{{route('calendario')}}" class="button float-right">Ver todos</a>
                     </div>
                     <!--#talleres-->
 

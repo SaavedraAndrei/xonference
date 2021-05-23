@@ -56,7 +56,7 @@ class IndexController extends Controller
             return view('login');
         } else {
             // $version = DB::select("SELECT * FROM versiones ORDER by id_version DESC LIMIT 1");
-            return view('home')->with('mensaje', $mensaje);;
+            return view('home')->with('mensaje', $mensaje);
         }
     }
 
@@ -97,7 +97,7 @@ class IndexController extends Controller
                 session(['clave' => $clave]);
                 return redirect('/home');
             } else {
-                Session::flash('usuario_no_valido', 'Contraseña incorrecta, intente nuevamente');
+                Session::flash('email_no_valido', 'Contraseña incorrecta, intente nuevamente');
                 return redirect('/login');
                 exit();
             }

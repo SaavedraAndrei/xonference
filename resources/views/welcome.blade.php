@@ -174,7 +174,7 @@
                             <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-09</p>
                             <p><i class="fa fa-user" aria-hidden="true"></i> Juan Sanchez</p>
                         </div>
-                        <a href="calendario.html" class="button float-right">Ver todos</a>
+                        <a href="{{route('catalogo')}}" class="button float-right">Ver todos</a>
                     </div>
                     <!--#talleres-->
 
@@ -191,7 +191,7 @@
                             <p><i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-09</p>
                             <p><i class="fa fa-user" aria-hidden="true"></i> Harold Garcia</p>
                         </div>
-                        <a href="calendario.html" class="button float-right">Ver todos</a>
+                        <a href="{{route('catalogo')}}" class="button float-right">Ver todos</a>
                     </div>
                     <!--#talleres-->
 
@@ -487,7 +487,7 @@
         </div>
 
         <p class="copyright">
-            Todos los derechos Reservados GDLWEBCAMP 2016.
+            Todos los derechos Reservados GDLWEBCAMP 2021.
         </p>
 
 

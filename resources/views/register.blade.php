@@ -21,6 +21,7 @@
     <script src="js/sweetalert2.js"></script>
 
     <title>Registro</title>
+    @routes
 </head>
 
 
@@ -51,7 +52,7 @@
                 @endif -->
 
                 <!-- <form action="/usuario/validar" method="get"> -->
-                <form action="{{ route('registrar.guardar_usuario') }}" method="post">
+                <form action="{{ route('registrar.verificar_usuario') }}" method="post" autocomplete="off">
                     {{csrf_field()}}
                     <h3 class="register-heading">REGISTRARSE</h3>
 
@@ -62,26 +63,17 @@
                         </div>
 
                         <div class="row form-group">
-                            <input type="text" name="nombres" class="form-control" placeholder="Nombres Completos" spellcheck="false" id="txtInputs" />
+                            <input type="text" name="nombres" autocomplete="nope" class="form-control"  placeholder="Nombres Completos" spellcheck="false" id="txtInputs" />
                         </div>
-
                         <div class="row form-group">
                             <input type="text" name="apellidoPaterno" class="form-control" placeholder="Apellido Paterno" spellcheck="false" id="txtInputs" />
                         </div>
 
                         <div class="row form-group">
-                            <input type="text" name="apellidoMaterno" class="form-control" placeholder="Apellido Materno" spellcheck="false" id="txtInputs" />
+                            <input type="text" name="apellidoMaterno" autocomplete="nope" class="form-control" placeholder="Apellido Materno" spellcheck="false" id="txtInputs" />
                         </div>
                         <div class="row form-group">
-                            <input 
-                            type="number" 
-                            name="dni" 
-                            maxlength="8"
-                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                            class="form-control" 
-                            placeholder="Documento de Identidad" 
-                            spellcheck="false" 
-                            id="txtInputs" />
+                            <input type="number" name="dni" maxlength="8" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" class="form-control" placeholder="Documento de Identidad" spellcheck="false" id="txtInputs" />
                         </div>
                         <div class="row form-group">
                             <input type="text" name="email" class="form-control" placeholder="E-mail" spellcheck="false" id="txtInputs" />
@@ -125,8 +117,32 @@
             </div>
         </div>
     </div>
+    @if(Session::has('dni_existente'))
+    <script>
+        self = this;
+        Swal.fire({
+            icon: 'error',
+            title: '¡Ups!',
+            text: '{{session("dni_existente")}}',
+            confirmButtonText: 'Aceptar',
+        })
+    </script>
+    @endif
 
-
+    @if(Session::has('dni_registrado'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Registrado!',
+            text: '{{session("dni_registrado")}}',
+            // allowOutsideClick: true,
+            // confirmButtonText: 'Aceptar',
+        }).then(
+        function(){
+             window.location.href = "/login";
+        })
+    </script>
+    @endif
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>

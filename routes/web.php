@@ -34,8 +34,8 @@ Route::GET('/login', [IndexController::class, 'Login'])->name('usuario.login');
 Route::GET('/login/usuario/validar', [IndexController::class, 'validarUsuario'])->name('login.validarUsuario');
 Route::GET('usuario/cerrar_sesion', [IndexController::class, 'cerrar_sesion'])->name('login.cerrar_sesion');
 Route::GET('/registrar', [RegistrarController::class, 'Registrar'])->name('registrar');
-Route::POST('/register', [RegistrarController::class, 'guardar_usuario'])->name('registrar.guardar_usuario');
-// Route::POST('registrar/verificar_registro',[RegistrarController::class, 'verificar_usuario'])->name('registrar.verificar_usuario');
+// Route::POST('/register', [RegistrarController::class, 'guardar_usuario'])->name('registrar.guardar_usuario');
+Route::POST('registrar/verificar_registro',[RegistrarController::class, 'verificar_usuario'])->name('registrar.verificar_usuario');
 Route::GET('/login/usuario/cerrar_sesion', [IndexController::class, 'cerrar_sesion'])->name('login.cerrar_sesion');
 Route::GET('/home', [IndexController::class, 'Home'])->name('home');
 

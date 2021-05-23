@@ -17,6 +17,7 @@ class CreatePermisos extends Migration
         Schema::create('permisos', function (Blueprint $table) {
             $table->id();
             $table->string('modulo', 75);
+            $table->string('area', 75);
             $table->timestamps();
         });
     }

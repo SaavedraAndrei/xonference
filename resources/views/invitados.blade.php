@@ -153,7 +153,7 @@
         </div>
     
         <p class="copyright">
-            Todos los derechos Reservados GDLWEBCAMP 2016.
+            Todos los derechos Reservados GDLWEBCAMP 2021.
         </p>
     
     

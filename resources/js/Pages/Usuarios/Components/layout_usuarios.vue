@@ -76,8 +76,8 @@
           aria-expanded="true"
           aria-controls="menuCargos"
         >
-          <i class="fas fa-file-invoice"></i>
-          <span>Algo a futurp</span>
+          <i class="fas fa-user-edit"></i>
+          <span>Foros</span>
         </a>
         <div
           id="menuCargos"
@@ -87,7 +87,7 @@
         >
           <div class="bg-white py-2 collapse-inner rounded">
             <inertia-link class="collapse-item" href="#"
-              >algooo</inertia-link
+              >Foro de conferencia X</inertia-link
             >
           </div>
         </div>
@@ -319,6 +319,7 @@
 
         <slot name="c_principal"></slot>
         <slot name="c_mi_menu_materiales"></slot>
+        <slot name="c_foros"></slot>
       </div>
 
       <!------------- BOTONES DE NAVEGACIÓN ----------->

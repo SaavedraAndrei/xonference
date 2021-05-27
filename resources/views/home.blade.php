@@ -66,7 +66,7 @@
                 <i class="fas fa-bars"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item submenu-button" href="/#">GENERAL</a>
+                <a class="dropdown-item submenu-button" href="/general">GENERAL</a>
             </div>
         </div>
     </header>

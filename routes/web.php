@@ -7,10 +7,14 @@ use App\Http\Controllers\InvitadosController;
 use App\Http\Controllers\CalendarioController;
 use App\Http\Controllers\ConferenciaController;
 use App\Http\Controllers\RegistrarController;
-use App\Http\Controllers\Usuarios\AsistenciaController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaypalController;
+//-----------------------------------ADMINISTRATIVA
+use App\Http\Controllers\Administracion\PermisosController;
+//-----------------------------------USUARIOS
+use App\Http\Controllers\Usuarios\AsistenciaController;
+use App\Http\Controllers\Usuarios\ForosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +60,9 @@ Route::GET('/usuarios/principal', [AsistenciaController::class, 'principal'])->n
 Route::GET('/usuarios/asistencia', [AsistenciaController::class, 'asistencia_usuarios'])->name('usuario.asistencia');
 Route::POST('/usuarios/asistencia/verificar', [AsistenciaController::class, 'verificar_usuario_asistencia'])->name('asistencia.verificar');
 Route::POST('/usuarios/asistencia/guardar', [AsistenciaController::class, 'registrar_asistencia'])->name('asistencia.registrar');
+Route::GET('/usuarios/foros', [ForosController::class, 'foros_usuarios'])->name('usuario.foros');
+
+//-------------------------------------------GESTION ADMINISTRATIVA---------------------------------------
+Route::GET('/general',[PermisosController::class, 'principal'])->name('administrativa.principal');
+Route::GET('/administracion/foros', [ForosController::class, 'foros_admin'])->name('administrativa.foros');
+

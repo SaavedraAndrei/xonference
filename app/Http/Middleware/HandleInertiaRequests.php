@@ -40,18 +40,16 @@ class HandleInertiaRequests extends Middleware
         $x = session()->all();
         if (empty($x['usuario_dni'])) {
             $permisos_array = null;
-            $datos_aplicacion = null;
-            $version = null;
         } else {
             $permisos = DB::table('permisos_usuarios')
                 ->join('permisos', 'permisos_usuarios.id_permiso', '=', 'permisos.id')
-                ->select('permisos.modulo')
+                ->select('permisos.modulo', 'permisos.area')
                 ->where('permisos_usuarios.dni', '=', $request->session()->only(['usuario_dni']))
                 ->get();
             // $datos_aplicacion = DB::table('datos_aplicacion')->get();
             // $version = DB::select("SELECT * FROM versiones ORDER by id_version DESC LIMIT 1");
             foreach ($permisos as $permiso) {
-                $permisos_array[] = $permiso->modulo;
+                $permisos_array[] = $permiso->area . '/' . $permiso->modulo;
             }
         }
 

@@ -4,6 +4,7 @@ fecha_hora DATETIME,
 asistio BOOLEAN,
 tipo VARCHAR(200) NOT NULL,
 dni INTEGER NOT NULL,
+id_conferencia integer NOT NULL,
 created_at DATETIME NOT NULL,
 updated_at DATETIME NOT NULL
 )

@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Models\Permisos;
+namespace App\Models\Administrativa;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Permiso extends Model
+class Foro_respuestas extends Model
 {
     use HasFactory;
-    protected $table = 'permisos';
+    protected $table = 'foros_respuestas';
     protected $primaryKey = "id";
 
     protected $fillable = [
-        'modulo', 
-        'area',
+        'respuesta', 
+        'dni_usuarios',
     ];  
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePermisos extends Migration
+class CreateForosPreguntas extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,10 @@ class CreatePermisos extends Migration
     public function up()
     {
         $this->down();
-        Schema::create('permisos', function (Blueprint $table) {
+        Schema::create('foros_preguntas', function (Blueprint $table) {
             $table->id();
-            $table->string('modulo', 75);
-            $table->string('area', 75);
+            $table->string('pregunta', 3000);
+            $table->integer('dni_ponente')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreatePermisos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permisos');
+        Schema::dropIfExists('foros_preguntas');
     }
 }

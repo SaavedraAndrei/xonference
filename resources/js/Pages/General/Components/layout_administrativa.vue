@@ -15,10 +15,10 @@
       <li class="nav-item active">
         <inertia-link 
         class="nav-link" 
-        :href="$route('usuario.principal')"
+        :href="$route('administrativa.principal')"
         v-if="
             $page.props.user_permissions.permisos.includes(
-              'USUARIOS/PRINCIPAL'
+              'GESTIÓN ADMINISTRATIVA/PRINCIPAL'
             )
           "
           ><i class="fa fa-home"></i><span>Principal</span></inertia-link
@@ -42,7 +42,7 @@
           aria-controls="menuMenuLista"
         >
           <i class="fas fa-user-friends"></i>
-          <span>Menu</span>
+          <span>Permisos</span>
         </a>
         <div
           id="menuMenuLista"
@@ -53,13 +53,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <inertia-link
               class="collapse-item"
-              :href="$route('usuario.asistencia')"
-              v-if="
-                $page.props.user_permissions.permisos.includes(
-                  'USUARIOS/CONFERENCIA ASISTENCIA'
-                )
-              "
-              >conferencias
+              href="#"
+              >lista de permisos
             </inertia-link>
 
             <inertia-link 
@@ -82,7 +77,7 @@
           aria-controls="menuCargos"
         >
           <i class="fas fa-user-edit"></i>
-          <span>Foros</span>
+          <span>Ponentes</span>
         </a>
         <div
           id="menuCargos"
@@ -91,16 +86,16 @@
           data-parent="#accordionSidebar"
         >
           <div class="bg-white py-2 collapse-inner rounded">
-            <inertia-link 
-            class="collapse-item" 
-            :href="$route('usuario.foros')"
-            v-if="
-                $page.props.user_permissions.permisos.includes(
-                  'USUARIOS/FOROS'
-                )
-              "
-              >Foro de conferencia X</inertia-link
-            >
+            <inertia-link
+              class="collapse-item"
+              :href="$route('administrativa.foros')"
+              v-if="
+            $page.props.user_permissions.permisos.includes(
+              'GESTIÓN ADMINISTRATIVA/FOROS'
+            )
+          "
+              >Foro
+            </inertia-link>
           </div>
         </div>
       </li>
@@ -329,9 +324,9 @@
           </ul>
         </nav>
 
-        <slot name="c_principal"></slot>
-        <slot name="c_mi_menu_materiales"></slot>
-        <slot name="c_foros"></slot>
+        <slot name="c_principal_admi"></slot>
+        <slot name="c_foros_admin"></slot>
+        <!-- <slot name="c_foros"></slot> -->
       </div>
 
       <!------------- BOTONES DE NAVEGACIÓN ----------->
@@ -647,8 +642,8 @@ export default {
 
 <style lang="css">
 :root {
-  --colorBajo: #def7ff;
-  --colorMedio: #337ba3;
-  --colorAlto: #1f5a92;
+  --colorBajo: #ffdef8;
+  --colorMedio: #a33378;
+  --colorAlto: #921f6c;
 }
 </style>

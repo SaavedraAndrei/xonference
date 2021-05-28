@@ -65,4 +65,5 @@ Route::GET('/usuarios/foros', [ForosController::class, 'foros_usuarios'])->name(
 //-------------------------------------------GESTION ADMINISTRATIVA---------------------------------------
 Route::GET('/general',[PermisosController::class, 'principal'])->name('administrativa.principal');
 Route::GET('/administracion/foros', [ForosController::class, 'foros_admin'])->name('administrativa.foros');
+Route::POST('/administrativa/guardar_pregunta', [ForosController::class, 'guardar_pregunta'])->name('foros.guardar_pregunta');
 

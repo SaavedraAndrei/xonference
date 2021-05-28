@@ -2579,6 +2579,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2596,82 +2600,39 @@ __webpack_require__.r(__webpack_exports__);
         id: "",
         pregunta: "",
         dni_ponente: "",
-        modo: ""
+        modal: ""
       }
     };
   },
   mounted: function mounted() {
-    this.TablaPreguntas(); // var elemento = document.getElementById("t_permiso");
-    // if (elemento != null) {
-    //   if (screen.width < 1000) {
-    //     elemento.classList.add("table-responsive");
-    //   }
-    // }
+    this.TablaPreguntas();
+    var elemento = document.getElementById("tblPreguntas");
+
+    if (elemento != null) {
+      if (screen.width < 1000) {
+        elemento.classList.add("table-responsive");
+      }
+    }
   },
-  //   watch:{
-  //     listar_preguntas() {
-  //       $("#tblPreguntas").DataTable().destroy();
-  //      this.TablaPreguntas();
-  //     }
-  //   },
+  // watch:{
+  //   listar_preguntas() {
+  //     $("#tblPreguntas").DataTable().destroy();
+  //    this.TablaPreguntas();
+  //   }
+  // },
   methods: {
     TablaPreguntas: function TablaPreguntas() {
       this.$nextTick(function () {
-        var table = $("#tblPreguntas").DataTable({
-          scrollCollapse: true,
-          fixedHeader: true,
-          language: {
-            retrieve: true,
-            decimal: "",
-            emptyTable: "No hay datos disponibles en la tabla",
-            info: "Mostrando del _START_ al _END_ de _TOTAL_ registros",
-            infoEmpty: "No se encontraron registros",
-            infoFiltered: "(filtrado de _MAX_ registros)",
-            infoPostFix: "",
-            thousands: ",",
-            lengthMenu: "Agrupar por _MENU_ filas",
-            loadingRecords: "Cargando...",
-            processing: "Procesando...",
-            search: "Buscar:",
-            zeroRecords: "No se encontraron registros",
-            paginate: {
-              first: "Primera",
-              last: "Ultima",
-              next: '<i class="fas fa-chevron-circle-right" style="font-size:20px;"></i>',
-              previous: '<i class="fas fa-chevron-circle-left" style="font-size:20px;"></i>'
-            },
-            aria: {
-              sortAscending: ": activar para ordenar de forma ascendente",
-              sortDescending: ": activar para ordenar de forma descendente"
-            }
-          },
-          responsive: true,
-          dom: '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
-          buttons: [{
-            extend: "excelHtml5",
-            text: '<i class="fas fa-file-excel"></i> ',
-            titleAttr: "Exportar a Excel",
-            className: "btn btn-action"
-          }, {
-            extend: "pdfHtml5",
-            text: '<i class="fas fa-file-pdf"></i> ',
-            titleAttr: "Exportar a PDF",
-            className: "btn btn-cancel"
-          }, {
-            extend: "print",
-            text: '<i class="fa fa-print"></i> ',
-            titleAttr: "Imprimir",
-            className: "btn btn-action"
-          }]
-        });
+        var table = $("#tblPreguntas");
       });
     },
-    EditarPermiso: function EditarPermiso(pregunta) {
+    EditarPregunta: function EditarPregunta(pregunta) {
+      // console.log(pregunta.id);
       this.submited = false;
       this.title_modal = "EDITAR PREGUNTA";
       this.frmRegistrarPregunta.id = pregunta.id;
-      this.frmRegistrarPregunta.pregunta = pregunta.pregunta;
-      this.frmRegistrarPregunta.areaExistente = pregunta.dni_ponente;
+      this.frmRegistrarPregunta.pregunta = pregunta.pregunta; //   this.frmRegistrarPregunta.areaExistente = pregunta.dni_ponente;
+
       this.frmRegistrarPregunta.modal = "EDITAR"; //   console.log(this.frmRegistrarPregunta.modal);
 
       document.getElementById("modalRegistrarPermiso").style.display = "block";
@@ -2680,6 +2641,70 @@ __webpack_require__.r(__webpack_exports__);
         parent.document.getElementById("footer-navigator").style.display = "flex";
       });
       parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    GuardarPregunta: function GuardarPregunta() {
+      this.submited = true;
+      var self = this; //   {
+
+      Swal.fire({
+        title: "GUARDAR CAMBIOS",
+        text: "¿Desea continuar?",
+        confirmButtonText: '<i class="fas fa-check" style="color:white;"></i>   Si',
+        confirmButtonColor: "var(--colorAlto)",
+        showCancelButton: true,
+        cancelButtonText: '<i class="fas fa-times"></i>   No',
+        cancelButtonColor: "var(--plomoOscuroEmpresarial)",
+        allowOutsideClick: false,
+        preConfirm: function preConfirm(result) {
+          self.$inertia.post(route("foros.guardar_pregunta"), self.frmRegistrarPregunta, {
+            preserveScroll: true,
+            onStart: function onStart(visit) {
+              var timerInterval;
+              Swal.fire({
+                title: "EN PROGRESO",
+                html: "Espere porfavor...",
+                timer: 5000,
+                allowOutsideClick: false,
+                timerProgressBar: true,
+                didOpen: function didOpen() {
+                  Swal.showLoading();
+                  timerInterval = setInterval(function () {
+                    var content = Swal.getContent();
+
+                    if (content) {
+                      var b = content.querySelector("b");
+
+                      if (b) {
+                        b.textContent = Swal.getTimerLeft();
+                      }
+                    }
+                  }, 100);
+                },
+                willClose: function willClose() {
+                  clearInterval(timerInterval);
+                }
+              });
+            },
+            onSuccess: function onSuccess() {
+              Swal.fire({
+                icon: "success",
+                title: "¡ÉXITO!",
+                allowOutsideClick: false,
+                preConfirm: function preConfirm(result) {
+                  self.submited = false; // self.FiltrarPermisos();
+                  // $("#tblPreguntas").destroy();
+                  // self.TablaPreguntas();
+
+                  $("#modalRegistrarPermiso").css("display", "none");
+                  $("#footer-navigator").css("display", "flex");
+                }
+              });
+            }
+          });
+        }
+      }); //     }
+      //   });
+      //   }
     }
   }
 });
@@ -3685,10 +3710,123 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     layout: _Components_layout_usuarios__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  props: {
+    preguntas: Array,
+    respuestas: Array
+  },
+  data: function data() {
+    return {
+      submited: false,
+      title_modal: "RESPUESTA",
+      pregunta_muostrar: null,
+      frmResponderForo: {
+        id: "",
+        respuesta: "",
+        modal: ""
+      }
+    };
+  },
+  mounted: function mounted() {
+    this.pregunta_muostrar = this.preguntas[0].pregunta; // console.log(this.pregunta_muostrar);
+  },
+  methods: {
+    ResponderForo: function ResponderForo() {
+      console.log('hola'), this.submited = false;
+      this.title_modal = "RESPUESTA";
+      this.frmResponderForo.id = 0;
+      this.frmResponderForo.respuesta = "";
+      this.frmResponderForo.modal = "AGREGAR";
+      document.getElementById("modalRegistrarPermiso").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalRegistrarPermiso").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display = "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    }
   }
 });
 
@@ -30381,7 +30519,13 @@ var render = function() {
                             staticClass: "table-bordered",
                             attrs: { align: "center" }
                           },
-                          [_vm._v(_vm._s(pregunta.pregunta))]
+                          [
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(pregunta.pregunta) +
+                                "\n                  "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
@@ -30390,7 +30534,13 @@ var render = function() {
                             staticClass: "table-bordered",
                             attrs: { align: "left" }
                           },
-                          [_vm._v(_vm._s(pregunta.dni_ponente))]
+                          [
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(pregunta.dni_ponente) +
+                                "\n                  "
+                            )
+                          ]
                         )
                       ])
                     }),
@@ -30436,7 +30586,7 @@ var render = function() {
                             on: {
                               submit: function($event) {
                                 $event.preventDefault()
-                                return _vm.GuardarPermiso($event)
+                                return _vm.GuardarPregunta($event)
                               }
                             }
                           },
@@ -30558,7 +30708,7 @@ var render = function() {
                               attrs: { id: "btnGuardarCambios" },
                               on: {
                                 click: function($event) {
-                                  return _vm.GuardarPermiso()
+                                  return _vm.GuardarPregunta()
                                 }
                               }
                             },
@@ -31667,13 +31817,13 @@ var render = function() {
           _c("div", { staticClass: "card-body card-block" }, [
             _c("div", { staticClass: "form-row" }, [
               _c("div", { staticClass: "form-group col-xs-4" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-control-label label-title",
-                    attrs: { for: "text-input" }
-                  },
-                  [_vm._v("Primera pregunta:")]
+                _c("label", {
+                  staticClass: "form-control-label label-title",
+                  attrs: { for: "text-input" }
+                }),
+                _vm._v(
+                  _vm._s(_vm.pregunta_muostrar) +
+                    "\n              \n              "
                 )
               ])
             ])
@@ -31712,7 +31862,217 @@ var render = function() {
             _vm._v(" "),
             _c("br")
           ])
-        ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "modal", attrs: { id: "modalRegistrarPermiso" } },
+          [
+            _c("div", { staticClass: "modal-content w-36" }, [
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "content", staticStyle: { display: "block" } },
+                  [
+                    _c("div", { staticClass: "card" }, [
+                      _c("div", { staticClass: "card-header" }, [
+                        _c("div", { attrs: { id: "c_titulo" } }, [
+                          _c("strong", { attrs: { id: "title" } }, [
+                            _vm._v(_vm._s(_vm.title_modal))
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-title" }, [
+                        _vm._v("DATOS DEL PERMISO")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body card-block" }, [
+                        _c(
+                          "form",
+                          {
+                            on: {
+                              submit: function($event) {
+                                $event.preventDefault()
+                                return _vm.GuardarRespuesta($event)
+                              }
+                            }
+                          },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.frmResponderForo.modal,
+                                  expression: "frmResponderForo.modal"
+                                }
+                              ],
+                              attrs: {
+                                type: "text",
+                                id: "txtModal",
+                                hidden: ""
+                              },
+                              domProps: { value: _vm.frmResponderForo.modal },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.frmResponderForo,
+                                    "modal",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.frmResponderForo.id,
+                                  expression: "frmResponderForo.id"
+                                }
+                              ],
+                              attrs: {
+                                type: "text",
+                                id: "txtIdPermiso",
+                                hidden: ""
+                              },
+                              domProps: { value: _vm.frmResponderForo.id },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.frmResponderForo,
+                                    "id",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col form-group" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-control-label label-title"
+                                },
+                                [_vm._v("RESPONDER")]
+                              ),
+                              _vm._v(" "),
+                              _c("textarea", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.frmResponderForo.respuesta,
+                                    expression: "frmResponderForo.respuesta"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                staticStyle: { "max-width": "400px" },
+                                attrs: {
+                                  type: "text",
+                                  name: "permiso",
+                                  maxlength: "150",
+                                  id: "txtNombrePermiso",
+                                  placeholder: "Ingrese el nombre del permiso"
+                                },
+                                domProps: {
+                                  value: _vm.frmResponderForo.respuesta
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.frmResponderForo,
+                                      "respuesta",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("hr"),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "text-right" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-action btn-icon-split mb-1",
+                              attrs: { id: "btnGuardarCambios" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.GuardarRespuesta()
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "span",
+                                { staticClass: "icon text-white-50" },
+                                [
+                                  _c("i", {
+                                    staticClass: "fas fa-save",
+                                    staticStyle: { color: "white" }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "text" }, [
+                                _vm._v("Guardar")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-cancel btn-icon-split mb-1",
+                              attrs: { id: "btnCancelar" }
+                            },
+                            [
+                              _c(
+                                "span",
+                                { staticClass: "icon text-white-50" },
+                                [
+                                  _c("i", {
+                                    staticClass: "fas fa-times",
+                                    staticStyle: { color: "white" }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "text",
+                                  staticStyle: { color: "white" }
+                                },
+                                [_vm._v("Cancelar")]
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
       ])
     ])
   ])

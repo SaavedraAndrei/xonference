@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Foro_respuestas extends Model
+class Foro_respuesta extends Model
 {
     use HasFactory;
     protected $table = 'foros_respuestas';

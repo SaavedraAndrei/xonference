@@ -42,8 +42,12 @@
                         </span>
                       </button>
                     </td>
-                    <td class="table-bordered" align="center">{{ pregunta.pregunta }}</td>
-                    <td class="table-bordered" align="left">{{ pregunta.dni_ponente }}</td>
+                    <td class="table-bordered" align="center">
+                      {{ pregunta.pregunta }}
+                    </td>
+                    <td class="table-bordered" align="left">
+                      {{ pregunta.dni_ponente }}
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -67,7 +71,7 @@
                   </div>
                   <div class="card-title">DATOS DEL PERMISO</div>
                   <div class="card-body card-block">
-                    <form @submit.prevent="GuardarPermiso">
+                    <form @submit.prevent="GuardarPregunta">
                       <input
                         type="text"
                         id="txtModal"
@@ -101,7 +105,7 @@
                       <button
                         class="btn btn-action btn-icon-split mb-1"
                         id="btnGuardarCambios"
-                        @click="GuardarPermiso()"
+                        @click="GuardarPregunta()"
                       >
                         <span class="icon text-white-50">
                           <i class="fas fa-save" style="color: white"></i>
@@ -145,92 +149,40 @@ export default {
         id: "",
         pregunta: "",
         dni_ponente: "",
-        modo: "",
+        modal: "",
       },
     };
   },
   mounted() {
     this.TablaPreguntas();
-    // var elemento = document.getElementById("t_permiso");
-    // if (elemento != null) {
-    //   if (screen.width < 1000) {
-    //     elemento.classList.add("table-responsive");
-    //   }
-    // }
+    var elemento = document.getElementById("tblPreguntas");
+    if (elemento != null) {
+      if (screen.width < 1000) {
+        elemento.classList.add("table-responsive");
+      }
+    }
   },
-  //   watch:{
-  //     listar_preguntas() {
-  //       $("#tblPreguntas").DataTable().destroy();
-  //      this.TablaPreguntas();
-  //     }
-  //   },
+    // watch:{
+    //   listar_preguntas() {
+    //     $("#tblPreguntas").DataTable().destroy();
+    //    this.TablaPreguntas();
+    //   }
+    // },
   methods: {
     TablaPreguntas() {
       this.$nextTick(() => {
-        var table = $("#tblPreguntas").DataTable({
-          scrollCollapse: true,
-          fixedHeader: true,
-          language: {
-            retrieve: true,
-            decimal: "",
-            emptyTable: "No hay datos disponibles en la tabla",
-            info: "Mostrando del _START_ al _END_ de _TOTAL_ registros",
-            infoEmpty: "No se encontraron registros",
-            infoFiltered: "(filtrado de _MAX_ registros)",
-            infoPostFix: "",
-            thousands: ",",
-            lengthMenu: "Agrupar por _MENU_ filas",
-            loadingRecords: "Cargando...",
-            processing: "Procesando...",
-            search: "Buscar:",
-            zeroRecords: "No se encontraron registros",
-            paginate: {
-              first: "Primera",
-              last: "Ultima",
-              next:
-                '<i class="fas fa-chevron-circle-right" style="font-size:20px;"></i>',
-              previous:
-                '<i class="fas fa-chevron-circle-left" style="font-size:20px;"></i>',
-            },
-            aria: {
-              sortAscending: ": activar para ordenar de forma ascendente",
-              sortDescending: ": activar para ordenar de forma descendente",
-            },
-          },
-          responsive: true,
-          dom:
-            '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
-          buttons: [
-            {
-              extend: "excelHtml5",
-              text: '<i class="fas fa-file-excel"></i> ',
-              titleAttr: "Exportar a Excel",
-              className: "btn btn-action",
-            },
-            {
-              extend: "pdfHtml5",
-              text: '<i class="fas fa-file-pdf"></i> ',
-              titleAttr: "Exportar a PDF",
-              className: "btn btn-cancel",
-            },
-            {
-              extend: "print",
-              text: '<i class="fa fa-print"></i> ',
-              titleAttr: "Imprimir",
-              className: "btn btn-action",
-            },
-          ],
-        });
+        var table = $("#tblPreguntas")
       });
     },
-    EditarPermiso(pregunta) {
+    EditarPregunta(pregunta) {
+      // console.log(pregunta.id);
       this.submited = false;
       this.title_modal = "EDITAR PREGUNTA";
       this.frmRegistrarPregunta.id = pregunta.id;
       this.frmRegistrarPregunta.pregunta = pregunta.pregunta;
-      this.frmRegistrarPregunta.areaExistente = pregunta.dni_ponente;
+      //   this.frmRegistrarPregunta.areaExistente = pregunta.dni_ponente;
       this.frmRegistrarPregunta.modal = "EDITAR";
-    //   console.log(this.frmRegistrarPregunta.modal);
+      //   console.log(this.frmRegistrarPregunta.modal);
 
       document.getElementById("modalRegistrarPermiso").style.display = "block";
       $("#btnCancelar").click(function () {
@@ -239,6 +191,74 @@ export default {
           "flex";
       });
       parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    GuardarPregunta() {
+      this.submited = true;
+      var self = this;
+      //   {
+      Swal.fire({
+        title: "GUARDAR CAMBIOS",
+        text: "¿Desea continuar?",
+        confirmButtonText:
+          '<i class="fas fa-check" style="color:white;"></i>   Si',
+        confirmButtonColor: "var(--colorAlto)",
+        showCancelButton: true,
+        cancelButtonText: '<i class="fas fa-times"></i>   No',
+        cancelButtonColor: "var(--plomoOscuroEmpresarial)",
+        allowOutsideClick: false,
+        preConfirm: (result) => {
+          self.$inertia.post(
+            route("foros.guardar_pregunta"),
+            self.frmRegistrarPregunta,
+            {
+              preserveScroll: true,
+              onStart: (visit) => {
+                let timerInterval;
+                Swal.fire({
+                  title: "EN PROGRESO",
+                  html: "Espere porfavor...",
+                  timer: 5000,
+                  allowOutsideClick: false,
+                  timerProgressBar: true,
+                  didOpen: () => {
+                    Swal.showLoading();
+                    timerInterval = setInterval(() => {
+                      const content = Swal.getContent();
+                      if (content) {
+                        const b = content.querySelector("b");
+                        if (b) {
+                          b.textContent = Swal.getTimerLeft();
+                        }
+                      }
+                    }, 100);
+                  },
+                  willClose: () => {
+                    clearInterval(timerInterval);
+                  },
+                });
+              },
+              onSuccess: () => {
+                Swal.fire({
+                  icon: "success",
+                  title: "¡ÉXITO!",
+                  allowOutsideClick: false,
+                  preConfirm: (result) => {
+                    self.submited = false;
+                    // self.FiltrarPermisos();
+                    // $("#tblPreguntas").destroy();
+                    // self.TablaPreguntas();
+                    $("#modalRegistrarPermiso").css("display", "none");
+                    $("#footer-navigator").css("display", "flex");
+                  },
+                });
+              },
+            }
+          );
+        },
+      });
+      //     }
+      //   });
+      //   }
     },
   },
 };

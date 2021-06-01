@@ -135,7 +135,7 @@
                     <li>
                         <div class="tabla-precio">
                             <h3>Todos los días</h3>
-                            <p class="numero">${{$congreso->precio}}</p>
+                            <p class="numero">S/.{{$congreso->precio}}</p>
                             <ul>
                                 <li>Todos los seminarios</li>
                                 <li>Todas las conferencias</li>
@@ -198,7 +198,7 @@
                     <div class="total">
                         <p>Total a Pagar:</p>
                         <div id="suma-total" class="suma-total">
-                            ${{$congreso->precio}}
+                            S/.{{$congreso->precio}}
                         </div>
                         <input type="hidden" name="total_pedido" id="total_pedido">
                         <input type="hidden" name="total_descuento" id="total_descuento" value="total_descuento">

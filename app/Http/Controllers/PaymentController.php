@@ -70,11 +70,13 @@ class PaymentController extends Controller
     {
         $congreso = DB::table('congresos')->first();
 
+        $cost = round(($congreso->precio) / 3.80, 2);
+
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
         $amount = new Amount();
-        $amount->setTotal($congreso->precio);
+        $amount->setTotal($cost);
         $amount->setCurrency('USD');
 
         $transaction = new Transaction();

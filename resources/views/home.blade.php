@@ -96,6 +96,18 @@
                 <div class="sub_boton color-gth" id="btnMiPanel"><a class="sub_text" href="#">MI PANEL</a></div>
             </ul> -->
         </div>
+
+        <div class="btn-group">
+            <a href="/download" target="_blank" >
+                <div class="boton color-logistica" id="btnLogistica">Certificado</div>
+            </a>
+        </div>
+
+        <div class="btn-group">
+            <a href="/pago">
+                <div class="boton color-contabilidad" id="btnLogistica">Realizar Pago</div>
+            </a>
+        </div>
         <!-- <div class="btn-group">
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" onClick="mostrarSubItem('btnLogistica','submenuLogistica')">
                 <div class="boton color-logistica" id="btnLogistica">algo x</div>

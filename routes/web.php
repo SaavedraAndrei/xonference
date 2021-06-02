@@ -12,6 +12,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaypalController;
 //-----------------------------------ADMINISTRATIVA
 use App\Http\Controllers\Administracion\PermisosController;
+use App\Http\Controllers\CertificadoController;
 //-----------------------------------USUARIOS
 use App\Http\Controllers\Usuarios\AsistenciaController;
 use App\Http\Controllers\Usuarios\ForosController;
@@ -39,7 +40,7 @@ Route::GET('/login/usuario/validar', [IndexController::class, 'validarUsuario'])
 Route::GET('usuario/cerrar_sesion', [IndexController::class, 'cerrar_sesion'])->name('login.cerrar_sesion');
 Route::GET('/registrar', [RegistrarController::class, 'Registrar'])->name('registrar');
 // Route::POST('/register', [RegistrarController::class, 'guardar_usuario'])->name('registrar.guardar_usuario');
-Route::POST('registrar/verificar_registro',[RegistrarController::class, 'verificar_usuario'])->name('registrar.verificar_usuario');
+Route::POST('registrar/verificar_registro', [RegistrarController::class, 'verificar_usuario'])->name('registrar.verificar_usuario');
 Route::GET('/login/usuario/cerrar_sesion', [IndexController::class, 'cerrar_sesion'])->name('login.cerrar_sesion');
 Route::GET('/home', [IndexController::class, 'Home'])->name('home');
 
@@ -63,7 +64,10 @@ Route::POST('/usuarios/asistencia/guardar', [AsistenciaController::class, 'regis
 Route::GET('/usuarios/foros', [ForosController::class, 'foros_usuarios'])->name('usuario.foros');
 
 //-------------------------------------------GESTION ADMINISTRATIVA---------------------------------------
-Route::GET('/general',[PermisosController::class, 'principal'])->name('administrativa.principal');
+Route::GET('/general', [PermisosController::class, 'principal'])->name('administrativa.principal');
 Route::GET('/administracion/foros', [ForosController::class, 'foros_admin'])->name('administrativa.foros');
 Route::POST('/administrativa/guardar_pregunta', [ForosController::class, 'guardar_pregunta'])->name('foros.guardar_pregunta');
 
+//----------------------------RUTAS PARA EL CERTIFICADO---------------------------------------
+Route::GET('/certificado', [CertificadoController::class, 'index'])->name('certificado');
+Route::GET('/download', [CertificadoController::class, 'download'])->name('download');

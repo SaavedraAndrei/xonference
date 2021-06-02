@@ -16,9 +16,9 @@ class CreateAsistencia extends Migration
         $this->down();
         Schema::create('asistencia', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_conferencia');
-            $table->integer('id_usuario');
-            $table->boolean('asistio');
+            $table->integer('id_conferencia')->nullable();
+            $table->integer('id_usuario')->nullable();
+            $table->boolean('asistio')->nullable();
             $table->timestamps();
         });
     }

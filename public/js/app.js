@@ -2600,6 +2600,7 @@ __webpack_require__.r(__webpack_exports__);
         id: "",
         pregunta: "",
         dni_ponente: "",
+        idEvento: "",
         modal: ""
       }
     };
@@ -2626,13 +2627,29 @@ __webpack_require__.r(__webpack_exports__);
         var table = $("#tblPreguntas");
       });
     },
+    NuevaPregunta: function NuevaPregunta(pregunta) {
+      // console.log(pregunta.id);
+      this.submited = false;
+      this.title_modal = "EDITAR PREGUNTA";
+      this.frmRegistrarPregunta.id = 0;
+      this.frmRegistrarPregunta.pregunta = " ";
+      this.frmRegistrarPregunta.idEvento = 0;
+      this.frmRegistrarPregunta.modal = "NUEVO"; //   console.log(this.frmRegistrarPregunta.modal);
+
+      document.getElementById("modalRegistrarPermiso").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalRegistrarPermiso").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display = "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
     EditarPregunta: function EditarPregunta(pregunta) {
       // console.log(pregunta.id);
       this.submited = false;
       this.title_modal = "EDITAR PREGUNTA";
       this.frmRegistrarPregunta.id = pregunta.id;
-      this.frmRegistrarPregunta.pregunta = pregunta.pregunta; //   this.frmRegistrarPregunta.areaExistente = pregunta.dni_ponente;
-
+      this.frmRegistrarPregunta.pregunta = pregunta.pregunta;
+      this.frmRegistrarPregunta.idEvento = pregunta.idEvento;
       this.frmRegistrarPregunta.modal = "EDITAR"; //   console.log(this.frmRegistrarPregunta.modal);
 
       document.getElementById("modalRegistrarPermiso").style.display = "block";
@@ -30442,7 +30459,7 @@ var render = function() {
                   attrs: { id: "btnRegistrarAsistencia" },
                   on: {
                     click: function($event) {
-                      return _vm.ResponderForo()
+                      return _vm.NuevaPregunta()
                     }
                   }
                 },

@@ -18,6 +18,7 @@ class CreateForosPreguntas extends Migration
             $table->id();
             $table->string('pregunta', 3000);
             $table->integer('dni_ponente')->nullable();
+            $table->integer('idEvento')->nullable();
             $table->timestamps();
         });
     }

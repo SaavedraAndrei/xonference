@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConferencias extends Migration
+class CreateForosRespuestas extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +14,11 @@ class CreateConferencias extends Migration
     public function up()
     {
         $this->down();
-        Schema::create('conferencias', function (Blueprint $table) {
+        Schema::create('foros_respuestas', function (Blueprint $table) {
             $table->id();
-            $table->string ('nombre',100);
-            $table->string ('tematica',100);
-            $table->string ('descripcion',100);
-            $table->dateTime('fecha_conferencia');
-            $table->integer('usuario_creacion');
-            $table->integer('usuario_actualizacion');
+            $table->string('respuesta', 10000);
+            $table->integer('dni_usuarios')->nullable();
+            $table->integer('idEvento')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreateConferencias extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('conferencias');
+        Schema::dropIfExists('foros_respuestas');
     }
 }

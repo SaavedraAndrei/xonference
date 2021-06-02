@@ -12,7 +12,7 @@
               <button
                 class="btn btn-action btn-icon-split"
                 id="btnRegistrarAsistencia"
-                @click="ResponderForo()"
+                @click="NuevaPregunta()"
               >
                 <span class="icon text-white">
                   <i class="far fa-id-badge"></i>
@@ -149,6 +149,7 @@ export default {
         id: "",
         pregunta: "",
         dni_ponente: "",
+        idEvento:"",
         modal: "",
       },
     };
@@ -174,13 +175,31 @@ export default {
         var table = $("#tblPreguntas")
       });
     },
+    NuevaPregunta(pregunta) {
+      // console.log(pregunta.id);
+      this.submited = false;
+      this.title_modal = "EDITAR PREGUNTA";
+      this.frmRegistrarPregunta.id = 0;
+      this.frmRegistrarPregunta.pregunta = " ";
+      this.frmRegistrarPregunta.idEvento = 0;
+      this.frmRegistrarPregunta.modal = "NUEVO";
+      //   console.log(this.frmRegistrarPregunta.modal);
+
+      document.getElementById("modalRegistrarPermiso").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalRegistrarPermiso").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display =
+          "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
     EditarPregunta(pregunta) {
       // console.log(pregunta.id);
       this.submited = false;
       this.title_modal = "EDITAR PREGUNTA";
       this.frmRegistrarPregunta.id = pregunta.id;
       this.frmRegistrarPregunta.pregunta = pregunta.pregunta;
-      //   this.frmRegistrarPregunta.areaExistente = pregunta.dni_ponente;
+      this.frmRegistrarPregunta.idEvento = pregunta.idEvento;
       this.frmRegistrarPregunta.modal = "EDITAR";
       //   console.log(this.frmRegistrarPregunta.modal);
 

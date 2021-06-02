@@ -14,5 +14,6 @@ class Foro_pregunta extends Model
     protected $fillable = [
         'pregunta', 
         'dni_ponente',
+        'idEvento',
     ];  
 }

@@ -16,7 +16,10 @@ class CreateAsistencia extends Migration
         $this->down();
         Schema::create('asistencias', function (Blueprint $table) {
             $table->id();
+            $table->integer('idConferencia')->nullable();
             $table->dateTime('hora_marcado',$precision = 0);
+            $table->integer('dni');
+            $table->boolean('asistio')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateAsistencia extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asistencia');
+        Schema::dropIfExists('asistencias');
     }
 }

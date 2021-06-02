@@ -14,5 +14,6 @@ class Foro_respuesta extends Model
     protected $fillable = [
         'respuesta', 
         'dni_usuarios',
+        'idEvento',
     ];  
 }

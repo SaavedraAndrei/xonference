@@ -17,7 +17,7 @@
                   type="text"
                   id="inpUsuario"
                   name="nombres"
-                  class="form-control center"s
+                  class="form-control center"
                   :value="pregunta_muostrar"
                   disabled
                 ></textarea>

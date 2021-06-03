@@ -28,6 +28,7 @@
                     <th>EDITAR</th>
                     <th>PREGUNTA</th>
                     <th>PONENTE</th>
+                    <th>CONFERENCIA</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -46,7 +47,10 @@
                       {{ pregunta.pregunta }}
                     </td>
                     <td class="table-bordered" align="left">
-                      {{ pregunta.dni_ponente }}
+                      {{ pregunta.nombre + " " +pregunta.apellidoPaterno }}
+                    </td>
+                    <td class="table-bordered" align="left">
+                      {{ pregunta.nombreConferencia }}
                     </td>
                   </tr>
                 </tbody>
@@ -58,7 +62,7 @@
         </div>
 
         <!-- The Modal -->
-        <div id="modalRegistrarPermiso" class="modal">
+        <div id="modalPreguntaForo" class="modal">
           <!-- Modal content -->
           <div class="modal-content w-36">
             <div class="modal-body">
@@ -91,13 +95,33 @@
                         <textarea
                           class="form-control"
                           type="text"
-                          name="permiso"
-                          style="max-width: 400px"
-                          maxlength="150"
-                          id="txtNombrePermiso"
+                          name="pregunta"
+                          id="txtNombrePregunta"
                           v-model="frmRegistrarPregunta.pregunta"
-                          placeholder="Ingrese el nombre del permiso"
+                          placeholder="Ingrese la pregunta"
                         ></textarea>
+                      </div>
+                      <div class="col form-group">
+                        <label class="form-control-label label-title"
+                          >Conferencia</label
+                        >
+                        <select
+                          class="form-control center"
+                          id="alcEventos"
+                          style="max-width: 400px"
+                          v-model="frmRegistrarPregunta.idEvento"
+                        >
+                          <option value="0" selected>
+                            Seleccione...
+                          </option>
+                          <option
+                            v-for="evento in eventos"
+                            :key="evento.id"
+                            v-bind:value="evento.id"
+                          >
+                            {{ evento.nombre }}
+                          </option>
+                        </select>
                       </div>
                     </form>
                     <hr />
@@ -134,11 +158,13 @@
 </template>
 
 <script>
+import { required } from "vuelidate/lib/validators";
 import layout from "./Components/layout_administrativa";
 export default {
   components: { layout },
   props: {
     preguntas: Array,
+    eventos: Array,
   },
   data() {
     return {
@@ -149,7 +175,7 @@ export default {
         id: "",
         pregunta: "",
         dni_ponente: "",
-        idEvento:"",
+        idEvento: 0,
         modal: "",
       },
     };
@@ -163,31 +189,83 @@ export default {
       }
     }
   },
-    // watch:{
-    //   listar_preguntas() {
-    //     $("#tblPreguntas").DataTable().destroy();
-    //    this.TablaPreguntas();
-    //   }
-    // },
+  // watch:{
+  //   listar_preguntas() {
+  //     $("#tblPreguntas").DataTable().destroy();
+  //    this.TablaPreguntas();
+  //   }
+  // },
   methods: {
     TablaPreguntas() {
       this.$nextTick(() => {
-        var table = $("#tblPreguntas")
+        var table = $("#tblPreguntas").DataTable({
+          scrollCollapse: true,
+          fixedHeader: true,
+          language: {
+            retrieve: true,
+            decimal: "",
+            emptyTable: "No hay datos disponibles en la tabla",
+            info: "Mostrando del _START_ al _END_ de _TOTAL_ registros",
+            infoEmpty: "No se encontraron registros",
+            infoFiltered: "(filtrado de _MAX_ registros)",
+            infoPostFix: "",
+            thousands: ",",
+            lengthMenu: "Agrupar por _MENU_ filas",
+            loadingRecords: "Cargando...",
+            processing: "Procesando...",
+            search: "Buscar:",
+            zeroRecords: "No se encontraron registros",
+            paginate: {
+              first: "Primera",
+              last: "Ultima",
+              next:
+                '<i class="fas fa-chevron-circle-right" style="font-size:20px;"></i>',
+              previous:
+                '<i class="fas fa-chevron-circle-left" style="font-size:20px;"></i>',
+            },
+            aria: {
+              sortAscending: ": activar para ordenar de forma ascendente",
+              sortDescending: ": activar para ordenar de forma descendente",
+            },
+          },
+          responsive: true,
+          dom:
+            '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
+          buttons: [
+            {
+              extend: "excelHtml5",
+              text: '<i class="fas fa-file-excel"></i> ',
+              titleAttr: "Exportar a Excel",
+              className: "btn btn-action",
+            },
+            {
+              extend: "pdfHtml5",
+              text: '<i class="fas fa-file-pdf"></i> ',
+              titleAttr: "Exportar a PDF",
+              className: "btn btn-cancel",
+            },
+            {
+              extend: "print",
+              text: '<i class="fa fa-print"></i> ',
+              titleAttr: "Imprimir",
+              className: "btn btn-action",
+            },
+          ],
+        });
       });
     },
     NuevaPregunta(pregunta) {
       // console.log(pregunta.id);
       this.submited = false;
-      this.title_modal = "EDITAR PREGUNTA";
+      this.title_modal = "CREAR PREGUNTA";
       this.frmRegistrarPregunta.id = 0;
-      this.frmRegistrarPregunta.pregunta = " ";
+      this.frmRegistrarPregunta.pregunta = "";
       this.frmRegistrarPregunta.idEvento = 0;
       this.frmRegistrarPregunta.modal = "NUEVO";
-      //   console.log(this.frmRegistrarPregunta.modal);
 
-      document.getElementById("modalRegistrarPermiso").style.display = "block";
+      document.getElementById("modalPreguntaForo").style.display = "block";
       $("#btnCancelar").click(function () {
-        document.getElementById("modalRegistrarPermiso").style.display = "none";
+        document.getElementById("modalPreguntaForo").style.display = "none";
         parent.document.getElementById("footer-navigator").style.display =
           "flex";
       });
@@ -201,11 +279,10 @@ export default {
       this.frmRegistrarPregunta.pregunta = pregunta.pregunta;
       this.frmRegistrarPregunta.idEvento = pregunta.idEvento;
       this.frmRegistrarPregunta.modal = "EDITAR";
-      //   console.log(this.frmRegistrarPregunta.modal);
 
-      document.getElementById("modalRegistrarPermiso").style.display = "block";
+      document.getElementById("modalPreguntaForo").style.display = "block";
       $("#btnCancelar").click(function () {
-        document.getElementById("modalRegistrarPermiso").style.display = "none";
+        document.getElementById("modalPreguntaForo").style.display = "none";
         parent.document.getElementById("footer-navigator").style.display =
           "flex";
       });
@@ -266,7 +343,7 @@ export default {
                     // self.FiltrarPermisos();
                     // $("#tblPreguntas").destroy();
                     // self.TablaPreguntas();
-                    $("#modalRegistrarPermiso").css("display", "none");
+                    $("#modalPreguntaForo").css("display", "none");
                     $("#footer-navigator").css("display", "flex");
                   },
                 });

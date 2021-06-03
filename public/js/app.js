@@ -2583,13 +2583,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     layout: _Components_layout_administrativa__WEBPACK_IMPORTED_MODULE_0__.default
   },
   props: {
-    preguntas: Array
+    preguntas: Array,
+    eventos: Array
   },
   data: function data() {
     return {
@@ -2600,7 +2626,7 @@ __webpack_require__.r(__webpack_exports__);
         id: "",
         pregunta: "",
         dni_ponente: "",
-        idEvento: "",
+        idEvento: 0,
         modal: ""
       }
     };
@@ -2624,21 +2650,66 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     TablaPreguntas: function TablaPreguntas() {
       this.$nextTick(function () {
-        var table = $("#tblPreguntas");
+        var table = $("#tblPreguntas").DataTable({
+          scrollCollapse: true,
+          fixedHeader: true,
+          language: {
+            retrieve: true,
+            decimal: "",
+            emptyTable: "No hay datos disponibles en la tabla",
+            info: "Mostrando del _START_ al _END_ de _TOTAL_ registros",
+            infoEmpty: "No se encontraron registros",
+            infoFiltered: "(filtrado de _MAX_ registros)",
+            infoPostFix: "",
+            thousands: ",",
+            lengthMenu: "Agrupar por _MENU_ filas",
+            loadingRecords: "Cargando...",
+            processing: "Procesando...",
+            search: "Buscar:",
+            zeroRecords: "No se encontraron registros",
+            paginate: {
+              first: "Primera",
+              last: "Ultima",
+              next: '<i class="fas fa-chevron-circle-right" style="font-size:20px;"></i>',
+              previous: '<i class="fas fa-chevron-circle-left" style="font-size:20px;"></i>'
+            },
+            aria: {
+              sortAscending: ": activar para ordenar de forma ascendente",
+              sortDescending: ": activar para ordenar de forma descendente"
+            }
+          },
+          responsive: true,
+          dom: '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
+          buttons: [{
+            extend: "excelHtml5",
+            text: '<i class="fas fa-file-excel"></i> ',
+            titleAttr: "Exportar a Excel",
+            className: "btn btn-action"
+          }, {
+            extend: "pdfHtml5",
+            text: '<i class="fas fa-file-pdf"></i> ',
+            titleAttr: "Exportar a PDF",
+            className: "btn btn-cancel"
+          }, {
+            extend: "print",
+            text: '<i class="fa fa-print"></i> ',
+            titleAttr: "Imprimir",
+            className: "btn btn-action"
+          }]
+        });
       });
     },
     NuevaPregunta: function NuevaPregunta(pregunta) {
       // console.log(pregunta.id);
       this.submited = false;
-      this.title_modal = "EDITAR PREGUNTA";
+      this.title_modal = "CREAR PREGUNTA";
       this.frmRegistrarPregunta.id = 0;
-      this.frmRegistrarPregunta.pregunta = " ";
+      this.frmRegistrarPregunta.pregunta = "";
       this.frmRegistrarPregunta.idEvento = 0;
-      this.frmRegistrarPregunta.modal = "NUEVO"; //   console.log(this.frmRegistrarPregunta.modal);
-
-      document.getElementById("modalRegistrarPermiso").style.display = "block";
+      this.frmRegistrarPregunta.modal = "NUEVO";
+      document.getElementById("modalPreguntaForo").style.display = "block";
       $("#btnCancelar").click(function () {
-        document.getElementById("modalRegistrarPermiso").style.display = "none";
+        document.getElementById("modalPreguntaForo").style.display = "none";
         parent.document.getElementById("footer-navigator").style.display = "flex";
       });
       parent.document.getElementById("footer-navigator").style.display = "none";
@@ -2650,11 +2721,10 @@ __webpack_require__.r(__webpack_exports__);
       this.frmRegistrarPregunta.id = pregunta.id;
       this.frmRegistrarPregunta.pregunta = pregunta.pregunta;
       this.frmRegistrarPregunta.idEvento = pregunta.idEvento;
-      this.frmRegistrarPregunta.modal = "EDITAR"; //   console.log(this.frmRegistrarPregunta.modal);
-
-      document.getElementById("modalRegistrarPermiso").style.display = "block";
+      this.frmRegistrarPregunta.modal = "EDITAR";
+      document.getElementById("modalPreguntaForo").style.display = "block";
       $("#btnCancelar").click(function () {
-        document.getElementById("modalRegistrarPermiso").style.display = "none";
+        document.getElementById("modalPreguntaForo").style.display = "none";
         parent.document.getElementById("footer-navigator").style.display = "flex";
       });
       parent.document.getElementById("footer-navigator").style.display = "none";
@@ -2712,7 +2782,7 @@ __webpack_require__.r(__webpack_exports__);
                   // $("#tblPreguntas").destroy();
                   // self.TablaPreguntas();
 
-                  $("#modalRegistrarPermiso").css("display", "none");
+                  $("#modalPreguntaForo").css("display", "none");
                   $("#footer-navigator").css("display", "flex");
                 }
               });
@@ -3806,6 +3876,59 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -3832,7 +3955,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     ResponderForo: function ResponderForo() {
-      console.log('hola'), this.submited = false;
+      console.log("hola"), this.submited = false;
       this.title_modal = "RESPUESTA";
       this.frmResponderForo.id = 0;
       this.frmResponderForo.respuesta = "";
@@ -30489,7 +30612,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("th", [_vm._v("PREGUNTA")]),
                       _vm._v(" "),
-                      _c("th", [_vm._v("PONENTE")])
+                      _c("th", [_vm._v("PONENTE")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("CONFERENCIA")])
                     ])
                   ]),
                   _vm._v(" "),
@@ -30554,7 +30679,26 @@ var render = function() {
                           [
                             _vm._v(
                               "\n                    " +
-                                _vm._s(pregunta.dni_ponente) +
+                                _vm._s(
+                                  pregunta.nombre +
+                                    " " +
+                                    pregunta.apellidoPaterno
+                                ) +
+                                "\n                  "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            staticClass: "table-bordered",
+                            attrs: { align: "left" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(pregunta.nombreConferencia) +
                                 "\n                  "
                             )
                           ]
@@ -30575,7 +30719,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "modal", attrs: { id: "modalRegistrarPermiso" } },
+          { staticClass: "modal", attrs: { id: "modalPreguntaForo" } },
           [
             _c("div", { staticClass: "modal-content w-36" }, [
               _c("div", { staticClass: "modal-body" }, [
@@ -30687,13 +30831,11 @@ var render = function() {
                                   }
                                 ],
                                 staticClass: "form-control",
-                                staticStyle: { "max-width": "400px" },
                                 attrs: {
                                   type: "text",
-                                  name: "permiso",
-                                  maxlength: "150",
-                                  id: "txtNombrePermiso",
-                                  placeholder: "Ingrese el nombre del permiso"
+                                  name: "pregunta",
+                                  id: "txtNombrePregunta",
+                                  placeholder: "Ingrese la pregunta"
                                 },
                                 domProps: {
                                   value: _vm.frmRegistrarPregunta.pregunta
@@ -30711,6 +30853,85 @@ var render = function() {
                                   }
                                 }
                               })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col form-group" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-control-label label-title"
+                                },
+                                [_vm._v("Conferencia")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.frmRegistrarPregunta.idEvento,
+                                      expression:
+                                        "frmRegistrarPregunta.idEvento"
+                                    }
+                                  ],
+                                  staticClass: "form-control center",
+                                  staticStyle: { "max-width": "400px" },
+                                  attrs: { id: "alcEventos" },
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.frmRegistrarPregunta,
+                                        "idEvento",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "0", selected: "" } },
+                                    [
+                                      _vm._v(
+                                        "\n                          Seleccione...\n                        "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._l(_vm.eventos, function(evento) {
+                                    return _c(
+                                      "option",
+                                      {
+                                        key: evento.id,
+                                        domProps: { value: evento.id }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                          " +
+                                            _vm._s(evento.nombre) +
+                                            "\n                        "
+                                        )
+                                      ]
+                                    )
+                                  })
+                                ],
+                                2
+                              )
                             ])
                           ]
                         ),
@@ -31834,14 +32055,102 @@ var render = function() {
           _c("div", { staticClass: "card-body card-block" }, [
             _c("div", { staticClass: "form-row" }, [
               _c("div", { staticClass: "form-group col-xs-4" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-control-label label-title",
+                    attrs: { for: "lblUsuario" }
+                  },
+                  [_vm._v("PREGUNTA")]
+                ),
+                _vm._v(" "),
+                _c("textarea", {
+                  staticClass: "form-control center",
+                  staticStyle: { width: "250px" },
+                  attrs: {
+                    type: "text",
+                    id: "inpUsuario",
+                    name: "nombres",
+                    disabled: ""
+                  },
+                  domProps: { value: _vm.pregunta_muostrar }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { a: "", type: "hidden", name: "dni" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("label", { staticClass: "form-control-label" }, [
+              _vm._v(
+                "------------------------------------------------------------------------------------------------------------------------"
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "form-group col-xs-4" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-control-label label-title",
+                    attrs: { for: "lblAgencia" }
+                  },
+                  [_vm._v("CONFERENCIA")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control center",
+                  staticStyle: { width: "250px" },
+                  attrs: {
+                    type: "text",
+                    id: "inpAgencia",
+                    name: "conferencia",
+                    disabled: ""
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-group col-xs-4" },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-control-label label-title",
+                      attrs: { for: "lblCargo" }
+                    },
+                    [_vm._v("CARGO")]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.datosUsuarios, function(datosUsuario) {
+                    return _c("input", {
+                      key: datosUsuario.dni,
+                      staticClass: "form-control center",
+                      staticStyle: { width: "250px" },
+                      attrs: {
+                        type: "text",
+                        id: "inpCargo",
+                        name: "cargos",
+                        disabled: ""
+                      },
+                      domProps: { value: datosUsuario.nombre_cargo }
+                    })
+                  })
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "form-group col-xs-4" }, [
                 _c("label", {
                   staticClass: "form-control-label label-title",
                   attrs: { for: "text-input" }
                 }),
-                _vm._v(
-                  _vm._s(_vm.pregunta_muostrar) +
-                    "\n              \n              "
-                )
+                _vm._v(_vm._s(_vm.pregunta_muostrar) + "\n\n              ")
               ])
             ])
           ]),

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Administrativa;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,18 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Evento extends Model
 {
     use HasFactory;
-    protected $table = 'eventos';
+    protected $table = 'ponentes';
     protected $primaryKey = "id";
 
     protected $fillable = [
         'nombre',
-        'tematica',
+        'apellidoPaterno',
+        'apellidoMaterno',
+        'email',
+        'dni',
         'descripcion',
-        'fecha_evento',
-        'hora_evento',
-        'hora_fin',
-        'idPonente',
-        'idCategoria',
+        'idEvento',
         'usuario_creacion',
         'usuario_actualizacion'
     ];  

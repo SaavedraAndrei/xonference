@@ -20,8 +20,10 @@ class CreatePonentes extends Migration
             $table->string('apellidoPaterno', 75);
             $table->string('apellidoMaterno', 75);
             $table->string('email', 150);
-            $table->string('descripcion', 500);
-            //$table->image('foto');
+            $table->integer('dni');
+            $table->string('descripcion', 500)->nullable();
+            $table->integer('usuario_creacion')->nullable();
+            $table->integer('usuario_actualizacion')->nullable();
             $table->timestamps();
         });
     }

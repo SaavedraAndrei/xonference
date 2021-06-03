@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Congreso;
+use Illuminate\Support\Facades\View;
 //-----------------------
 /*
 Nos permite enrutar facilmente plantillas o interfaces de Vue.js
@@ -33,7 +34,7 @@ class IndexController extends Controller
         session()->forget('email');
         session()->forget('clave');
         session()->forget('nombres');
-        return view('welcome', array('congresos' => $congresos ));
+        return view('welcome', array('congresos' => $congresos));
     }
 
     public function Login()
@@ -51,12 +52,18 @@ class IndexController extends Controller
     public function Home($mensaje = "ACEPTADO")
     {
         $x = session()->all();
+        $dni_registrado = Session::get('dni_registrado');
+
+        $pagado = Usuario::select('pagado')->where('dni', $dni_registrado)->get();
+
+
         if (empty($x['email'])) {
             //cambiar el return para segurar el ingresp por login
             return view('login');
         } else {
             // $version = DB::select("SELECT * FROM versiones ORDER by id_version DESC LIMIT 1");
-            return view('home')->with('mensaje', $mensaje);
+            // return view('home')->with('mensaje', $mensaje);
+            return View::make('home', array('mensaje' => $mensaje, 'pagado' => $pagado));
         }
     }
 
@@ -95,6 +102,8 @@ class IndexController extends Controller
                 session(['nombres' => $nombres]);
                 session(['email' => $email]);
                 session(['clave' => $clave]);
+                Session::put('dni_registrado', $dni);
+                Session::put('nombre_usuario', $nombres);
                 return redirect('/home');
             } else {
                 Session::flash('email_no_valido', 'Contraseña incorrecta, intente nuevamente');

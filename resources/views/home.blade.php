@@ -53,6 +53,18 @@
     }
     ?>
 
+    @if (session('status'))
+    <script>
+        Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Gracias! El pago se ha realizado correctamente',
+        showConfirmButton: false,
+        timer: 2500
+        });
+    </script>
+    @endif
+
 
     <header id="header" class="header">
         <div class="top-left">
@@ -97,11 +109,13 @@
             </ul> -->
         </div>
 
-        <div class="btn-group">
-            <a href="/download" target="_blank" >
-                <div class="boton color-logistica" id="btnLogistica">Certificado</div>
-            </a>
-        </div>
+        @if ($pagado[0]->pagado === 1)
+            <div class="btn-group">
+                <a href="/download" target="_blank" >
+                    <div class="boton color-logistica" id="btnLogistica">Certificado</div>
+                </a>
+            </div>
+        @endif
 
         <div class="btn-group">
             <a href="/pago">

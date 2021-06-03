@@ -138,7 +138,7 @@ class PaymentController extends Controller
                 ->update(['pagado' => 1, 'totalPago' => $congreso->precio, 'id_pago' => $result->getId(), 'fecha_pago' => $result->getCreateTime()]);
 
             $status = 'Gracias! El pago a través de Paypal se ha realizado correctamente';
-            return redirect('/')->with(compact('status'));
+            return redirect('/home')->with(compact('status'));
         }
 
         $status = 'Lo sentimos! El pago a través de Paypal no se pudo realizar';

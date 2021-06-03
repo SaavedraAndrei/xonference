@@ -33,7 +33,7 @@ class IndexController extends Controller
         session()->forget('email');
         session()->forget('clave');
         session()->forget('nombres');
-        return view('welcome', array('congresos' => $congresos ));
+        return view('welcome', array('congresos' => $congresos));
     }
 
     public function Login()
@@ -95,6 +95,8 @@ class IndexController extends Controller
                 session(['nombres' => $nombres]);
                 session(['email' => $email]);
                 session(['clave' => $clave]);
+                Session::put('dni_registrado', $dni);
+                Session::put('nombre_usuario', $nombres);
                 return redirect('/home');
             } else {
                 Session::flash('email_no_valido', 'Contraseña incorrecta, intente nuevamente');

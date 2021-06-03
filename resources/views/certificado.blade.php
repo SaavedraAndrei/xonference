@@ -29,7 +29,7 @@
 
         <p style="text-align: center; margin-top: 45px; font-size: 20px">Por medio del presente reconocemos a:</p>
 
-        <H2 style="text-align: center; margin-top: 45px; font-size: 45px;">{{$ponentes->nombre}} {{$ponentes->apellidoPaterno}} {{$ponentes->apellidoMaterno}}</H2>
+        <H2 style="text-align: center; margin-top: 45px; font-size: 45px;">{{$nombre_usuario}}</H2>
 
         <P style="margin-left: 350px; margin-top: 45px; font-size: 20px; width: 360px">por haber participado en el congreso de desarrollo y diseño de aplicaciones web</P>
 

@@ -53,6 +53,18 @@
     }
     ?>
 
+    @if (session('status'))
+    <script>
+        Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Gracias! El pago se ha realizado correctamente',
+        showConfirmButton: false,
+        timer: 2500
+        });
+    </script>
+    @endif
+
 
     <header id="header" class="header">
         <div class="top-left">

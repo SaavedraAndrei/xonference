@@ -51,7 +51,9 @@ class RegistrarController extends Controller
                                             'email' => $email,
                                             'clave' => $clave,
                                         ));
-                                        Permisos_Usuario::create(Array(
+
+
+                                        Permisos_Usuario::create(array(
                                             'dni' => $dni,
                                             'id_permiso' => 1,
                                         ));

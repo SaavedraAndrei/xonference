@@ -102,7 +102,7 @@
             <li>
                 <div class="invitado">
                     <a class="invitado-info" href="#invitado{{$ponente->id}}">
-                        <img src="/img/invitado{{$ponente->id}}.jpg" alt="Imagen invitado">
+                        <img src="/img/ponentes/invitado{{$ponente->id}}.jpg" alt="Imagen invitado">
                         <p>{{$ponente->nombre}} {{$ponente->apellidoPaterno}} {{$ponente->apellidoMaterno}}</p>
                     </a>
                 </div>

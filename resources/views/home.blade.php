@@ -109,11 +109,13 @@
             </ul> -->
         </div>
 
-        <div class="btn-group">
-            <a href="/download" target="_blank" >
-                <div class="boton color-logistica" id="btnLogistica">Certificado</div>
-            </a>
-        </div>
+        @if ($pagado[0]->pagado === 1)
+            <div class="btn-group">
+                <a href="/download" target="_blank" >
+                    <div class="boton color-logistica" id="btnLogistica">Certificado</div>
+                </a>
+            </div>
+        @endif
 
         <div class="btn-group">
             <a href="/pago">

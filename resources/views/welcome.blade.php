@@ -71,7 +71,7 @@
                         <p class="ciudad"><i class="fa fa-map-marker" aria-hidden="true"></i> Huancayo, Perú</p>
                     </div>
 
-                    <h1 class="nombre-sitio">App Congreso</h1>
+                    <h1 class="nombre-sitio">Xonference</h1>
                     <p class="slogan">Los mejores congresos de <span>Ingeniería</span></p>
                 </div>
                 <!--.informacion-evento-->

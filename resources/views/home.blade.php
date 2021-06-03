@@ -109,17 +109,24 @@
             </ul>
         </div> -->
         <!-- <div class="btn-group">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" onClick="mostrarSubItem('btnContabilidad','submenuContabilidad')">
-                <div class="boton color-contabilidad" id="btnContabilidad">algo x</div>
+            <a class="" data-toggle="dropdown" href="{{ route ('viewfile')}}" >
+                <div class="boton color-contabilidad" id="btnContabilidad">Subir Recursos</div>
                 <span class="caret"></span>
+            </a> -->
+            <!-- <ul class="dropdown-menu" id="submenuContabilidad">
+                <div class="sub_boton color-contabilidad"><a class="sub_text" href="#"></a></div>
+                <div class="sub_boton color-contabilidad"><a class="sub_text" href="#"></a></div>
+                <div class="sub_boton color-contabilidad"><a class="sub_text" href="#"></a></div>
+                <div class="sub_boton color-contabilidad"><a class="sub_text" href="#"></a></div>
+            </ul> -->
+        <!-- </div> -->
+
+        <div class="btn-group">
+            <a href="/file"  >
+                <div class="boton color-logistica" id="btnLogistica">Subir Recursos</div>
             </a>
-            <ul class="dropdown-menu" id="submenuContabilidad">
-                <div class="sub_boton color-contabilidad"><a class="sub_text" href="#"></a></div>
-                <div class="sub_boton color-contabilidad"><a class="sub_text" href="#"></a></div>
-                <div class="sub_boton color-contabilidad"><a class="sub_text" href="#"></a></div>
-                <div class="sub_boton color-contabilidad"><a class="sub_text" href="#"></a></div>
-            </ul>
-        </div> -->
+        </div>
+
     </div>
 
     

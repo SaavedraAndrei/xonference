@@ -11,6 +11,7 @@ use App\Http\Controllers\Usuarios\AsistenciaController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\ArchivoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +57,10 @@ Route::GET('/usuarios/principal', [AsistenciaController::class, 'principal'])->n
 Route::GET('/usuarios/asistencia', [AsistenciaController::class, 'asistencia_usuarios'])->name('usuario.asistencia');
 Route::POST('/usuarios/asistencia/verificar', [AsistenciaController::class, 'verificar_usuario_asistencia'])->name('asistencia.verificar');
 Route::POST('/usuarios/asistencia/guardar', [AsistenciaController::class, 'registrar_asistencia'])->name('asistencia.registrar');
+
+//----------------------------RUTAS PARA LA CARGA DE RECURSOS----------------------------------------
+Route::GET('/file',[ArchivoController::class, 'index'])->name('viewfile');
+Route::GET('/file/upload',[ArchivoController::class, 'create'])->name('formfile');
+Route::POST('/file/upload',[ArchivoController::class, 'store'])->name('uploadfile');
+Route::GET('/file/download/{id}',[ArchivoController::class, 'show'])->name('downloadfile');
+

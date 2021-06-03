@@ -10,10 +10,62 @@
           <div class="card-body card-block">
             <div class="form-row">
               <div class="form-group col-xs-4">
-                <label for="text-input" 
-                class="form-control-label label-title"
-                  />{{pregunta_muostrar}}
-                
+                <label for="lblUsuario" class="form-control-label label-title"
+                  >PREGUNTA</label
+                >
+                <textarea
+                  type="text"
+                  id="inpUsuario"
+                  name="nombres"
+                  class="form-control center"s
+                  :value="pregunta_muostrar"
+                  disabled
+                ></textarea>
+                <input  a type="hidden" name="dni" class="form-control" />
+              </div>
+            </div>
+             <label class="form-control-label"
+                >------------------------------------------------------------------------------------------------------------------------</label
+              >
+            <div class="form-row">
+              <div class="form-group col-xs-4">
+               
+                <label for="lblAgencia" class="form-control-label label-title"
+                  >CONFERENCIA</label
+                >
+                <input
+                  type="text"
+                  id="inpAgencia"
+                  name="conferencia"
+                  class="form-control center"
+                  style="width: 250px"
+                  disabled
+                />
+              </div>
+              <div class="form-group col-xs-4">
+                <label for="lblCargo" class="form-control-label label-title"
+                  >CARGO</label
+                >
+                <input
+                  type="text"
+                  id="inpCargo"
+                  name="cargos"
+                  class="form-control center"
+                  style="width: 250px"
+                  v-for="datosUsuario in datosUsuarios"
+                  :key="datosUsuario.dni"
+                  :value="datosUsuario.nombre_cargo"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-xs-4">
+                <label
+                  for="text-input"
+                  class="form-control-label label-title"
+                />{{ pregunta_muostrar }}
+
                 <!-- <input
                   type="text"
                   id="inpPregunta"
@@ -134,8 +186,8 @@ export default {
       submited: false,
       title_modal: "RESPUESTA",
       pregunta_muostrar: null,
-      frmResponderForo:{
-        id:"",
+      frmResponderForo: {
+        id: "",
         respuesta: "",
         modal: "",
       },
@@ -147,8 +199,7 @@ export default {
   },
   methods: {
     ResponderForo() {
-      console.log('hola'),
-      this.submited = false;
+      console.log("hola"), (this.submited = false);
       this.title_modal = "RESPUESTA";
       this.frmResponderForo.id = 0;
       this.frmResponderForo.respuesta = "";
@@ -157,11 +208,12 @@ export default {
       document.getElementById("modalRegistrarPermiso").style.display = "block";
       $("#btnCancelar").click(function () {
         document.getElementById("modalRegistrarPermiso").style.display = "none";
-        parent.document.getElementById("footer-navigator").style.display = "flex";
+        parent.document.getElementById("footer-navigator").style.display =
+          "flex";
       });
       parent.document.getElementById("footer-navigator").style.display = "none";
     },
-  }
+  },
 };
 </script>
 

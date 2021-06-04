@@ -14,6 +14,7 @@ use App\Http\Controllers\PaypalController;
 //-----------------------------------ADMINISTRATIVA
 use App\Http\Controllers\Administracion\PermisosController;
 use App\Http\Controllers\CertificadoController;
+use App\Http\Controllers\Administracion\PonentesController;
 //-----------------------------------USUARIOS
 use App\Http\Controllers\Usuarios\AsistenciaController;
 use App\Http\Controllers\Usuarios\ForosController;
@@ -63,9 +64,11 @@ Route::GET('/usuarios/asistencia', [AsistenciaController::class, 'asistencia_usu
 Route::POST('/usuarios/asistencia/verificar', [AsistenciaController::class, 'verificar_usuario_asistencia'])->name('asistencia.verificar');
 Route::POST('/usuarios/asistencia/guardar', [AsistenciaController::class, 'registrar_asistencia'])->name('asistencia.registrar');
 Route::GET('/usuarios/foros', [ForosController::class, 'foros_usuarios'])->name('usuario.foros');
+Route::POST('/usuarios/foros/guardar_respuesta', [ForosController::class, 'guardar_respuesta'])->name('foros.guardar_respuesta');
 
 //-------------------------------------------GESTION ADMINISTRATIVA---------------------------------------
 Route::GET('/general', [PermisosController::class, 'principal'])->name('administrativa.principal');
+Route::GET('/administrativa/ponentes', [PonentesController::class, 'Ponentes'])->name('administrativa.ponentes');
 Route::GET('/administracion/foros', [ForosController::class, 'foros_admin'])->name('administrativa.foros');
 Route::POST('/administrativa/guardar_pregunta', [ForosController::class, 'guardar_pregunta'])->name('foros.guardar_pregunta');
 

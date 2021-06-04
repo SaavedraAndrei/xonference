@@ -125,7 +125,6 @@
                         <p class="titulo">{{$evento->evento}}</p>
                         <p class="hora">
                             <i class="fa fa-clock-o" aria-hidden="true"></i>
-                            {{$evento->fecha_evento}}
                             {{$evento->hora_evento}}
                         </p>
                         <p>

@@ -212,7 +212,7 @@
             <li>
                 <div class="invitado">
                     <a class="invitado-info" href="#invitado1">
-                        <img src="/img/invitado1.jpg" alt="Imagen invitado">
+                        <img src="/img/ponentes/invitado1.jpg" alt="Imagen invitado">
                         <p>Rafael Bautista</p>
                     </a>
                 </div>
@@ -223,7 +223,7 @@
 
                 <div class="invitado-info" id="invitado1">
                     <h2>Rafael </h2>
-                    <img src="img/invitado1.jpg" alt="">
+                    <img src="img/ponentes/invitado1.jpg" alt="">
                     <p>Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus massa non molestie.</p>
                 </div>
 
@@ -233,7 +233,7 @@
             <li>
                 <div class="invitado">
                     <a class="invitado-info" href="#invitado2">
-                        <img src="/img/invitado2.jpg" alt="Imagen invitado">
+                        <img src="/img/ponentes/invitado2.jpg" alt="Imagen invitado">
                         <p>Shari Herrera</p>
                     </a>
                 </div>
@@ -244,7 +244,7 @@
 
                 <div class="invitado-info" id="invitado2">
                     <h2>Shari</h2>
-                    <img src="img/invitado2.jpg" alt="">
+                    <img src="img/ponentes/invitado2.jpg" alt="">
                     <p>Curabitur urna metus, placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula. Morbi porttitor tempus euismod.</p>
                 </div>
 
@@ -254,7 +254,7 @@
             <li>
                 <div class="invitado">
                     <a class="invitado-info" href="#invitado3">
-                        <img src="/img/invitado3.jpg" alt="Imagen invitado">
+                        <img src="/img/ponentes/invitado3.jpg" alt="Imagen invitado">
                         <p>Juan Sanchez</p>
                     </a>
                 </div>
@@ -265,7 +265,7 @@
 
                 <div class="invitado-info" id="invitado3">
                     <h2>Juan</h2>
-                    <img src="img/invitado3.jpg" alt="">
+                    <img src="img/ponentes/invitado3.jpg" alt="">
                     <p>placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula. Morbi porttitor tempus euismod.</p>
                 </div>
 
@@ -275,7 +275,7 @@
             <li>
                 <div class="invitado">
                     <a class="invitado-info" href="#invitado4">
-                        <img src="/img/invitado4.jpg" alt="Imagen invitado">
+                        <img src="/img/ponentes/invitado4.jpg" alt="Imagen invitado">
                         <p>Susana Rivera</p>
                     </a>
                 </div>
@@ -286,7 +286,7 @@
 
                 <div class="invitado-info" id="invitado4">
                     <h2>Susana</h2>
-                    <img src="img/invitado4.jpg" alt="">
+                    <img src="img/ponentes/invitado4.jpg" alt="">
                     <p>Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus</p>
                 </div>
 
@@ -296,7 +296,7 @@
             <li>
                 <div class="invitado">
                     <a class="invitado-info" href="#invitado5">
-                        <img src="/img/invitado5.jpg" alt="Imagen invitado">
+                        <img src="/img/ponentes/invitado5.jpg" alt="Imagen invitado">
                         <p>Harold Garcia</p>
                     </a>
                 </div>
@@ -307,7 +307,7 @@
 
                 <div class="invitado-info" id="invitado5">
                     <h2>Harold</h2>
-                    <img src="img/invitado5.jpg" alt="">
+                    <img src="img/ponentes/invitado5.jpg" alt="">
                     <p>placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula. Morbi porttitor tempus euismod.</p>
                 </div>
 
@@ -317,7 +317,7 @@
             <li>
                 <div class="invitado">
                     <a class="invitado-info" href="#invitado6">
-                        <img src="/img/invitado6.jpg" alt="Imagen invitado">
+                        <img src="/img/ponentes/invitado6.jpg" alt="Imagen invitado">
                         <p>Susan Sanchez</p>
                     </a>
                 </div>
@@ -328,7 +328,7 @@
 
                 <div class="invitado-info" id="invitado6">
                     <h2>Susan</h2>
-                    <img src="img/invitado6.jpg" alt="">
+                    <img src="img/ponentes/invitado6.jpg" alt="">
                     <p>Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus massa non molestie. Curabitur urna metus, placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at
                         ex blandit vehicula. Morbi porttitor tempus euismod.</p>
                 </div>

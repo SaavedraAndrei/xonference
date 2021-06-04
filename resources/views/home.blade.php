@@ -149,7 +149,7 @@
 
         <div class="btn-group">
             <a href="/file"  >
-                <div class="boton color-logistica" id="btnLogistica">Subir Recursos</div>
+                <div class="boton color-logistica" id="btnLogistica">Recursos</div>
             </a>
         </div>
 

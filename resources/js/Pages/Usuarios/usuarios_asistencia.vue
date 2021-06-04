@@ -13,6 +13,7 @@
                 <label for="text-input" class="form-control-label label-title"
                   >aqui ira conferencia</label
                 >
+                <img class="align center" src="https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/21/2019/08/diferencia-tu-conferencia.jpg" alt="">
               </div>
             </div>
           </div>

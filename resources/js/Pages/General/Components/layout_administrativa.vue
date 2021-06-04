@@ -53,8 +53,13 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <inertia-link
               class="collapse-item"
-              href="#"
-              >lista de permisos
+              :href="$route('administrativa.ponentes')"
+              v-if="
+            $page.props.user_permissions.permisos.includes(
+              'GESTIÓN ADMINISTRATIVA/PONENTES'
+            )
+          "
+              >Lista de ponentes
             </inertia-link>
 
             <inertia-link 
@@ -326,6 +331,7 @@
 
         <slot name="c_principal_admi"></slot>
         <slot name="c_foros_admin"></slot>
+        <slot name="c_ponentes_admin"></slot>
         <!-- <slot name="c_foros"></slot> -->
       </div>
 

@@ -12,6 +12,7 @@ class Foro_respuesta extends Model
     protected $primaryKey = "id";
 
     protected $fillable = [
+        'titulo', 
         'respuesta', 
         'dni_usuarios',
         'idEvento',

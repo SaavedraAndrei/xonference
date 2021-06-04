@@ -1,0 +1,80 @@
+
+.tabla-lex{
+
+    background-color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px !important;
+    color: #fe4918;
+    font-weight: bold;
+    text-align: center;
+
+
+
+}
+
+
+
+.titulo-lex{
+    
+    grid-row: 1/2;
+    font-size: 3rem;
+    color: white;
+    background-color: rgb(233,124,46);
+    font-weight: bold;
+    text-align: center;
+    margin: 0;    
+}
+
+.subtitulo-lex{
+    font-size: 2rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0.5rem;
+}
+
+
+.info-lex{
+    margin: 0.5rem;
+}
+
+div.diaA-lex {
+    width: 100%;
+    float: left;
+    border: 2px solid #e1e1e1;
+    transition: all 0.3s ease;
+    border: 3px solid #fe4918;
+    padding: 1rem;
+    
+}
+@media only screen and (min-width: 768px) {
+    div.diaA-lex {
+        width: 33.3%;
+        min-height: 240px;
+        padding-top: 20px;
+    }
+}
+
+div.diaA-lex p.titulo-lex {
+    color: #fe4918;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+div.diaA-lex p {
+    font-size: 1em;
+}
+div.diaA-lex i {
+    color: #fe4918;
+    font-size: 1.6em;
+}
+
+div.diaA-lex span{
+    font-size: 30px;
+    color: #fe4918;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+}
+
+

@@ -94,32 +94,35 @@
     </div>
     <!--.barra-->
 
-    <section class="contenedor">
+    <section >
         <h2>Catalogo de Conferencias</h2>
-        <div class="contenedor-prin-alex">
-            @foreach ($eventos as $eve)
-            <div class="conte-alex">
-                    <div class="catag-alex">
-                        <p class="dia-alex">Nombre:</p>
-                            <p class="texto-alex">{{$eve->evento}}</p>
+
+        
+            <div class="calendario">
+                @foreach ($eventos as $eve)
+                <div class="diaA-lex">
+
+
+                                <p class="tabla-lex">{{$eve->evento}}</p>
+                                
+                            <p class="subtitulo-lex">Ponentes: </p>
+                                <p class="info-lex">{{$eve->ponentenombre}} {{$eve->ponenteapellido}}</p> 
+            
+                            <p class="subtitulo-lex">Tematica: </p>
+                                <p class="info-lex">{{$eve->tematica}}</p> 
+            
+                            <p class="subtitulo-lex">Fecha: </p>     
+                                <p class="info-lex">{{$eve->fecha_evento}}</p>
+            
+                            <p class="subtitulo-lex">Descripcion: </p>
+                                <p class="info-lex">{{$eve->descripcion}}</p>
+                            <!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. <br> -->
                             
-                        <p class="dia-alex">Ponentes: </p>
-                            <p class="texto-alex">{{$eve->ponentenombre}} {{$eve->ponenteapellido}}</p> 
-        
-                        <p class="dia-alex">Tematica: </p>
-                            <p class="texto-alex">{{$eve->tematica}}</p> 
-        
-                        <p class="dia-alex">Fecha: </p>     
-                            <p class="texto-alex">{{$eve->fecha_evento}}</p>
-        
-                        <p class="dia-alex">Descripcion: </p>
-                            <p class="texto-alex">{{$eve->descripcion}}</p>
-                        <!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. <br> -->
-                        
-                    </div>
+
+                </div>
+                @endforeach
             </div>
-            @endforeach
-        </div>
+
         
         
 

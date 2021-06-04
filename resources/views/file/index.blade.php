@@ -64,8 +64,6 @@
 
                 @endforeach
                 </table>
-                  <!-- <ul> * {{ $file->title }}</ul> -->
-                  <!-- <a href="{{ route('downloadfile', $file->id) }}">Descargar</a> -->
               </div>
             </div>
             

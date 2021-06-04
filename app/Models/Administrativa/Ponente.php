@@ -5,7 +5,7 @@ namespace App\Models\Administrativa;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Evento extends Model
+class Ponente extends Model
 {
     use HasFactory;
     protected $table = 'ponentes';

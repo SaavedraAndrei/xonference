@@ -11,25 +11,25 @@
             <div class="form-row">
               <div class="form-group col-xs-4">
                 <label for="lblUsuario" class="form-control-label label-title"
-                  >PREGUNTA</label
+                  >PREGUNTA:</label
                 >
-                <textarea
-                  type="text"
+                <label
                   id="inpUsuario"
                   name="nombres"
-                  class="form-control center"
+                  class="form-control-label label-title"
+                  style="max-width: 400px"
                   :value="pregunta_muostrar"
                   disabled
-                ></textarea>
-                <input  a type="hidden" name="dni" class="form-control" />
+                  >{{ pregunta_muostrar }}</label
+                >
+                <input a type="hidden" name="dni" class="form-control" />
               </div>
             </div>
-             <label class="form-control-label"
-                >------------------------------------------------------------------------------------------------------------------------</label
-              >
+            <label class="form-control-label"
+              >------------------------------------------------------------------------------------------------------------------------</label
+            >
             <div class="form-row">
               <div class="form-group col-xs-4">
-               
                 <label for="lblAgencia" class="form-control-label label-title"
                   >CONFERENCIA</label
                 >
@@ -39,39 +39,9 @@
                   name="conferencia"
                   class="form-control center"
                   style="width: 250px"
+                  :value="pregunta_conferencia"
                   disabled
                 />
-              </div>
-              <div class="form-group col-xs-4">
-                <label for="lblCargo" class="form-control-label label-title"
-                  >CARGO</label
-                >
-                <input
-                  type="text"
-                  id="inpCargo"
-                  name="cargos"
-                  class="form-control center"
-                  style="width: 250px"
-                  v-for="datosUsuario in datosUsuarios"
-                  :key="datosUsuario.dni"
-                  :value="datosUsuario.nombre_cargo"
-                  disabled
-                />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-xs-4">
-                <label
-                  for="text-input"
-                  class="form-control-label label-title"
-                />{{ pregunta_muostrar }}
-
-                <!-- <input
-                  type="text"
-                  id="inpPregunta"
-                  v-model="pregunta_muostrar"
-                  disable
-                /> -->
               </div>
             </div>
           </div>
@@ -91,12 +61,46 @@
               </button>
             </div>
             <br />
-            <br />
+          </div>
+          <div id="tabla_permisos">
+            <table class="table table-hover" id="tblPreguntas">
+              <thead>
+                <tr>
+                  <th>EDITAR</th>
+                  <th>TITULO</th>
+                  <th>USUARIO</th>
+                  <!-- <th>CONFERENCIA</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="respuesta in listar_respuestas" :key="respuesta.id">
+                  <td class="table-bordered" align="center">
+                    <button
+                      class="btn btn-action btn-icon-split"
+                      @click="EditarRespuesta(respuesta)"
+                    >
+                      <span class="icon text-white-50">
+                        <i class="fas fa-edit" style="color: white"></i>
+                      </span>
+                    </button>
+                  </td>
+                  <td class="table-bordered" align="center">
+                    {{ respuesta.titulo }}
+                  </td>
+                  <td class="table-bordered" align="center">
+                    {{ respuesta.nombres + " " +respuesta.apellidoPaterno }}
+                  </td>
+                  <!-- <td class="table-bordered" align="left"> -->
+                    <!-- {{ pregunta.nombreConferencia }} -->
+                  <!-- </td> -->
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
         <!-- The Modal -->
-        <div id="modalRegistrarPermiso" class="modal">
+        <div id="modalResponderPregunta" class="modal">
           <!-- Modal content -->
           <div class="modal-content w-36">
             <div class="modal-body">
@@ -118,10 +122,31 @@
                       />
                       <input
                         type="text"
-                        id="txtIdPermiso"
+                        id="txtId"
                         hidden
                         v-model="frmResponderForo.id"
                       />
+                      <input
+                        type="text"
+                        id="txtEvento"
+                        hidden
+                        v-model="frmResponderForo.idEvento"
+                      />
+                      <div class="col form-group">
+                        <label class="form-control-label label-title"
+                          >TITULO</label
+                        >
+                        <input
+                          class="form-control"
+                          type="text"
+                          name="permiso"
+                          style="max-width: 400px"
+                          maxlength="150"
+                          id="inpTitulo"
+                          v-model="frmResponderForo.titulo"
+                          placeholder="Ingrese un titulo a su respuesta"
+                        />
+                      </div>
                       <div class="col form-group">
                         <label class="form-control-label label-title"
                           >RESPONDER</label
@@ -131,10 +156,9 @@
                           type="text"
                           name="permiso"
                           style="max-width: 400px"
-                          maxlength="150"
                           id="txtNombrePermiso"
                           v-model="frmResponderForo.respuesta"
-                          placeholder="Ingrese el nombre del permiso"
+                          placeholder="Ingrese su respuesta"
                         ></textarea>
                       </div>
                     </form>
@@ -184,34 +208,120 @@ export default {
   data() {
     return {
       submited: false,
-      title_modal: "RESPUESTA",
+      title_modal: "",
+      listar_respuestas: this.respuestas,
       pregunta_muostrar: null,
+      pregunta_conferencia: null,
       frmResponderForo: {
         id: "",
+        titulo: "",
         respuesta: "",
         modal: "",
+        idEvento:"",
       },
     };
   },
   mounted() {
+    // this.frmResponderForo.idEvento = this.preguntas[0].idEvento;
     this.pregunta_muostrar = this.preguntas[0].pregunta;
+    this.pregunta_conferencia = this.preguntas[0].nombreConferencia;
     // console.log(this.pregunta_muostrar);
   },
   methods: {
     ResponderForo() {
-      console.log("hola"), (this.submited = false);
-      this.title_modal = "RESPUESTA";
+      // console.log("hola"), (this.submited = false);
+      this.title_modal = "AGREGAR RESPUESTA";
       this.frmResponderForo.id = 0;
+      this.frmResponderForo.titulo = "";
       this.frmResponderForo.respuesta = "";
+      this.frmResponderForo.idEvento = this.preguntas[0].idEvento;
       this.frmResponderForo.modal = "AGREGAR";
 
-      document.getElementById("modalRegistrarPermiso").style.display = "block";
+      document.getElementById("modalResponderPregunta").style.display = "block";
       $("#btnCancelar").click(function () {
-        document.getElementById("modalRegistrarPermiso").style.display = "none";
+        document.getElementById("modalResponderPregunta").style.display = "none";
         parent.document.getElementById("footer-navigator").style.display =
           "flex";
       });
       parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    EditarRespuesta(respuesta) {
+      this.title_modal = "EDITAR RESPUESTA";
+      this.frmResponderForo.id = respuesta.id;
+      this.frmResponderForo.titulo = respuesta.titulo;
+      this.frmResponderForo.respuesta = respuesta.respuesta;
+      this.frmResponderForo.idEvento = this.preguntas[0].idEvento;
+      this.frmResponderForo.modal = "EDITAR";
+
+      document.getElementById("modalResponderPregunta").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalResponderPregunta").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display =
+          "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    GuardarRespuesta() {
+      this.submited = true;
+      var self = this;
+      //   {
+      Swal.fire({
+        title: "GUARDAR CAMBIOS",
+        text: "¿Desea continuar?",
+        confirmButtonText:
+          '<i class="fas fa-check" style="color:white;"></i>   Si',
+        confirmButtonColor: "var(--colorAlto)",
+        showCancelButton: true,
+        cancelButtonText: '<i class="fas fa-times"></i>   No',
+        cancelButtonColor: "var(--plomoOscuroEmpresarial)",
+        allowOutsideClick: false,
+        preConfirm: (result) => {
+          self.$inertia.post(
+            route("foros.guardar_respuesta"),
+            self.frmResponderForo,
+            {
+              preserveScroll: true,
+              onStart: (visit) => {
+                let timerInterval;
+                Swal.fire({
+                  title: "EN PROGRESO",
+                  html: "Espere porfavor...",
+                  timer: 5000,
+                  allowOutsideClick: false,
+                  timerProgressBar: true,
+                  didOpen: () => {
+                    Swal.showLoading();
+                    timerInterval = setInterval(() => {
+                      const content = Swal.getContent();
+                      if (content) {
+                        const b = content.querySelector("b");
+                        if (b) {
+                          b.textContent = Swal.getTimerLeft();
+                        }
+                      }
+                    }, 100);
+                  },
+                  willClose: () => {
+                    clearInterval(timerInterval);
+                  },
+                });
+              },
+              onSuccess: () => {
+                Swal.fire({
+                  icon: "success",
+                  title: "¡ÉXITO!",
+                  allowOutsideClick: false,
+                  preConfirm: (result) => {
+                    self.submited = false;
+                    $("#modalResponderPregunta").css("display", "none");
+                    $("#footer-navigator").css("display", "flex");
+                  },
+                });
+              },
+            }
+          );
+        },
+      });
     },
   },
 };

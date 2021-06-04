@@ -75,8 +75,13 @@ class ForosController extends Controller
                 $respuestas = Foro_respuesta::from('foros_respuestas as fr')
                 ->select(
                     'fr.id',
+                    'fr.titulo', 
                     'fr.respuesta', 
                     'fr.dni_usuarios',
+                    'fr.idEvento', 
+                    'u.nombres',
+                    'u.apellidoPaterno',
+
                 )
                 ->join('usuarios as u', 'fr.dni_usuarios', '=','u.dni')
                 ->get();
@@ -126,5 +131,46 @@ class ForosController extends Controller
          // return redirect()->route('Permisos/permisos_listar');
  
          return redirect()->route('administrativa.foros');
+    }
+    public function guardar_respuesta(Request $request){
+        //  dd($request);
+         $modal = $request->modal;
+         $x = session()->all();
+         $dni_usuario = $x['usuario_dni'];
+         $titulo = mb_strtoupper($request->titulo);
+         $idEvento = $request->idEvento;
+         $respuesta = $request->respuesta;
+ 
+        //  $respuesta_existe = Foro_respuesta::select('id')->where('Foro_respuesta', $dni_usuario)->get();
+
+         if ($modal == 'AGREGAR') {
+           //  dd($id);
+        //    if()
+            Foro_respuesta::create(Array(
+                    'titulo' => $titulo,
+                    'respuesta' => $respuesta,
+                    'dni_usuarios' => $dni_usuario,
+                    'idEvento'=> $idEvento,
+            ));
+            // $resultado = 'EXITO';
+        }else
+           if ($modal == 'EDITAR') {
+            
+             $id = $request->id;
+            //  if($dni_usuario == Foro_respuesta::where(['dni_usuarios', $dni_usuario])){
+            Foro_respuesta::where([['id', $id],['dni_usuarios', $dni_usuario]])
+                 ->update([
+                    'titulo' => $titulo,
+                    'respuesta' => $respuesta,
+                    'dni_usuarios' => $dni_usuario,
+                    'idEvento'=> $idEvento,
+                 ]);
+            //  }
+             // $resultado = 'EXITO';
+         }
+ 
+         // return redirect()->route('Permisos/permisos_listar');
+ 
+         return redirect()->route('usuario.foros');
     }
 }

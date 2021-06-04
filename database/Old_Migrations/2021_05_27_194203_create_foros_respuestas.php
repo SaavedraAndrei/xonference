@@ -16,6 +16,7 @@ class CreateForosRespuestas extends Migration
         $this->down();
         Schema::create('foros_respuestas', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo', 300);
             $table->string('respuesta', 10000);
             $table->integer('dni_usuarios')->nullable();
             $table->integer('idEvento')->nullable();

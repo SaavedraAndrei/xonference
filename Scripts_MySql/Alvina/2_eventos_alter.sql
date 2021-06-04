@@ -1,5 +1,3 @@
-drop table eventos;
-
 -- CREACION DE TABLAS Eventos
 CREATE TABLE eventos (
   id BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,

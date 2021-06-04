@@ -26,9 +26,9 @@ class RegistrarController extends Controller
         $dni = $request->dni;
         $email = $request->email;
         $clave = Hash::make($request->clave);
-        $nombres = $request->nombres;
-        $apellidoPaterno = $request->apellidoPaterno;
-        $apellidoMaterno = $request->apellidoMaterno;
+        $nombres = mb_strtoupper($request->nombres);
+        $apellidoPaterno = mb_strtoupper($request->apellidoPaterno);
+        $apellidoMaterno = mb_strtoupper($request->apellidoMaterno);
 
         if ($dni != null) {
             $existe_dni = Usuario::select('dni')->where('dni', $dni)->get();

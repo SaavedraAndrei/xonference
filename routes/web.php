@@ -19,6 +19,7 @@ use App\Http\Controllers\Administracion\PonentesController;
 use App\Http\Controllers\Usuarios\AsistenciaController;
 use App\Http\Controllers\Usuarios\ForosController;
 use App\Http\Controllers\ArchivoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -76,7 +77,7 @@ Route::POST('/administrativa/guardar_pregunta', [ForosController::class, 'guarda
 Route::GET('/certificado', [CertificadoController::class, 'index'])->name('certificado');
 Route::GET('/download', [CertificadoController::class, 'download'])->name('download');
 //----------------------------RUTAS PARA LA CARGA DE RECURSOS----------------------------------------
-Route::GET('/file',[ArchivoController::class, 'index'])->name('viewfile');
-Route::GET('/file/upload',[ArchivoController::class, 'create'])->name('formfile');
-Route::POST('/file/upload',[ArchivoController::class, 'store'])->name('uploadfile');
-Route::GET('/file/download/{id}',[ArchivoController::class, 'show'])->name('downloadfile');
+Route::GET('/file', [ArchivoController::class, 'index'])->name('viewfile');
+Route::GET('/file/upload', [ArchivoController::class, 'create'])->name('formfile');
+Route::POST('/file/upload', [ArchivoController::class, 'store'])->name('uploadfile');
+Route::GET('/file/download/{id}', [ArchivoController::class, 'show'])->name('downloadfile');

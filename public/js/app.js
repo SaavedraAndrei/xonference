@@ -2233,6 +2233,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {},
   mounted: function mounted() {
@@ -2793,6 +2799,186 @@ __webpack_require__.r(__webpack_exports__);
       //   });
       //   }
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/General/ponentes_admin.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/General/ponentes_admin.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Components_layout_administrativa__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Components/layout_administrativa */ "./resources/js/Pages/General/Components/layout_administrativa.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    layout: _Components_layout_administrativa__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  props: {
+    ponentes: Array
   }
 });
 
@@ -3559,6 +3745,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -3929,6 +4116,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -3941,31 +4151,112 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       submited: false,
-      title_modal: "RESPUESTA",
+      title_modal: "",
+      listar_respuestas: this.respuestas,
       pregunta_muostrar: null,
+      pregunta_conferencia: null,
       frmResponderForo: {
         id: "",
+        titulo: "",
         respuesta: "",
-        modal: ""
+        modal: "",
+        idEvento: ""
       }
     };
   },
   mounted: function mounted() {
-    this.pregunta_muostrar = this.preguntas[0].pregunta; // console.log(this.pregunta_muostrar);
+    // this.frmResponderForo.idEvento = this.preguntas[0].idEvento;
+    this.pregunta_muostrar = this.preguntas[0].pregunta;
+    this.pregunta_conferencia = this.preguntas[0].nombreConferencia; // console.log(this.pregunta_muostrar);
   },
   methods: {
     ResponderForo: function ResponderForo() {
-      console.log("hola"), this.submited = false;
-      this.title_modal = "RESPUESTA";
+      // console.log("hola"), (this.submited = false);
+      this.title_modal = "AGREGAR RESPUESTA";
       this.frmResponderForo.id = 0;
+      this.frmResponderForo.titulo = "";
       this.frmResponderForo.respuesta = "";
+      this.frmResponderForo.idEvento = this.preguntas[0].idEvento;
       this.frmResponderForo.modal = "AGREGAR";
-      document.getElementById("modalRegistrarPermiso").style.display = "block";
+      document.getElementById("modalResponderPregunta").style.display = "block";
       $("#btnCancelar").click(function () {
-        document.getElementById("modalRegistrarPermiso").style.display = "none";
+        document.getElementById("modalResponderPregunta").style.display = "none";
         parent.document.getElementById("footer-navigator").style.display = "flex";
       });
       parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    EditarRespuesta: function EditarRespuesta(respuesta) {
+      this.title_modal = "EDITAR RESPUESTA";
+      this.frmResponderForo.id = respuesta.id;
+      this.frmResponderForo.titulo = respuesta.titulo;
+      this.frmResponderForo.respuesta = respuesta.respuesta;
+      this.frmResponderForo.idEvento = this.preguntas[0].idEvento;
+      this.frmResponderForo.modal = "EDITAR";
+      document.getElementById("modalResponderPregunta").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalResponderPregunta").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display = "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    GuardarRespuesta: function GuardarRespuesta() {
+      this.submited = true;
+      var self = this; //   {
+
+      Swal.fire({
+        title: "GUARDAR CAMBIOS",
+        text: "¿Desea continuar?",
+        confirmButtonText: '<i class="fas fa-check" style="color:white;"></i>   Si',
+        confirmButtonColor: "var(--colorAlto)",
+        showCancelButton: true,
+        cancelButtonText: '<i class="fas fa-times"></i>   No',
+        cancelButtonColor: "var(--plomoOscuroEmpresarial)",
+        allowOutsideClick: false,
+        preConfirm: function preConfirm(result) {
+          self.$inertia.post(route("foros.guardar_respuesta"), self.frmResponderForo, {
+            preserveScroll: true,
+            onStart: function onStart(visit) {
+              var timerInterval;
+              Swal.fire({
+                title: "EN PROGRESO",
+                html: "Espere porfavor...",
+                timer: 5000,
+                allowOutsideClick: false,
+                timerProgressBar: true,
+                didOpen: function didOpen() {
+                  Swal.showLoading();
+                  timerInterval = setInterval(function () {
+                    var content = Swal.getContent();
+
+                    if (content) {
+                      var b = content.querySelector("b");
+
+                      if (b) {
+                        b.textContent = Swal.getTimerLeft();
+                      }
+                    }
+                  }, 100);
+                },
+                willClose: function willClose() {
+                  clearInterval(timerInterval);
+                }
+              });
+            },
+            onSuccess: function onSuccess() {
+              Swal.fire({
+                icon: "success",
+                title: "¡ÉXITO!",
+                allowOutsideClick: false,
+                preConfirm: function preConfirm(result) {
+                  self.submited = false;
+                  $("#modalResponderPregunta").css("display", "none");
+                  $("#footer-navigator").css("display", "flex");
+                }
+              });
+            }
+          });
+        }
+      });
     }
   }
 });
@@ -29385,6 +29676,45 @@ component.options.__file = "resources/js/Pages/General/foros_admin.vue"
 
 /***/ }),
 
+/***/ "./resources/js/Pages/General/ponentes_admin.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/Pages/General/ponentes_admin.vue ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ponentes_admin_vue_vue_type_template_id_76ef55ac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ponentes_admin.vue?vue&type=template&id=76ef55ac& */ "./resources/js/Pages/General/ponentes_admin.vue?vue&type=template&id=76ef55ac&");
+/* harmony import */ var _ponentes_admin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ponentes_admin.vue?vue&type=script&lang=js& */ "./resources/js/Pages/General/ponentes_admin.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _ponentes_admin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _ponentes_admin_vue_vue_type_template_id_76ef55ac___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ponentes_admin_vue_vue_type_template_id_76ef55ac___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Pages/General/ponentes_admin.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/General/principal_admin.vue":
 /*!********************************************************!*\
   !*** ./resources/js/Pages/General/principal_admin.vue ***!
@@ -29620,6 +29950,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/General/ponentes_admin.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/Pages/General/ponentes_admin.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ponentes_admin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ponentes_admin.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/General/ponentes_admin.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ponentes_admin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/General/principal_admin.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************!*\
   !*** ./resources/js/Pages/General/principal_admin.vue?vue&type=script&lang=js& ***!
@@ -29730,6 +30076,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_foros_admin_vue_vue_type_template_id_4e40753d___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_foros_admin_vue_vue_type_template_id_4e40753d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./foros_admin.vue?vue&type=template&id=4e40753d& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/General/foros_admin.vue?vue&type=template&id=4e40753d&");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/General/ponentes_admin.vue?vue&type=template&id=76ef55ac&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/Pages/General/ponentes_admin.vue?vue&type=template&id=76ef55ac& ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ponentes_admin_vue_vue_type_template_id_76ef55ac___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ponentes_admin_vue_vue_type_template_id_76ef55ac___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ponentes_admin_vue_vue_type_template_id_76ef55ac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ponentes_admin.vue?vue&type=template&id=76ef55ac& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/General/ponentes_admin.vue?vue&type=template&id=76ef55ac&");
 
 
 /***/ }),
@@ -29996,11 +30359,18 @@ var render = function() {
                 "div",
                 { staticClass: "bg-white py-2 collapse-inner rounded" },
                 [
-                  _c(
-                    "inertia-link",
-                    { staticClass: "collapse-item", attrs: { href: "#" } },
-                    [_vm._v("lista de permisos\n          ")]
-                  ),
+                  _vm.$page.props.user_permissions.permisos.includes(
+                    "GESTIÓN ADMINISTRATIVA/PONENTES"
+                  )
+                    ? _c(
+                        "inertia-link",
+                        {
+                          staticClass: "collapse-item",
+                          attrs: { href: _vm.$route("administrativa.ponentes") }
+                        },
+                        [_vm._v("Lista de ponentes\n          ")]
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
                   _c(
                     "inertia-link",
@@ -30162,7 +30532,9 @@ var render = function() {
             _vm._v(" "),
             _vm._t("c_principal_admi"),
             _vm._v(" "),
-            _vm._t("c_foros_admin")
+            _vm._t("c_foros_admin"),
+            _vm._v(" "),
+            _vm._t("c_ponentes_admin")
           ],
           2
         ),
@@ -31016,6 +31388,188 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/General/ponentes_admin.vue?vue&type=template&id=76ef55ac&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/General/ponentes_admin.vue?vue&type=template&id=76ef55ac& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("layout", { ref: "layout" }, [
+    _c(
+      "div",
+      { attrs: { slot: "c_ponentes_admin" }, slot: "c_ponentes_admin" },
+      [
+        _c(
+          "div",
+          { staticClass: "content", staticStyle: { display: "block" } },
+          [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("strong", [_vm._v("PONENTES")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-title" }, [
+                _vm._v("PANEL DE LISTADO")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body card-block" }, [
+                _c("div", { staticClass: "text-center mb-2" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-action btn-icon-split",
+                      attrs: { id: "btnRegistrarAsistencia" }
+                    },
+                    [
+                      _c("span", { staticClass: "icon text-white" }, [
+                        _c("i", { staticClass: "far fa-id-badge" })
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "text font-size-layout" }, [
+                        _vm._v("Agregar ponente")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { attrs: { id: "tabla_permisos" } }, [
+                  _c(
+                    "table",
+                    {
+                      staticClass: "table table-hover",
+                      attrs: { id: "tblPreguntas" }
+                    },
+                    [
+                      _c("thead", [
+                        _c("tr", [
+                          _c("th", [_vm._v("EDITAR")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("NOMBRE")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("CORREO")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("DNI")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.ponentes, function(ponente) {
+                          return _c("tr", { key: ponente.id }, [
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "center" }
+                              },
+                              [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-action btn-icon-split"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      { staticClass: "icon text-white-50" },
+                                      [
+                                        _c("i", {
+                                          staticClass: "fas fa-edit",
+                                          staticStyle: { color: "white" }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "center" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(
+                                      ponente.nombre +
+                                        " " +
+                                        ponente.apellidoPaterno +
+                                        " " +
+                                        ponente.apellidoMater
+                                    ) +
+                                    "\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "left" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(ponente.email) +
+                                    "\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "left" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(ponente.dni) +
+                                    "\n                  "
+                                )
+                              ]
+                            )
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("br")
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/General/principal_admin.vue?vue&type=template&id=aa03f084&":
 /*!******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/General/principal_admin.vue?vue&type=template&id=aa03f084& ***!
@@ -31802,7 +32356,16 @@ var render = function() {
                         attrs: { for: "text-input" }
                       },
                       [_vm._v("aqui ira conferencia")]
-                    )
+                    ),
+                    _vm._v(" "),
+                    _c("img", {
+                      staticClass: "align center",
+                      attrs: {
+                        src:
+                          "https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/21/2019/08/diferencia-tu-conferencia.jpg",
+                        alt: ""
+                      }
+                    })
                   ])
                 ])
               ]),
@@ -32061,20 +32624,23 @@ var render = function() {
                     staticClass: "form-control-label label-title",
                     attrs: { for: "lblUsuario" }
                   },
-                  [_vm._v("PREGUNTA")]
+                  [_vm._v("PREGUNTA:")]
                 ),
                 _vm._v(" "),
-                _c("textarea", {
-                  staticClass: "form-control center",
-                  staticStyle: { width: "250px" },
-                  attrs: {
-                    type: "text",
-                    id: "inpUsuario",
-                    name: "nombres",
-                    disabled: ""
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-control-label label-title",
+                    staticStyle: { "max-width": "400px" },
+                    attrs: {
+                      id: "inpUsuario",
+                      name: "nombres",
+                      value: _vm.pregunta_muostrar,
+                      disabled: ""
+                    }
                   },
-                  domProps: { value: _vm.pregunta_muostrar }
-                }),
+                  [_vm._v(_vm._s(_vm.pregunta_muostrar))]
+                ),
                 _vm._v(" "),
                 _c("input", {
                   staticClass: "form-control",
@@ -32108,49 +32674,9 @@ var render = function() {
                     id: "inpAgencia",
                     name: "conferencia",
                     disabled: ""
-                  }
+                  },
+                  domProps: { value: _vm.pregunta_conferencia }
                 })
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "form-group col-xs-4" },
-                [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-control-label label-title",
-                      attrs: { for: "lblCargo" }
-                    },
-                    [_vm._v("CARGO")]
-                  ),
-                  _vm._v(" "),
-                  _vm._l(_vm.datosUsuarios, function(datosUsuario) {
-                    return _c("input", {
-                      key: datosUsuario.dni,
-                      staticClass: "form-control center",
-                      staticStyle: { width: "250px" },
-                      attrs: {
-                        type: "text",
-                        id: "inpCargo",
-                        name: "cargos",
-                        disabled: ""
-                      },
-                      domProps: { value: datosUsuario.nombre_cargo }
-                    })
-                  })
-                ],
-                2
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-row" }, [
-              _c("div", { staticClass: "form-group col-xs-4" }, [
-                _c("label", {
-                  staticClass: "form-control-label label-title",
-                  attrs: { for: "text-input" }
-                }),
-                _vm._v(_vm._s(_vm.pregunta_muostrar) + "\n\n              ")
               ])
             ])
           ]),
@@ -32184,15 +32710,109 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
             _c("br")
+          ]),
+          _vm._v(" "),
+          _c("div", { attrs: { id: "tabla_permisos" } }, [
+            _c(
+              "table",
+              {
+                staticClass: "table table-hover",
+                attrs: { id: "tblPreguntas" }
+              },
+              [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", [_vm._v("EDITAR")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("TITULO")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("USUARIO")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.listar_respuestas, function(respuesta) {
+                    return _c("tr", { key: respuesta.id }, [
+                      _c(
+                        "td",
+                        {
+                          staticClass: "table-bordered",
+                          attrs: { align: "center" }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-action btn-icon-split",
+                              on: {
+                                click: function($event) {
+                                  return _vm.EditarRespuesta(respuesta)
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "span",
+                                { staticClass: "icon text-white-50" },
+                                [
+                                  _c("i", {
+                                    staticClass: "fas fa-edit",
+                                    staticStyle: { color: "white" }
+                                  })
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          staticClass: "table-bordered",
+                          attrs: { align: "center" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                  " +
+                              _vm._s(respuesta.titulo) +
+                              "\n                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          staticClass: "table-bordered",
+                          attrs: { align: "center" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                  " +
+                              _vm._s(
+                                respuesta.nombres +
+                                  " " +
+                                  respuesta.apellidoPaterno
+                              ) +
+                              "\n                "
+                          )
+                        ]
+                      )
+                    ])
+                  }),
+                  0
+                )
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "modal", attrs: { id: "modalRegistrarPermiso" } },
+          { staticClass: "modal", attrs: { id: "modalResponderPregunta" } },
           [
             _c("div", { staticClass: "modal-content w-36" }, [
               _c("div", { staticClass: "modal-body" }, [
@@ -32263,11 +32883,7 @@ var render = function() {
                                   expression: "frmResponderForo.id"
                                 }
                               ],
-                              attrs: {
-                                type: "text",
-                                id: "txtIdPermiso",
-                                hidden: ""
-                              },
+                              attrs: { type: "text", id: "txtId", hidden: "" },
                               domProps: { value: _vm.frmResponderForo.id },
                               on: {
                                 input: function($event) {
@@ -32282,6 +32898,83 @@ var render = function() {
                                 }
                               }
                             }),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.frmResponderForo.idEvento,
+                                  expression: "frmResponderForo.idEvento"
+                                }
+                              ],
+                              attrs: {
+                                type: "text",
+                                id: "txtEvento",
+                                hidden: ""
+                              },
+                              domProps: {
+                                value: _vm.frmResponderForo.idEvento
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.frmResponderForo,
+                                    "idEvento",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col form-group" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-control-label label-title"
+                                },
+                                [_vm._v("TITULO")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.frmResponderForo.titulo,
+                                    expression: "frmResponderForo.titulo"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                staticStyle: { "max-width": "400px" },
+                                attrs: {
+                                  type: "text",
+                                  name: "permiso",
+                                  maxlength: "150",
+                                  id: "inpTitulo",
+                                  placeholder:
+                                    "Ingrese un titulo a su respuesta"
+                                },
+                                domProps: {
+                                  value: _vm.frmResponderForo.titulo
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.frmResponderForo,
+                                      "titulo",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "col form-group" }, [
                               _c(
@@ -32306,9 +32999,8 @@ var render = function() {
                                 attrs: {
                                   type: "text",
                                   name: "permiso",
-                                  maxlength: "150",
                                   id: "txtNombrePermiso",
-                                  placeholder: "Ingrese el nombre del permiso"
+                                  placeholder: "Ingrese su respuesta"
                                 },
                                 domProps: {
                                   value: _vm.frmResponderForo.respuesta
@@ -45957,6 +46649,8 @@ var map = {
 	"./General/Components/layout_administrativa.vue": "./resources/js/Pages/General/Components/layout_administrativa.vue",
 	"./General/foros_admin": "./resources/js/Pages/General/foros_admin.vue",
 	"./General/foros_admin.vue": "./resources/js/Pages/General/foros_admin.vue",
+	"./General/ponentes_admin": "./resources/js/Pages/General/ponentes_admin.vue",
+	"./General/ponentes_admin.vue": "./resources/js/Pages/General/ponentes_admin.vue",
 	"./General/principal_admin": "./resources/js/Pages/General/principal_admin.vue",
 	"./General/principal_admin.vue": "./resources/js/Pages/General/principal_admin.vue",
 	"./Usuarios/Components/layout_usuarios": "./resources/js/Pages/Usuarios/Components/layout_usuarios.vue",

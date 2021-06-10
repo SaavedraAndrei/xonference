@@ -64,9 +64,11 @@
 
             <inertia-link 
             class="collapse-item"
-            href="#">
+            :href="$route('administrativa.congresos')"
             
-              prueba
+            >
+            
+              Lista de congresos
             </inertia-link>
           </div>
         </div>
@@ -332,7 +334,7 @@
         <slot name="c_principal_admi"></slot>
         <slot name="c_foros_admin"></slot>
         <slot name="c_ponentes_admin"></slot>
-        <!-- <slot name="c_foros"></slot> -->
+        <slot name="c_congresos_permisos"></slot>
       </div>
 
       <!------------- BOTONES DE NAVEGACIÓN ----------->

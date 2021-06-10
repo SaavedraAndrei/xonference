@@ -32,7 +32,7 @@ class PonentesController extends Controller
                 )
                 ->get();
                 
-                return Inertia::render('General/ponentes_admin', [
+                return Inertia::render('Administrativa/ponentes_admin', [
                     'ponentes' => $ponentes,
                     // 'respuestas' => $respuestas,
                 ]);

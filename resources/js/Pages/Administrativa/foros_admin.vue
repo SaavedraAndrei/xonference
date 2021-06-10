@@ -84,7 +84,7 @@
                       />
                       <input
                         type="text"
-                        id="txtIdPermiso"
+                        id="txtIdPregunta"
                         hidden
                         v-model="frmRegistrarPregunta.id"
                       />
@@ -181,6 +181,7 @@ export default {
     };
   },
   mounted() {
+    // console.log($("#tblPreguntas").DataTable());
     this.TablaPreguntas();
     var elemento = document.getElementById("tblPreguntas");
     if (elemento != null) {
@@ -189,17 +190,11 @@ export default {
       }
     }
   },
-  // watch:{
-  //   listar_preguntas() {
-  //     $("#tblPreguntas").DataTable().destroy();
-  //    this.TablaPreguntas();
-  //   }
-  // },
   methods: {
     TablaPreguntas() {
       this.$nextTick(() => {
         var table = $("#tblPreguntas").DataTable({
-          scrollCollapse: true,
+scrollCollapse: true,
           fixedHeader: true,
           language: {
             retrieve: true,
@@ -251,8 +246,7 @@ export default {
               className: "btn btn-action",
             },
           ],
-        });
-      });
+        });      });
     },
     NuevaPregunta(pregunta) {
       // console.log(pregunta.id);

@@ -39,7 +39,7 @@ class ForosController extends Controller
                 ->join('ponentes as po', 'fp.dni_ponente','=','po.dni')
                 ->join('eventos as e', 'fp.idEvento','=','e.id')
                 ->get();
-                return Inertia::render('General/foros_admin',[
+                return Inertia::render('Administrativa/foros_admin',[
                     'preguntas' => $preguntas,
                     'eventos' =>$eventos,
                 ]);

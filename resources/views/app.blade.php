@@ -17,7 +17,6 @@
 
   <!-- Estilos DataTables -->
   <link rel="stylesheet" href="{{asset('datatables/dataTables.bootstrap4.min.css')}}">
-
   <script src="https://kit.fontawesome.com/1a2bd5a108.js" crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 

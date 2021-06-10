@@ -41,7 +41,7 @@ class PermisosController extends Controller
             $band = (new PermisosController)->verificarPermiso($x['usuario_dni'], 'GENERAL', 'GESTIÓN ADMINISTRATIVA');
             // dd($band);
             if ($band == 1) {
-                return Inertia::render('General/principal_admin');
+                return Inertia::render('Administrativa/principal_admin');
             } else {
                 $mensaje = 'RECHAZADO';
                 return (new IndexController)->home($mensaje);

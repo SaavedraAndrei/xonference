@@ -15,6 +15,7 @@ use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\Administracion\PermisosController;
 use App\Http\Controllers\CertificadoController;
 use App\Http\Controllers\Administracion\PonentesController;
+use App\Http\Controllers\Administracion\CongresosController;
 //-----------------------------------USUARIOS
 use App\Http\Controllers\Usuarios\AsistenciaController;
 use App\Http\Controllers\Usuarios\ForosController;
@@ -72,6 +73,7 @@ Route::GET('/general', [PermisosController::class, 'principal'])->name('administ
 Route::GET('/administrativa/ponentes', [PonentesController::class, 'Ponentes'])->name('administrativa.ponentes');
 Route::GET('/administracion/foros', [ForosController::class, 'foros_admin'])->name('administrativa.foros');
 Route::POST('/administrativa/guardar_pregunta', [ForosController::class, 'guardar_pregunta'])->name('foros.guardar_pregunta');
+Route::GET('/administrativa/congresos', [CongresosController::class, 'Congresos'])->name('administrativa.congresos');
 
 //----------------------------RUTAS PARA EL CERTIFICADO---------------------------------------
 Route::GET('/certificado', [CertificadoController::class, 'index'])->name('certificado');

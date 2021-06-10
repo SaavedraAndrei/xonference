@@ -26,31 +26,30 @@
 <body>
 
     <div class="navbar-header">
-        <a class="navbar-brand" href="/"><img src="/img/logo.svg" alt="Logo" id="logoPrincipal"></a>
+        <a class="navbar-brand" href="/" style="margin-right: 0px;"><img src="/img/logo.svg" alt="Logo" id="logoPrincipal"></a>
     </div>
 
     <div class="container">
-    <div class="row it">
-        <div class="col-sm-offset-1 col-sm-10" id="one">
+    <div class="row it" id="contenedor_blanco">
+        <div class="col-sm-offset-1 col-sm-10" id="one" style="overflow-x:auto;">
         <p>
             Elija Recurso
-        </p><br>
-        <div class="row">
-            <div class="col-sm-offset-4 col-sm-4 form-group">
-            </div>
-            <!--form-group-->
-        </div>
+        </p>
+    
         <!--row-->
         <div id="uploader">
             <div class="row uploadDoc">
-                <div class="col-sm-11">
+                <div class="col-sm-11" style="padding-left: 0px;">
                     <!-- <div class="docErr">Please upload valid file</div> -->
                     <!--error-->
                     <div class="fileUpload btn btn-orange">
 
                     <form action="{{ route('uploadfile') }}" method ="post" enctype="multipart/form-data">
                     @csrf
+
+                        <div>
                         <input type="file" name ="file" class="inputstyle"><br>
+                        </div>
                         <button type="file" class="btn btn-new"><i class="fa fa-plus"></i> Enviar Recurso </button>
                     </form>
 

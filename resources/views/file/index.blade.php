@@ -25,12 +25,12 @@
 <body>
     
   <div class="navbar-header">
-        <a class="navbar-brand" href="./"><img src="img/logo.svg" alt="Logo" id="logoPrincipal"></a>
+        <a class="navbar-brand" href="./"style="margin-right: 0px;"><img src="img/logo.svg" alt="Logo" id="logoPrincipal"></a>
     </div>
 
 <div class="container">
-  <div class="row it">
-    <div class="col-sm-offset-1 col-sm-10" id="one">
+  <div class="row it" id="contenedor_blanco">
+    <div class="col-sm-offset-1 col-sm-10" id="one" style="overflow-x:auto;">
       <p>RECURSOS</p>
       <div class="row">
         <div class="col-sm-offset-4 col-sm-4 form-group">
@@ -49,7 +49,7 @@
         <div>
             
             <div>
-              <div>
+              <div style="overflow-x:auto;">
                 <table>
                 <thead>
                   <th width="800">Archivo</th>

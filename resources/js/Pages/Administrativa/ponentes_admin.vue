@@ -47,8 +47,11 @@
                   <tr>
                     <th>EDITAR</th>
                     <th>NOMBRE</th>
-                    <th>email</th>
+                    <th>EMAIL</th>
                     <th>DNI</th>
+                    <th>DESCRIPCION</th>
+                    <th>TELEFONO</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -77,6 +80,12 @@
                     </td>
                     <td class="table-bordered" align="left">
                       {{ ponente.dni }}
+                    </td>
+                    <td class="table-bordered" align="left">
+                      {{ ponente.descripcion }}
+                    </td>
+                    <td class="table-bordered" align="left">
+                      {{ ponente.telefono }}
                     </td>
                   </tr>
                 </tbody>
@@ -238,7 +247,9 @@ export default {
         apellidoPaterno: "",
         apellidoMaterno: "",
         email: "",
+        descripcion:"",
         dni: null,
+        telefono: null,
         modal: "",
       },
     };

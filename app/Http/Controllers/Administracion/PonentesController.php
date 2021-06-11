@@ -30,7 +30,9 @@ class PonentesController extends Controller
                     'apellidoMaterno',
                     'email',
                     'dni',
-                    'descripcion'
+                    'descripcion', 
+                    'telefono',
+                    'clave'
                 )
                 ->get();
                 

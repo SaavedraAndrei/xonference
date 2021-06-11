@@ -18,6 +18,8 @@ class Ponente extends Model
         'email',
         'dni',
         'descripcion',
+        'telefono',
+        'clave',
         'idEvento',
         'usuario_creacion',
         'usuario_actualizacion'

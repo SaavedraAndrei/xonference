@@ -3523,6 +3523,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -3542,7 +3551,9 @@ __webpack_require__.r(__webpack_exports__);
         apellidoPaterno: "",
         apellidoMaterno: "",
         email: "",
+        descripcion: "",
         dni: null,
+        telefono: null,
         modal: ""
       }
     };
@@ -32836,9 +32847,15 @@ var render = function() {
                           _vm._v(" "),
                           _c("th", [_vm._v("NOMBRE")]),
                           _vm._v(" "),
-                          _c("th", [_vm._v("email")]),
+                          _c("th", [_vm._v("EMAIL")]),
                           _vm._v(" "),
-                          _c("th", [_vm._v("DNI")])
+                          _c("th", [_vm._v("DNI")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("DESCRIPCION")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("TELEFONO")]),
+                          _vm._v(" "),
+                          _c("th")
                         ])
                       ]),
                       _vm._v(" "),
@@ -32926,6 +32943,36 @@ var render = function() {
                                 _vm._v(
                                   "\n                    " +
                                     _vm._s(ponente.dni) +
+                                    "\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "left" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(ponente.descripcion) +
+                                    "\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "left" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(ponente.telefono) +
                                     "\n                  "
                                 )
                               ]

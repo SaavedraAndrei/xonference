@@ -20,7 +20,26 @@
                 <span class="text font-size-layout">Agregar pregunta</span>
               </button>
             </div>
-
+            <div id="search-content_us">
+              <div
+                class="input-group row col-md-3 mb-1 input-search"
+                id="s_content_us"
+              >
+                <input
+                  class="form-control"
+                  type="text"
+                  id="inpBuscar"
+                  placeholder="Buscar..."
+                  @focus="hidenav()"
+                  @blur="shownav()"
+                />
+                <div class="input-group-append">
+                  <button class="btn btn-action" type="button">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
             <div id="tabla_permisos">
               <table class="table table-hover" id="tblPreguntas">
                 <thead>
@@ -47,7 +66,7 @@
                       {{ pregunta.pregunta }}
                     </td>
                     <td class="table-bordered" align="left">
-                      {{ pregunta.nombre + " " +pregunta.apellidoPaterno }}
+                      {{ pregunta.nombre + " " + pregunta.apellidoPaterno }}
                     </td>
                     <td class="table-bordered" align="left">
                       {{ pregunta.nombreConferencia }}
@@ -111,9 +130,7 @@
                           style="max-width: 400px"
                           v-model="frmRegistrarPregunta.idEvento"
                         >
-                          <option value="0" selected>
-                            Seleccione...
-                          </option>
+                          <option value="0" selected>Seleccione...</option>
                           <option
                             v-for="evento in eventos"
                             :key="evento.id"
@@ -194,7 +211,7 @@ export default {
     TablaPreguntas() {
       this.$nextTick(() => {
         var table = $("#tblPreguntas").DataTable({
-scrollCollapse: true,
+          scrollCollapse: true,
           fixedHeader: true,
           language: {
             retrieve: true,
@@ -213,8 +230,7 @@ scrollCollapse: true,
             paginate: {
               first: "Primera",
               last: "Ultima",
-              next:
-                '<i class="fas fa-chevron-circle-right" style="font-size:20px;"></i>',
+              next: '<i class="fas fa-chevron-circle-right" style="font-size:20px;"></i>',
               previous:
                 '<i class="fas fa-chevron-circle-left" style="font-size:20px;"></i>',
             },
@@ -224,29 +240,42 @@ scrollCollapse: true,
             },
           },
           responsive: true,
-          dom:
-            '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
-          buttons: [
-            {
-              extend: "excelHtml5",
-              text: '<i class="fas fa-file-excel"></i> ',
-              titleAttr: "Exportar a Excel",
-              className: "btn btn-action",
-            },
-            {
-              extend: "pdfHtml5",
-              text: '<i class="fas fa-file-pdf"></i> ',
-              titleAttr: "Exportar a PDF",
-              className: "btn btn-cancel",
-            },
-            {
-              extend: "print",
-              text: '<i class="fa fa-print"></i> ',
-              titleAttr: "Imprimir",
-              className: "btn btn-action",
-            },
-          ],
-        });      });
+          // dom: '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
+          // buttons: [
+          //   {
+          //     extend: "excelHtml5",
+          //     text: '<i class="fas fa-file-excel"></i> ',
+          //     titleAttr: "Exportar a Excel",
+          //     className: "btn btn-action",
+          //   },
+          //   {
+          //     extend: "pdfHtml5",
+          //     text: '<i class="fas fa-file-pdf"></i> ',
+          //     titleAttr: "Exportar a PDF",
+          //     className: "btn btn-cancel",
+          //   },
+          //   {
+          //     extend: "print",
+          //     text: '<i class="fa fa-print"></i> ',
+          //     titleAttr: "Imprimir",
+          //     className: "btn btn-action",
+          //   },
+          // ],
+        });
+        $("#inpBuscar").keyup(function () {
+          table.search(this.value).draw();
+        });
+      });
+    },
+    hidenav() {
+      return this.$refs.layout.hide_nav();
+    },
+    shownav() {
+      return this.$refs.layout.show_nav();
+    },
+    ActualizarTabla() {
+      $("#tblPreguntas").DataTable().destroy();
+      this.TablaPreguntas();
     },
     NuevaPregunta(pregunta) {
       // console.log(pregunta.id);
@@ -334,11 +363,10 @@ scrollCollapse: true,
                   allowOutsideClick: false,
                   preConfirm: (result) => {
                     self.submited = false;
-                    // self.FiltrarPermisos();
-                    // $("#tblPreguntas").destroy();
-                    // self.TablaPreguntas();
+                    self.ActualizarTabla();
                     $("#modalPreguntaForo").css("display", "none");
                     $("#footer-navigator").css("display", "flex");
+                    // self.$inertia.get(route("administrativa.foros"));
                   },
                 });
               },

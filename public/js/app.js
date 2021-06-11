@@ -2241,10 +2241,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {},
   mounted: function mounted() {
-    document.title = "Mi menú";
+    document.title = "Gestion Administrativa";
     this.validarTamaño();
 
     (function ($) {
@@ -2291,22 +2324,26 @@ __webpack_require__.r(__webpack_exports__);
       });
 
       window.onorientationchange = function (event) {
-        // var tabla_1 = document.getElementById("t_estados");
-        // if (tabla_1 != null) {
-        //   if ($("#t_estados").hasClass("table-responsive")) {
-        //     tabla_1.classList.remove("table-responsive");
-        //   } else {
-        //     tabla_1.classList.add("table-responsive");
-        //   }
-        // }
-        // var tabla_2 = document.getElementById("t_tipo_suministros");
-        // if (tabla_2 != null) {
-        //   if ($("#t_tipo_suministros").hasClass("table-responsive")) {
-        //     tabla_2.classList.remove("table-responsive");
-        //   } else {
-        //     tabla_2.classList.add("table-responsive");
-        //   }
-        // }
+        var tabla_1 = document.getElementById("t_estados");
+
+        if (tabla_1 != null) {
+          if ($("#t_estados").hasClass("table-responsive")) {
+            tabla_1.classList.remove("table-responsive");
+          } else {
+            tabla_1.classList.add("table-responsive");
+          }
+        }
+
+        var tabla_2 = document.getElementById("t_tipo_suministros");
+
+        if (tabla_2 != null) {
+          if ($("#t_tipo_suministros").hasClass("table-responsive")) {
+            tabla_2.classList.remove("table-responsive");
+          } else {
+            tabla_2.classList.add("table-responsive");
+          }
+        }
+
         if ($(".sidebar").hasClass("toggled")) {
           $(".sidebar .collapse").collapse("hide");
           document.getElementById("footer-navigator").classList.add("footer-nav-full");
@@ -2444,6 +2481,225 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/categorias_mantenimiento.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/categorias_mantenimiento.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Components_layout_administrativa__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Components/layout_administrativa */ "./resources/js/Pages/Administrativa/Components/layout_administrativa.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    layout: _Components_layout_administrativa__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  props: {
+    categorias: Array
+  },
+  data: function data() {
+    return {
+      submited: false,
+      title_modal: "NUEVA CATEGORIA",
+      frmCrearCategoria: {
+        id: "",
+        nombre: "",
+        modal: ""
+      }
+    };
+  },
+  mounted: function mounted() {
+    $(document).ready(function () {
+      $('#tblCategorias').DataTable();
+    });
+  },
+  methods: {
+    NuevaCategoria: function NuevaCategoria() {
+      // console.log(pregunta.id);
+      this.submited = false;
+      this.title_modal = "NUEVO PONENTE";
+      this.frmCrearCategoria.id = 0;
+      this.frmCrearCategoria.nombre = "";
+      this.frmCrearCategoria.modal = "NUEVO";
+      document.getElementById("modalPonente").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalPonente").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display = "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    EditarCategoria: function EditarCategoria(ponente) {
+      this.submited = false;
+      this.title_modal = "EDITAR PONENTE";
+      this.frmCrearCategoria.id = ponente.id;
+      this.frmCrearCategoria.nombre = ponente.nombre;
+      this.frmCrearCategoria.modal = "EDITAR";
+      document.getElementById("modalPonente").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalPonente").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display = "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/congresos_permisos.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/congresos_permisos.vue?vue&type=script&lang=js& ***!
@@ -2456,6 +2712,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Components_layout_administrativa__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Components/layout_administrativa */ "./resources/js/Pages/Administrativa/Components/layout_administrativa.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2795,6 +3071,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2861,26 +3154,43 @@ __webpack_require__.r(__webpack_exports__);
               sortDescending: ": activar para ordenar de forma descendente"
             }
           },
-          responsive: true,
-          dom: '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
-          buttons: [{
-            extend: "excelHtml5",
-            text: '<i class="fas fa-file-excel"></i> ',
-            titleAttr: "Exportar a Excel",
-            className: "btn btn-action"
-          }, {
-            extend: "pdfHtml5",
-            text: '<i class="fas fa-file-pdf"></i> ',
-            titleAttr: "Exportar a PDF",
-            className: "btn btn-cancel"
-          }, {
-            extend: "print",
-            text: '<i class="fa fa-print"></i> ',
-            titleAttr: "Imprimir",
-            className: "btn btn-action"
-          }]
+          responsive: true // dom: '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
+          // buttons: [
+          //   {
+          //     extend: "excelHtml5",
+          //     text: '<i class="fas fa-file-excel"></i> ',
+          //     titleAttr: "Exportar a Excel",
+          //     className: "btn btn-action",
+          //   },
+          //   {
+          //     extend: "pdfHtml5",
+          //     text: '<i class="fas fa-file-pdf"></i> ',
+          //     titleAttr: "Exportar a PDF",
+          //     className: "btn btn-cancel",
+          //   },
+          //   {
+          //     extend: "print",
+          //     text: '<i class="fa fa-print"></i> ',
+          //     titleAttr: "Imprimir",
+          //     className: "btn btn-action",
+          //   },
+          // ],
+
+        });
+        $("#inpBuscar").keyup(function () {
+          table.search(this.value).draw();
         });
       });
+    },
+    hidenav: function hidenav() {
+      return this.$refs.layout.hide_nav();
+    },
+    shownav: function shownav() {
+      return this.$refs.layout.show_nav();
+    },
+    ActualizarTabla: function ActualizarTabla() {
+      $("#tblPreguntas").DataTable().destroy();
+      this.TablaPreguntas();
     },
     NuevaPregunta: function NuevaPregunta(pregunta) {
       // console.log(pregunta.id);
@@ -2961,12 +3271,10 @@ __webpack_require__.r(__webpack_exports__);
                 title: "¡ÉXITO!",
                 allowOutsideClick: false,
                 preConfirm: function preConfirm(result) {
-                  self.submited = false; // self.FiltrarPermisos();
-                  // $("#tblPreguntas").destroy();
-                  // self.TablaPreguntas();
-
+                  self.submited = false;
+                  self.ActualizarTabla();
                   $("#modalPreguntaForo").css("display", "none");
-                  $("#footer-navigator").css("display", "flex");
+                  $("#footer-navigator").css("display", "flex"); // self.$inertia.get(route("administrativa.foros"));
                 }
               });
             }
@@ -3149,6 +3457,72 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -3156,6 +3530,173 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     ponentes: Array
+  },
+  data: function data() {
+    return {
+      submited: false,
+      title_modal: "NUEVO PONENTE",
+      // listar_preguntas: this.preguntas,
+      frmRegistrarPonente: {
+        id: "",
+        nombre: "",
+        apellidoPaterno: "",
+        apellidoMaterno: "",
+        email: "",
+        dni: null,
+        modal: ""
+      }
+    };
+  },
+  mounted: function mounted() {
+    this.TablaPonentes();
+  },
+  methods: {
+    TablaPonentes: function TablaPonentes() {
+      this.$nextTick(function () {
+        var table = $("#tblPonentes").DataTable({
+          scrollCollapse: true,
+          fixedHeader: true,
+          language: {
+            retrieve: true,
+            decimal: "",
+            emptyTable: "No hay datos disponibles en la tabla",
+            info: "Mostrando del _START_ al _END_ de _TOTAL_ registros",
+            infoEmpty: "No se encontraron registros",
+            infoFiltered: "(filtrado de _MAX_ registros)",
+            infoPostFix: "",
+            thousands: ",",
+            lengthMenu: "Agrupar por _MENU_ filas",
+            loadingRecords: "Cargando...",
+            processing: "Procesando...",
+            search: "Buscar:",
+            zeroRecords: "No se encontraron registros",
+            paginate: {
+              first: "Primera",
+              last: "Ultima",
+              next: '<i class="fas fa-chevron-circle-right" style="font-size:20px;"></i>',
+              previous: '<i class="fas fa-chevron-circle-left" style="font-size:20px;"></i>'
+            },
+            aria: {
+              sortAscending: ": activar para ordenar de forma ascendente",
+              sortDescending: ": activar para ordenar de forma descendente"
+            }
+          },
+          responsive: true
+        });
+        $("#inpBuscar").keyup(function () {
+          table.search(this.value).draw();
+        });
+      });
+    },
+    hidenav: function hidenav() {
+      return this.$refs.layout.hide_nav();
+    },
+    shownav: function shownav() {
+      return this.$refs.layout.show_nav();
+    },
+    ActualizarTabla: function ActualizarTabla() {
+      $("#tblPonentes").DataTable().destroy();
+      this.TablaPonentes();
+    },
+    NuevoPonente: function NuevoPonente() {
+      // console.log(pregunta.id);
+      this.submited = false;
+      this.title_modal = "NUEVO PONENTE";
+      this.frmRegistrarPonente.id = 0;
+      this.frmRegistrarPonente.nombre = "";
+      this.frmRegistrarPonente.apellidoPaterno = "";
+      this.frmRegistrarPonente.apellidoMaterno = "";
+      this.frmRegistrarPonente.email = "";
+      this.frmRegistrarPonente.dni = null;
+      this.frmRegistrarPonente.modal = "NUEVO";
+      document.getElementById("modalPonente").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalPonente").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display = "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    EditarPonente: function EditarPonente(ponente) {
+      this.submited = false;
+      this.title_modal = "EDITAR PONENTE";
+      this.frmRegistrarPonente.id = ponente.id;
+      this.frmRegistrarPonente.nombre = ponente.nombre;
+      this.frmRegistrarPonente.apellidoPaterno = ponente.apellidoPaterno;
+      this.frmRegistrarPonente.apellidoMaterno = ponente.apellidoMaterno;
+      this.frmRegistrarPonente.email = ponente.email;
+      this.frmRegistrarPonente.dni = ponente.dni;
+      this.frmRegistrarPonente.modal = "EDITAR";
+      document.getElementById("modalPonente").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalPonente").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display = "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    GuardarPonente: function GuardarPonente() {
+      console.log('ingreso');
+      this.submited = true;
+      self = this;
+      var data = new FormData();
+      data.append("modal", this.frmRegistrarPonente.modal);
+      data.append("dni", this.frmRegistrarPonente.dni);
+      data.append("email", this.frmRegistrarPonente.email);
+      axios.post(route("administrativa.verificar_ponentes"), data).then(function (response) {
+        var resultado = response.data; // console.log(resultado);
+
+        if (resultado == "INCORRECTO_D") {
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups!",
+            text: "El DNI ingresado, ya está registrado, intente nuevamente."
+          });
+          return false;
+        } else if (resultado == "INCORRECTO_U") {
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups!",
+            text: "El USUARIO ingresado, ya está registrado, intente nuevamente."
+          });
+          return false;
+        } else {
+          Swal.fire({
+            title: "GUARDAR CAMBIOS",
+            text: "¿Desea continuar?",
+            confirmButtonText: '<i class="fas fa-check" style="color:white;"></i>   Si',
+            confirmButtonColor: "var(--colorAlto)",
+            showCancelButton: true,
+            cancelButtonText: '<i class="fas fa-times"></i>   No',
+            cancelButtonColor: "var(--plomoOscuroEmpresarial)",
+            allowOutsideClick: false,
+            preConfirm: function preConfirm(result) {
+              axios.post(route("administrativa.guardar_ponente"), self.frmRegistrarPonente).then(function (response) {
+                var resultado = response.data; // console.log(resultado ==='EXITO');
+
+                if (resultado != "EXITO") {
+                  Swal.fire({
+                    icon: "success",
+                    title: "¡EXITO!",
+                    text: "Ponente registrado",
+                    allowOutsideClick: false,
+                    preConfirm: function preConfirm(result) {
+                      $("#modalPonente").css("display", "none");
+                      $("#footer-navigator").css("display", "flex");
+                      self.$inertia.get(route("administrativa.ponentes"));
+                    }
+                  });
+                } else {
+                  Swal.fire({
+                    icon: "error",
+                    title: "¡Ups!",
+                    text: "Algo salió mal"
+                  });
+                }
+              });
+            }
+          });
+        }
+      }); // }
+    }
   }
 });
 
@@ -4520,8 +5061,8 @@ window.Swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2
 
 
 
+ // InertiaProgress.init();
 
-_inertiajs_progress__WEBPACK_IMPORTED_MODULE_1__.InertiaProgress.init();
 vue__WEBPACK_IMPORTED_MODULE_3__.default.use(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_0__.plugin);
 vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_2___default());
 vue__WEBPACK_IMPORTED_MODULE_3__.default.use(vuelidate__WEBPACK_IMPORTED_MODULE_4__.default);
@@ -4679,7 +5220,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\r\n  --colorBajo: #ffdef8;\r\n  --colorMedio: #a33378;\r\n  --colorAlto: #921f6c;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\r\n  --colorBajo: #ffdef8;\r\n  --colorMedio: #a33378;\r\n  --colorAlto: #921f83;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29814,6 +30355,45 @@ component.options.__file = "resources/js/Pages/Administrativa/Components/layout_
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Administrativa/categorias_mantenimiento.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/Pages/Administrativa/categorias_mantenimiento.vue ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _categorias_mantenimiento_vue_vue_type_template_id_69be5f93___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./categorias_mantenimiento.vue?vue&type=template&id=69be5f93& */ "./resources/js/Pages/Administrativa/categorias_mantenimiento.vue?vue&type=template&id=69be5f93&");
+/* harmony import */ var _categorias_mantenimiento_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./categorias_mantenimiento.vue?vue&type=script&lang=js& */ "./resources/js/Pages/Administrativa/categorias_mantenimiento.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _categorias_mantenimiento_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _categorias_mantenimiento_vue_vue_type_template_id_69be5f93___WEBPACK_IMPORTED_MODULE_0__.render,
+  _categorias_mantenimiento_vue_vue_type_template_id_69be5f93___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Pages/Administrativa/categorias_mantenimiento.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Administrativa/congresos_permisos.vue":
 /*!******************************************************************!*\
   !*** ./resources/js/Pages/Administrativa/congresos_permisos.vue ***!
@@ -30150,6 +30730,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Administrativa/categorias_mantenimiento.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/Pages/Administrativa/categorias_mantenimiento.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_categorias_mantenimiento_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./categorias_mantenimiento.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/categorias_mantenimiento.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_categorias_mantenimiento_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Administrativa/congresos_permisos.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************!*\
   !*** ./resources/js/Pages/Administrativa/congresos_permisos.vue?vue&type=script&lang=js& ***!
@@ -30291,6 +30887,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_layout_administrativa_vue_vue_type_template_id_6df0be1c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_layout_administrativa_vue_vue_type_template_id_6df0be1c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./layout_administrativa.vue?vue&type=template&id=6df0be1c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/Components/layout_administrativa.vue?vue&type=template&id=6df0be1c&");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Administrativa/categorias_mantenimiento.vue?vue&type=template&id=69be5f93&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/Pages/Administrativa/categorias_mantenimiento.vue?vue&type=template&id=69be5f93& ***!
+  \*******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_categorias_mantenimiento_vue_vue_type_template_id_69be5f93___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_categorias_mantenimiento_vue_vue_type_template_id_69be5f93___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_categorias_mantenimiento_vue_vue_type_template_id_69be5f93___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./categorias_mantenimiento.vue?vue&type=template&id=69be5f93& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/categorias_mantenimiento.vue?vue&type=template&id=69be5f93&");
 
 
 /***/ }),
@@ -30627,11 +31240,7 @@ var render = function() {
                       staticClass: "collapse-item",
                       attrs: { href: _vm.$route("administrativa.congresos") }
                     },
-                    [
-                      _vm._v(
-                        "\n          \n            Lista de congresos\n          "
-                      )
-                    ]
+                    [_vm._v("\n            Lista de congresos\n          ")]
                   )
                 ],
                 1
@@ -30695,11 +31304,20 @@ var render = function() {
                 "div",
                 { staticClass: "bg-white py-2 collapse-inner rounded" },
                 [
-                  _c(
-                    "inertia-link",
-                    { staticClass: "collapse-item", attrs: { href: "#" } },
-                    [_vm._v("lista")]
+                  _vm.$page.props.user_permissions.permisos.includes(
+                    "GESTIÓN ADMINISTRATIVA/FOROS"
                   )
+                    ? _c(
+                        "inertia-link",
+                        {
+                          staticClass: "collapse-item",
+                          attrs: {
+                            href: _vm.$route("administrativa.categorias")
+                          }
+                        },
+                        [_vm._v("Categorias")]
+                      )
+                    : _vm._e()
                 ],
                 1
               )
@@ -30725,7 +31343,7 @@ var render = function() {
               "nav",
               {
                 staticClass:
-                  "navbar navbar-expand navbar-light bg-white topbar static-top shadow"
+                  "\n          navbar navbar-expand navbar-light\n          bg-white\n          topbar\n          static-top\n          shadow\n        "
               },
               [
                 _vm._m(4),
@@ -30768,7 +31386,7 @@ var render = function() {
                             _vm._v(
                               "\n                " +
                                 _vm._s(_vm.$page.props.user_session.email) +
-                                "  \n              "
+                                "\n              "
                             )
                           ]
                         ),
@@ -30792,7 +31410,9 @@ var render = function() {
             _vm._v(" "),
             _vm._t("c_ponentes_admin"),
             _vm._v(" "),
-            _vm._t("c_congresos_permisos")
+            _vm._t("c_congresos_permisos"),
+            _vm._v(" "),
+            _vm._t("c_categorias_mantenimiento")
           ],
           2
         ),
@@ -30923,7 +31543,7 @@ var staticRenderFns = [
       [
         _c("i", { staticClass: "fas fa-cogs" }),
         _vm._v(" "),
-        _c("span", [_vm._v("ALGO 3")])
+        _c("span", [_vm._v("Mantenimiento")])
       ]
     )
   },
@@ -30959,7 +31579,7 @@ var staticRenderFns = [
       "form",
       {
         staticClass:
-          "d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+          "\n            d-none d-sm-inline-block\n            form-inline\n            mr-auto\n            ml-md-3\n            my-2 my-md-0\n            mw-100\n            navbar-search\n          "
       },
       [
         _c("div", { staticClass: "input-group" }, [
@@ -31014,7 +31634,7 @@ var staticRenderFns = [
         "div",
         {
           staticClass:
-            "dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in",
+            "\n                dropdown-menu dropdown-menu-right\n                p-3\n                shadow\n                animated--grow-in\n              ",
           attrs: { "aria-labelledby": "searchDropdown" }
         },
         [
@@ -31081,7 +31701,7 @@ var staticRenderFns = [
         "div",
         {
           staticClass:
-            "dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in",
+            "\n                dropdown-list dropdown-menu dropdown-menu-right\n                shadow\n                animated--grow-in\n              ",
           attrs: { "aria-labelledby": "alertsDropdown" }
         },
         [
@@ -31132,7 +31752,7 @@ var staticRenderFns = [
       "div",
       {
         staticClass:
-          "dropdown-menu dropdown-menu-right shadow animated--grow-in",
+          "\n                dropdown-menu dropdown-menu-right\n                shadow\n                animated--grow-in\n              ",
         attrs: { "aria-labelledby": "userDropdown" }
       },
       [
@@ -31169,6 +31789,162 @@ var staticRenderFns = [
     )
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/categorias_mantenimiento.vue?vue&type=template&id=69be5f93&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/categorias_mantenimiento.vue?vue&type=template&id=69be5f93& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("layout", { ref: "layout" }, [
+    _c(
+      "div",
+      {
+        attrs: { slot: "c_categorias_mantenimiento" },
+        slot: "c_categorias_mantenimiento"
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "content", staticStyle: { display: "block" } },
+          [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("strong", [_vm._v("CATEGORIAS")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-title" }, [
+                _vm._v("PANEL DE LISTADO")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body card-block" }, [
+                _c("div", { staticClass: "text-center mb-2" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-action btn-icon-split",
+                      attrs: { id: "btnRegistrarAsistencia" },
+                      on: {
+                        click: function($event) {
+                          return _vm.NuevaCategoria()
+                        }
+                      }
+                    },
+                    [
+                      _c("span", { staticClass: "icon text-white" }, [
+                        _c("i", { staticClass: "far fa-id-badge" })
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "text font-size-layout" }, [
+                        _vm._v("Agregar categorias")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { attrs: { id: "tabla_permisos" } }, [
+                  _c(
+                    "table",
+                    {
+                      staticClass: "table table-hover",
+                      attrs: { id: "tblCategorias" }
+                    },
+                    [
+                      _c("thead", [
+                        _c("tr", [
+                          _c("th", [_vm._v("EDITAR")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("NOMBRE")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.categorias, function(categoria) {
+                          return _c("tr", { key: categoria.id }, [
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "center" }
+                              },
+                              [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "btn btn-action btn-icon-split",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.EditarCategoria()
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      { staticClass: "icon text-white-50" },
+                                      [
+                                        _c("i", {
+                                          staticClass: "fas fa-edit",
+                                          staticStyle: { color: "white" }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "center" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(categoria.nombre) +
+                                    "\n                  "
+                                )
+                              ]
+                            )
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("br")
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -31243,16 +32019,26 @@ var render = function() {
                           _vm._v(" "),
                           _c("th", [_vm._v("NOMBRE")]),
                           _vm._v(" "),
-                          _c("th", [_vm._v("CORREO")]),
+                          _c("th", [_vm._v("TEMATICA")]),
                           _vm._v(" "),
-                          _c("th", [_vm._v("DNI")])
+                          _c("th", [_vm._v("DESCRIPCION")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("FECHA INICIO")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("HORA INICIO")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("HORA FIN")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("PONENTE")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("CATEGORIA")])
                         ])
                       ]),
                       _vm._v(" "),
                       _c(
                         "tbody",
-                        _vm._l(_vm.ponentes, function(ponente) {
-                          return _c("tr", { key: ponente.id }, [
+                        _vm._l(_vm.congresos, function(congreso) {
+                          return _c("tr", { key: congreso.id }, [
                             _c(
                               "td",
                               {
@@ -31290,12 +32076,102 @@ var render = function() {
                               [
                                 _vm._v(
                                   "\n                    " +
+                                    _vm._s(congreso.nombre) +
+                                    "\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "left" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(congreso.tematica) +
+                                    "\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "left" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(congreso.descripcion) +
+                                    "\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "left" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(congreso.fecha_evento) +
+                                    "\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "left" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(congreso.hora_evento) +
+                                    "\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "left" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(congreso.hora_fin) +
+                                    "\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "left" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    " +
                                     _vm._s(
-                                      ponente.nombre +
+                                      congreso.NOMBRES +
                                         " " +
-                                        ponente.apellidoPaterno +
+                                        congreso.apellidoPaterno +
                                         " " +
-                                        ponente.apellidoMater
+                                        congreso.apellidoMaterno
                                     ) +
                                     "\n                  "
                                 )
@@ -31311,22 +32187,7 @@ var render = function() {
                               [
                                 _vm._v(
                                   "\n                    " +
-                                    _vm._s(ponente.email) +
-                                    "\n                  "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                staticClass: "table-bordered",
-                                attrs: { align: "left" }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                    " +
-                                    _vm._s(ponente.dni) +
+                                    _vm._s(congreso.nombre_categoria) +
                                     "\n                  "
                                 )
                               ]
@@ -31405,6 +32266,45 @@ var render = function() {
                   _vm._v(" "),
                   _c("span", { staticClass: "text font-size-layout" }, [
                     _vm._v("Agregar pregunta")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "search-content_us" } }, [
+              _c(
+                "div",
+                {
+                  staticClass: "input-group row col-md-3 mb-1 input-search",
+                  attrs: { id: "s_content_us" }
+                },
+                [
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "inpBuscar",
+                      placeholder: "Buscar..."
+                    },
+                    on: {
+                      focus: function($event) {
+                        return _vm.hidenav()
+                      },
+                      blur: function($event) {
+                        return _vm.shownav()
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group-append" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-action",
+                        attrs: { type: "button" }
+                      },
+                      [_c("i", { staticClass: "fas fa-search" })]
+                    )
                   ])
                 ]
               )
@@ -31718,11 +32618,7 @@ var render = function() {
                                   _c(
                                     "option",
                                     { attrs: { value: "0", selected: "" } },
-                                    [
-                                      _vm._v(
-                                        "\n                          Seleccione...\n                        "
-                                      )
-                                    ]
+                                    [_vm._v("Seleccione...")]
                                   ),
                                   _vm._v(" "),
                                   _vm._l(_vm.eventos, function(evento) {
@@ -31868,7 +32764,12 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-action btn-icon-split",
-                      attrs: { id: "btnRegistrarAsistencia" }
+                      attrs: { id: "btnRegistrarAsistencia" },
+                      on: {
+                        click: function($event) {
+                          return _vm.NuevoPonente()
+                        }
+                      }
                     },
                     [
                       _c("span", { staticClass: "icon text-white" }, [
@@ -31882,12 +32783,51 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
+                _c("div", { attrs: { id: "search-content_us" } }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "input-group row col-md-3 mb-1 input-search",
+                      attrs: { id: "s_content_us" }
+                    },
+                    [
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "inpBuscar",
+                          placeholder: "Buscar..."
+                        },
+                        on: {
+                          focus: function($event) {
+                            return _vm.hidenav()
+                          },
+                          blur: function($event) {
+                            return _vm.shownav()
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "input-group-append" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-action",
+                            attrs: { type: "button" }
+                          },
+                          [_c("i", { staticClass: "fas fa-search" })]
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
                 _c("div", { attrs: { id: "tabla_permisos" } }, [
                   _c(
                     "table",
                     {
                       staticClass: "table table-hover",
-                      attrs: { id: "tblPreguntas" }
+                      attrs: { id: "tblPonentes" }
                     },
                     [
                       _c("thead", [
@@ -31896,7 +32836,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("th", [_vm._v("NOMBRE")]),
                           _vm._v(" "),
-                          _c("th", [_vm._v("CORREO")]),
+                          _c("th", [_vm._v("email")]),
                           _vm._v(" "),
                           _c("th", [_vm._v("DNI")])
                         ])
@@ -31916,7 +32856,13 @@ var render = function() {
                                 _c(
                                   "button",
                                   {
-                                    staticClass: "btn btn-action btn-icon-split"
+                                    staticClass:
+                                      "btn btn-action btn-icon-split",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.EditarPonente(ponente)
+                                      }
+                                    }
                                   },
                                   [
                                     _c(
@@ -31948,7 +32894,7 @@ var render = function() {
                                         " " +
                                         ponente.apellidoPaterno +
                                         " " +
-                                        ponente.apellidoMater
+                                        ponente.apellidoMaterno
                                     ) +
                                     "\n                  "
                                 )
@@ -31995,6 +32941,439 @@ var render = function() {
                 _c("br"),
                 _vm._v(" "),
                 _c("br")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal", attrs: { id: "modalPonente" } }, [
+              _c("div", { staticClass: "modal-content w-36" }, [
+                _c("div", { staticClass: "modal-body" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "content",
+                      staticStyle: { display: "block" }
+                    },
+                    [
+                      _c("div", { staticClass: "card" }, [
+                        _c("div", { staticClass: "card-header" }, [
+                          _c("div", { attrs: { id: "c_titulo" } }, [
+                            _c("strong", { attrs: { id: "title" } }, [
+                              _vm._v(_vm._s(_vm.title_modal))
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-title" }, [
+                          _vm._v("DATOS DEL PERMISO")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-body card-block" }, [
+                          _c(
+                            "form",
+                            {
+                              on: {
+                                submit: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.GuardarPonente($event)
+                                }
+                              }
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.frmRegistrarPonente.modal,
+                                    expression: "frmRegistrarPonente.modal"
+                                  }
+                                ],
+                                attrs: {
+                                  type: "text",
+                                  id: "txtModal",
+                                  hidden: ""
+                                },
+                                domProps: {
+                                  value: _vm.frmRegistrarPonente.modal
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.frmRegistrarPonente,
+                                      "modal",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.frmRegistrarPonente.id,
+                                    expression: "frmRegistrarPonente.id"
+                                  }
+                                ],
+                                attrs: {
+                                  type: "text",
+                                  id: "txtIdPermiso",
+                                  hidden: ""
+                                },
+                                domProps: { value: _vm.frmRegistrarPonente.id },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.frmRegistrarPonente,
+                                      "id",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("DNI")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.frmRegistrarPonente.dni,
+                                          expression: "frmRegistrarPonente.dni"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: {
+                                        type: "number",
+                                        name: "dni",
+                                        id: "inpDni",
+                                        maxlength: "8",
+                                        autocomplete: "off",
+                                        oninput:
+                                          "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);",
+                                        placeholder: "Ingrese el DNI",
+                                        disabled:
+                                          _vm.frmRegistrarPonente.modal ==
+                                          "EDITAR"
+                                      },
+                                      domProps: {
+                                        value: _vm.frmRegistrarPonente.dni
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.frmRegistrarPonente,
+                                            "dni",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col form-group col-sm-8" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("email")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.frmRegistrarPonente.email,
+                                          expression:
+                                            "frmRegistrarPonente.email"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: {
+                                        type: "text",
+                                        name: "Nombre",
+                                        id: "inpNombre",
+                                        placeholder: "Ingrese el email"
+                                      },
+                                      domProps: {
+                                        value: _vm.frmRegistrarPonente.email
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.frmRegistrarPonente,
+                                            "email",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("NOMBRE")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.frmRegistrarPonente.nombre,
+                                          expression:
+                                            "frmRegistrarPonente.nombre"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: {
+                                        type: "text",
+                                        name: "Nombre",
+                                        id: "inpNombre",
+                                        placeholder: "Ingrese los nombres"
+                                      },
+                                      domProps: {
+                                        value: _vm.frmRegistrarPonente.nombre
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.frmRegistrarPonente,
+                                            "nombre",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("APELLIDO PATERNO")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.frmRegistrarPonente
+                                              .apellidoPaterno,
+                                          expression:
+                                            "frmRegistrarPonente.apellidoPaterno"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: {
+                                        type: "text",
+                                        name: "Nombre",
+                                        id: "inpNombre",
+                                        placeholder:
+                                          "Ingrese su apellido patenro"
+                                      },
+                                      domProps: {
+                                        value:
+                                          _vm.frmRegistrarPonente
+                                            .apellidoPaterno
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.frmRegistrarPonente,
+                                            "apellidoPaterno",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("APELLIDO MATERNO")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.frmRegistrarPonente
+                                              .apellidoMaterno,
+                                          expression:
+                                            "frmRegistrarPonente.apellidoMaterno"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: {
+                                        type: "text",
+                                        name: "Nombre",
+                                        id: "inpNombre",
+                                        placeholder:
+                                          "Ingrese el apeliido materno"
+                                      },
+                                      domProps: {
+                                        value:
+                                          _vm.frmRegistrarPonente
+                                            .apellidoMaterno
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.frmRegistrarPonente,
+                                            "apellidoMaterno",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("hr"),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "text-right" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-action btn-icon-split mb-1",
+                                attrs: { id: "btnGuardarCambios" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.GuardarPonente()
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "icon text-white-50" },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fas fa-save",
+                                      staticStyle: { color: "white" }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "text" }, [
+                                  _vm._v("Guardar")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-cancel btn-icon-split mb-1",
+                                attrs: { id: "btnCancelar" }
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "icon text-white-50" },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fas fa-times",
+                                      staticStyle: { color: "white" }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "text",
+                                    staticStyle: { color: "white" }
+                                  },
+                                  [_vm._v("Cancelar")]
+                                )
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                ])
               ])
             ])
           ]
@@ -47087,6 +48466,8 @@ function h(tag, key, args) {
 var map = {
 	"./Administrativa/Components/layout_administrativa": "./resources/js/Pages/Administrativa/Components/layout_administrativa.vue",
 	"./Administrativa/Components/layout_administrativa.vue": "./resources/js/Pages/Administrativa/Components/layout_administrativa.vue",
+	"./Administrativa/categorias_mantenimiento": "./resources/js/Pages/Administrativa/categorias_mantenimiento.vue",
+	"./Administrativa/categorias_mantenimiento.vue": "./resources/js/Pages/Administrativa/categorias_mantenimiento.vue",
 	"./Administrativa/congresos_permisos": "./resources/js/Pages/Administrativa/congresos_permisos.vue",
 	"./Administrativa/congresos_permisos.vue": "./resources/js/Pages/Administrativa/congresos_permisos.vue",
 	"./Administrativa/foros_admin": "./resources/js/Pages/Administrativa/foros_admin.vue",

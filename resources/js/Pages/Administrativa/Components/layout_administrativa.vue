@@ -13,10 +13,10 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <inertia-link 
-        class="nav-link" 
-        :href="$route('administrativa.principal')"
-        v-if="
+        <inertia-link
+          class="nav-link"
+          :href="$route('administrativa.principal')"
+          v-if="
             $page.props.user_permissions.permisos.includes(
               'GESTIÓN ADMINISTRATIVA/PRINCIPAL'
             )
@@ -55,19 +55,17 @@
               class="collapse-item"
               :href="$route('administrativa.ponentes')"
               v-if="
-            $page.props.user_permissions.permisos.includes(
-              'GESTIÓN ADMINISTRATIVA/PONENTES'
-            )
-          "
+                $page.props.user_permissions.permisos.includes(
+                  'GESTIÓN ADMINISTRATIVA/PONENTES'
+                )
+              "
               >Lista de ponentes
             </inertia-link>
 
-            <inertia-link 
-            class="collapse-item"
-            :href="$route('administrativa.congresos')"
-            
+            <inertia-link
+              class="collapse-item"
+              :href="$route('administrativa.congresos')"
             >
-            
               Lista de congresos
             </inertia-link>
           </div>
@@ -97,10 +95,10 @@
               class="collapse-item"
               :href="$route('administrativa.foros')"
               v-if="
-            $page.props.user_permissions.permisos.includes(
-              'GESTIÓN ADMINISTRATIVA/FOROS'
-            )
-          "
+                $page.props.user_permissions.permisos.includes(
+                  'GESTIÓN ADMINISTRATIVA/FOROS'
+                )
+              "
               >Foro
             </inertia-link>
           </div>
@@ -117,7 +115,7 @@
           aria-controls="menuMantenimiento"
         >
           <i class="fas fa-cogs"></i>
-          <span>ALGO 3</span>
+          <span>Mantenimiento</span>
         </a>
         <div
           id="menuMantenimiento"
@@ -126,8 +124,15 @@
           data-parent="#accordionSidebar"
         >
           <div class="bg-white py-2 collapse-inner rounded">
-            <inertia-link class="collapse-item" href="#"
-              >lista</inertia-link
+            <inertia-link
+              class="collapse-item"
+              :href="$route('administrativa.categorias')"
+              v-if="
+                $page.props.user_permissions.permisos.includes(
+                  'GESTIÓN ADMINISTRATIVA/FOROS'
+                )
+              "
+              >Categorias</inertia-link
             >
           </div>
         </div>
@@ -149,7 +154,13 @@
       <div id="content">
         <!-- Topbar -->
         <nav
-          class="navbar navbar-expand navbar-light bg-white topbar static-top shadow"
+          class="
+            navbar navbar-expand navbar-light
+            bg-white
+            topbar
+            static-top
+            shadow
+          "
         >
           <!-- Sidebar Toggle (Topbar) -->
           <button
@@ -161,7 +172,15 @@
 
           <!-- Topbar Search -->
           <form
-            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+            class="
+              d-none d-sm-inline-block
+              form-inline
+              mr-auto
+              ml-md-3
+              my-2 my-md-0
+              mw-100
+              navbar-search
+            "
           >
             <div class="input-group">
               <input
@@ -199,7 +218,12 @@
               </a>
               <!-- Dropdown - Messages -->
               <div
-                class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                class="
+                  dropdown-menu dropdown-menu-right
+                  p-3
+                  shadow
+                  animated--grow-in
+                "
                 aria-labelledby="searchDropdown"
               >
                 <form class="form-inline mr-auto w-100 navbar-search">
@@ -242,7 +266,11 @@
               </a>
               <!-- Dropdown - Alerts -->
               <div
-                class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                class="
+                  dropdown-list dropdown-menu dropdown-menu-right
+                  shadow
+                  animated--grow-in
+                "
                 aria-labelledby="alertsDropdown"
               >
                 <h6 class="dropdown-header">Mis notificaciones</h6>
@@ -286,7 +314,7 @@
               >
                 <!-- <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{session('usuario')}} </span> -->
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                  {{ $page.props.user_session.email }}  
+                  {{ $page.props.user_session.email }}
                 </span>
                 <img
                   class="img-profile rounded-circle"
@@ -295,7 +323,11 @@
               </a>
               <!-- Dropdown - User Information -->
               <div
-                class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                class="
+                  dropdown-menu dropdown-menu-right
+                  shadow
+                  animated--grow-in
+                "
                 aria-labelledby="userDropdown"
               >
                 <!-- <inertia-link class="dropdown-item" :href="$route('mpl.index')">
@@ -335,6 +367,7 @@
         <slot name="c_foros_admin"></slot>
         <slot name="c_ponentes_admin"></slot>
         <slot name="c_congresos_permisos"></slot>
+        <slot name="c_categorias_mantenimiento"></slot>
       </div>
 
       <!------------- BOTONES DE NAVEGACIÓN ----------->
@@ -362,7 +395,7 @@
 export default {
   props: {},
   mounted() {
-    document.title = "Mi menú";
+    document.title = "Gestion Administrativa";
     this.validarTamaño();
 
     (function ($) {
@@ -385,8 +418,7 @@ export default {
         }
 
         if ($("body").hasClass("sidebar-toggled")) {
-          document.getElementById("logoPrincipal").src =
-            "/img/logo.svg";
+          document.getElementById("logoPrincipal").src = "/img/logo.svg";
           if (window.screen.orientation == "landscape") {
             document
               .getElementById("footer-navigator")
@@ -404,8 +436,7 @@ export default {
           }
         } else {
           if (screen.width < 900) {
-            document.getElementById("logoPrincipal").src =
-              "/img/logo.svg";
+            document.getElementById("logoPrincipal").src = "/img/logo.svg";
             if (window.screen.orientation == "landscape") {
               document
                 .getElementById("footer-navigator")
@@ -422,8 +453,7 @@ export default {
                 .classList.add("footer-nav-toggled");
             }
           } else {
-            document.getElementById("logoPrincipal").src =
-              "/img/logo.svg";
+            document.getElementById("logoPrincipal").src = "/img/logo.svg";
             document
               .getElementById("footer-navigator")
               .classList.remove("footer-nav-toggled");
@@ -432,23 +462,23 @@ export default {
       });
 
       window.onorientationchange = function (event) {
-        // var tabla_1 = document.getElementById("t_estados");
-        // if (tabla_1 != null) {
-        //   if ($("#t_estados").hasClass("table-responsive")) {
-        //     tabla_1.classList.remove("table-responsive");
-        //   } else {
-        //     tabla_1.classList.add("table-responsive");
-        //   }
-        // }
+        var tabla_1 = document.getElementById("t_estados");
+        if (tabla_1 != null) {
+          if ($("#t_estados").hasClass("table-responsive")) {
+            tabla_1.classList.remove("table-responsive");
+          } else {
+            tabla_1.classList.add("table-responsive");
+          }
+        }
 
-        // var tabla_2 = document.getElementById("t_tipo_suministros");
-        // if (tabla_2 != null) {
-        //   if ($("#t_tipo_suministros").hasClass("table-responsive")) {
-        //     tabla_2.classList.remove("table-responsive");
-        //   } else {
-        //     tabla_2.classList.add("table-responsive");
-        //   }
-        // }
+        var tabla_2 = document.getElementById("t_tipo_suministros");
+        if (tabla_2 != null) {
+          if ($("#t_tipo_suministros").hasClass("table-responsive")) {
+            tabla_2.classList.remove("table-responsive");
+          } else {
+            tabla_2.classList.add("table-responsive");
+          }
+        }
 
         if ($(".sidebar").hasClass("toggled")) {
           $(".sidebar .collapse").collapse("hide");
@@ -462,8 +492,7 @@ export default {
         }
 
         if ($("body").hasClass("sidebar-toggled")) {
-          document.getElementById("logoPrincipal").src =
-            "/img/logo.svg";
+          document.getElementById("logoPrincipal").src = "/img/logo.svg";
           if (screen.height <= 420) {
             document
               .getElementById("footer-navigator")
@@ -481,8 +510,7 @@ export default {
           }
         } else {
           if (screen.width < 900) {
-            document.getElementById("logoPrincipal").src =
-              "/img/logo.svg";
+            document.getElementById("logoPrincipal").src = "/img/logo.svg";
             if (screen.height <= 420) {
               document
                 .getElementById("footer-navigator")
@@ -499,8 +527,7 @@ export default {
                 .classList.add("footer-nav-toggled");
             }
           } else {
-            document.getElementById("logoPrincipal").src =
-              "/img/logo.svg";
+            document.getElementById("logoPrincipal").src = "/img/logo.svg";
             document
               .getElementById("footer-navigator")
               .classList.remove("footer-nav-toggled");
@@ -562,8 +589,7 @@ export default {
   methods: {
     validarTamaño() {
       if (screen.width <= 900) {
-        document.getElementById("logoPrincipal").src =
-          "/img/logo.svg";
+        document.getElementById("logoPrincipal").src = "/img/logo.svg";
         document
           .getElementById("footer-navigator")
           .classList.add("footer-nav-toggled");
@@ -576,8 +602,7 @@ export default {
             .classList.remove("footer-nav-toggled");
         }
       } else {
-        document.getElementById("logoPrincipal").src =
-          "/img/logo.svg";
+        document.getElementById("logoPrincipal").src = "/img/logo.svg";
         document
           .getElementById("footer-navigator")
           .classList.remove("footer-nav-toggled");
@@ -652,6 +677,6 @@ export default {
 :root {
   --colorBajo: #ffdef8;
   --colorMedio: #a33378;
-  --colorAlto: #921f6c;
+  --colorAlto: #921f83;
 }
 </style>

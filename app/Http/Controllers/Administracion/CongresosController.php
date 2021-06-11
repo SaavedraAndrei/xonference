@@ -19,7 +19,7 @@ class CongresosController extends Controller{
         if (empty($x['usuario_dni'])) {
             return view('welcome');
         }else {
-            $band = (new PermisosController)->verificarPermiso($x['usuario_dni'], 'PONENTES', 'GESTIÓN ADMINISTRATIVA');
+            $band = (new PermisosController)->verificarPermiso($x['usuario_dni'], 'LISTAR CONGRESOS', 'GESTIÓN ADMINISTRATIVA');
             if ($band == 1) {
                 $congresos = Evento::from('eventos as e')
                 ->select(
@@ -27,28 +27,24 @@ class CongresosController extends Controller{
                     'e.nombre',
                     'e.tematica', 
                     'e.descripcion',
-                    'fecha_evento',
-                    'hora_evento',
-                    'hora_fin',
-                    'idPonente',
-                    'idCategoria',
-                    'usuario_creacion',
-                    'usuario_actualizacion'
+                    'e.fecha_evento',
+                    'e.hora_evento',
+                    'e.hora_fin',
+                    'e.idPonente',
+                    'e.idCategoria',
+                    'e.usuario_creacion',
+                    'e.usuario_actualizacion',
+                    'po.nombre as NOMBRES',
+                    'po.apellidoPaterno', 
+                    'po.apellidoMaterno',
+                    'c.nombre as nombre_categoria'
+
                 )
-                ->get();
-                // $ponentes = Ponente::from('ponentes as p')
-                // ->select(
-                //     'id',
-                //     'nombre', 
-                //     'apellidoPaterno',
-                //     'apellidoMaterno',
-                //     'email',
-                //     'dni',
-                // )
-                // ->get();
-                
+                ->join('ponentes as po','e.idPonente','=','po.id')
+                ->join('categorias as c','e.idCategoria','=','c.id')
+                ->get();               
                 return Inertia::render('Administrativa/congresos_permisos', [
-                    // 'ponentes' => $ponentes,
+                    'congresos' => $congresos,
                     // 'respuestas' => $respuestas,
                 ]);
             } else {

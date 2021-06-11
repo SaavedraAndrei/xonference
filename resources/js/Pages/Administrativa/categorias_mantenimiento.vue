@@ -1,10 +1,10 @@
 <template>
-   <layout ref="layout">
-    <div slot="c_congresos_permisos">
+  <layout ref="layout">
+    <div slot="c_categorias_mantenimiento">
       <div class="content" style="display: block">
         <div class="card">
           <div class="card-header">
-            <strong>CONGRESOS - EVENTOS</strong>
+            <strong>CATEGORIAS</strong>
           </div>
           <div class="card-title">PANEL DE LISTADO</div>
           <div class="card-body card-block">
@@ -12,63 +12,38 @@
               <button
                 class="btn btn-action btn-icon-split"
                 id="btnRegistrarAsistencia"
+                @click="NuevaCategoria()"
               >
                 <span class="icon text-white">
                   <i class="far fa-id-badge"></i>
                 </span>
-                <span class="text font-size-layout">Agregar Evento</span>
+                <span class="text font-size-layout">Agregar categorias</span>
               </button>
             </div>
 
             <div id="tabla_permisos">
-              <table class="table table-hover" id="tblPreguntas">
+              <table class="table table-hover" id="tblCategorias">
                 <thead>
                   <tr>
                     <th>EDITAR</th>
                     <th>NOMBRE</th>
-                    <th>TEMATICA</th>
-                    <th>DESCRIPCION</th>
-                    <th>FECHA INICIO</th>
-                    <th>HORA INICIO</th>
-                    <th>HORA FIN</th>
-                    <th>PONENTE</th>
-                    <th>CATEGORIA</th>
+                    <!-- <th>CORREO</th>
+                    <th>DNI</th> -->
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="congreso in congresos" :key="congreso.id">
+                  <tr v-for="categoria in categorias" :key="categoria.id">
                     <td class="table-bordered" align="center">
-                      <button
-                        class="btn btn-action btn-icon-split"
-                      >
+                      <button 
+                      class="btn btn-action btn-icon-split"
+                      @click="EditarCategoria()">
                         <span class="icon text-white-50">
                           <i class="fas fa-edit" style="color: white"></i>
                         </span>
                       </button>
                     </td>
                     <td class="table-bordered" align="center">
-                      {{ congreso.nombre}}
-                    </td>
-                    <td class="table-bordered" align="left">
-                      {{ congreso.tematica }}
-                    </td>
-                    <td class="table-bordered" align="left">
-                      {{ congreso.descripcion }}
-                    </td>
-                    <td class="table-bordered" align="left">
-                      {{ congreso.fecha_evento }}
-                    </td>
-                    <td class="table-bordered" align="left">
-                      {{ congreso.hora_evento }}
-                    </td>
-                    <td class="table-bordered" align="left">
-                      {{ congreso.hora_fin }}
-                    </td>
-                    <td class="table-bordered" align="left">
-                      {{ congreso.NOMBRES + " " + congreso.apellidoPaterno + " "+congreso.apellidoMaterno }}
-                    </td>
-                    <td class="table-bordered" align="left">
-                      {{ congreso.nombre_categoria }}
+                      {{ categoria.nombre }}
                     </td>
                   </tr>
                 </tbody>
@@ -78,7 +53,6 @@
             <br />
           </div>
         </div>
-
         <!-- The Modal -->
         <!-- <div id="modalPreguntaForo" class="modal">
           <div class="modal-content w-36">
@@ -101,7 +75,7 @@
                       />
                       <input
                         type="text"
-                        id="txtIdPermiso"
+                        id="txtIdPregunta"
                         hidden
                         v-model="frmRegistrarPregunta.id"
                       />
@@ -177,13 +151,61 @@
 <script>
 import layout from "./Components/layout_administrativa";
 export default {
-    components: { layout },
-    props: {
-        congresos: Array,
-    }
-}
+  components: { layout },
+  props: {
+    categorias: Array,
+  },
+  data() {
+    return {
+      submited: false,
+      title_modal: "NUEVA CATEGORIA",
+      frmCrearCategoria: {
+        id: "",
+        nombre: "",
+        modal: "",
+      },
+    };
+  },
+  mounted() {
+      $(document).ready( function () {
+    $('#tblCategorias').DataTable();
+} );
+  },
+  methods: {
+    NuevaCategoria() {
+      // console.log(pregunta.id);
+      this.submited = false;
+      this.title_modal = "NUEVO PONENTE";
+      this.frmCrearCategoria.id = 0;
+      this.frmCrearCategoria.nombre = "";
+      this.frmCrearCategoria.modal = "NUEVO";
+
+      document.getElementById("modalPonente").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalPonente").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display =
+          "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    EditarCategoria(ponente) {
+      this.submited = false;
+      this.title_modal = "EDITAR PONENTE";
+      this.frmCrearCategoria.id = ponente.id;
+      this.frmCrearCategoria.nombre = ponente.nombre;
+      this.frmCrearCategoria.modal = "EDITAR";
+
+      document.getElementById("modalPonente").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalPonente").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display =
+          "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>

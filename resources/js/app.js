@@ -7,7 +7,7 @@ import Vue from "vue";
 import axios from "axios";
 import Vuelidate from "vuelidate";
 
-InertiaProgress.init();
+// InertiaProgress.init();
 
 Vue.use(plugin);
 Vue.prototype.$http = axios;

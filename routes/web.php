@@ -16,6 +16,7 @@ use App\Http\Controllers\Administracion\PermisosController;
 use App\Http\Controllers\CertificadoController;
 use App\Http\Controllers\Administracion\PonentesController;
 use App\Http\Controllers\Administracion\CongresosController;
+use App\Http\Controllers\Administracion\MantenimientosController;
 //-----------------------------------USUARIOS
 use App\Http\Controllers\Usuarios\AsistenciaController;
 use App\Http\Controllers\Usuarios\ForosController;
@@ -71,9 +72,12 @@ Route::POST('/usuarios/foros/guardar_respuesta', [ForosController::class, 'guard
 //-------------------------------------------GESTION ADMINISTRATIVA---------------------------------------
 Route::GET('/general', [PermisosController::class, 'principal'])->name('administrativa.principal');
 Route::GET('/administrativa/ponentes', [PonentesController::class, 'Ponentes'])->name('administrativa.ponentes');
+Route::POST('/administrativa/ponentes_verificar', [PonentesController::class, 'verificarPonente'])->name('administrativa.verificar_ponentes');
+Route::POST('/administrativa/ponentes_guardar', [PonentesController::class, 'guardarPonente'])->name('administrativa.guardar_ponente');
 Route::GET('/administracion/foros', [ForosController::class, 'foros_admin'])->name('administrativa.foros');
 Route::POST('/administrativa/guardar_pregunta', [ForosController::class, 'guardar_pregunta'])->name('foros.guardar_pregunta');
 Route::GET('/administrativa/congresos', [CongresosController::class, 'Congresos'])->name('administrativa.congresos');
+Route::GET('/administrativa/categorias', [MantenimientosController::class, 'Categorias'])->name('administrativa.categorias');
 
 //----------------------------RUTAS PARA EL CERTIFICADO---------------------------------------
 Route::GET('/certificado', [CertificadoController::class, 'index'])->name('certificado');

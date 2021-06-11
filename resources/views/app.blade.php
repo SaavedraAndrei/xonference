@@ -36,7 +36,7 @@
   @routes
 </head>
 
-<body>
+<body id="page-top">
 
 
   @inertia
@@ -61,7 +61,7 @@
   <script type="text/javascript" src="{{asset('datatables/Buttons-1.6.5/js/buttons.print.min.js') }}"></script>
 
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
   <script>
     window.jQuery || document.write('<script src="/vendor/jquery-3.4.1.min.js"><\/script>')
   </script>
@@ -77,6 +77,7 @@
     ga('set', 'transport', 'beacon');
     ga('send', 'pageview')
   </script>
+
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>

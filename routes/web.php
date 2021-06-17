@@ -21,6 +21,7 @@ use App\Http\Controllers\Administracion\MantenimientosController;
 use App\Http\Controllers\Usuarios\AsistenciaController;
 use App\Http\Controllers\Usuarios\ForosController;
 use App\Http\Controllers\ArchivoController;
+use App\Http\Controllers\JitsiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,3 +88,5 @@ Route::GET('/file', [ArchivoController::class, 'index'])->name('viewfile');
 Route::GET('/file/upload', [ArchivoController::class, 'create'])->name('formfile');
 Route::POST('/file/upload', [ArchivoController::class, 'store'])->name('uploadfile');
 Route::GET('/file/download/{id}', [ArchivoController::class, 'show'])->name('downloadfile');
+//----------------------------RUTAS PARA JITSI----------------------------------------
+Route::GET('/jitsi', [JitsiController::class, 'index'])->name('jitsi');

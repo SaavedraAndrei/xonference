@@ -9,12 +9,9 @@
           <div class="card-title">PANEL DE CONFERENCIA</div>
           <div class="card-body card-block">
             <div class="form-row">
-              <div class="form-group col-xs-4">
-                <label for="text-input" class="form-control-label label-title"
-                  >aqui ira conferencia</label
-                >
-                <img class="align center" src="https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/21/2019/08/diferencia-tu-conferencia.jpg" alt="">
-              </div>
+                <div class="meet-container">
+                  <div id="meet" class="meet-body" style="align: center; margin: 0 auto:"></div>
+                </div>
             </div>
           </div>
 
@@ -137,6 +134,20 @@ export default {
   },
   mounted() {
     self = this;
+
+    const domain = '8x8.vc';
+    const options = {
+        roomName: 'vpaas-magic-cookie-7ae1fe3f898449ef82ec67cded0ac6f5/AndreiMeet',
+        parentNode: document.querySelector('#meet'),
+        jwt: "\eyJraWQiOiJ2cGFhcy1tYWdpYy1jb29raWUtN2FlMWZlM2Y4OTg0NDllZjgyZWM2N2NkZWQwYWM2ZjUvZDBjYTI2IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJqaXRzaSIsImNvbnRleHQiOnsidXNlciI6eyJpZCI6IjBmOGI3NzYwLWMxN2YtNGExMi1iMTM0LWM2YWMzNzE2NzE0NCIsIm5hbWUiOiJBbmRyZWkgU2FhdmVkcmEiLCJhdmF0YXIiOiJodHRwczovL2xpbmsudG8vdXNlci9hdmF0YXIvcGljdHVyZSIsImVtYWlsIjoiNzM0NTUwNzNAY29udGluZW50YWwuZWR1LnBlIiwibW9kZXJhdG9yIjoidHJ1ZSJ9LCJmZWF0dXJlcyI6eyJsaXZlc3RyZWFtaW5nIjoidHJ1ZSIsInJlY29yZGluZyI6InRydWUifX0sImV4cCI6MTY5NjI4NDA1MiwiaXNzIjoiY2hhdCIsIm5iZiI6MTU5NjE5NzY1Miwicm9vbSI6IioiLCJzdWIiOiJ2cGFhcy1tYWdpYy1jb29raWUtN2FlMWZlM2Y4OTg0NDllZjgyZWM2N2NkZWQwYWM2ZjUifQ.tHYgtlk8GfS76ykpSCK-GruyqvG8OCCZ3Jx3uUt4AnOoOqSGg-Gui3epklYrhqbxErmrG3wcXTsmqGhb94CMcj417QuxWiq8vpiGaM1sOf7D_b1oY7TiEW69JNBGbo8RHFY76hGwrVNRm2VuJJblNwobTJvmiv-6AqgUixeMwgaDwysKhb5pF7aR53ioMJQS4dNTrPSnWSQ_6VZnR-shhv5MhHKmz6O_U6SwKLxtfEM9NKeEofX3bHJ0Njuni59hWtRV_fOAwry7SrUItOfptrink6MzAFP4a5TGP2qV6FAMNBoLqXiBefrThvZGmDV5jP8YV8dM7dBPuldBHXq6DOxtdC0Xr6sc32CO5d-u4qM2ByYHmUP6-eiwm7tuVE-I14QJbmL8v0O_kHiFMTghp4Jx0M9c6SbY5Jqn_L-p2NbrE5AbAmft6h2jRfGg2UdUnNNk7EVrOm_wHCW3p9hMoJzzSLTJnhyS39fisKd1Jiq5_IAu_bTnA5BFVRjGTRiTuLHylxTG_N-Da238XBVjwyc4j4Csg3Ftc2LYSiE2ZABB8fncWuZZiscaenusj8XfDAxuFh3RTxA7PaKDEpJ_7hIU0xNj4BNLhpoR-3exAI2v36cEQLNwpVdxBz1sg4zBSlZY0cgC8zvLrtHDGVwSuOQsxv4fPs61ls-bAv8I5Po",
+    };
+
+    const api = new JitsiMeetExternalAPI(domain, options);
+
+    
+    window.onload = () => {
+        initIframeAPI();
+    };
     // this.frmRegistrarAsistencia.dni = this.$inertia.page.props.user_session.usuario_dni;
     //   console.log(this.frmRegistrarAsistencia.dni);
     $(function () {
@@ -327,8 +338,20 @@ export default {
     },
   },
 };
+
+
+
 </script>
 <style lang="css">
+
+
+.jitsi-meet{
+  width: 100%!important;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
 .container-datetime {
   position: relative;
   background-color: transparent;

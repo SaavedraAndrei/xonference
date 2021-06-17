@@ -32,6 +32,10 @@
   <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
   <script src="{{ mix('/js/app.js') }}" defer></script>
 
+  <!-- API JITSI -->
+  <script src='https://8x8.vc/libs/external_api.min.js'></script>
+
+
   <meta name="theme-color" content="#fafafa">
   @routes
 </head>

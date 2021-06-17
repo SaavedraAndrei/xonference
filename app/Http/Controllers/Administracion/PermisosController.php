@@ -7,6 +7,8 @@ use App\Http\Controllers\IndexController;
 
 use App\Models\Permisos\Permiso;
 use App\Models\Permisos\Permisos_Usuario;
+use App\Models\Congreso;
+
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -35,8 +37,10 @@ class PermisosController extends Controller
 
     public function principal(){
         $x = session()->all();
+        $congresos = Congreso::all();
         if (empty($x['usuario_dni'])) {
-            return view('welcome');
+            $congresos = Congreso::all();
+            return view('welcome', array('congresos' => $congresos));
         }else {
             $band = (new PermisosController)->verificarPermiso($x['usuario_dni'], 'GENERAL', 'GESTIÓN ADMINISTRATIVA');
             // dd($band);

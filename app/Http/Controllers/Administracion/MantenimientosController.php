@@ -9,6 +9,7 @@ use App\Models\Permisos\Permiso;
 use App\Models\Permisos\Permisos_Usuario;
 use App\Models\Administrativa\Ponente;
 use App\Models\Categoria;
+use App\Models\Congreso;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -17,7 +18,8 @@ class MantenimientosController extends Controller{
     public function Categorias(){
         $x = session()->all();
         if (empty($x['usuario_dni'])) {
-            return view('welcome');
+            $congresos = Congreso::all();
+            return view('welcome', array('congresos' => $congresos));
         }else {
             $band = (new PermisosController)->verificarPermiso($x['usuario_dni'], 'LISTAR CATEGORIAS', 'GESTIÓN ADMINISTRATIVA');
             if ($band == 1) {

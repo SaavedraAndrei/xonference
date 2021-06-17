@@ -8,6 +8,7 @@ y asi tambien los datos de las tablas
 */
 
 use App\Models\Usuario;
+use App\Models\Administrativa\Ponente;
 /*
 El 'request' trae los datos de la vista al controlador
 para que asi podamos insertar o hacer disversas consultas 
@@ -53,18 +54,38 @@ class IndexController extends Controller
     {
         $x = session()->all();
         $dni_registrado = Session::get('dni_registrado');
+        
+        $existe_usuario = Usuario::select('dni')->where('dni', $dni_registrado)->get();
+        $existe_ponente = Ponente::select('dni')->where('dni', $dni_registrado)->get();
+        // dd(count($existe_ponente));
+        if(count($existe_usuario) == 1){
+            $pagado = Usuario::select('pagado')->where('dni', $dni_registrado)->get();
+           
+            if (empty($x['email'])) {
+                //cambiar el return para segurar el ingresp por login
+                return view('login');
+            } else {
+                // $version = DB::select("SELECT * FROM versiones ORDER by id_version DESC LIMIT 1");
+                // return view('home')->with('mensaje', $mensaje);
+                return View::make('home', array('mensaje' => $mensaje, 'pagado' => $pagado));
+            }
+        }else if(count($existe_ponente) == 1){
+            $pagado = Ponente::select('pagado')->where('dni', $dni_registrado)->get();
 
-        $pagado = Usuario::select('pagado')->where('dni', $dni_registrado)->get();
+            if (empty($x['email'])) {
+                //cambiar el return para segurar el ingresp por login
+                return view('login');
+            } else {
+                
+                // $version = DB::select("SELECT * FROM versiones ORDER by id_version DESC LIMIT 1");
+                // return view('home')->with('mensaje', $mensaje);
+                return View::make('home', array('mensaje' => $mensaje, 'pagado' => $pagado));
+            }
+        }     
+       
 
 
-        if (empty($x['email'])) {
-            //cambiar el return para segurar el ingresp por login
-            return view('login');
-        } else {
-            // $version = DB::select("SELECT * FROM versiones ORDER by id_version DESC LIMIT 1");
-            // return view('home')->with('mensaje', $mensaje);
-            return View::make('home', array('mensaje' => $mensaje, 'pagado' => $pagado));
-        }
+        
     }
 
     public function cerrar_sesion()
@@ -90,6 +111,17 @@ class IndexController extends Controller
             ->where('email', $email)
             ->get();
 
+        $validando_ponente = Ponente::select(
+                'email',
+                'clave',
+                'nombre',
+                'dni',
+                'apellidoPaterno',
+                'apellidoMaterno',
+            )
+                ->where('email', $email)
+                ->get();
+
         if (count($validando_usuario) == 1) {
             if (Hash::check($clave, $validando_usuario[0]['clave'])) {
                 // dd("ingreso");
@@ -110,7 +142,28 @@ class IndexController extends Controller
                 return redirect('/login');
                 exit();
             }
-        } else {
+        } else if(count($validando_ponente) == 1){
+            if (Hash::check($clave, $validando_ponente[0]['clave'])) {
+                // dd("ingreso");
+                $usuario_encontrado = $validando_ponente[0];
+                $dni = $usuario_encontrado['dni'];
+                $nombres = $usuario_encontrado['nombre'] . " " . $usuario_encontrado['apellidoPaterno'] . " " . $usuario_encontrado['apellidoMaterno'];
+                $email = $usuario_encontrado['email'];
+                $clave = $usuario_encontrado['clave'];
+                // dd($usuario_encontrado);
+                session(['usuario_dni' => $dni]);
+                session(['nombres' => $nombres]);
+                session(['email' => $email]);
+                session(['clave' => $clave]);
+                Session::put('dni_registrado', $dni);
+                Session::put('nombre_usuario', $nombres);
+                return redirect('/home');
+            } else {
+                Session::flash('email_no_valido', 'Contraseña incorrecta, intente nuevamente');
+                return redirect('/login');
+                exit();
+            }
+        }else{
             Session::flash('email_no_valido', 'Usuario incorrecto, intente nuevamente');
             return redirect('/login');
             exit();

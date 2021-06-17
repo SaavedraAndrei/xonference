@@ -9,6 +9,7 @@ use App\Models\Permisos\Permiso;
 use App\Models\Permisos\Permisos_Usuario;
 use App\Models\Administrativa\Ponente;
 use App\Models\Evento;
+use App\Models\Congreso;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -17,7 +18,8 @@ class CongresosController extends Controller{
     public function Congresos(){
         $x = session()->all();
         if (empty($x['usuario_dni'])) {
-            return view('welcome');
+            $congresos = Congreso::all();
+            return view('welcome', array('congresos' => $congresos));
         }else {
             $band = (new PermisosController)->verificarPermiso($x['usuario_dni'], 'LISTAR CONGRESOS', 'GESTIÓN ADMINISTRATIVA');
             if ($band == 1) {

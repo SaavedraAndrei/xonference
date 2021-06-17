@@ -21,7 +21,7 @@
             </div>
 
             <div id="tabla_permisos">
-              <table class="table table-hover" id="tblPreguntas">
+              <table class="table table-hover" id="tblCongresos">
                 <thead>
                   <tr>
                     <th>EDITAR</th>
@@ -180,6 +180,70 @@ export default {
     components: { layout },
     props: {
         congresos: Array,
+    },
+    mounted() {
+      this.TablaCongresos();
+      if (screen.width < 1000) {
+      document
+        .getElementById("tblCongresos")
+        .classList.add("table-responsive");
+    }
+    },
+    methods: {
+      TablaCongresos(){
+        var table = $("#tblCongresos").DataTable({
+          scrollCollapse: true,
+          fixedHeader: true,
+          language: {
+            retrieve: true,
+            decimal: "",
+            emptyTable: "No hay datos disponibles en la tabla",
+            info: "Mostrando del _START_ al _END_ de _TOTAL_ registros",
+            infoEmpty: "No se encontraron registros",
+            infoFiltered: "(filtrado de _MAX_ registros)",
+            infoPostFix: "",
+            thousands: ",",
+            lengthMenu: "Agrupar por _MENU_ filas",
+            loadingRecords: "Cargando...",
+            processing: "Procesando...",
+            search: "Buscar:",
+            zeroRecords: "No se encontraron registros",
+            paginate: {
+              first: "Primera",
+              last: "Ultima",
+              next: '<i class="fas fa-chevron-circle-right" style="font-size:20px;"></i>',
+              previous:
+                '<i class="fas fa-chevron-circle-left" style="font-size:20px;"></i>',
+            },
+            aria: {
+              sortAscending: ": activar para ordenar de forma ascendente",
+              sortDescending: ": activar para ordenar de forma descendente",
+            },
+          },
+          responsive: true,
+          dom: '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
+          buttons: [
+            {
+              extend: "excelHtml5",
+              text: '<i class="fas fa-file-excel"></i> ',
+              titleAttr: "Exportar a Excel",
+              className: "btn btn-action",
+            },
+            {
+              extend: "pdfHtml5",
+              text: '<i class="fas fa-file-pdf"></i> ',
+              titleAttr: "Exportar a PDF",
+              className: "btn btn-cancel",
+            },
+            {
+              extend: "print",
+              text: '<i class="fa fa-print"></i> ',
+              titleAttr: "Imprimir",
+              className: "btn btn-action",
+            },
+          ],
+        });
+      }
     }
 }
 </script>

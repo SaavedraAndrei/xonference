@@ -22,8 +22,10 @@ class CreatePonentes extends Migration
             $table->string('email', 150);
             $table->string('clave', 200);
             $table->integer('dni');
-            $table->string('descripcion', 500)->nullable();
+            $table->string('descripcion', 1000)->nullable();
             $table->integer('telefono')->nullable();
+            $table->string('fotoPonente', 50)->nullable();
+            $table->boolean('pagado')->nullable();
             $table->integer('usuario_creacion')->nullable();
             $table->integer('usuario_actualizacion')->nullable();
             $table->timestamps();

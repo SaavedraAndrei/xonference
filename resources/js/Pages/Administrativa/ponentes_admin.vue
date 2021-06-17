@@ -6,7 +6,7 @@
           <div class="card-header">
             <strong>PONENTES</strong>
           </div>
-          <div class="card-title">PANEL DE LISTADO</div>
+          <div class="card-title">PANEL DE PREGUNTAS</div>
           <div class="card-body card-block">
             <div class="text-center mb-2">
               <button
@@ -51,7 +51,6 @@
                     <th>DNI</th>
                     <th>DESCRIPCION</th>
                     <th>TELEFONO</th>
-                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -92,8 +91,8 @@
               </table>
             </div>
             <br />
-            <br />
           </div>
+          
         </div>
 
         <!-- The Modal -->
@@ -139,6 +138,16 @@
                             placeholder="Ingrese el DNI"
                             :disabled="frmRegistrarPonente.modal == 'EDITAR'"
                           />
+                          <div
+                            v-if="
+                              submited &&
+                              frmRegistrarPonente.modal == 'NUEVO' &&
+                              !$v.frmRegistrarPonente.dni.required
+                            "
+                            style="color: red; font-size: 12px"
+                          >
+                            *ingrese el dni
+                          </div>
                         </div>
                         <div class="col form-group col-sm-8">
                           <label class="form-control-label label-title"
@@ -149,9 +158,20 @@
                             type="text"
                             name="Nombre"
                             id="inpNombre"
+                            autocomplete="off"
                             v-model="frmRegistrarPonente.email"
                             placeholder="Ingrese el email"
                           />
+                          <div
+                            v-if="
+                              submited &&
+                              frmRegistrarPonente.modal == 'NUEVO' &&
+                              !$v.frmRegistrarPonente.email.required
+                            "
+                            style="color: red; font-size: 12px"
+                          >
+                            *ingrese el email
+                          </div>
                         </div>
                       </div>
                       <div class="form-row">
@@ -164,9 +184,20 @@
                             type="text"
                             name="Nombre"
                             id="inpNombre"
+                            autocomplete="off"
                             v-model="frmRegistrarPonente.nombre"
                             placeholder="Ingrese los nombres"
                           />
+                          <div
+                            v-if="
+                              submited &&
+                              frmRegistrarPonente.modal == 'NUEVO' &&
+                              !$v.frmRegistrarPonente.nombre.required
+                            "
+                            style="color: red; font-size: 12px"
+                          >
+                            *ingrese los nombres
+                          </div>
                         </div>
                         <div class="form-group col-sm-4">
                           <label class="form-control-label label-title"
@@ -175,11 +206,22 @@
                           <input
                             class="form-control"
                             type="text"
-                            name="Nombre"
-                            id="inpNombre"
+                            name="apePaterno"
+                            id="inpapePaterno"
+                            autocomplete="off"
                             v-model="frmRegistrarPonente.apellidoPaterno"
                             placeholder="Ingrese su apellido patenro"
                           />
+                          <div
+                            v-if="
+                              submited &&
+                              frmRegistrarPonente.modal == 'NUEVO' &&
+                              !$v.frmRegistrarPonente.apellidoPaterno.required
+                            "
+                            style="color: red; font-size: 12px"
+                          >
+                            *ingrese el apellido paterno
+                          </div>
                         </div>
                         <div class="form-group col-sm-4">
                           <label class="form-control-label label-title"
@@ -188,12 +230,159 @@
                           <input
                             class="form-control"
                             type="text"
-                            name="Nombre"
-                            id="inpNombre"
+                            name="apeMaterno"
+                            id="inpapeMaterno"
+                            autocomplete="off"
                             v-model="frmRegistrarPonente.apellidoMaterno"
                             placeholder="Ingrese el apeliido materno"
                           />
+                          <div
+                            v-if="
+                              submited &&
+                              frmRegistrarPonente.modal == 'NUEVO' &&
+                              !$v.frmRegistrarPonente.apellidoMaterno.required
+                            "
+                            style="color: red; font-size: 12px"
+                          >
+                            *ingrese el apellido materno
+                          </div>
                         </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-sm-8">
+                          <label class="form-control-label label-title"
+                            >DESCRIPCION</label
+                          >
+                          <textarea
+                            class="form-control"
+                            type="text"
+                            name="descripcion"
+                            id="inpDescripcion"
+                            autocomplete="off"
+                            v-model="frmRegistrarPonente.descripcion"
+                            placeholder="Ingrese su descripción"
+                          ></textarea>
+                          <div
+                            v-if="
+                              submited &&
+                              frmRegistrarPonente.modal == 'NUEVO' &&
+                              !$v.frmRegistrarPonente.descripcion.required
+                            "
+                            style="color: red; font-size: 12px"
+                          >
+                            *ingrese una descripción
+                          </div>
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label class="form-control-label label-title"
+                            >TELEFONO</label
+                          >
+                          <input
+                            class="form-control"
+                            type="number"
+                            name="telefono"
+                            maxlength="9"
+                            autocomplete="off"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            id="inpTelefono"
+                            v-model="frmRegistrarPonente.telefono"
+                            placeholder="Ingrese el telefono"
+                          />
+                          <div
+                            v-if="
+                              submited &&
+                              frmRegistrarPonente.modal == 'NUEVO' &&
+                              !$v.frmRegistrarPonente.telefono.required
+                            "
+                            style="color: red; font-size: 12px"
+                          >
+                            *ingrese el telefono
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div v-if="frmRegistrarPonente.modal == 'NUEVO'">
+                          <div class="form-group col-md-4">
+                            <label
+                              class="label-title"
+                              for="myfile"
+                              id="lblFotoPonente"
+                              >FOTO:</label
+                            >
+                            <input
+                              class="btn btn-primary"
+                              style="
+                                background-color: var(--plomoOscuroEmpresarial);
+                                border: none;
+                                max-width: 400px;
+                                font-size: 12px;
+                              "
+                              type="file"
+                              id="fotoPonente"
+                              name="fotoPonente"
+                              accept="img/*"
+                              @change="AgregarFotografia"
+                            />
+                            <div
+                              v-if="
+                                submited &&
+                                frmRegistrarPonente.modal == 'NUEVO' &&
+                                !$v.frmRegistrarPonente.fotoPonente.required
+                              "
+                              style="color: red; font-size: 12px"
+                            >
+                              *Adjunte una imagen
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- <div class="form-group col-md-4 offset-md-4">
+                        <label for="cmbUsuariosCompraNuevo" class="label-title"
+                          >USUARIO DE COMPRA</label
+                        >
+                        <select
+                          class="form-control"
+                          name="AgenciasCanasta"
+                          id="slcAgenciasCanasta"
+                          style="max-width: 200px; margin-bottom: 10px"
+                          @change="FiltrarAgenciaUsuario"
+                        >
+                          <option :value="0">Todas</option>
+                          <option
+                            v-for="agencia in agencias"
+                            :key="agencia.id_agencia"
+                            :value="agencia.id_agencia"
+                          >
+                            {{ agencia.nombre }}
+                          </option>
+                        </select>
+                        <select
+                          class="form-control"
+                          name="cmbUsuariosCanasta"
+                          id="cmbUsuariosCanasta"
+                          style="max-width: 200px"
+                          v-model="frmCanastaCompras.usuario_compra"
+                        >
+                          <option :value="0">Seleccione...</option>
+                          <option
+                            v-for="usuario in usuarios_filtrados"
+                            :key="usuario.dni"
+                            :value="usuario.dni"
+                          >
+                            {{ usuario.usuario }}
+                          </option>
+                        </select>
+                        <div
+                          v-if="
+                            submited &&
+                            frmRegistrarCompra.modo == 'NUEVO' &&
+                            !$v.frmCanastaCompras.usuario_compra.maxValue
+                          "
+                          style="color: red; font-size: 12px"
+                        >
+                          *Seleccione el usuario de compra
+                        </div>
+                      </div> -->
                       </div>
                     </form>
                     <hr />
@@ -224,13 +413,16 @@
             </div>
           </div>
         </div>
-      </div>
+
+       </div>
     </div>
   </layout>
 </template>
 
 <script>
+import { required } from "vuelidate/lib/validators";
 import layout from "./Components/layout_administrativa";
+const ThanZero = (value) => value > 0;
 export default {
   components: { layout },
   props: {
@@ -247,15 +439,37 @@ export default {
         apellidoPaterno: "",
         apellidoMaterno: "",
         email: "",
-        descripcion:"",
+        descripcion: "",
         dni: null,
         telefono: null,
         modal: "",
+        fotoPonente: null,
       },
     };
   },
+  validations() {
+    if (this.frmRegistrarPonente.modal == "NUEVO") {
+      return {
+        frmRegistrarPonente: {
+          nombre: { required },
+          apellidoPaterno: { required },
+          apellidoMaterno: { required },
+          email: { required },
+          descripcion: { required },
+          dni: { required },
+          telefono: { required },
+          fotoPonente: { required },
+        },
+      };
+    }
+  },
   mounted() {
     this.TablaPonentes();
+    if (screen.width < 1000) {
+      document
+        .getElementById("tblPonentes")
+        .classList.add("table-responsive");
+    }
   },
   methods: {
     TablaPonentes() {
@@ -290,6 +504,27 @@ export default {
             },
           },
           responsive: true,
+          dom: '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
+          buttons: [
+            {
+              extend: "excelHtml5",
+              text: '<i class="fas fa-file-excel"></i> ',
+              titleAttr: "Exportar a Excel",
+              className: "btn btn-action",
+            },
+            {
+              extend: "pdfHtml5",
+              text: '<i class="fas fa-file-pdf"></i> ',
+              titleAttr: "Exportar a PDF",
+              className: "btn btn-cancel",
+            },
+            {
+              extend: "print",
+              text: '<i class="fa fa-print"></i> ',
+              titleAttr: "Imprimir",
+              className: "btn btn-action",
+            },
+          ],
         });
         $("#inpBuscar").keyup(function () {
           table.search(this.value).draw();
@@ -306,6 +541,14 @@ export default {
       $("#tblPonentes").DataTable().destroy();
       this.TablaPonentes();
     },
+    AgregarFotografia(e) {
+      let control_name = e.target.name;
+
+      if (control_name == "fotoPonente") {
+        this.frmRegistrarPonente.fotoPonente = e.target.files[0];
+        console.log(this.frmRegistrarPonente.fotoPonente);
+      }
+    },
     NuevoPonente() {
       // console.log(pregunta.id);
       this.submited = false;
@@ -316,6 +559,9 @@ export default {
       this.frmRegistrarPonente.apellidoMaterno = "";
       this.frmRegistrarPonente.email = "";
       this.frmRegistrarPonente.dni = null;
+      this.frmRegistrarPonente.descripcion = "";
+      this.frmRegistrarPonente.telefono = null;
+      this.frmRegistrarPonente.fotoPonente = null;
       this.frmRegistrarPonente.modal = "NUEVO";
 
       document.getElementById("modalPonente").style.display = "block";
@@ -335,6 +581,8 @@ export default {
       this.frmRegistrarPonente.apellidoMaterno = ponente.apellidoMaterno;
       this.frmRegistrarPonente.email = ponente.email;
       this.frmRegistrarPonente.dni = ponente.dni;
+      this.frmRegistrarPonente.descripcion = ponente.descripcion;
+      this.frmRegistrarPonente.telefono = ponente.telefono;
       this.frmRegistrarPonente.modal = "EDITAR";
 
       document.getElementById("modalPonente").style.display = "block";
@@ -346,83 +594,100 @@ export default {
       parent.document.getElementById("footer-navigator").style.display = "none";
     },
     GuardarPonente() {
-      console.log('ingreso');
+      // console.log("ingreso");
       this.submited = true;
       self = this;
       let data = new FormData();
-
-        data.append("modal", this.frmRegistrarPonente.modal);
-        data.append("dni", this.frmRegistrarPonente.dni);
-        data.append("email", this.frmRegistrarPonente.email);
-      axios
-        .post(
-          route("administrativa.verificar_ponentes"),
-          data
-        )
-        .then(function (response) {
-          let resultado = response.data;
-          // console.log(resultado);
-          if (resultado == "INCORRECTO_D") {
-            Swal.fire({
-              icon: "error",
-              title: "¡Ups!",
-              text: "El DNI ingresado, ya está registrado, intente nuevamente.",
-            });
-            return false;
-          } else if (resultado == "INCORRECTO_U") {
-            Swal.fire({
-              icon: "error",
-              title: "¡Ups!",
-              text: "El USUARIO ingresado, ya está registrado, intente nuevamente.",
-            });
-            return false;
-          } else 
-        {
-            Swal.fire({
-              title: "GUARDAR CAMBIOS",
-              text: "¿Desea continuar?",
-              confirmButtonText:
-                '<i class="fas fa-check" style="color:white;"></i>   Si',
-              confirmButtonColor: "var(--colorAlto)",
-              showCancelButton: true,
-              cancelButtonText: '<i class="fas fa-times"></i>   No',
-              cancelButtonColor: "var(--plomoOscuroEmpresarial)",
-              allowOutsideClick: false,
-              preConfirm: (result) => {
-                axios
-                  .post(
-                    route("administrativa.guardar_ponente"),
-                    self.frmRegistrarPonente
-                  )
-                  .then(function (response) {
-                    
-                    let resultado = response.data;
-                    // console.log(resultado ==='EXITO');
-                    if (resultado != "EXITO") {
-                      Swal.fire({
-                        icon: "success",
-                        title: "¡EXITO!",
-                        text: "Ponente registrado",
-                        allowOutsideClick: false,
-                        preConfirm: (result) => {
-                          $("#modalPonente").css("display", "none");
-                          $("#footer-navigator").css("display", "flex");
-                          self.$inertia.get(route("administrativa.ponentes"));
+      if (this.frmRegistrarPonente.modal == "NUEVO") {
+        if (self.$v.frmRegistrarPonente.$invalid) {
+          return false;
+        } else {
+          console.log("sddas");
+          data.append("modal", self.frmRegistrarPonente.modal);
+          data.append("dni", self.frmRegistrarPonente.dni);
+          data.append("email", self.frmRegistrarPonente.email);
+          axios
+            .post(route("administrativa.verificar_ponentes"), data)
+            .then(function (response) {
+              let resultado = response.data;
+              // console.log(resultado);
+              if (resultado == "INCORRECTO_D") {
+                Swal.fire({
+                  icon: "error",
+                  title: "¡Ups!",
+                  text: "El DNI ingresado, ya está registrado, intente nuevamente.",
+                });
+                return false;
+              } else if (resultado == "INCORRECTO_U") {
+                Swal.fire({
+                  icon: "error",
+                  title: "¡Ups!",
+                  text: "El USUARIO ingresado, ya está registrado, intente nuevamente.",
+                });
+                return false;
+              } else {
+                Swal.fire({
+                  title: "GUARDAR CAMBIOS",
+                  text: "¿Desea continuar?",
+                  confirmButtonText:
+                    '<i class="fas fa-check" style="color:white;"></i>   Si',
+                  confirmButtonColor: "var(--colorAlto)",
+                  showCancelButton: true,
+                  cancelButtonText: '<i class="fas fa-times"></i>   No',
+                  cancelButtonColor: "var(--plomoOscuroEmpresarial)",
+                  allowOutsideClick: false,
+                  preConfirm: (result) => {
+                    self.$inertia.post(
+                      route("administrativa.guardar_ponente"),
+                      self.frmRegistrarPonente,
+                      {
+                        preserveScroll: true,
+                        onStart: (visit) => {
+                          let timerInterval;
+                          Swal.fire({
+                            title: "EN PROGRESO",
+                            html: "Espere porfavor...",
+                            timer: 5000,
+                            allowOutsideClick: false,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                              Swal.showLoading();
+                              timerInterval = setInterval(() => {
+                                const content = Swal.getContent();
+                                if (content) {
+                                  const b = content.querySelector("b");
+                                  if (b) {
+                                    b.textContent = Swal.getTimerLeft();
+                                  }
+                                }
+                              }, 100);
+                            },
+                            willClose: () => {
+                              clearInterval(timerInterval);
+                            },
+                          });
                         },
-                      });
-                    } else {
-                      Swal.fire({
-                        icon: "error",
-                        title: "¡Ups!",
-                        text: "Algo salió mal",
-                      });
-                    }
-                  });
-              },
+                        onSuccess: () => {
+                          Swal.fire({
+                            icon: "success",
+                            title: "¡ÉXITO!",
+                            allowOutsideClick: false,
+                            preConfirm: (result) => {
+                              self.submited = false;
+                              self.ActualizarTabla();
+                              $("#modalPonente").css("display", "none");
+                              $("#footer-navigator").css("display", "flex");
+                            },
+                          });
+                        },
+                      }
+                    );
+                  },
+                });
+              }
             });
-          }
-        });
-      // }
+        }
+      }
     },
   },
 };

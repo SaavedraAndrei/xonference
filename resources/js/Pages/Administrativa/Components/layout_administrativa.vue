@@ -42,7 +42,7 @@
           aria-controls="menuMenuLista"
         >
           <i class="fas fa-user-friends"></i>
-          <span>Permisos</span>
+          <span>Administración</span>
         </a>
         <div
           id="menuMenuLista"
@@ -59,12 +59,27 @@
                   'GESTIÓN ADMINISTRATIVA/PONENTES'
                 )
               "
+              >Listar administradores
+            </inertia-link>
+            <inertia-link
+              class="collapse-item"
+              :href="$route('administrativa.ponentes')"
+              v-if="
+                $page.props.user_permissions.permisos.includes(
+                  'GESTIÓN ADMINISTRATIVA/LISTAR PONENTES'
+                )
+              "
               >Lista de ponentes
             </inertia-link>
 
             <inertia-link
               class="collapse-item"
               :href="$route('administrativa.congresos')"
+              v-if="
+                $page.props.user_permissions.permisos.includes(
+                  'GESTIÓN ADMINISTRATIVA/LISTAR CONGRESOS'
+                )
+              "
             >
               Lista de congresos
             </inertia-link>
@@ -129,7 +144,7 @@
               :href="$route('administrativa.categorias')"
               v-if="
                 $page.props.user_permissions.permisos.includes(
-                  'GESTIÓN ADMINISTRATIVA/FOROS'
+                  'GESTIÓN ADMINISTRATIVA/LISTAR CATEGORIAS'
                 )
               "
               >Categorias</inertia-link

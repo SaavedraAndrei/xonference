@@ -8,6 +8,7 @@ use App\Http\Controllers\IndexController;
 use App\Models\Permisos\Permiso;
 use App\Models\Permisos\Permisos_Usuario;
 use App\Models\Administrativa\Ponente;
+use App\Models\Congreso;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class PonentesController extends Controller
     public function Ponentes(){
         $x = session()->all();
         if (empty($x['usuario_dni'])) {
-            return view('welcome');
+            $congresos = Congreso::all();
+            return view('welcome', array('congresos' => $congresos));
         }else {
             $band = (new PermisosController)->verificarPermiso($x['usuario_dni'], 'LISTAR PONENTES', 'GESTIÓN ADMINISTRATIVA');
             if ($band == 1) {
@@ -31,8 +33,7 @@ class PonentesController extends Controller
                     'email',
                     'dni',
                     'descripcion', 
-                    'telefono',
-                    'clave'
+                    'telefono'
                 )
                 ->get();
                 
@@ -95,25 +96,27 @@ class PonentesController extends Controller
 
         $modal = $request->modal;
         $dni = $request->dni;
+        $descripcion = $request->descripcion;
         $nombre = mb_strtolower($request->nombre);
         $apellidoPaterno = mb_strtolower($request->apellidoPaterno);
         $apellidoMaterno = mb_strtolower($request->apellidoMaterno);
         $email = $request->email;
-        $clave = $request->clave;
-        $telefono = $request->telefonos;
+        $clave = $request->dni;
+        $telefono = $request->telefono;
         $x = session()->all();
         $usuario_registro = $x['usuario_dni'];
-        $resultado = 'ERROR';
+        // $resultado = 'ERROR';
 
         if ($modal == 'NUEVO') {
             $clave = Hash::make($dni);
-            Ponente::create(array(
+            $id_ponente = Ponente::create(array(
                 'dni' => $dni,
                 'clave' => $clave,
                 'nombre' => $nombre,
                 'apellidoPaterno' => $apellidoPaterno,
                 'apellidoMaterno' => $apellidoMaterno,
                 'telefono' => $telefono,
+                'descripcion' => $descripcion,
                 'email' => $email,
                 'usuario_creacion' => $usuario_registro
             ));
@@ -137,8 +140,21 @@ class PonentesController extends Controller
                 'dni' =>$dni,
                 'id_permiso' => 5,
             ]);
+            // dd($id_ponente);
+            $id_ponente = $id_ponente->id;
+            
+            $path_name = pathinfo($_FILES['fotoPonente']['name']);
+            $extension = "." . $path_name['extension'];
+            $nombreimagen = "invitado" . $id_ponente . $extension;
+            $archivo = $_FILES['fotoPonente']['tmp_name'];
+            $ruta = '\img\ponentes';
+            $ruta = $_SERVER['DOCUMENT_ROOT'] . $ruta . "/" . $nombreimagen;
+            move_uploaded_file($archivo, $ruta);
 
-            $resultado = 'EXITO';
+            Ponente::where('id', $id_ponente)
+                ->update([
+                    'fotoPonente' => $nombreimagen,
+                ]);
         } else 
         if ($modal == 'EDITAR') {
             Ponente::where('dni', $dni)
@@ -147,12 +163,13 @@ class PonentesController extends Controller
                 'apellidoPaterno' => $apellidoPaterno,
                 'apellidoMaterno' => $apellidoMaterno,
                 'email' => $email,
+                'telefono' => $telefono,
+                'descripcion' => $descripcion,
                 'usuario_actualizacion' => $usuario_registro
             ]);
-            $resultado = 'EXITO';
         }
 
-        return $resultado;
+        return redirect()->route('administrativa.ponentes');
     }
 
 

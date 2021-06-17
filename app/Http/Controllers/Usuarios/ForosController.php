@@ -9,6 +9,8 @@ use App\Http\Controllers\IndexController;
 use App\Models\Administrativa\Foro_pregunta;
 use App\Models\Usuarios\Foro_respuesta;
 use App\Models\Evento;
+use App\Models\Congreso;
+
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -17,7 +19,8 @@ class ForosController extends Controller
     public function foros_admin(){
         $x = session()->all();
         if (empty($x['usuario_dni'])) {
-            return view('welcome');
+            $congresos = Congreso::all();
+            return view('welcome', array('congresos' => $congresos));
         }else {
             $band = (new PermisosController)->verificarPermiso($x['usuario_dni'], 'FOROS', 'GESTIÓN ADMINISTRATIVA');
             if ($band == 1) {
@@ -39,9 +42,26 @@ class ForosController extends Controller
                 ->join('ponentes as po', 'fp.dni_ponente','=','po.dni')
                 ->join('eventos as e', 'fp.idEvento','=','e.id')
                 ->get();
+
+                $respuestas= Foro_respuesta::from('foros_respuestas as fr')
+                ->select(
+                    'fr.id',
+                    'fr.titulo',
+                    'fr.respuesta',
+                    'u.nombres',
+                    'u.apellidoPaterno',
+                    'u.apellidoMaterno',
+                    'u.dni',
+                    'u.email',
+                    'e.nombre'
+                 )
+                 ->join('usuarios as u', 'fr.dni_usuarios','=','u.dni')
+                 ->join('eventos as e', 'fr.idEvento','=','e.id')
+                ->get();
                 return Inertia::render('Administrativa/foros_admin',[
                     'preguntas' => $preguntas,
                     'eventos' =>$eventos,
+                    'respuestas' => $respuestas,
                 ]);
             } else {
                 $mensaje = 'RECHAZADO';
@@ -54,7 +74,8 @@ class ForosController extends Controller
     {
         $x = session()->all();
         if (empty($x['usuario_dni'])) {
-            return view('welcome');
+            $congresos = Congreso::all();
+            return view('welcome', array('congresos' => $congresos));
         }else {
             $band = (new PermisosController)->verificarPermiso($x['usuario_dni'], 'FOROS', 'USUARIOS');
             if ($band == 1) {

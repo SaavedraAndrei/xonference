@@ -83,7 +83,7 @@
         </div>
     </header>
 
-    <div class="content" id='content_Principal' style='display:block'>
+    <div class="content" id='content_Principal' style='display:block' >
         <!-- <div class="btn-group">
             <a class="btn" href="#">
                 <div class="boton color-creditos" id="btnCreditos">MENU</div>
@@ -108,8 +108,9 @@
                 <div class="sub_boton color-gth" id="btnMiPanel"><a class="sub_text" href="#">MI PANEL</a></div>
             </ul> -->
         </div>
-
         @if ($pagado[0]->pagado === 1)
+        
+         dd("hola");
             <div class="btn-group">
                 <a href="/download" target="_blank" >
                     <div class="boton color-logistica" id="btnLogistica">Certificado</div>

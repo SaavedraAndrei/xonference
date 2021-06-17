@@ -5231,7 +5231,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\r\n  --colorBajo: #ffdef8;\r\n  --colorMedio: #a33378;\r\n  --colorAlto: #921f83;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\n  --colorBajo: #ffdef8;\n  --colorMedio: #a33378;\n  --colorAlto: #921f83;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5255,7 +5255,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.card-custom-img {\r\n  background-image: url(/img/asistencia/fondo-validacion.png);\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.card-custom-img {\n  background-image: url(/img/asistencia/fondo-validacion.png);\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5279,7 +5279,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\r\n  --colorBajo: #def7ff;\r\n  --colorMedio: #337ba3;\r\n  --colorAlto: #1f5a92;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\n  --colorBajo: #def7ff;\n  --colorMedio: #337ba3;\n  --colorAlto: #1f5a92;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5303,7 +5303,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.container-datetime {\r\n  position: relative;\r\n  background-color: transparent;\r\n  width: 100%;\r\n  height: 8rem;\r\n  margin: 0;\r\n  padding: 0;\r\n  margin-top: 1.5rem;\r\n  font-size: 2rem;\n}\n.widget {\r\n  width: 100%;\r\n  height: auto;\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\n}\n.widget p {\r\n  display: inline-block;\r\n  margin: 0px;\n}\n.fecha {\r\n  font-family: arial;\r\n  text-align: center;\r\n  background: transparent;\r\n  color: black;\r\n  width: 100%;\r\n  height: -webkit-fit-content;\r\n  height: -moz-fit-content;\r\n  height: fit-content;\n}\n.reloj {\r\n  font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif;\r\n  width: 100%;\r\n  font-size: 2.6rem;\r\n  height: -webkit-fit-content;\r\n  height: -moz-fit-content;\r\n  height: fit-content;\r\n  text-align: center;\r\n  background: transparent;\r\n  color: black;\n}\n@media (max-width: 400px) {\n.container-datetime {\r\n    margin-top: 0.5rem;\r\n    font-size: 1rem;\r\n    height: 5rem;\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.container-datetime {\n  position: relative;\n  background-color: transparent;\n  width: 100%;\n  height: 8rem;\n  margin: 0;\n  padding: 0;\n  margin-top: 1.5rem;\n  font-size: 2rem;\n}\n.widget {\n  width: 100%;\n  height: auto;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.widget p {\n  display: inline-block;\n  margin: 0px;\n}\n.fecha {\n  font-family: arial;\n  text-align: center;\n  background: transparent;\n  color: black;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n}\n.reloj {\n  font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif;\n  width: 100%;\n  font-size: 2.6rem;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  text-align: center;\n  background: transparent;\n  color: black;\n}\n@media (max-width: 400px) {\n.container-datetime {\n    margin-top: 0.5rem;\n    font-size: 1rem;\n    height: 5rem;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5327,7 +5327,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.card-custom-img {\r\n  background-image: url(/img/asistencia/fondo-validacion.png);\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.card-custom-img {\n  background-image: url(/img/asistencia/fondo-validacion.png);\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

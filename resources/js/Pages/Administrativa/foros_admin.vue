@@ -93,6 +93,7 @@
                   @change="FiltrarRespuestas"
                 >
                   <option value="seleccione">Seleccione...</option>
+                  <option value="0">Todos</option>
                   <option
                     v-for="evento in eventos"
                     :key="evento.id"
@@ -126,7 +127,7 @@
               <table class="table table-hover" id="tblVerRespuestas">
                 <thead>
                   <tr>
-                    <!-- <th>EDITAR</th> -->
+                    <th>EDITAR</th>
                     <th>NOMBRE</th>
                     <th>EMAIL</th>
                     <th>DNI</th>
@@ -135,11 +136,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="ponente in ponentes" :key="ponente.id">
+                  <tr v-for="respuesta in filtrar_respuestas" :key="respuesta.id">
                     <td class="table-bordered" align="center">
                       <button
                         class="btn btn-action btn-icon-split"
-                        @click="EditarPonente(ponente)"
+                        @click="EditarPonente(respuesta)"
                       >
                         <span class="icon text-white-50">
                           <i class="fas fa-edit" style="color: white"></i>
@@ -148,25 +149,19 @@
                     </td>
                     <td class="table-bordered" align="center">
                       {{
-                        ponente.nombre +
+                        respuesta.nombres +
                         " " +
-                        ponente.apellidoPaterno +
+                        respuesta.apellidoPaterno +
                         " " +
-                        ponente.apellidoMaterno
+                        respuesta.apellidoMaterno
                       }}
                     </td>
                     <td class="table-bordered" align="left">
-                      {{ ponente.email }}
+                      {{ respuesta.email }}
                     </td>
                     <td class="table-bordered" align="left">
-                      {{ ponente.dni }}
+                      {{ respuesta.dni }}
                     </td>
-                    <!-- <td class="table-bordered" align="left">
-                      {{ ponente.descripcion }}
-                    </td>
-                    <td class="table-bordered" align="left">
-                      {{ ponente.telefono }}
-                    </td> -->
                   </tr>
                 </tbody>
               </table>
@@ -544,7 +539,7 @@ export default {
       submited: false,
       title_modal: "NUEVO PERMISO",
       listar_preguntas: this.preguntas,
-      listar_respuestas: this.respuestas,
+      filtrar_respuestas: [],
       frmRegistrarPregunta: {
         id: "",
         pregunta: "",
@@ -555,8 +550,9 @@ export default {
     };
   },
   mounted() {
-    // console.log($("#tblPreguntas").DataTable());
+    // console.log($("#tblPreguntas").DataTable().destroy());
     this.TablaPreguntas();
+    this.TablaRespuestas();
     var elemento = document.getElementById("tblPreguntas");
     if (elemento != null) {
       if (screen.width < 1000) {
@@ -624,6 +620,65 @@ export default {
         });
       });
     },
+    TablaRespuestas() {
+      this.$nextTick(() => {
+        var table = $("#tblVerRespuestas").DataTable({
+          scrollCollapse: true,
+          fixedHeader: true,
+          language: {
+            retrieve: true,
+            decimal: "",
+            emptyTable: "No hay datos disponibles en la tabla",
+            info: "Mostrando del _START_ al _END_ de _TOTAL_ registros",
+            infoEmpty: "No se encontraron registros",
+            infoFiltered: "(filtrado de _MAX_ registros)",
+            infoPostFix: "",
+            thousands: ",",
+            lengthMenu: "Agrupar por _MENU_ filas",
+            loadingRecords: "Cargando...",
+            processing: "Procesando...",
+            search: "Buscar:",
+            zeroRecords: "No se encontraron registros",
+            paginate: {
+              first: "Primera",
+              last: "Ultima",
+              next: '<i class="fas fa-chevron-circle-right" style="font-size:20px;"></i>',
+              previous:
+                '<i class="fas fa-chevron-circle-left" style="font-size:20px;"></i>',
+            },
+            aria: {
+              sortAscending: ": activar para ordenar de forma ascendente",
+              sortDescending: ": activar para ordenar de forma descendente",
+            },
+          },
+          responsive: true,
+          dom: '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
+          buttons: [
+            {
+              extend: "excelHtml5",
+              text: '<i class="fas fa-file-excel"></i> ',
+              titleAttr: "Exportar a Excel",
+              className: "btn btn-action",
+            },
+            {
+              extend: "pdfHtml5",
+              text: '<i class="fas fa-file-pdf"></i> ',
+              titleAttr: "Exportar a PDF",
+              className: "btn btn-cancel",
+            },
+            {
+              extend: "print",
+              text: '<i class="fa fa-print"></i> ',
+              titleAttr: "Imprimir",
+              className: "btn btn-action",
+            },
+          ],
+        });
+        $("#inpBuscar_ver").keyup(function () {
+          table.search(this.value).draw();
+        });
+      });
+    },
     hidenav() {
       return this.$refs.layout.hide_nav();
     },
@@ -631,6 +686,7 @@ export default {
       return this.$refs.layout.show_nav();
     },
     ActualizarTabla() {
+      
       $("#tblPreguntas").DataTable().destroy();
       this.TablaPreguntas();
     },
@@ -699,6 +755,7 @@ export default {
                   didOpen: () => {
                     Swal.showLoading();
                     timerInterval = setInterval(() => {
+                      console.log(Swal.getContent());
                       const content = Swal.getContent();
                       if (content) {
                         const b = content.querySelector("b");
@@ -723,7 +780,6 @@ export default {
                     self.ActualizarTabla();
                     $("#modalPreguntaForo").css("display", "none");
                     $("#footer-navigator").css("display", "flex");
-                    // self.$inertia.get(route("administrativa.foros"));
                   },
                 });
               },
@@ -737,7 +793,23 @@ export default {
     },
 
     //PANEL DE RESPUESTAS
-    FiltrarRespuestas() {},
+    FiltrarRespuestas() {
+      console.log($("#slcEventos").val());
+      let slcEventos_value = $("#slcEventos").val();
+
+      if (slcEventos_value == "seleccione") {
+        this.filtrar_respuestas = [];
+      } else 
+      if (slcEventos_value == "0") {
+        this.filtrar_respuestas = this.respuestas;
+      } else {
+        this.filtrar_respuestas = this.respuestas.filter(
+          (item) => item.id == slcEventos_value
+        );
+      }
+      $("#tblVerRespuestas").DataTable().destroy();
+      this.TablaRespuestas();
+    },
   },
 };
 </script>

@@ -546,7 +546,7 @@ export default {
 
       if (control_name == "fotoPonente") {
         this.frmRegistrarPonente.fotoPonente = e.target.files[0];
-        console.log(this.frmRegistrarPonente.fotoPonente);
+        // console.log(this.frmRegistrarPonente.fotoPonente);
       }
     },
     NuevoPonente() {
@@ -602,7 +602,7 @@ export default {
         if (self.$v.frmRegistrarPonente.$invalid) {
           return false;
         } else {
-          console.log("sddas");
+          // console.log("sddas");
           data.append("modal", self.frmRegistrarPonente.modal);
           data.append("dni", self.frmRegistrarPonente.dni);
           data.append("email", self.frmRegistrarPonente.email);

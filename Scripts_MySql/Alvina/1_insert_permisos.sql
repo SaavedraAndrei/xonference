@@ -12,3 +12,5 @@ INSERT INTO permisos (modulo, area, created_at) VALUES('LISTAR PONENTES', 'GESTI
 INSERT INTO permisos (modulo, area, created_at) VALUES('LISTAR CONGRESOS', 'GESTIÓN ADMINISTRATIVA', NOW());
 INSERT INTO permisos (modulo, area, created_at) VALUES('LISTAR CATEGORIAS', 'GESTIÓN ADMINISTRATIVA', NOW());
 INSERT INTO permisos (modulo, area, created_at) VALUES('LISTAR ADMINISTRADORES', 'GESTIÓN ADMINISTRATIVA', NOW());
+
+INSERT INTO permisos (modulo, area, created_at) VALUES('LISTAR RECURSOS', 'GESTIÓN ADMINISTRATIVA', NOW());

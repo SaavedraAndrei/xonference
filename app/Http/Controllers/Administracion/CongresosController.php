@@ -10,6 +10,7 @@ use App\Models\Permisos\Permisos_Usuario;
 use App\Models\Administrativa\Ponente;
 use App\Models\Evento;
 use App\Models\Congreso;
+use App\Models\Categoria;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -44,10 +45,27 @@ class CongresosController extends Controller{
                 )
                 ->join('ponentes as po','e.idPonente','=','po.id')
                 ->join('categorias as c','e.idCategoria','=','c.id')
-                ->get();               
+                ->get();              
+                
+                $ponentes=Ponente::from('ponentes as po')
+                ->select(
+                    'po.id',
+                    'po.nombre',
+                    'po.apellidoPaterno',
+                    'po.apellidoMaterno',
+                    )
+                ->get();
+
+                $categorias = Categoria::from('categorias as c')
+                ->select(
+                    'c.id',
+                    'c.nombre',
+                )
+                ->get();
                 return Inertia::render('Administrativa/congresos_permisos', [
                     'congresos' => $congresos,
-                    // 'respuestas' => $respuestas,
+                    'ponentes' => $ponentes,
+                    'categorias' => $categorias,
                 ]);
             } else {
                 $mensaje = 'RECHAZADO';

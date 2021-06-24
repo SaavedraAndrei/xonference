@@ -2903,13 +2903,228 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     layout: _Components_layout_administrativa__WEBPACK_IMPORTED_MODULE_0__.default
   },
   props: {
-    congresos: Array
+    congresos: Array,
+    ponentes: Array,
+    categorias: Array
+  },
+  data: function data() {
+    return {
+      submited: false,
+      title_modal: "NUEVO EVENTO",
+      elegir_ponentes: this.ponentes,
+      filtrar_congresos: this.congresos,
+      frmRegistrarEvento: {
+        id: "",
+        nombre: "",
+        tematica: "",
+        descripcion: "",
+        fecha_evento: null,
+        hora_evento: null,
+        hora_fin: null,
+        idPonente: null,
+        idCategoria: null,
+        modal: null
+      }
+    };
+  },
+  validations: {
+    frmRegistrarTipo: {
+      nombre: {
+        required: required
+      },
+      tematica: {
+        required: required
+      },
+      descripcion: {
+        required: required
+      },
+      fecha_evento: {
+        required: required
+      }
+    }
   },
   mounted: function mounted() {
     this.TablaCongresos();
@@ -2918,55 +3133,207 @@ __webpack_require__.r(__webpack_exports__);
       document.getElementById("tblCongresos").classList.add("table-responsive");
     }
   },
+  watch: {
+    filtrar_congresos: function filtrar_congresos() {
+      $("#tblCongresos").DataTable().destroy();
+      this.TablaCongresos();
+    }
+  },
   methods: {
     TablaCongresos: function TablaCongresos() {
-      var table = $("#tblCongresos").DataTable({
-        scrollCollapse: true,
-        fixedHeader: true,
-        language: {
-          retrieve: true,
-          decimal: "",
-          emptyTable: "No hay datos disponibles en la tabla",
-          info: "Mostrando del _START_ al _END_ de _TOTAL_ registros",
-          infoEmpty: "No se encontraron registros",
-          infoFiltered: "(filtrado de _MAX_ registros)",
-          infoPostFix: "",
-          thousands: ",",
-          lengthMenu: "Agrupar por _MENU_ filas",
-          loadingRecords: "Cargando...",
-          processing: "Procesando...",
-          search: "Buscar:",
-          zeroRecords: "No se encontraron registros",
-          paginate: {
-            first: "Primera",
-            last: "Ultima",
-            next: '<i class="fas fa-chevron-circle-right" style="font-size:20px;"></i>',
-            previous: '<i class="fas fa-chevron-circle-left" style="font-size:20px;"></i>'
+      this.$nextTick(function () {
+        var table = $("#tblCongresos").DataTable({
+          // scrollY: "400px",
+          // scrollX: true,
+          paging: true,
+          order: [[1, "desc"]],
+          scrollCollapse: true,
+          fixedHeader: true,
+          language: {
+            retrieve: true,
+            decimal: "",
+            emptyTable: "No hay datos disponibles en la tabla",
+            info: "Mostrando del _START_ al _END_ de _TOTAL_ registros",
+            infoEmpty: "No se encontraron registros",
+            infoFiltered: "(filtrado de _MAX_ registros)",
+            infoPostFix: "",
+            thousands: ",",
+            lengthMenu: "Agrupar por _MENU_ filas",
+            loadingRecords: "Cargando...",
+            processing: "Procesando...",
+            search: "Buscar:",
+            zeroRecords: "No se encontraron registros",
+            paginate: {
+              first: "Primera",
+              last: "Ultima",
+              next: '<i class="fas fa-chevron-circle-right" style="font-size:20px;"></i>',
+              previous: '<i class="fas fa-chevron-circle-left" style="font-size:20px;"></i>'
+            },
+            aria: {
+              sortAscending: ": activar para ordenar de forma ascendente",
+              sortDescending: ": activar para ordenar de forma descendente"
+            }
           },
-          aria: {
-            sortAscending: ": activar para ordenar de forma ascendente",
-            sortDescending: ": activar para ordenar de forma descendente"
-          }
-        },
-        responsive: true,
-        dom: '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
-        buttons: [{
-          extend: "excelHtml5",
-          text: '<i class="fas fa-file-excel"></i> ',
-          titleAttr: "Exportar a Excel",
-          className: "btn btn-action"
-        }, {
-          extend: "pdfHtml5",
-          text: '<i class="fas fa-file-pdf"></i> ',
-          titleAttr: "Exportar a PDF",
-          className: "btn btn-cancel"
-        }, {
-          extend: "print",
-          text: '<i class="fa fa-print"></i> ',
-          titleAttr: "Imprimir",
-          className: "btn btn-action"
-        }]
+          responsive: true,
+          dom: '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
+          buttons: [{
+            extend: "excelHtml5",
+            text: '<i class="fas fa-file-excel"></i> ',
+            titleAttr: "Exportar a Excel",
+            className: "btn btn-action"
+          }, {
+            extend: "pdfHtml5",
+            text: '<i class="fas fa-file-pdf"></i> ',
+            titleAttr: "Exportar a PDF",
+            className: "btn btn-cancel"
+          }, {
+            extend: "print",
+            text: '<i class="fa fa-print"></i> ',
+            titleAttr: "Imprimir",
+            className: "btn btn-action"
+          }]
+        });
+        $("#inpBuscar").keyup(function () {
+          table.search(this.value).draw();
+        });
       });
+    },
+    hidenav: function hidenav() {
+      return this.$refs.layout.hide_nav();
+    },
+    shownav: function shownav() {
+      return this.$refs.layout.show_nav();
+    },
+    ActualizarTabla: function ActualizarTabla() {
+      $("#tblCongresos").DataTable().destroy();
+      this.TablaCongresos();
+    },
+    FiltrarPonente: function FiltrarPonente() {
+      console.log($("#slcEventos").val());
+      var slcEventos_value = $("#slcEventos").val();
+
+      if (slcEventos_value == "0") {
+        this.filtrar_congresos = this.congresos;
+      } else {
+        this.filtrar_congresos = this.congresos.filter(function (item) {
+          return item.idPonente == slcEventos_value;
+        });
+        console.log(this.filtrar_congresos);
+      }
+
+      $("#tblCongresos").DataTable().destroy();
+      this.TablaCongresos();
+    },
+    NuevoCongreso: function NuevoCongreso() {
+      // console.log(pregunta.id);
+      this.submited = false;
+      this.title_modal = "NUEVO EVENTO";
+      this.frmRegistrarEvento.id = 0;
+      this.frmRegistrarEvento.nombre = "";
+      this.frmRegistrarEvento.tenatica = "";
+      this.frmRegistrarEvento.descripcion = "";
+      this.frmRegistrarEvento.fecha_evento = null;
+      this.frmRegistrarEvento.hora_evento = null;
+      this.frmRegistrarEvento.hora_fin = null;
+      this.frmRegistrarEvento.idPonente = 0;
+      this.frmRegistrarEvento.idCategoria = 0;
+      this.frmRegistrarEvento.modal = "NUEVO";
+      document.getElementById("modalEventos").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalEventos").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display = "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    EditarCongreso: function EditarCongreso(congreso) {
+      // console.log(pregunta.id);
+      this.submited = false;
+      this.title_modal = "EDITAR EVENTO";
+      this.frmRegistrarEvento.id = congreso.id;
+      this.frmRegistrarEvento.nombre = congreso.nombre;
+      this.frmRegistrarEvento.tenatica = congreso.tenatica;
+      this.frmRegistrarEvento.descripcion = congreso.descripcion;
+      this.frmRegistrarEvento.fecha_evento = congreso.fecha_evento;
+      this.frmRegistrarEvento.hora_evento = congreso.hora_evento;
+      this.frmRegistrarEvento.hora_fin = congreso.hora_fin;
+      this.frmRegistrarEvento.idPonente = congreso.idPonente;
+      this.frmRegistrarEvento.idCategoria = congreso.idCategoria;
+      this.frmRegistrarEvento.modal = "EDITAR";
+      document.getElementById("modalEventos").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalEventos").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display = "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    GuardarPregunta: function GuardarPregunta() {
+      this.submited = true;
+      self = this;
+
+      if (this.$v.$invalid) {
+        return false;
+      } else {
+        Swal.fire({
+          title: "GUARDAR CAMBIOS",
+          text: "¿Desea continuar?",
+          confirmButtonText: '<i class="fas fa-check" style="color:white;"></i>   Si',
+          confirmButtonColor: "var(--colorAlto)",
+          showCancelButton: true,
+          cancelButtonText: '<i class="fas fa-times"></i>   No',
+          cancelButtonColor: "var(--plomoOscuroEmpresarial)",
+          allowOutsideClick: false,
+          preConfirm: function preConfirm(result) {
+            self.$inertia.post(route("foros.guardar_pregunta"), self.frmRegistrarEvento, {
+              preserveScroll: true,
+              onStart: function onStart(visit) {
+                var timerInterval;
+                Swal.fire({
+                  title: "EN PROGRESO",
+                  html: "Espere porfavor...",
+                  timer: 5000,
+                  allowOutsideClick: false,
+                  timerProgressBar: true,
+                  didOpen: function didOpen() {
+                    Swal.showLoading();
+                    timerInterval = setInterval(function () {
+                      console.log(Swal.getContent());
+                      var content = Swal.getContent();
+
+                      if (content) {
+                        var b = content.querySelector("b");
+
+                        if (b) {
+                          b.textContent = Swal.getTimerLeft();
+                        }
+                      }
+                    }, 100);
+                  },
+                  willClose: function willClose() {
+                    clearInterval(timerInterval);
+                  }
+                });
+              },
+              onSuccess: function onSuccess() {
+                Swal.fire({
+                  icon: "success",
+                  title: "¡ÉXITO!",
+                  allowOutsideClick: false,
+                  preConfirm: function preConfirm(result) {
+                    self.submited = false;
+                    self.ActualizarTabla();
+                    $("#modalPreguntaForo").css("display", "none");
+                    $("#footer-navigator").css("display", "flex");
+                  }
+                });
+              }
+            });
+          }
+        });
+      } //   {
+      //     }
+      //   });
+      //   }
+
     }
   }
 });
@@ -3763,7 +4130,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     //PANEL DE RESPUESTAS
     FiltrarRespuestas: function FiltrarRespuestas() {
-      console.log($("#slcEventos").val());
+      // console.log($("#slcEventos").val());
       var slcEventos_value = $("#slcEventos").val();
 
       if (slcEventos_value == "seleccione") {
@@ -4216,8 +4583,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -4236,7 +4601,7 @@ var ThanZero = function ThanZero(value) {
     return {
       submited: false,
       title_modal: "NUEVO PONENTE",
-      // listar_preguntas: this.preguntas,
+      listar_ponentes: this.ponentes,
       frmRegistrarPonente: {
         id: "",
         nombre: "",
@@ -4294,6 +4659,8 @@ var ThanZero = function ThanZero(value) {
     TablaPonentes: function TablaPonentes() {
       this.$nextTick(function () {
         var table = $("#tblPonentes").DataTable({
+          destroy: true,
+          // pageLength: 5,
           scrollCollapse: true,
           fixedHeader: true,
           language: {
@@ -4412,7 +4779,7 @@ var ThanZero = function ThanZero(value) {
         if (self.$v.frmRegistrarPonente.$invalid) {
           return false;
         } else {
-          // console.log("sddas");
+          console.log("sddas");
           data.append("modal", self.frmRegistrarPonente.modal);
           data.append("dni", self.frmRegistrarPonente.dni);
           data.append("email", self.frmRegistrarPonente.email);
@@ -4451,13 +4818,13 @@ var ThanZero = function ThanZero(value) {
                       Swal.fire({
                         title: "EN PROGRESO",
                         html: "Espere porfavor...",
-                        timer: 5000,
+                        timer: 2000,
                         allowOutsideClick: false,
                         timerProgressBar: true,
                         didOpen: function didOpen() {
                           Swal.showLoading();
                           timerInterval = setInterval(function () {
-                            var content = Swal.getContent();
+                            var content = Swal.getHtmlContainer();
 
                             if (content) {
                               var b = content.querySelector("b");
@@ -4479,10 +4846,12 @@ var ThanZero = function ThanZero(value) {
                         title: "¡ÉXITO!",
                         allowOutsideClick: false,
                         preConfirm: function preConfirm(result) {
-                          self.submited = false;
-                          self.ActualizarTabla();
+                          self.submited = false; // console.log(self.listar_ponentes);
+
+                          $("#tblPonentes").DataTable().destroy();
+                          self.TablaPonentes();
                           $("#modalPonente").css("display", "none");
-                          $("#footer-navigator").css("display", "flex");
+                          $("#footer-navigator").css("display", "flex"); // self.ActualizarTabla();
                         }
                       });
                     }
@@ -4492,6 +4861,63 @@ var ThanZero = function ThanZero(value) {
             }
           });
         }
+      } else if (this.frmRegistrarPonente.modal == "EDITAR") {
+        // console.log("EDITAR");
+        Swal.fire({
+          title: "GUARDAR CAMBIOS",
+          text: "¿Desea continuar?",
+          confirmButtonText: '<i class="fas fa-check" style="color:white;"></i>   Si',
+          confirmButtonColor: "var(--colorAlto)",
+          showCancelButton: true,
+          cancelButtonText: '<i class="fas fa-times"></i>   No',
+          cancelButtonColor: "var(--plomoOscuroEmpresarial)",
+          allowOutsideClick: false,
+          preConfirm: function preConfirm(result) {
+            self.$inertia.post(route("administrativa.guardar_ponente"), self.frmRegistrarPonente, {
+              preserveScroll: true,
+              onStart: function onStart(visit) {
+                var timerInterval;
+                Swal.fire({
+                  title: "EN PROGRESO",
+                  html: "Espere porfavor...",
+                  timer: 5000,
+                  allowOutsideClick: false,
+                  timerProgressBar: true,
+                  didOpen: function didOpen() {
+                    Swal.showLoading();
+                    timerInterval = setInterval(function () {
+                      var content = Swal.getHtmlContainer();
+
+                      if (content) {
+                        var b = content.querySelector("b");
+
+                        if (b) {
+                          b.textContent = Swal.getTimerLeft();
+                        }
+                      }
+                    }, 100);
+                  },
+                  willClose: function willClose() {
+                    clearInterval(timerInterval);
+                  }
+                });
+              },
+              onSuccess: function onSuccess() {
+                Swal.fire({
+                  icon: "success",
+                  title: "¡ÉXITO!",
+                  allowOutsideClick: false,
+                  preConfirm: function preConfirm(result) {
+                    self.submited = false;
+                    self.ActualizarTabla();
+                    $("#modalPonente").css("display", "none");
+                    $("#footer-navigator").css("display", "flex");
+                  }
+                });
+              }
+            });
+          }
+        });
       }
     }
   }
@@ -32816,7 +33242,12 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-action btn-icon-split",
-                      attrs: { id: "btnRegistrarAsistencia" }
+                      attrs: { id: "btnRegistrarAsistencia" },
+                      on: {
+                        click: function($event) {
+                          return _vm.NuevoCongreso()
+                        }
+                      }
                     },
                     [
                       _c("span", { staticClass: "icon text-white" }, [
@@ -32825,6 +33256,94 @@ var render = function() {
                       _vm._v(" "),
                       _c("span", { staticClass: "text font-size-layout" }, [
                         _vm._v("Agregar Evento")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row col-md-6 col-6" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-control-label",
+                      attrs: { for: "slcEventos" }
+                    },
+                    [_vm._v("Por ponente")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      staticClass: "form-control center",
+                      staticStyle: { "max-width": "200px" },
+                      attrs: { name: "slcEventos", id: "slcEventos" },
+                      on: { change: _vm.FiltrarPonente }
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [
+                        _vm._v("Todos")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.ponentes, function(ponente) {
+                        return _c(
+                          "option",
+                          { key: ponente.id, domProps: { value: ponente.id } },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(
+                                  ponente.nombre +
+                                    " " +
+                                    ponente.apellidoPaterno +
+                                    " " +
+                                    ponente.apellidoMaterno
+                                ) +
+                                "\n              "
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("div", { attrs: { id: "search-content_us" } }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "input-group row col-md-3 mb-1 input-search",
+                      attrs: { id: "s_content" }
+                    },
+                    [
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "inpBuscar",
+                          placeholder: "Buscar..."
+                        },
+                        on: {
+                          focus: function($event) {
+                            return _vm.hidenav()
+                          },
+                          blur: function($event) {
+                            return _vm.shownav()
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "input-group-append" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-action",
+                            attrs: { type: "button" }
+                          },
+                          [_c("i", { staticClass: "fas fa-search" })]
+                        )
                       ])
                     ]
                   )
@@ -32862,8 +33381,11 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "tbody",
-                        _vm._l(_vm.congresos, function(congreso) {
-                          return _c("tr", { key: congreso.id }, [
+                        _vm._l(_vm.filtrar_congresos, function(
+                          congreso,
+                          index
+                        ) {
+                          return _c("tr", { key: index }, [
                             _c(
                               "td",
                               {
@@ -32874,7 +33396,13 @@ var render = function() {
                                 _c(
                                   "button",
                                   {
-                                    staticClass: "btn btn-action btn-icon-split"
+                                    staticClass:
+                                      "btn btn-action btn-icon-split",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.EditarCongreso(congreso)
+                                      }
+                                    }
                                   },
                                   [
                                     _c(
@@ -33028,6 +33556,712 @@ var render = function() {
                 _c("br"),
                 _vm._v(" "),
                 _c("br")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal", attrs: { id: "modalEventos" } }, [
+              _c("div", { staticClass: "modal-content w-36" }, [
+                _c("div", { staticClass: "modal-body" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "content",
+                      staticStyle: { display: "block" }
+                    },
+                    [
+                      _c("div", { staticClass: "card" }, [
+                        _c("div", { staticClass: "card-header" }, [
+                          _c("div", { attrs: { id: "c_titulo" } }, [
+                            _c("strong", { attrs: { id: "title" } }, [
+                              _vm._v(_vm._s(_vm.title_modal))
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-title" }, [
+                          _vm._v("DATOS DEL EVENTO")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-body card-block" }, [
+                          _c(
+                            "form",
+                            {
+                              on: {
+                                submit: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.GuardarEvento($event)
+                                }
+                              }
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.frmRegistrarEvento.modal,
+                                    expression: "frmRegistrarEvento.modal"
+                                  }
+                                ],
+                                attrs: {
+                                  type: "text",
+                                  id: "txtModal",
+                                  hidden: ""
+                                },
+                                domProps: {
+                                  value: _vm.frmRegistrarEvento.modal
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.frmRegistrarEvento,
+                                      "modal",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.frmRegistrarEvento.id,
+                                    expression: "frmRegistrarEvento.id"
+                                  }
+                                ],
+                                attrs: {
+                                  type: "text",
+                                  id: "txtIdPermiso",
+                                  hidden: ""
+                                },
+                                domProps: { value: _vm.frmRegistrarEvento.id },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.frmRegistrarEvento,
+                                      "id",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-6" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("NOMBRE DEL EVENTO")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.frmRegistrarEvento.nombre,
+                                          expression:
+                                            "frmRegistrarEvento.nombre"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: {
+                                        type: "text",
+                                        id: "txtNombre",
+                                        placeholder: "Ingrese el nombre"
+                                      },
+                                      domProps: {
+                                        value: _vm.frmRegistrarEvento.nombre
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.frmRegistrarEvento,
+                                            "nombre",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _vm.submited &&
+                                !_vm.$v.frmRegistrarEvento.nombre.required
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticStyle: {
+                                          color: "red",
+                                          "font-size": "12px"
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                        *Campo obligatorio\n                      "
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-6" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("TEMÁTICA")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.frmRegistrarEvento.tematica,
+                                          expression:
+                                            "frmRegistrarEvento.tematica"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: {
+                                        type: "text",
+                                        id: "inpTematica",
+                                        placeholder: "Ingrese la tematica"
+                                      },
+                                      domProps: {
+                                        value: _vm.frmRegistrarEvento.tematica
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.frmRegistrarEvento,
+                                            "tematica",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _vm.submited &&
+                                !_vm.$v.frmRegistrarEvento.tematica.required
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticStyle: {
+                                          color: "red",
+                                          "font-size": "12px"
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                        *Campo obligatorio\n                      "
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-8" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("DESCRIPCIÓN")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("textarea", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.frmRegistrarEvento.descripcion,
+                                          expression:
+                                            "frmRegistrarEvento.descripcion"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: {
+                                        type: "text",
+                                        name: "pregunta",
+                                        id: "txtDescripcion",
+                                        placeholder: "Ingrese una descripcion"
+                                      },
+                                      domProps: {
+                                        value:
+                                          _vm.frmRegistrarEvento.descripcion
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.frmRegistrarEvento,
+                                            "descripcion",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("FECJA DE EVENTO")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.frmRegistrarEvento.fecha_evento,
+                                          expression:
+                                            "frmRegistrarEvento.fecha_evento"
+                                        }
+                                      ],
+                                      staticClass: "form-control center",
+                                      staticStyle: { maxwidth: "300px" },
+                                      attrs: {
+                                        type: "date",
+                                        name: "inpFechaEvento",
+                                        id: "inpFechaEvento",
+                                        onkeydown: "return false"
+                                      },
+                                      domProps: {
+                                        value:
+                                          _vm.frmRegistrarEvento.fecha_evento
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.frmRegistrarEvento,
+                                            "fecha_evento",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("HORA DE EVENTO")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.frmRegistrarEvento.hora_evento,
+                                          expression:
+                                            "frmRegistrarEvento.hora_evento"
+                                        }
+                                      ],
+                                      staticClass: "form-control center",
+                                      staticStyle: { "max-width": "300px" },
+                                      attrs: {
+                                        type: "time",
+                                        name: "inpHoraInicio",
+                                        id: "inpHoraInicio",
+                                        onkeydown: "return false"
+                                      },
+                                      domProps: {
+                                        value:
+                                          _vm.frmRegistrarEvento.hora_evento
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.frmRegistrarEvento,
+                                            "hora_evento",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("FIN DE EVENTO")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.frmRegistrarEvento.hora_fin,
+                                          expression:
+                                            "frmRegistrarEvento.hora_fin"
+                                        }
+                                      ],
+                                      staticClass: "form-control center",
+                                      staticStyle: { "max-width": "300px" },
+                                      attrs: {
+                                        type: "time",
+                                        name: "inpHoraFin",
+                                        id: "inpHoraFin",
+                                        onkeydown: "return false"
+                                      },
+                                      domProps: {
+                                        value: _vm.frmRegistrarEvento.hora_fin
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.frmRegistrarEvento,
+                                            "hora_fin",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-6" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("PONENTE")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.frmRegistrarEvento.idPonente,
+                                            expression:
+                                              "frmRegistrarEvento.idPonente"
+                                          }
+                                        ],
+                                        staticClass: "form-control center",
+                                        staticStyle: { "max-width": "400px" },
+                                        attrs: { id: "slcPonentes" },
+                                        on: {
+                                          change: function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.$set(
+                                              _vm.frmRegistrarEvento,
+                                              "idPonente",
+                                              $event.target.multiple
+                                                ? $$selectedVal
+                                                : $$selectedVal[0]
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: {
+                                              value: "0",
+                                              selected: "",
+                                              disabled: ""
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                            Seleccione...\n                          "
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.ponentes, function(ponente) {
+                                          return _c(
+                                            "option",
+                                            {
+                                              key: ponente.id,
+                                              domProps: { value: ponente.id }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                            " +
+                                                  _vm._s(
+                                                    ponente.nombre +
+                                                      " " +
+                                                      ponente.apellidoPaterno +
+                                                      " " +
+                                                      ponente.apellidoMaterno
+                                                  ) +
+                                                  "\n                          "
+                                              )
+                                            ]
+                                          )
+                                        })
+                                      ],
+                                      2
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-6" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("CATEGORIA")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.frmRegistrarEvento
+                                                .idCategoria,
+                                            expression:
+                                              "frmRegistrarEvento.idCategoria"
+                                          }
+                                        ],
+                                        staticClass: "form-control center",
+                                        staticStyle: { "max-width": "400px" },
+                                        attrs: { id: "slcPonentes" },
+                                        on: {
+                                          change: function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.$set(
+                                              _vm.frmRegistrarEvento,
+                                              "idCategoria",
+                                              $event.target.multiple
+                                                ? $$selectedVal
+                                                : $$selectedVal[0]
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: {
+                                              value: "0",
+                                              selected: "",
+                                              disabled: ""
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                            Seleccione...\n                          "
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.categorias, function(
+                                          categoria
+                                        ) {
+                                          return _c(
+                                            "option",
+                                            {
+                                              key: categoria.id,
+                                              domProps: { value: categoria.id }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                            " +
+                                                  _vm._s(categoria.nombre) +
+                                                  "\n                          "
+                                              )
+                                            ]
+                                          )
+                                        })
+                                      ],
+                                      2
+                                    )
+                                  ]
+                                )
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("hr"),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "text-right" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-action btn-icon-split mb-1",
+                                attrs: { id: "btnGuardarCambios" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.GuardarPregunta()
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "icon text-white-50" },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fas fa-save",
+                                      staticStyle: { color: "white" }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "text" }, [
+                                  _vm._v("Guardar")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-cancel btn-icon-split mb-1",
+                                attrs: { id: "btnCancelar" }
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "icon text-white-50" },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fas fa-times",
+                                      staticStyle: { color: "white" }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "text",
+                                    staticStyle: { color: "white" }
+                                  },
+                                  [_vm._v("Cancelar")]
+                                )
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                ])
               ])
             ])
           ]
@@ -33876,7 +35110,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "tbody",
-                        _vm._l(_vm.ponentes, function(ponente) {
+                        _vm._l(_vm.listar_ponentes, function(ponente) {
                           return _c("tr", { key: ponente.id }, [
                             _c(
                               "td",
@@ -34024,7 +35258,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "card-title" }, [
-                          _vm._v("DATOS DEL PERMISO")
+                          _vm._v("DATOS DEL PONENTE")
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "card-body card-block" }, [

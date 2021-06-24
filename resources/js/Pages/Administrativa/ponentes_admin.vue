@@ -54,7 +54,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="ponente in ponentes" :key="ponente.id">
+                  <tr v-for="ponente in listar_ponentes" :key="ponente.id">
                     <td class="table-bordered" align="center">
                       <button
                         class="btn btn-action btn-icon-split"
@@ -92,7 +92,6 @@
             </div>
             <br />
           </div>
-          
         </div>
 
         <!-- The Modal -->
@@ -106,7 +105,7 @@
                       <strong id="title">{{ title_modal }}</strong>
                     </div>
                   </div>
-                  <div class="card-title">DATOS DEL PERMISO</div>
+                  <div class="card-title">DATOS DEL PONENTE</div>
                   <div class="card-body card-block">
                     <form @submit.prevent="GuardarPonente">
                       <input
@@ -413,8 +412,7 @@
             </div>
           </div>
         </div>
-
-       </div>
+      </div>
     </div>
   </layout>
 </template>
@@ -432,7 +430,7 @@ export default {
     return {
       submited: false,
       title_modal: "NUEVO PONENTE",
-      // listar_preguntas: this.preguntas,
+      listar_ponentes: this.ponentes,
       frmRegistrarPonente: {
         id: "",
         nombre: "",
@@ -466,15 +464,15 @@ export default {
   mounted() {
     this.TablaPonentes();
     if (screen.width < 1000) {
-      document
-        .getElementById("tblPonentes")
-        .classList.add("table-responsive");
+      document.getElementById("tblPonentes").classList.add("table-responsive");
     }
   },
   methods: {
     TablaPonentes() {
       this.$nextTick(() => {
         var table = $("#tblPonentes").DataTable({
+          destroy: true,
+          // pageLength: 5,
           scrollCollapse: true,
           fixedHeader: true,
           language: {
@@ -602,7 +600,7 @@ export default {
         if (self.$v.frmRegistrarPonente.$invalid) {
           return false;
         } else {
-          // console.log("sddas");
+          console.log("sddas");
           data.append("modal", self.frmRegistrarPonente.modal);
           data.append("dni", self.frmRegistrarPonente.dni);
           data.append("email", self.frmRegistrarPonente.email);
@@ -647,13 +645,13 @@ export default {
                           Swal.fire({
                             title: "EN PROGRESO",
                             html: "Espere porfavor...",
-                            timer: 5000,
+                            timer: 2000,
                             allowOutsideClick: false,
                             timerProgressBar: true,
                             didOpen: () => {
                               Swal.showLoading();
                               timerInterval = setInterval(() => {
-                                const content = Swal.getContent();
+                                const content = Swal.getHtmlContainer();
                                 if (content) {
                                   const b = content.querySelector("b");
                                   if (b) {
@@ -674,9 +672,12 @@ export default {
                             allowOutsideClick: false,
                             preConfirm: (result) => {
                               self.submited = false;
-                              self.ActualizarTabla();
+                              // console.log(self.listar_ponentes);
+                              $("#tblPonentes").DataTable().destroy();
+                              self.TablaPonentes();
                               $("#modalPonente").css("display", "none");
                               $("#footer-navigator").css("display", "flex");
+                              // self.ActualizarTabla();
                             },
                           });
                         },
@@ -687,6 +688,66 @@ export default {
               }
             });
         }
+      } else if (this.frmRegistrarPonente.modal == "EDITAR") {
+        // console.log("EDITAR");
+        Swal.fire({
+          title: "GUARDAR CAMBIOS",
+          text: "¿Desea continuar?",
+          confirmButtonText:
+            '<i class="fas fa-check" style="color:white;"></i>   Si',
+          confirmButtonColor: "var(--colorAlto)",
+          showCancelButton: true,
+          cancelButtonText: '<i class="fas fa-times"></i>   No',
+          cancelButtonColor: "var(--plomoOscuroEmpresarial)",
+          allowOutsideClick: false,
+          preConfirm: (result) => {
+            self.$inertia.post(
+              route("administrativa.guardar_ponente"),
+              self.frmRegistrarPonente,
+              {
+                preserveScroll: true,
+                onStart: (visit) => {
+                  let timerInterval;
+                  Swal.fire({
+                    title: "EN PROGRESO",
+                    html: "Espere porfavor...",
+                    timer: 5000,
+                    allowOutsideClick: false,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                      Swal.showLoading();
+                      timerInterval = setInterval(() => {
+                        const content = Swal.getHtmlContainer();
+                        if (content) {
+                          const b = content.querySelector("b");
+                          if (b) {
+                            b.textContent = Swal.getTimerLeft();
+                          }
+                        }
+                      }, 100);
+                    },
+                    willClose: () => {
+                      clearInterval(timerInterval);
+                    },
+                  });
+                },
+                onSuccess: () => {
+                  Swal.fire({
+                    icon: "success",
+                    title: "¡ÉXITO!",
+                    allowOutsideClick: false,
+                    preConfirm: (result) => {
+                      self.submited = false;
+                      self.ActualizarTabla();
+                      $("#modalPonente").css("display", "none");
+                      $("#footer-navigator").css("display", "flex");
+                    },
+                  });
+                },
+              }
+            );
+          },
+        });
       }
     },
   },

@@ -1,5 +1,5 @@
 <template>
-   <layout ref="layout">
+  <layout ref="layout">
     <div slot="c_congresos_permisos">
       <div class="content" style="display: block">
         <div class="card">
@@ -12,6 +12,7 @@
               <button
                 class="btn btn-action btn-icon-split"
                 id="btnRegistrarAsistencia"
+                @click="NuevoCongreso()"
               >
                 <span class="icon text-white">
                   <i class="far fa-id-badge"></i>
@@ -20,6 +21,58 @@
               </button>
             </div>
 
+            <div class="form-row col-md-6 col-6">
+              <label for="slcEventos" class="form-control-label"
+                >Por ponente</label
+              >
+              <select
+                class="form-control center"
+                name="slcEventos"
+                id="slcEventos"
+                style="max-width: 200px"
+                @change="FiltrarPonente"
+              >
+                <!-- <option value="seleccione">Seleccione...</option> -->
+                <option value="0">Todos</option>
+                <option
+                  v-for="ponente in ponentes"
+                  :key="ponente.id"
+                  :value="ponente.id"
+                >
+                  {{
+                    ponente.nombre +
+                    " " +
+                    ponente.apellidoPaterno +
+                    " " +
+                    ponente.apellidoMaterno
+                  }}
+                </option>
+              </select>
+            </div>
+            <br />
+
+            <!-- botonBuscar -->
+            <div id="search-content_us">
+              <div
+                class="input-group row col-md-3 mb-1 input-search"
+                id="s_content"
+              >
+                <input
+                  class="form-control"
+                  type="text"
+                  id="inpBuscar"
+                  placeholder="Buscar..."
+                  @focus="hidenav()"
+                  @blur="shownav()"
+                />
+                <div class="input-group-append">
+                  <button class="btn btn-action" type="button">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- -- -->
             <div id="tabla_permisos">
               <table class="table table-hover" id="tblCongresos">
                 <thead>
@@ -36,10 +89,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="congreso in congresos" :key="congreso.id">
+                  <tr
+                    v-for="(congreso, index) in filtrar_congresos"
+                    :key="index"
+                  >
                     <td class="table-bordered" align="center">
                       <button
                         class="btn btn-action btn-icon-split"
+                        @click="EditarCongreso(congreso)"
                       >
                         <span class="icon text-white-50">
                           <i class="fas fa-edit" style="color: white"></i>
@@ -47,7 +104,7 @@
                       </button>
                     </td>
                     <td class="table-bordered" align="center">
-                      {{ congreso.nombre}}
+                      {{ congreso.nombre }}
                     </td>
                     <td class="table-bordered" align="left">
                       {{ congreso.tematica }}
@@ -65,7 +122,13 @@
                       {{ congreso.hora_fin }}
                     </td>
                     <td class="table-bordered" align="left">
-                      {{ congreso.NOMBRES + " " + congreso.apellidoPaterno + " "+congreso.apellidoMaterno }}
+                      {{
+                        congreso.NOMBRES +
+                        " " +
+                        congreso.apellidoPaterno +
+                        " " +
+                        congreso.apellidoMaterno
+                      }}
                     </td>
                     <td class="table-bordered" align="left">
                       {{ congreso.nombre_categoria }}
@@ -80,7 +143,7 @@
         </div>
 
         <!-- The Modal -->
-        <!-- <div id="modalPreguntaForo" class="modal">
+        <div id="modalEventos" class="modal">
           <div class="modal-content w-36">
             <div class="modal-body">
               <div class="content" style="display: block">
@@ -90,55 +153,169 @@
                       <strong id="title">{{ title_modal }}</strong>
                     </div>
                   </div>
-                  <div class="card-title">DATOS DEL PERMISO</div>
+                  <div class="card-title">DATOS DEL EVENTO</div>
                   <div class="card-body card-block">
-                    <form @submit.prevent="GuardarPregunta">
+                    <form @submit.prevent="GuardarEvento">
                       <input
                         type="text"
                         id="txtModal"
-                        v-model="frmRegistrarPregunta.modal"
+                        v-model="frmRegistrarEvento.modal"
                         hidden
                       />
                       <input
                         type="text"
                         id="txtIdPermiso"
                         hidden
-                        v-model="frmRegistrarPregunta.id"
+                        v-model="frmRegistrarEvento.id"
                       />
-                      <div class="col form-group">
-                        <label class="form-control-label label-title"
-                          >ESCRIBIR PREGUNTA</label
-                        >
-                        <textarea
-                          class="form-control"
-                          type="text"
-                          name="pregunta"
-                          id="txtNombrePregunta"
-                          v-model="frmRegistrarPregunta.pregunta"
-                          placeholder="Ingrese la pregunta"
-                        ></textarea>
-                      </div>
-                      <div class="col form-group">
-                        <label class="form-control-label label-title"
-                          >Conferencia</label
-                        >
-                        <select
-                          class="form-control center"
-                          id="alcEventos"
-                          style="max-width: 400px"
-                          v-model="frmRegistrarPregunta.idEvento"
-                        >
-                          <option value="0" selected>
-                            Seleccione...
-                          </option>
-                          <option
-                            v-for="evento in eventos"
-                            :key="evento.id"
-                            v-bind:value="evento.id"
+                      <div class="form-row">
+                        <div class="form-group col-sm-6">
+                          <label class="form-control-label label-title"
+                            >NOMBRE DEL EVENTO</label
                           >
-                            {{ evento.nombre }}
-                          </option>
-                        </select>
+                          <input
+                            class="form-control"
+                            type="text"
+                            id="txtNombre"
+                            v-model="frmRegistrarEvento.nombre"
+                            placeholder="Ingrese el nombre"
+                          />
+                        </div>
+                        <div
+                          v-if="
+                            submited &&
+                            !$v.frmRegistrarEvento.nombre.required
+                          "
+                          style="color: red; font-size: 12px"
+                        >
+                          *Campo obligatorio
+                        </div>
+                        <div class="form-group col-sm-6">
+                          <label class="form-control-label label-title"
+                            >TEMÁTICA</label
+                          >
+                          <input
+                            class="form-control"
+                            type="text"
+                            id="inpTematica"
+                            v-model="frmRegistrarEvento.tematica"
+                            placeholder="Ingrese la tematica"
+                          />
+                        </div>
+                        <div
+                          v-if="
+                            submited &&
+                            !$v.frmRegistrarEvento.tematica.required
+                          "
+                          style="color: red; font-size: 12px"
+                        >
+                          *Campo obligatorio
+                        </div>
+                        <div class="form-group col-sm-8">
+                          <label class="form-control-label label-title"
+                            >DESCRIPCIÓN</label
+                          >
+                          <textarea
+                            class="form-control"
+                            type="text"
+                            name="pregunta"
+                            id="txtDescripcion"
+                            v-model="frmRegistrarEvento.descripcion"
+                            placeholder="Ingrese una descripcion"
+                          ></textarea>
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label class="form-control-label label-title"
+                            >FECJA DE EVENTO</label
+                          >
+                          <input
+                            class="form-control center"
+                            type="date"
+                            name="inpFechaEvento"
+                            id="inpFechaEvento"
+                            style="maxwidth: 300px"
+                            onkeydown="return false"
+                            v-model="frmRegistrarEvento.fecha_evento"
+                          />
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label class="form-control-label label-title"
+                            >HORA DE EVENTO</label
+                          >
+                          <input
+                            class="form-control center"
+                            type="time"
+                            name="inpHoraInicio"
+                            id="inpHoraInicio"
+                            style="max-width: 300px"
+                            onkeydown="return false"
+                            v-model="frmRegistrarEvento.hora_evento"
+                          />
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label class="form-control-label label-title"
+                            >FIN DE EVENTO</label
+                          >
+                          <input
+                            class="form-control center"
+                            type="time"
+                            name="inpHoraFin"
+                            id="inpHoraFin"
+                            style="max-width: 300px"
+                            onkeydown="return false"
+                            v-model="frmRegistrarEvento.hora_fin"
+                          />
+                        </div>
+                        <div class="form-group col-sm-6">
+                          <label class="form-control-label label-title"
+                            >PONENTE</label
+                          >
+                          <select
+                            class="form-control center"
+                            id="slcPonentes"
+                            style="max-width: 400px"
+                            v-model="frmRegistrarEvento.idPonente"
+                          >
+                            <option value="0" selected disabled>
+                              Seleccione...
+                            </option>
+                            <option
+                              v-for="ponente in ponentes"
+                              :key="ponente.id"
+                              v-bind:value="ponente.id"
+                            >
+                              {{
+                                ponente.nombre +
+                                " " +
+                                ponente.apellidoPaterno +
+                                " " +
+                                ponente.apellidoMaterno
+                              }}
+                            </option>
+                          </select>
+                        </div>
+                        <div class="form-group col-sm-6">
+                          <label class="form-control-label label-title"
+                            >CATEGORIA</label
+                          >
+                          <select
+                            class="form-control center"
+                            id="slcPonentes"
+                            style="max-width: 400px"
+                            v-model="frmRegistrarEvento.idCategoria"
+                          >
+                            <option value="0" selected disabled>
+                              Seleccione...
+                            </option>
+                            <option
+                              v-for="categoria in categorias"
+                              :key="categoria.id"
+                              v-bind:value="categoria.id"
+                            >
+                              {{ categoria.nombre }}
+                            </option>
+                          </select>
+                        </div>
                       </div>
                     </form>
                     <hr />
@@ -168,7 +345,7 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </layout>
@@ -177,21 +354,60 @@
 <script>
 import layout from "./Components/layout_administrativa";
 export default {
-    components: { layout },
-    props: {
-        congresos: Array,
+  components: { layout },
+  props: {
+    congresos: Array,
+    ponentes: Array,
+    categorias: Array,
+  },
+  data() {
+    return {
+      submited: false,
+      title_modal: "NUEVO EVENTO",
+      elegir_ponentes: this.ponentes,
+      filtrar_congresos: this.congresos,
+      frmRegistrarEvento: {
+        id: "",
+        nombre: "",
+        tematica: "",
+        descripcion: "",
+        fecha_evento: null,
+        hora_evento: null,
+        hora_fin: null,
+        idPonente: null,
+        idCategoria: null,
+        modal: null,
+      },
+    };
+  },
+  validations: {
+    frmRegistrarTipo: {
+      nombre: { required },
+      tematica: { required },
+      descripcion: { required },
+      fecha_evento: { required },
     },
-    mounted() {
-      this.TablaCongresos();
-      if (screen.width < 1000) {
-      document
-        .getElementById("tblCongresos")
-        .classList.add("table-responsive");
+  },
+  mounted() {
+    this.TablaCongresos();
+    if (screen.width < 1000) {
+      document.getElementById("tblCongresos").classList.add("table-responsive");
     }
+  },
+  watch: {
+    filtrar_congresos() {
+      $("#tblCongresos").DataTable().destroy();
+      this.TablaCongresos();
     },
-    methods: {
-      TablaCongresos(){
+  },
+  methods: {
+    TablaCongresos() {
+      this.$nextTick(() => {
         var table = $("#tblCongresos").DataTable({
+          // scrollY: "400px",
+          // scrollX: true,
+          paging: true,
+          order: [[1, "desc"]],
           scrollCollapse: true,
           fixedHeader: true,
           language: {
@@ -243,11 +459,156 @@ export default {
             },
           ],
         });
+        $("#inpBuscar").keyup(function () {
+          table.search(this.value).draw();
+        });
+      });
+    },
+    hidenav() {
+      return this.$refs.layout.hide_nav();
+    },
+    shownav() {
+      return this.$refs.layout.show_nav();
+    },
+    ActualizarTabla() {
+      $("#tblCongresos").DataTable().destroy();
+      this.TablaCongresos();
+    },
+    FiltrarPonente() {
+      console.log($("#slcEventos").val());
+      let slcEventos_value = $("#slcEventos").val();
+      if (slcEventos_value == "0") {
+        this.filtrar_congresos = this.congresos;
+      } else {
+        this.filtrar_congresos = this.congresos.filter(
+          (item) => item.idPonente == slcEventos_value
+        );
+        console.log(this.filtrar_congresos);
       }
-    }
-}
+      $("#tblCongresos").DataTable().destroy();
+      this.TablaCongresos();
+    },
+    NuevoCongreso() {
+      // console.log(pregunta.id);
+      this.submited = false;
+      this.title_modal = "NUEVO EVENTO";
+      this.frmRegistrarEvento.id = 0;
+      this.frmRegistrarEvento.nombre = "";
+      this.frmRegistrarEvento.tenatica = "";
+      this.frmRegistrarEvento.descripcion = "";
+      this.frmRegistrarEvento.fecha_evento = null;
+      this.frmRegistrarEvento.hora_evento = null;
+      this.frmRegistrarEvento.hora_fin = null;
+      this.frmRegistrarEvento.idPonente = 0;
+      this.frmRegistrarEvento.idCategoria = 0;
+      this.frmRegistrarEvento.modal = "NUEVO";
+
+      document.getElementById("modalEventos").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalEventos").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display =
+          "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    EditarCongreso(congreso) {
+      // console.log(pregunta.id);
+      this.submited = false;
+      this.title_modal = "EDITAR EVENTO";
+      this.frmRegistrarEvento.id = congreso.id;
+      this.frmRegistrarEvento.nombre = congreso.nombre;
+      this.frmRegistrarEvento.tenatica = congreso.tenatica;
+      this.frmRegistrarEvento.descripcion = congreso.descripcion;
+      this.frmRegistrarEvento.fecha_evento = congreso.fecha_evento;
+      this.frmRegistrarEvento.hora_evento = congreso.hora_evento;
+      this.frmRegistrarEvento.hora_fin = congreso.hora_fin;
+      this.frmRegistrarEvento.idPonente = congreso.idPonente;
+      this.frmRegistrarEvento.idCategoria = congreso.idCategoria;
+      this.frmRegistrarEvento.modal = "EDITAR";
+
+      document.getElementById("modalEventos").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalEventos").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display =
+          "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    GuardarPregunta() {
+      this.submited = true;
+      self = this;
+      if (this.$v.$invalid) {
+        return false;
+      }else{
+        Swal.fire({
+        title: "GUARDAR CAMBIOS",
+        text: "¿Desea continuar?",
+        confirmButtonText:
+          '<i class="fas fa-check" style="color:white;"></i>   Si',
+        confirmButtonColor: "var(--colorAlto)",
+        showCancelButton: true,
+        cancelButtonText: '<i class="fas fa-times"></i>   No',
+        cancelButtonColor: "var(--plomoOscuroEmpresarial)",
+        allowOutsideClick: false,
+        preConfirm: (result) => {
+          self.$inertia.post(
+            route("foros.guardar_pregunta"),
+            self.frmRegistrarEvento,
+            {
+              preserveScroll: true,
+              onStart: (visit) => {
+                let timerInterval;
+                Swal.fire({
+                  title: "EN PROGRESO",
+                  html: "Espere porfavor...",
+                  timer: 5000,
+                  allowOutsideClick: false,
+                  timerProgressBar: true,
+                  didOpen: () => {
+                    Swal.showLoading();
+                    timerInterval = setInterval(() => {
+                      console.log(Swal.getContent());
+                      const content = Swal.getContent();
+                      if (content) {
+                        const b = content.querySelector("b");
+                        if (b) {
+                          b.textContent = Swal.getTimerLeft();
+                        }
+                      }
+                    }, 100);
+                  },
+                  willClose: () => {
+                    clearInterval(timerInterval);
+                  },
+                });
+              },
+              onSuccess: () => {
+                Swal.fire({
+                  icon: "success",
+                  title: "¡ÉXITO!",
+                  allowOutsideClick: false,
+                  preConfirm: (result) => {
+                    self.submited = false;
+                    self.ActualizarTabla();
+                    $("#modalPreguntaForo").css("display", "none");
+                    $("#footer-navigator").css("display", "flex");
+                  },
+                });
+              },
+            }
+          );
+        },
+      });
+      }
+      //   {
+      
+      //     }
+      //   });
+      //   }
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>

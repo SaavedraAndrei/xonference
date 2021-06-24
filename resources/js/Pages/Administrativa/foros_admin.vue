@@ -794,7 +794,7 @@ export default {
 
     //PANEL DE RESPUESTAS
     FiltrarRespuestas() {
-      console.log($("#slcEventos").val());
+      // console.log($("#slcEventos").val());
       let slcEventos_value = $("#slcEventos").val();
 
       if (slcEventos_value == "seleccione") {

@@ -70,9 +70,9 @@
         </div>
     </div>
       
-      <div class="text-center">
+      <!-- <div class="text-center">
         <a class="btn btn-new" href="{{ route('formfile')}}"><i class="fa fa-plus"></i> Subir</a>
-      </div>
+      </div> -->
     </div>
     
   </div>

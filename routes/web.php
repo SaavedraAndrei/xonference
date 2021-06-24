@@ -80,6 +80,10 @@ Route::POST('/administrativa/guardar_pregunta', [ForosController::class, 'guarda
 Route::GET('/administrativa/congresos', [CongresosController::class, 'Congresos'])->name('administrativa.congresos');
 Route::GET('/administrativa/categorias', [MantenimientosController::class, 'Categorias'])->name('administrativa.categorias');
 
+Route::GET('/administrativa/recursos', [ArchivoController::class, 'principal'])->name('administrativa.recursos');
+Route::POST('/administrativa/recursos_verificar', [ArchivoController::class, 'verificarRecurso'])->name('administrativa.verificar_recursos');
+Route::POST('/administrativa/recursos_guardar', [ArchivoController::class, 'guardarRecurso'])->name('administrativa.guardar_recurso');
+
 //----------------------------RUTAS PARA EL CERTIFICADO---------------------------------------
 Route::GET('/certificado', [CertificadoController::class, 'index'])->name('certificado');
 Route::GET('/download', [CertificadoController::class, 'download'])->name('download');

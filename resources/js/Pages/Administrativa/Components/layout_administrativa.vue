@@ -116,6 +116,17 @@
               "
               >Foro
             </inertia-link>
+
+            <inertia-link
+              class="collapse-item"
+              :href="$route('administrativa.recursos')"
+              v-if="
+                $page.props.user_permissions.permisos.includes(
+                  'GESTIÓN ADMINISTRATIVA/LISTAR RECURSOS'
+                )
+              "
+              >Recursos
+            </inertia-link>
           </div>
         </div>
       </li>
@@ -383,6 +394,7 @@
         <slot name="c_ponentes_admin"></slot>
         <slot name="c_congresos_permisos"></slot>
         <slot name="c_categorias_mantenimiento"></slot>
+        <slot name="c_recursos_ponentes"></slot>
       </div>
 
       <!------------- BOTONES DE NAVEGACIÓN ----------->

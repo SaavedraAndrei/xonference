@@ -2289,6 +2289,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {},
   mounted: function mounted() {
@@ -4980,6 +4992,516 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     layout: _Components_layout_administrativa_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/recursos_ponentes.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/recursos_ponentes.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Components_layout_administrativa__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Components/layout_administrativa */ "./resources/js/Pages/Administrativa/Components/layout_administrativa.vue");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    layout: _Components_layout_administrativa__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  props: {
+    files: Array
+  },
+  data: function data() {
+    return {
+      submited: false,
+      title_modal: "NUEVO RECURSO",
+      // listar_preguntas: this.preguntas,
+      frmRegistrarRecurso: {
+        id: "",
+        title: "",
+        description: "",
+        modal: "",
+        archivofile: null
+      }
+    };
+  },
+  validations: function validations() {
+    if (this.frmRegistrarRecurso.modal == "NUEVO") {
+      return {
+        frmRegistrarRecurso: {
+          title: {
+            required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+          },
+          description: {
+            required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+          },
+          archivofile: {
+            required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+          }
+        }
+      };
+    }
+  },
+  mounted: function mounted() {
+    this.TablaRecursos();
+
+    if (screen.width < 1000) {
+      document.getElementById("tblRecursos").classList.add("table-responsive");
+    }
+  },
+  methods: {
+    TablaRecursos: function TablaRecursos() {
+      this.$nextTick(function () {
+        var table = $("#tblRecursos").DataTable({
+          scrollCollapse: true,
+          fixedHeader: true,
+          language: {
+            retrieve: true,
+            decimal: "",
+            emptyTable: "No hay datos disponibles en la tabla",
+            info: "Mostrando del _START_ al _END_ de _TOTAL_ registros",
+            infoEmpty: "No se encontraron registros",
+            infoFiltered: "(filtrado de _MAX_ registros)",
+            infoPostFix: "",
+            thousands: ",",
+            lengthMenu: "Agrupar por _MENU_ filas",
+            loadingRecords: "Cargando...",
+            processing: "Procesando...",
+            search: "Buscar:",
+            zeroRecords: "No se encontraron registros",
+            paginate: {
+              first: "Primera",
+              last: "Ultima",
+              next: '<i class="fas fa-chevron-circle-right" style="font-size:20px;"></i>',
+              previous: '<i class="fas fa-chevron-circle-left" style="font-size:20px;"></i>'
+            },
+            aria: {
+              sortAscending: ": activar para ordenar de forma ascendente",
+              sortDescending: ": activar para ordenar de forma descendente"
+            }
+          },
+          responsive: true,
+          dom: '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
+          buttons: [{
+            extend: "excelHtml5",
+            text: '<i class="fas fa-file-excel"></i> ',
+            titleAttr: "Exportar a Excel",
+            className: "btn btn-action"
+          }, {
+            extend: "pdfHtml5",
+            text: '<i class="fas fa-file-pdf"></i> ',
+            titleAttr: "Exportar a PDF",
+            className: "btn btn-cancel"
+          }, {
+            extend: "print",
+            text: '<i class="fa fa-print"></i> ',
+            titleAttr: "Imprimir",
+            className: "btn btn-action"
+          }]
+        });
+        $("#inpBuscar").keyup(function () {
+          table.search(this.value).draw();
+        });
+      });
+    },
+    hidenav: function hidenav() {
+      return this.$refs.layout.hide_nav();
+    },
+    shownav: function shownav() {
+      return this.$refs.layout.show_nav();
+    },
+    ActualizarTabla: function ActualizarTabla() {
+      $("#tblRecursos").DataTable().destroy();
+      this.TablaRecursos();
+    },
+    AgregarArchivo: function AgregarArchivo(e) {
+      var control_name = e.target.name;
+
+      if (control_name == "archivofile") {
+        this.frmRegistrarRecurso.archivofile = e.target.files[0];
+        console.log(this.frmRegistrarRecurso.archivofile);
+      }
+    },
+    NuevoRecurso: function NuevoRecurso() {
+      console.log(this.frmRegistrarRecurso.archivofile);
+      this.submited = false;
+      this.title_modal = "NUEVO RECURSO";
+      this.frmRegistrarRecurso.id = 0;
+      this.frmRegistrarRecurso.title = "";
+      this.frmRegistrarRecurso.description = "";
+      this.frmRegistrarRecurso.archivofile = null;
+      this.frmRegistrarRecurso.modal = "NUEVO";
+      document.getElementById("modalRecurso").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalRecurso").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display = "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    EditarRecurso: function EditarRecurso(recurso) {
+      this.submited = false;
+      this.title_modal = "EDITAR RECURSO";
+      this.frmRegistrarRecurso.id = recurso.id;
+      this.frmRegistrarRecurso.title = recurso.title;
+      this.frmRegistrarRecurso.description = recurso.description;
+      this.frmRegistrarRecurso.modal = "EDITAR";
+      document.getElementById("modalRecurso").style.display = "block";
+      $("#btnCancelar").click(function () {
+        document.getElementById("modalRecurso").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display = "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+    },
+    GuardarRecurso: function GuardarRecurso() {
+      // console.log("ingreso");
+      this.submited = true;
+      self = this;
+      var data = new FormData();
+
+      if (this.frmRegistrarRecurso.modal == "NUEVO") {
+        if (self.$v.frmRegistrarRecurso.$invalid) {
+          return false;
+        } else {
+          console.log("sddas");
+          data.append("modal", self.frmRegistrarRecurso.modal);
+          data.append("title", self.frmRegistrarRecurso.title);
+          axios.post(route("administrativa.verificar_recursos"), data).then(function (response) {
+            var resultado = response.data; // console.log(resultado);
+
+            if (resultado == "INCORRECTO_D") {
+              Swal.fire({
+                icon: "error",
+                title: "¡Ups!",
+                text: "El Titulo ingresado, ya está registrado, intente nuevamente."
+              });
+              return false;
+            } else // if (resultado == "INCORRECTO_U") {
+              //   Swal.fire({
+              //     icon: "error",
+              //     title: "¡Ups!",
+              //     text: "El USUARIO ingresado, ya está registrado, intente nuevamente.",
+              //   });
+              //   return false;
+              // } else
+              {
+                Swal.fire({
+                  title: "GUARDAR CAMBIOS",
+                  text: "¿Desea continuar?",
+                  confirmButtonText: '<i class="fas fa-check" style="color:white;"></i>   Si',
+                  confirmButtonColor: "var(--colorAlto)",
+                  showCancelButton: true,
+                  cancelButtonText: '<i class="fas fa-times"></i>   No',
+                  cancelButtonColor: "var(--plomoOscuroEmpresarial)",
+                  allowOutsideClick: false,
+                  preConfirm: function preConfirm(result) {
+                    self.$inertia.post(route("administrativa.guardar_recurso"), self.frmRegistrarRecurso, {
+                      preserveScroll: true,
+                      onStart: function onStart(visit) {
+                        var timerInterval;
+                        Swal.fire({
+                          title: "EN PROGRESO",
+                          html: "Espere porfavor...",
+                          timer: 5000,
+                          allowOutsideClick: false,
+                          timerProgressBar: true,
+                          didOpen: function didOpen() {
+                            Swal.showLoading();
+                            timerInterval = setInterval(function () {
+                              var content = Swal.getContent();
+
+                              if (content) {
+                                var b = content.querySelector("b");
+
+                                if (b) {
+                                  b.textContent = Swal.getTimerLeft();
+                                }
+                              }
+                            }, 100);
+                          },
+                          willClose: function willClose() {
+                            clearInterval(timerInterval);
+                          }
+                        });
+                      },
+                      onSuccess: function onSuccess() {
+                        Swal.fire({
+                          icon: "success",
+                          title: "¡ÉXITO!",
+                          allowOutsideClick: false,
+                          preConfirm: function preConfirm(result) {
+                            self.submited = false;
+                            self.ActualizarTabla();
+                            $("#modalRecurso").css("display", "none");
+                            $("#footer-navigator").css("display", "flex");
+                          }
+                        });
+                      }
+                    });
+                  }
+                });
+              }
+          });
+        }
+      }
+    }
   }
 });
 
@@ -31784,6 +32306,45 @@ component.options.__file = "resources/js/Pages/Administrativa/principal_admin.vu
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Administrativa/recursos_ponentes.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Pages/Administrativa/recursos_ponentes.vue ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _recursos_ponentes_vue_vue_type_template_id_3d77cf7a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./recursos_ponentes.vue?vue&type=template&id=3d77cf7a& */ "./resources/js/Pages/Administrativa/recursos_ponentes.vue?vue&type=template&id=3d77cf7a&");
+/* harmony import */ var _recursos_ponentes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./recursos_ponentes.vue?vue&type=script&lang=js& */ "./resources/js/Pages/Administrativa/recursos_ponentes.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _recursos_ponentes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _recursos_ponentes_vue_vue_type_template_id_3d77cf7a___WEBPACK_IMPORTED_MODULE_0__.render,
+  _recursos_ponentes_vue_vue_type_template_id_3d77cf7a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Pages/Administrativa/recursos_ponentes.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Usuarios/Components/layout_usuarios.vue":
 /*!********************************************************************!*\
   !*** ./resources/js/Pages/Usuarios/Components/layout_usuarios.vue ***!
@@ -32042,6 +32603,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Administrativa/recursos_ponentes.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/Pages/Administrativa/recursos_ponentes.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_recursos_ponentes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./recursos_ponentes.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/recursos_ponentes.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_recursos_ponentes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Usuarios/Components/layout_usuarios.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************!*\
   !*** ./resources/js/Pages/Usuarios/Components/layout_usuarios.vue?vue&type=script&lang=js& ***!
@@ -32204,6 +32781,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_principal_admin_vue_vue_type_template_id_5311e482___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_principal_admin_vue_vue_type_template_id_5311e482___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./principal_admin.vue?vue&type=template&id=5311e482& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/principal_admin.vue?vue&type=template&id=5311e482&");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Administrativa/recursos_ponentes.vue?vue&type=template&id=3d77cf7a&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/Pages/Administrativa/recursos_ponentes.vue?vue&type=template&id=3d77cf7a& ***!
+  \************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_recursos_ponentes_vue_vue_type_template_id_3d77cf7a___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_recursos_ponentes_vue_vue_type_template_id_3d77cf7a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_recursos_ponentes_vue_vue_type_template_id_3d77cf7a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./recursos_ponentes.vue?vue&type=template&id=3d77cf7a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/recursos_ponentes.vue?vue&type=template&id=3d77cf7a&");
 
 
 /***/ }),
@@ -32529,6 +33123,19 @@ var render = function() {
                         },
                         [_vm._v("Foro\n          ")]
                       )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.$page.props.user_permissions.permisos.includes(
+                    "GESTIÓN ADMINISTRATIVA/LISTAR RECURSOS"
+                  )
+                    ? _c(
+                        "inertia-link",
+                        {
+                          staticClass: "collapse-item",
+                          attrs: { href: _vm.$route("administrativa.recursos") }
+                        },
+                        [_vm._v("Recursos\n          ")]
+                      )
                     : _vm._e()
                 ],
                 1
@@ -32663,7 +33270,9 @@ var render = function() {
             _vm._v(" "),
             _vm._t("c_congresos_permisos"),
             _vm._v(" "),
-            _vm._t("c_categorias_mantenimiento")
+            _vm._t("c_categorias_mantenimiento"),
+            _vm._v(" "),
+            _vm._t("c_recursos_ponentes")
           ],
           2
         ),
@@ -36078,6 +36687,507 @@ var render = function() {
             ])
           ])
         ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/recursos_ponentes.vue?vue&type=template&id=3d77cf7a&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Administrativa/recursos_ponentes.vue?vue&type=template&id=3d77cf7a& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("layout", { ref: "layout" }, [
+    _c(
+      "div",
+      { attrs: { slot: "c_recursos_ponentes" }, slot: "c_recursos_ponentes" },
+      [
+        _c(
+          "div",
+          { staticClass: "content", staticStyle: { display: "block" } },
+          [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("strong", [_vm._v("PONENTES")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-title" }, [
+                _vm._v("PANEL DE RECURSOS")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body card-block" }, [
+                _c("div", { staticClass: "text-center mb-2" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-action btn-icon-split",
+                      attrs: { id: "btnRegistrarAsistencia" },
+                      on: {
+                        click: function($event) {
+                          return _vm.NuevoRecurso()
+                        }
+                      }
+                    },
+                    [
+                      _c("span", { staticClass: "icon text-white" }, [
+                        _c("i", { staticClass: "far fa-id-badge" })
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "text font-size-layout" }, [
+                        _vm._v("Agregar Recursos")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { attrs: { id: "search-content_us" } }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "input-group row col-md-3 mb-1 input-search",
+                      attrs: { id: "s_content_us" }
+                    },
+                    [
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "inpBuscar",
+                          placeholder: "Buscar..."
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "input-group-append" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-action",
+                            attrs: { type: "button" }
+                          },
+                          [_c("i", { staticClass: "fas fa-search" })]
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { attrs: { id: "tabla_permisos" } }, [
+                  _c(
+                    "table",
+                    {
+                      staticClass: "table table-hover",
+                      attrs: { id: "tblRecursos" }
+                    },
+                    [
+                      _c("thead", [
+                        _c("tr", [
+                          _c("th", [_vm._v("TITULO")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("DESCRIPCION")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.files, function(file) {
+                          return _c("tr", { key: file.id }, [
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "center" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                      " +
+                                    _vm._s(file.title) +
+                                    "\n                    "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: "table-bordered",
+                                attrs: { align: "left" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                      " +
+                                    _vm._s(file.description) +
+                                    "\n                    "
+                                )
+                              ]
+                            )
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("br")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal", attrs: { id: "modalRecurso" } }, [
+              _c("div", { staticClass: "modal-content w-36" }, [
+                _c("div", { staticClass: "modal-body" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "content",
+                      staticStyle: { display: "block" }
+                    },
+                    [
+                      _c("div", { staticClass: "card" }, [
+                        _c("div", { staticClass: "card-header" }, [
+                          _c("div", { attrs: { id: "c_titulo" } }, [
+                            _c("strong", { attrs: { id: "title" } }, [
+                              _vm._v(_vm._s(_vm.title_modal))
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-title" }, [
+                          _vm._v("DATOS DEL RECURSO")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-body card-block" }, [
+                          _c(
+                            "form",
+                            {
+                              on: {
+                                submit: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.GuardarRecurso($event)
+                                }
+                              }
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.frmRegistrarRecurso.modal,
+                                    expression: "frmRegistrarRecurso.modal"
+                                  }
+                                ],
+                                attrs: {
+                                  type: "text",
+                                  id: "txtModal",
+                                  hidden: ""
+                                },
+                                domProps: {
+                                  value: _vm.frmRegistrarRecurso.modal
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.frmRegistrarRecurso,
+                                      "modal",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.frmRegistrarRecurso.id,
+                                    expression: "frmRegistrarRecurso.id"
+                                  }
+                                ],
+                                attrs: {
+                                  type: "text",
+                                  id: "txtIdPermiso",
+                                  hidden: ""
+                                },
+                                domProps: { value: _vm.frmRegistrarRecurso.id },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.frmRegistrarRecurso,
+                                      "id",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("TITULO")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.frmRegistrarRecurso.title,
+                                          expression:
+                                            "frmRegistrarRecurso.title"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: {
+                                        type: "text",
+                                        name: "title",
+                                        id: "inpNombre",
+                                        autocomplete: "off",
+                                        placeholder:
+                                          "Ingrese el titulo del archivo"
+                                      },
+                                      domProps: {
+                                        value: _vm.frmRegistrarRecurso.title
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.frmRegistrarRecurso,
+                                            "title",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _vm.submited &&
+                                    _vm.frmRegistrarRecurso.modal == "NUEVO" &&
+                                    !_vm.$v.frmRegistrarRecurso.title.required
+                                      ? _c(
+                                          "div",
+                                          {
+                                            staticStyle: {
+                                              color: "red",
+                                              "font-size": "12px"
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                            *ingrese el titulo\n                          "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-8" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "form-control-label label-title"
+                                      },
+                                      [_vm._v("DESCRIPCION")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("textarea", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.frmRegistrarRecurso.description,
+                                          expression:
+                                            "frmRegistrarRecurso.description"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: {
+                                        type: "text",
+                                        name: "description",
+                                        id: "inpDescripcion",
+                                        autocomplete: "off",
+                                        placeholder:
+                                          "Ingrese alguna descripción"
+                                      },
+                                      domProps: {
+                                        value:
+                                          _vm.frmRegistrarRecurso.description
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.frmRegistrarRecurso,
+                                            "description",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-row" }, [
+                                _vm.frmRegistrarRecurso.modal == "NUEVO"
+                                  ? _c("div", [
+                                      _c(
+                                        "div",
+                                        { staticClass: "form-group col-md-4" },
+                                        [
+                                          _c(
+                                            "label",
+                                            {
+                                              staticClass: "label-title",
+                                              attrs: {
+                                                for: "myfile",
+                                                id: "lblFotoPonente"
+                                              }
+                                            },
+                                            [_vm._v("ARCHIVO:")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("input", {
+                                            staticClass: "btn btn-primary",
+                                            staticStyle: {
+                                              "background-color":
+                                                "var(--plomoOscuroEmpresarial)",
+                                              border: "none",
+                                              "max-width": "400px",
+                                              "font-size": "12px"
+                                            },
+                                            attrs: {
+                                              type: "file",
+                                              id: "fotoPonente",
+                                              name: "archivofile",
+                                              accept:
+                                                ".pdf, .png, .jpeg, .doc , .xlsx , .pptx"
+                                            },
+                                            on: { change: _vm.AgregarArchivo }
+                                          })
+                                        ]
+                                      )
+                                    ])
+                                  : _vm._e()
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("hr"),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "text-right" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-action btn-icon-split mb-1",
+                                attrs: { id: "btnGuardarCambios" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.GuardarRecurso()
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "icon text-white-50" },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fas fa-save",
+                                      staticStyle: { color: "white" }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "text" }, [
+                                  _vm._v("Guardar")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-cancel btn-icon-split mb-1",
+                                attrs: { id: "btnCancelar" }
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "icon text-white-50" },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fas fa-times",
+                                      staticStyle: { color: "white" }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "text",
+                                    staticStyle: { color: "white" }
+                                  },
+                                  [_vm._v("Cancelar")]
+                                )
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ]
+        )
       ]
     )
   ])
@@ -52022,6 +53132,8 @@ var map = {
 	"./Administrativa/ponentes_admin.vue": "./resources/js/Pages/Administrativa/ponentes_admin.vue",
 	"./Administrativa/principal_admin": "./resources/js/Pages/Administrativa/principal_admin.vue",
 	"./Administrativa/principal_admin.vue": "./resources/js/Pages/Administrativa/principal_admin.vue",
+	"./Administrativa/recursos_ponentes": "./resources/js/Pages/Administrativa/recursos_ponentes.vue",
+	"./Administrativa/recursos_ponentes.vue": "./resources/js/Pages/Administrativa/recursos_ponentes.vue",
 	"./Usuarios/Components/layout_usuarios": "./resources/js/Pages/Usuarios/Components/layout_usuarios.vue",
 	"./Usuarios/Components/layout_usuarios.vue": "./resources/js/Pages/Usuarios/Components/layout_usuarios.vue",
 	"./Usuarios/usuarios_asistencia": "./resources/js/Pages/Usuarios/usuarios_asistencia.vue",

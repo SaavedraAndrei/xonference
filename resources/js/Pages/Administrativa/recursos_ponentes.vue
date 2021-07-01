@@ -4,7 +4,7 @@
       <div class="content" style="display: block">
         <div class="card">
           <div class="card-header">
-            <strong>PONENTES</strong>
+            <strong>RECURSOS</strong>
           </div>
           <div class="card-title">PANEL DE RECURSOS</div>
           <div class="card-body card-block">

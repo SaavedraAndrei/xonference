@@ -51,7 +51,6 @@ class ArchivoController extends Controller
 
     public function verificarRecurso(Request $request)
     {
-        
         $modal = $request->modal;
         $title = $request->title;
         // $email = $request->email;

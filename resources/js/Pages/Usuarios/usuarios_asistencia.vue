@@ -4,14 +4,18 @@
       <div class="content" style="display: block">
         <div class="card">
           <div class="card-header">
-            <strong>CONFERENCIA</strong>
+            <strong>CONFERENCIA DE {{nombre}}</strong>
           </div>
           <div class="card-title">PANEL DE CONFERENCIA</div>
           <div class="card-body card-block">
             <div class="form-row">
-                <div class="meet-container">
-                  <div id="meet" class="meet-body" style="align: center; margin: 0 auto:"></div>
-                </div>
+              <div class="meet-container">
+                <div
+                  id="meet"
+                  class="meet-body"
+                  style="align: center; margin: 0 auto:"
+                ></div>
+              </div>
             </div>
           </div>
 
@@ -32,6 +36,7 @@
             <br />
             <br />
           </div>
+          <br>
         </div>
       </div>
 
@@ -120,12 +125,16 @@ export default {
   components: {
     layout,
   },
-  props: {},
+  props: {
+    datos_fecha: Array,
+  },
   data() {
     return {
       submitted: false,
       title_modal: null,
+      nombre: [],
       dni_uno: null,
+      id:[],
       frmRegistrarAsistencia: {
         modo: "NUEVO",
         dni: null,
@@ -133,20 +142,22 @@ export default {
     };
   },
   mounted() {
+    this.nombre= this.datos_fecha[0].nombre;
+    this.id= this.datos_fecha[0].id;
     self = this;
 
-    const domain = '8x8.vc';
+    const domain = "8x8.vc";
     const options = {
-        roomName: 'vpaas-magic-cookie-7ae1fe3f898449ef82ec67cded0ac6f5/AndreiMeet',
-        parentNode: document.querySelector('#meet'),
-        jwt: "\eyJraWQiOiJ2cGFhcy1tYWdpYy1jb29raWUtN2FlMWZlM2Y4OTg0NDllZjgyZWM2N2NkZWQwYWM2ZjUvZDBjYTI2IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJqaXRzaSIsImNvbnRleHQiOnsidXNlciI6eyJpZCI6IjBmOGI3NzYwLWMxN2YtNGExMi1iMTM0LWM2YWMzNzE2NzE0NCIsIm5hbWUiOiJBbmRyZWkgU2FhdmVkcmEiLCJhdmF0YXIiOiJodHRwczovL2xpbmsudG8vdXNlci9hdmF0YXIvcGljdHVyZSIsImVtYWlsIjoiNzM0NTUwNzNAY29udGluZW50YWwuZWR1LnBlIiwibW9kZXJhdG9yIjoidHJ1ZSJ9LCJmZWF0dXJlcyI6eyJsaXZlc3RyZWFtaW5nIjoidHJ1ZSIsInJlY29yZGluZyI6InRydWUifX0sImV4cCI6MTY5NjI4NDA1MiwiaXNzIjoiY2hhdCIsIm5iZiI6MTU5NjE5NzY1Miwicm9vbSI6IioiLCJzdWIiOiJ2cGFhcy1tYWdpYy1jb29raWUtN2FlMWZlM2Y4OTg0NDllZjgyZWM2N2NkZWQwYWM2ZjUifQ.tHYgtlk8GfS76ykpSCK-GruyqvG8OCCZ3Jx3uUt4AnOoOqSGg-Gui3epklYrhqbxErmrG3wcXTsmqGhb94CMcj417QuxWiq8vpiGaM1sOf7D_b1oY7TiEW69JNBGbo8RHFY76hGwrVNRm2VuJJblNwobTJvmiv-6AqgUixeMwgaDwysKhb5pF7aR53ioMJQS4dNTrPSnWSQ_6VZnR-shhv5MhHKmz6O_U6SwKLxtfEM9NKeEofX3bHJ0Njuni59hWtRV_fOAwry7SrUItOfptrink6MzAFP4a5TGP2qV6FAMNBoLqXiBefrThvZGmDV5jP8YV8dM7dBPuldBHXq6DOxtdC0Xr6sc32CO5d-u4qM2ByYHmUP6-eiwm7tuVE-I14QJbmL8v0O_kHiFMTghp4Jx0M9c6SbY5Jqn_L-p2NbrE5AbAmft6h2jRfGg2UdUnNNk7EVrOm_wHCW3p9hMoJzzSLTJnhyS39fisKd1Jiq5_IAu_bTnA5BFVRjGTRiTuLHylxTG_N-Da238XBVjwyc4j4Csg3Ftc2LYSiE2ZABB8fncWuZZiscaenusj8XfDAxuFh3RTxA7PaKDEpJ_7hIU0xNj4BNLhpoR-3exAI2v36cEQLNwpVdxBz1sg4zBSlZY0cgC8zvLrtHDGVwSuOQsxv4fPs61ls-bAv8I5Po",
+      roomName:
+        "vpaas-magic-cookie-7ae1fe3f898449ef82ec67cded0ac6f5/AndreiMeet",
+      parentNode: document.querySelector("#meet"),
+      jwt: "eyJraWQiOiJ2cGFhcy1tYWdpYy1jb29raWUtN2FlMWZlM2Y4OTg0NDllZjgyZWM2N2NkZWQwYWM2ZjUvZDBjYTI2IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJqaXRzaSIsImNvbnRleHQiOnsidXNlciI6eyJpZCI6IjBmOGI3NzYwLWMxN2YtNGExMi1iMTM0LWM2YWMzNzE2NzE0NCIsIm5hbWUiOiJBbmRyZWkgU2FhdmVkcmEiLCJhdmF0YXIiOiJodHRwczovL2xpbmsudG8vdXNlci9hdmF0YXIvcGljdHVyZSIsImVtYWlsIjoiNzM0NTUwNzNAY29udGluZW50YWwuZWR1LnBlIiwibW9kZXJhdG9yIjoidHJ1ZSJ9LCJmZWF0dXJlcyI6eyJsaXZlc3RyZWFtaW5nIjoidHJ1ZSIsInJlY29yZGluZyI6InRydWUifX0sImV4cCI6MTY5NjI4NDA1MiwiaXNzIjoiY2hhdCIsIm5iZiI6MTU5NjE5NzY1Miwicm9vbSI6IioiLCJzdWIiOiJ2cGFhcy1tYWdpYy1jb29raWUtN2FlMWZlM2Y4OTg0NDllZjgyZWM2N2NkZWQwYWM2ZjUifQ.tHYgtlk8GfS76ykpSCK-GruyqvG8OCCZ3Jx3uUt4AnOoOqSGg-Gui3epklYrhqbxErmrG3wcXTsmqGhb94CMcj417QuxWiq8vpiGaM1sOf7D_b1oY7TiEW69JNBGbo8RHFY76hGwrVNRm2VuJJblNwobTJvmiv-6AqgUixeMwgaDwysKhb5pF7aR53ioMJQS4dNTrPSnWSQ_6VZnR-shhv5MhHKmz6O_U6SwKLxtfEM9NKeEofX3bHJ0Njuni59hWtRV_fOAwry7SrUItOfptrink6MzAFP4a5TGP2qV6FAMNBoLqXiBefrThvZGmDV5jP8YV8dM7dBPuldBHXq6DOxtdC0Xr6sc32CO5d-u4qM2ByYHmUP6-eiwm7tuVE-I14QJbmL8v0O_kHiFMTghp4Jx0M9c6SbY5Jqn_L-p2NbrE5AbAmft6h2jRfGg2UdUnNNk7EVrOm_wHCW3p9hMoJzzSLTJnhyS39fisKd1Jiq5_IAu_bTnA5BFVRjGTRiTuLHylxTG_N-Da238XBVjwyc4j4Csg3Ftc2LYSiE2ZABB8fncWuZZiscaenusj8XfDAxuFh3RTxA7PaKDEpJ_7hIU0xNj4BNLhpoR-3exAI2v36cEQLNwpVdxBz1sg4zBSlZY0cgC8zvLrtHDGVwSuOQsxv4fPs61ls-bAv8I5Po",
     };
 
     const api = new JitsiMeetExternalAPI(domain, options);
 
-    
     window.onload = () => {
-        initIframeAPI();
+      initIframeAPI();
     };
     // this.frmRegistrarAsistencia.dni = this.$inertia.page.props.user_session.usuario_dni;
     //   console.log(this.frmRegistrarAsistencia.dni);
@@ -228,8 +239,7 @@ export default {
       actualizarHora();
       var intervalo = setInterval(actualizarHora, 1000);
     });
- 
- },
+  },
   methods: {
     hidenav() {
       return this.$refs.layout.hide_nav();
@@ -240,7 +250,8 @@ export default {
     RegistrarAsistencia() {
       this.submited = false;
       this.dni_uno = this.$inertia.page.props.user_session.usuario_dni;
-      this.frmRegistrarAsistencia.dni = this.$inertia.page.props.user_session.usuario_dni;
+      this.frmRegistrarAsistencia.dni =
+        this.$inertia.page.props.user_session.usuario_dni;
 
       $("#mdlRegistrarAsistencia").css("display", "block");
       $("#btnCancelarRegistro").click(function () {
@@ -254,43 +265,40 @@ export default {
       self = this;
       let data = new FormData();
       data.append("dni", self.frmRegistrarAsistencia.dni);
-      axios.post(route("asistencia.verificar"), data)
+      axios
+      .post(route("asistencia.verificar"), data)
       .then(function (response) {
         let resultado = response.data;
         console.log(resultado);
-        
-        if (resultado == 'NO EXISTE') {
+
+        if (resultado == "NO EXISTE") {
           Swal.fire({
             icon: "error",
             title: "¡Ups!",
             text: "El DNI ingresado no existe.",
           });
           return false;
-        } else
-        if (response.data == 'SI MARCADO') {
-          console.log('si marcado')
+        } else if (response.data == "SI MARCADO") {
+          console.log("si marcado");
           Swal.fire({
             icon: "warning",
             title: "¡Ups!",
             text: "Tu asistencia ya está registrada.",
           });
           return false;
-        } else
-        if (response.data == 'FUERA DE HORARIO') {
+        } else if (response.data == "FUERA DE HORARIO") {
           Swal.fire({
             icon: "warning",
             title: "¡Ups!",
-            text:
-              "Usted se encuentra en fuera de horario, la operación no puede continuar.",
+            text: "Usted se encuentra en fuera de horario, la operación no puede continuar.",
           });
           return false;
-        } else
-        
-         if(response.data == 'NO MARCADO') {
-            console.log('holi no marcado')
-        //   console.log("resultado");
-        //   let data = new FormData();
-        //   data.append("dni", self.frmRegistrarAsistencia.dni);
+        } else if (response.data != "NO MARCADO") {
+          console.log("holi no marcado");
+          //   console.log("resultado");
+          //   let data = new FormData();
+          //   data.append("dni", self.frmRegistrarAsistencia.dni);
+          data.append("evento", self.id);
           self.$inertia.post(route("asistencia.registrar"), data, {
             preserveScroll: true,
             onStart: (visit) => {
@@ -324,33 +332,23 @@ export default {
                 title: "¡ÉXITO!",
                 allowOutsideClick: false,
                 // preConfirm: (result) => {
-                  
+
                 // },
               });
             },
           });
         }
       });
-
-
-
-
     },
   },
 };
-
-
-
 </script>
 <style lang="css">
-
-
-.jitsi-meet{
-  width: 100%!important;
+.jitsi-meet {
+  width: 100% !important;
   margin: 0 auto;
   text-align: center;
 }
-
 
 .container-datetime {
   position: relative;

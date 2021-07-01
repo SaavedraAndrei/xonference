@@ -69,6 +69,8 @@ Route::POST('/usuarios/asistencia/verificar', [AsistenciaController::class, 'ver
 Route::POST('/usuarios/asistencia/guardar', [AsistenciaController::class, 'registrar_asistencia'])->name('asistencia.registrar');
 Route::GET('/usuarios/foros', [ForosController::class, 'foros_usuarios'])->name('usuario.foros');
 Route::POST('/usuarios/foros/guardar_respuesta', [ForosController::class, 'guardar_respuesta'])->name('foros.guardar_respuesta');
+Route::GET('/usuarios/foros_2', [ForosController::class, 'foros_usuarios2'])->name('usuario.foros2');
+
 
 //-------------------------------------------GESTION ADMINISTRATIVA---------------------------------------
 Route::GET('/general', [PermisosController::class, 'principal'])->name('administrativa.principal');
@@ -78,8 +80,9 @@ Route::POST('/administrativa/ponentes_guardar', [PonentesController::class, 'gua
 Route::GET('/administracion/foros', [ForosController::class, 'foros_admin'])->name('administrativa.foros');
 Route::POST('/administrativa/guardar_pregunta', [ForosController::class, 'guardar_pregunta'])->name('foros.guardar_pregunta');
 Route::GET('/administrativa/congresos', [CongresosController::class, 'Congresos'])->name('administrativa.congresos');
+Route::POST('/administrativa/congresos_guardar', [CongresosController::class, 'guardar_congreso'])->name('congreso.guardar');
 Route::GET('/administrativa/categorias', [MantenimientosController::class, 'Categorias'])->name('administrativa.categorias');
-
+Route::POST('/administrativa/categorias_guardar', [MantenimientosController::class, 'guardar_categoria'])->name('categoria.guardar');
 Route::GET('/administrativa/recursos', [ArchivoController::class, 'principal'])->name('administrativa.recursos');
 Route::POST('/administrativa/recursos_verificar', [ArchivoController::class, 'verificarRecurso'])->name('administrativa.verificar_recursos');
 Route::POST('/administrativa/recursos_guardar', [ArchivoController::class, 'guardarRecurso'])->name('administrativa.guardar_recurso');

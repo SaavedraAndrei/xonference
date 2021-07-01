@@ -38,7 +38,18 @@ class AsistenciaController extends Controller
     }
     public function asistencia_usuarios()
     {
-        return Inertia::render('Usuarios/usuarios_asistencia');
+        $datos_fecha = Evento::from('eventos')
+            ->select(
+                'id',
+                'fecha_evento',
+                'nombre'
+            )
+            ->where('id', 3)
+            ->get();
+        return Inertia::render('Usuarios/usuarios_asistencia',
+    [
+        'datos_fecha'=>$datos_fecha,
+    ]);
     }
 
     public function verificar_usuario_asistencia(Request $request)
@@ -49,8 +60,11 @@ class AsistenciaController extends Controller
         $usuario_existe = Usuario::select('dni')->where('dni', $dni)->get();
 
         $datos_fecha = Evento::from('eventos')
-            ->select('fecha_evento')
-            ->where('id', 1)
+            ->select(
+                'fecha_evento',
+                'nombre'
+            )
+            ->where('id', 3)
             ->get();
 
         $fecha_evento = date($datos_fecha[0]['fecha_evento']);
@@ -107,7 +121,7 @@ class AsistenciaController extends Controller
     public function registrar_asistencia(Request $request)
     {
         // dd($request);
-
+        $conferencia = $request->evento;
         date_default_timezone_set("America/Lima");
         $fechaActual = date('Y-m-d H:i:s');
 
@@ -136,6 +150,7 @@ class AsistenciaController extends Controller
                 'asistio' => 1,
                 'tipo' => 'ingresó',
                 'dni' => $dni,
+                'id_conferencia'=>$conferencia,
                 // 'hora_salida' => $nueva_fecha_hora_salida
             )
         );

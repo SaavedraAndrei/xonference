@@ -101,35 +101,21 @@
               "
               >Foro de conferencia X</inertia-link
             >
-          </div>
-        </div>
-      </li>
 
-      <li class="nav-item">
-        <a
-          class="nav-link collapsed"
-          href="#"
-          data-toggle="collapse"
-          data-target="#menuMantenimiento"
-          aria-expanded="true"
-          aria-controls="menuMantenimiento"
-        >
-          <i class="fas fa-cogs"></i>
-          <span>ALGO 3</span>
-        </a>
-        <div
-          id="menuMantenimiento"
-          class="collapse"
-          aria-labelledby="headingTwo"
-          data-parent="#accordionSidebar"
-        >
-          <div class="bg-white py-2 collapse-inner rounded">
-            <inertia-link class="collapse-item" href="#"
-              >lista</inertia-link
+            <inertia-link 
+            class="collapse-item" 
+            :href="$route('usuario.foros2')"
+            v-if="
+                $page.props.user_permissions.permisos.includes(
+                  'USUARIOS/FOROS'
+                )
+              "
+              >Foro 2</inertia-link
             >
           </div>
         </div>
       </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block" />
@@ -332,6 +318,7 @@
         <slot name="c_principal"></slot>
         <slot name="c_mi_menu_materiales"></slot>
         <slot name="c_foros"></slot>
+        <slot name="c_foros_2"></slot>
       </div>
 
       <!------------- BOTONES DE NAVEGACIÓN ----------->

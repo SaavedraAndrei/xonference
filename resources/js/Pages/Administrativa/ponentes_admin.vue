@@ -467,6 +467,12 @@ export default {
       document.getElementById("tblPonentes").classList.add("table-responsive");
     }
   },
+  watch:{ 
+    // listar_ponentes() {
+    //   $("#t_estados").DataTable().destroy();
+    //   this.TablaPonentes();
+    // },
+  },
   methods: {
     TablaPonentes() {
       this.$nextTick(() => {

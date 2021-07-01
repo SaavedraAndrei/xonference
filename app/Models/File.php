@@ -14,5 +14,6 @@ class File extends Model
         'title',
         'description',
         'path',
+        'archivofile'
     ];  
 }

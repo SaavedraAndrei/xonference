@@ -1,10 +1,10 @@
 <template>
   <layout ref="layout">
-    <div slot="c_foros">
+    <div slot="c_foros_2">
       <div class="content" style="display: block">
         <div class="card">
           <div class="card-header">
-            <strong>FORO</strong>
+            <strong>FORO {{pregunta_conferencia}}</strong>
           </div>
           <div class="card-title">PANEL DE PREGUNTAS</div>
           <div class="card-body card-block">
@@ -60,6 +60,7 @@
                 <span class="text font-size-layout">Responder foro</span>
               </button>
             </div>
+
             <div id="tabla_permisos">
             <table class="table table-hover" id="tblPreguntas">
               <thead>
@@ -98,6 +99,7 @@
             <br />
           </div>
           
+          <br>
         </div>
 
         <!-- The Modal -->
@@ -223,23 +225,89 @@ export default {
     };
   },
   mounted() {
-    let slcEventos_value = this.preguntas[0].idEvento;
+    this.TablaEstados();
+//filtrar tabla
+    let slcEventos_value = this.preguntas[1].idEvento;
         this.listar_respuestas = this.respuestas.filter(
           (item) => item.idEvento == slcEventos_value
         );
     // this.frmResponderForo.idEvento = this.preguntas[0].idEvento;
-    this.pregunta_muostrar = this.preguntas[0].pregunta;
-    this.pregunta_conferencia = this.preguntas[0].nombreConferencia;
+    // console.log(this.listar_respuestas[self.respuestas].idEvento);
+    this.pregunta_muostrar = this.preguntas[1].pregunta;
+    this.pregunta_conferencia = this.preguntas[1].nombreConferencia;
     // console.log(this.pregunta_muostrar);
   },
   methods: {
+     TablaEstados() {
+      this.$nextTick(() => {
+        var table = $("#tblPreguntas").DataTable({
+          scrollY: "350px",
+          scrollCollapse: true,
+          paging: true,
+          order: [[1, "asc"]],
+          fixedHeader: true,
+          language: {
+            retrieve: true,
+            decimal: "",
+            emptyTable: "No hay datos disponibles en la tabla",
+            info: "Mostrando del _START_ al _END_ de _TOTAL_ registros",
+            infoEmpty: "No se encontraron registros",
+            infoFiltered: "(filtrado de _MAX_ registros)",
+            infoPostFix: "",
+            thousands: ",",
+            lengthMenu: "Agrupar por _MENU_ filas",
+            loadingRecords: "Cargando...",
+            processing: "Procesando...",
+            search: "Buscar:",
+            zeroRecords: "No se encontraron registros",
+            paginate: {
+              first: "Primera",
+              last: "Ultima",
+              next: '<i class="fas fa-chevron-circle-right" style="font-size:20px;"></i>',
+              previous:
+                '<i class="fas fa-chevron-circle-left" style="font-size:20px;"></i>',
+            },
+            aria: {
+              sortAscending: ": activar para ordenar de forma ascendente",
+              sortDescending: ": activar para ordenar de forma descendente",
+            },
+          },
+          responsive: true,
+          dom: '<"top"Bf>rt<"row"<"col-sm-12 col-md-5 mb-2"i><"col-sm-12 col-md-7 mb-2"p><"col-sm-12 col-md-5 mb-2"l>><"clear">',
+          buttons: [
+            {
+              extend: "excelHtml5",
+              text: '<i class="fas fa-file-excel"></i> ',
+              titleAttr: "Exportar a Excel",
+              className: "btn btn-action",
+            },
+            {
+              extend: "pdfHtml5",
+              text: '<i class="fas fa-file-pdf"></i> ',
+              titleAttr: "Exportar a PDF",
+              className: "btn btn-cancel",
+            },
+            {
+              extend: "print",
+              text: '<i class="fa fa-print"></i> ',
+              titleAttr: "Imprimir",
+              className: "btn btn-action",
+            },
+          ],
+        });
+
+        $("#inpBuscar").keyup(function () {
+          table.search(this.value).draw();
+        });
+      });
+    },
     ResponderForo() {
       // console.log("hola"), (this.submited = false);
       this.title_modal = "AGREGAR RESPUESTA";
       this.frmResponderForo.id = 0;
       this.frmResponderForo.titulo = "";
       this.frmResponderForo.respuesta = "";
-      this.frmResponderForo.idEvento = this.preguntas[0].idEvento;
+      this.frmResponderForo.idEvento = this.preguntas[1].idEvento;
       this.frmResponderForo.modal = "AGREGAR";
 
       document.getElementById("modalResponderPregunta").style.display = "block";
@@ -255,7 +323,7 @@ export default {
       this.frmResponderForo.id = respuesta.id;
       this.frmResponderForo.titulo = respuesta.titulo;
       this.frmResponderForo.respuesta = respuesta.respuesta;
-      this.frmResponderForo.idEvento = this.preguntas[0].idEvento;
+      this.frmResponderForo.idEvento = this.preguntas[1].idEvento;
       this.frmResponderForo.modal = "EDITAR";
 
       document.getElementById("modalResponderPregunta").style.display = "block";
@@ -297,7 +365,7 @@ export default {
                   didOpen: () => {
                     Swal.showLoading();
                     timerInterval = setInterval(() => {
-                      const content = Swal.getContent();
+                      const content = Swal.getHtmlContainer();
                       if (content) {
                         const b = content.querySelector("b");
                         if (b) {

@@ -12,10 +12,11 @@ class Asistencia extends Model
     protected $primaryKey = "id";
 
     protected $fillable = [
-        'idConferencia',
+        
         'fecha_hora',
         'asistio',
         'tipo',
-        'dni'
+        'dni',
+        'id_conferencia',
     ];  
 }

@@ -74,4 +74,50 @@ class CongresosController extends Controller{
             }
         } 
     }
+
+    public function guardar_congreso(Request $request){
+        // dd($request);
+        $modal = $request->modal;
+        $id = $request->id;
+        $nombre = $request->nombre;
+        $tematica = $request->tematica;
+        $descripcion =$request->descripcion;
+        $fecha_evento = $request->fecha_evento;
+        $hora_evento = $request->hora_evento;
+        $hora_fin = $request->hora_fin;
+        $idPonente = $request->idPonente;
+        $idCategoria = $request->idCategoria;
+        $x = session()->all();
+        $usuario_registro = $x['usuario_dni'];
+
+        if ($modal == 'NUEVO') {
+            $id_Evento = Evento::create(array(
+                'nombre' => $nombre,
+                'tematica' => $tematica,
+                'fecha_evento' => $fecha_evento,
+                'hora_fin' => $hora_fin,
+                'hora_evento' => $hora_evento,
+                'descripcion' => $descripcion,
+                'idPonente' => $idPonente,
+                'idCategoria' =>$idCategoria,
+                'usuario_creacion' => $usuario_registro
+            ));
+        } else 
+        if ($modal == 'EDITAR') {
+            Evento::where('id', $id)
+            ->update([
+                'nombre' => $nombre,
+                'tematica' => $tematica,
+                'fecha_evento' => $fecha_evento,
+                'hora_fin' => $hora_fin,
+                'hora_evento' => $hora_evento,
+                'descripcion' => $descripcion,
+                'idPonente' => $idPonente,
+                'idCategoria' =>$idCategoria,
+                'usuario_actualizacion' => $usuario_registro
+            ]);
+        }
+
+        return redirect()->route('administrativa.congresos');
+    }
 }

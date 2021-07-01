@@ -131,7 +131,7 @@
                     <th>NOMBRE</th>
                     <th>EMAIL</th>
                     <th>DNI</th>
-                    <!-- <th>DESCRIPCION</th> -->
+                    <th>CONGRESO</th>
                     <!-- <th>TELEFONO</th> -->
                   </tr>
                 </thead>
@@ -140,10 +140,10 @@
                     <td class="table-bordered" align="center">
                       <button
                         class="btn btn-action btn-icon-split"
-                        @click="EditarPonente(respuesta)"
+                        @click="VerRespuesta(respuesta)"
                       >
                         <span class="icon text-white-50">
-                          <i class="fas fa-edit" style="color: white"></i>
+                          <i class="far fa-eye" style="color: white"></i>
                         </span>
                       </button>
                     </td>
@@ -161,6 +161,9 @@
                     </td>
                     <td class="table-bordered" align="left">
                       {{ respuesta.dni }}
+                    </td>
+                    <td class="table-bordered" align="left">
+                      {{ respuesta.nombre }}
                     </td>
                   </tr>
                 </tbody>
@@ -181,7 +184,7 @@
                       <strong id="title">{{ title_modal }}</strong>
                     </div>
                   </div>
-                  <div class="card-title">DATOS DEL PERMISO</div>
+                  <div class="card-title">{{ title_modal }}</div>
                   <div class="card-body card-block">
                     <form @submit.prevent="GuardarPregunta">
                       <input
@@ -259,8 +262,7 @@
           </div>
         </div>
 
-        <!-- The Modal -->
-        <!-- <div id="modalPonente" class="modal">
+        <div id="modalVisualizarRespuesta" class="modal">
           <div class="modal-content w-36">
             <div class="modal-body">
               <div class="content" style="display: block">
@@ -270,242 +272,57 @@
                       <strong id="title">{{ title_modal }}</strong>
                     </div>
                   </div>
-                  <div class="card-title">DATOS DEL PERMISO</div>
+                  <div class="card-title">{{ title_modal }}</div>
                   <div class="card-body card-block">
-                    <form @submit.prevent="GuardarPonente">
+                    <form @submit.prevent="GuardarRespuesta">
                       <input
                         type="text"
                         id="txtModal"
-                        v-model="frmRegistrarPonente.modal"
+                        v-model="frmVerRespuesta.modal"
                         hidden
                       />
                       <input
                         type="text"
-                        id="txtIdPermiso"
+                        id="txtId"
                         hidden
-                        v-model="frmRegistrarPonente.id"
+                        v-model="frmVerRespuesta.id"
                       />
-                      <div class="form-row">
-                        <div class="form-group col-sm-4">
-                          <label class="form-control-label label-title"
-                            >DNI</label
-                          >
-                          <input
-                            class="form-control"
-                            type="number"
-                            name="dni"
-                            id="inpDni"
-                            maxlength="8"
-                            autocomplete="off"
-                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                            v-model="frmRegistrarPonente.dni"
-                            placeholder="Ingrese el DNI"
-                            :disabled="frmRegistrarPonente.modal == 'EDITAR'"
-                          />
-                          <div
-                            v-if="
-                              submited &&
-                              frmRegistrarPonente.modal == 'NUEVO' &&
-                              !$v.frmRegistrarPonente.dni.required
-                            "
-                            style="color: red; font-size: 12px"
-                          >
-                            *ingrese el dni
-                          </div>
-                        </div>
-                        <div class="col form-group col-sm-8">
-                          <label class="form-control-label label-title"
-                            >email</label
-                          >
-                          <input
-                            class="form-control"
-                            type="text"
-                            name="Nombre"
-                            id="inpNombre"
-                            autocomplete="off"
-                            v-model="frmRegistrarPonente.email"
-                            placeholder="Ingrese el email"
-                          />
-                          <div
-                            v-if="
-                              submited &&
-                              frmRegistrarPonente.modal == 'NUEVO' &&
-                              !$v.frmRegistrarPonente.email.required
-                            "
-                            style="color: red; font-size: 12px"
-                          >
-                            *ingrese el email
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-sm-4">
-                          <label class="form-control-label label-title"
-                            >NOMBRE</label
-                          >
-                          <input
-                            class="form-control"
-                            type="text"
-                            name="Nombre"
-                            id="inpNombre"
-                            autocomplete="off"
-                            v-model="frmRegistrarPonente.nombre"
-                            placeholder="Ingrese los nombres"
-                          />
-                          <div
-                            v-if="
-                              submited &&
-                              frmRegistrarPonente.modal == 'NUEVO' &&
-                              !$v.frmRegistrarPonente.nombre.required
-                            "
-                            style="color: red; font-size: 12px"
-                          >
-                            *ingrese los nombres
-                          </div>
-                        </div>
-                        <div class="form-group col-sm-4">
-                          <label class="form-control-label label-title"
-                            >APELLIDO PATERNO</label
-                          >
-                          <input
-                            class="form-control"
-                            type="text"
-                            name="apePaterno"
-                            id="inpapePaterno"
-                            autocomplete="off"
-                            v-model="frmRegistrarPonente.apellidoPaterno"
-                            placeholder="Ingrese su apellido patenro"
-                          />
-                          <div
-                            v-if="
-                              submited &&
-                              frmRegistrarPonente.modal == 'NUEVO' &&
-                              !$v.frmRegistrarPonente.apellidoPaterno.required
-                            "
-                            style="color: red; font-size: 12px"
-                          >
-                            *ingrese el apellido paterno
-                          </div>
-                        </div>
-                        <div class="form-group col-sm-4">
-                          <label class="form-control-label label-title"
-                            >APELLIDO MATERNO</label
-                          >
-                          <input
-                            class="form-control"
-                            type="text"
-                            name="apeMaterno"
-                            id="inpapeMaterno"
-                            autocomplete="off"
-                            v-model="frmRegistrarPonente.apellidoMaterno"
-                            placeholder="Ingrese el apeliido materno"
-                          />
-                          <div
-                            v-if="
-                              submited &&
-                              frmRegistrarPonente.modal == 'NUEVO' &&
-                              !$v.frmRegistrarPonente.apellidoMaterno.required
-                            "
-                            style="color: red; font-size: 12px"
-                          >
-                            *ingrese el apellido materno
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-sm-8">
-                          <label class="form-control-label label-title"
-                            >DESCRIPCION</label
-                          >
-                          <textarea
-                            class="form-control"
-                            type="text"
-                            name="descripcion"
-                            id="inpDescripcion"
-                            autocomplete="off"
-                            v-model="frmRegistrarPonente.descripcion"
-                            placeholder="Ingrese su descripción"
-                          ></textarea>
-                          <div
-                            v-if="
-                              submited &&
-                              frmRegistrarPonente.modal == 'NUEVO' &&
-                              !$v.frmRegistrarPonente.descripcion.required
-                            "
-                            style="color: red; font-size: 12px"
-                          >
-                            *ingrese una descripción
-                          </div>
-                        </div>
-                        <div class="form-group col-sm-4">
-                          <label class="form-control-label label-title"
-                            >TELEFONO</label
-                          >
-                          <input
-                            class="form-control"
-                            type="number"
-                            name="telefono"
-                            maxlength="9"
-                            autocomplete="off"
-                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                            id="inpTelefono"
-                            v-model="frmRegistrarPonente.telefono"
-                            placeholder="Ingrese el telefono"
-                          />
-                          <div
-                            v-if="
-                              submited &&
-                              frmRegistrarPonente.modal == 'NUEVO' &&
-                              !$v.frmRegistrarPonente.telefono.required
-                            "
-                            style="color: red; font-size: 12px"
-                          >
-                            *ingrese el telefono
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div v-if="frmRegistrarPonente.modal == 'NUEVO'">
-                          <div class="form-group col-md-4">
-                            <label
-                              class="label-title"
-                              for="myfile"
-                              id="lblFotoPonente"
-                              >FOTO:</label
-                            >
-                            <input
-                              class="btn btn-primary"
-                              style="
-                                background-color: var(--plomoOscuroEmpresarial);
-                                border: none;
-                                max-width: 400px;
-                                font-size: 12px;
-                              "
-                              type="file"
-                              id="fotoPonente"
-                              name="fotoPonente"
-                              accept="img/*"
-                              @change="AgregarFotografia"
-                            />
-                            <div
-                              v-if="
-                                submited &&
-                                frmRegistrarPonente.modal == 'NUEVO' &&
-                                !$v.frmRegistrarPonente.fotoPonente.required
-                              "
-                              style="color: red; font-size: 12px"
-                            >
-                              *Adjunte una imagen
-                            </div>
-                          </div>
-                        </div>
+                      <input
+                        type="text"
+                        id="txtEvento"
+                        hidden
+                        v-model="frmVerRespuesta.idEvento"
+                      />
+                      <div class="col form-group">
+                        <label class="form-control-label label-title"
+                          >RESPUESTA</label
+                        >
+                        <textarea
+                          class="form-control"
+                          type="text"
+                          name="permiso"
+                          
+                          id="txtNombrePermiso"
+                          v-model="frmVerRespuesta.respuesta"
+                          placeholder="Ingrese su respuesta"
+                        ></textarea>
                       </div>
                     </form>
                     <hr />
                     <div class="text-right">
+                      <!-- <button
+                        class="btn btn-action btn-icon-split mb-1"
+                        id="btnGuardarCambios"
+                        @click="GuardarRespuesta()"
+                      >
+                        <span class="icon text-white-50">
+                          <i class="fas fa-save" style="color: white"></i>
+                        </span>
+                        <span class="text">Guardar</span>
+                      </button> -->
                       <button
                         class="btn btn-cancel btn-icon-split mb-1"
-                        id="btnCancelar"
+                        id="btnCerrar"
                       >
                         <span class="icon text-white-50">
                           <i class="fas fa-times" style="color: white"></i>
@@ -518,7 +335,7 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </layout>
@@ -544,6 +361,12 @@ export default {
         id: "",
         pregunta: "",
         dni_ponente: "",
+        idEvento: 0,
+        modal: "",
+      },
+      frmVerRespuesta: {
+        id: "",
+        respuesta: "",
         idEvento: 0,
         modal: "",
       },
@@ -804,11 +627,30 @@ export default {
         this.filtrar_respuestas = this.respuestas;
       } else {
         this.filtrar_respuestas = this.respuestas.filter(
-          (item) => item.id == slcEventos_value
+          (item) => item.idEvento == slcEventos_value
         );
       }
       $("#tblVerRespuestas").DataTable().destroy();
       this.TablaRespuestas();
+    },
+
+    VerRespuesta(respuesta){
+       // console.log(pregunta.id);
+      this.submited = false;
+      this.title_modal = "DETALLER DE LA RESPUESTA";
+      this.frmVerRespuesta.id = respuesta.id;
+      this.frmVerRespuesta.respuesta = respuesta.respuesta;
+      this.frmVerRespuesta.idEvento = respuesta.idEvento;
+      this.frmVerRespuesta.modal = "VER";
+
+      document.getElementById("modalVisualizarRespuesta").style.display = "block";
+      $("#btnCerrar").click(function () {
+        document.getElementById("modalVisualizarRespuesta").style.display = "none";
+        parent.document.getElementById("footer-navigator").style.display =
+          "flex";
+      });
+      parent.document.getElementById("footer-navigator").style.display = "none";
+
     },
   },
 };

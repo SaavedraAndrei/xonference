@@ -180,15 +180,14 @@
                             v-model="frmRegistrarEvento.nombre"
                             placeholder="Ingrese el nombre"
                           />
-                        </div>
-                        <div
-                          v-if="
-                            submited &&
-                            !$v.frmRegistrarEvento.nombre.required
-                          "
-                          style="color: red; font-size: 12px"
-                        >
-                          *Campo obligatorio
+                          <div
+                            v-if="
+                              submited && !$v.frmRegistrarEvento.nombre.required
+                            "
+                            style="color: red; font-size: 12px"
+                          >
+                            *Campo obligatorio
+                          </div>
                         </div>
                         <div class="form-group col-sm-6">
                           <label class="form-control-label label-title"
@@ -201,15 +200,15 @@
                             v-model="frmRegistrarEvento.tematica"
                             placeholder="Ingrese la tematica"
                           />
-                        </div>
-                        <div
-                          v-if="
-                            submited &&
-                            !$v.frmRegistrarEvento.tematica.required
-                          "
-                          style="color: red; font-size: 12px"
-                        >
-                          *Campo obligatorio
+                          <div
+                            v-if="
+                              submited &&
+                              !$v.frmRegistrarEvento.tematica.required
+                            "
+                            style="color: red; font-size: 12px"
+                          >
+                            *Campo obligatorio
+                          </div>
                         </div>
                         <div class="form-group col-sm-8">
                           <label class="form-control-label label-title"
@@ -223,6 +222,15 @@
                             v-model="frmRegistrarEvento.descripcion"
                             placeholder="Ingrese una descripcion"
                           ></textarea>
+                          <div
+                            v-if="
+                              submited &&
+                              !$v.frmRegistrarEvento.descripcion.required
+                            "
+                            style="color: red; font-size: 12px"
+                          >
+                            *Campo obligatorio
+                          </div>
                         </div>
                         <div class="form-group col-sm-4">
                           <label class="form-control-label label-title"
@@ -323,7 +331,7 @@
                       <button
                         class="btn btn-action btn-icon-split mb-1"
                         id="btnGuardarCambios"
-                        @click="GuardarPregunta()"
+                        @click="GuardarEvento()"
                       >
                         <span class="icon text-white-50">
                           <i class="fas fa-save" style="color: white"></i>
@@ -353,6 +361,7 @@
 
 <script>
 import layout from "./Components/layout_administrativa";
+import { required } from "vuelidate/lib/validators";
 export default {
   components: { layout },
   props: {
@@ -381,7 +390,7 @@ export default {
     };
   },
   validations: {
-    frmRegistrarTipo: {
+    frmRegistrarEvento: {
       nombre: { required },
       tematica: { required },
       descripcion: { required },
@@ -395,10 +404,10 @@ export default {
     }
   },
   watch: {
-    filtrar_congresos() {
-      $("#tblCongresos").DataTable().destroy();
-      this.TablaCongresos();
-    },
+    // congresos() {
+    //   $("#tblCongresos").DataTable().destroy();
+    //   this.TablaCongresos();
+    // },
   },
   methods: {
     TablaCongresos() {
@@ -407,7 +416,7 @@ export default {
           // scrollY: "400px",
           // scrollX: true,
           paging: true,
-          order: [[1, "desc"]],
+          order: [[1, "asc"]],
           scrollCollapse: true,
           fixedHeader: true,
           language: {
@@ -475,7 +484,7 @@ export default {
       this.TablaCongresos();
     },
     FiltrarPonente() {
-      console.log($("#slcEventos").val());
+      // console.log($("#slcEventos").val());
       let slcEventos_value = $("#slcEventos").val();
       if (slcEventos_value == "0") {
         this.filtrar_congresos = this.congresos;
@@ -483,7 +492,7 @@ export default {
         this.filtrar_congresos = this.congresos.filter(
           (item) => item.idPonente == slcEventos_value
         );
-        console.log(this.filtrar_congresos);
+        // console.log(this.filtrar_congresos);
       }
       $("#tblCongresos").DataTable().destroy();
       this.TablaCongresos();
@@ -494,7 +503,7 @@ export default {
       this.title_modal = "NUEVO EVENTO";
       this.frmRegistrarEvento.id = 0;
       this.frmRegistrarEvento.nombre = "";
-      this.frmRegistrarEvento.tenatica = "";
+      this.frmRegistrarEvento.tematica = "";
       this.frmRegistrarEvento.descripcion = "";
       this.frmRegistrarEvento.fecha_evento = null;
       this.frmRegistrarEvento.hora_evento = null;
@@ -517,7 +526,7 @@ export default {
       this.title_modal = "EDITAR EVENTO";
       this.frmRegistrarEvento.id = congreso.id;
       this.frmRegistrarEvento.nombre = congreso.nombre;
-      this.frmRegistrarEvento.tenatica = congreso.tenatica;
+      this.frmRegistrarEvento.tematica = congreso.tematica;
       this.frmRegistrarEvento.descripcion = congreso.descripcion;
       this.frmRegistrarEvento.fecha_evento = congreso.fecha_evento;
       this.frmRegistrarEvento.hora_evento = congreso.hora_evento;
@@ -534,77 +543,74 @@ export default {
       });
       parent.document.getElementById("footer-navigator").style.display = "none";
     },
-    GuardarPregunta() {
+    GuardarEvento() {
       this.submited = true;
       self = this;
       if (this.$v.$invalid) {
+        console.log("hola");
         return false;
-      }else{
+      } else {
         Swal.fire({
-        title: "GUARDAR CAMBIOS",
-        text: "¿Desea continuar?",
-        confirmButtonText:
-          '<i class="fas fa-check" style="color:white;"></i>   Si',
-        confirmButtonColor: "var(--colorAlto)",
-        showCancelButton: true,
-        cancelButtonText: '<i class="fas fa-times"></i>   No',
-        cancelButtonColor: "var(--plomoOscuroEmpresarial)",
-        allowOutsideClick: false,
-        preConfirm: (result) => {
-          self.$inertia.post(
-            route("foros.guardar_pregunta"),
-            self.frmRegistrarEvento,
-            {
-              preserveScroll: true,
-              onStart: (visit) => {
-                let timerInterval;
-                Swal.fire({
-                  title: "EN PROGRESO",
-                  html: "Espere porfavor...",
-                  timer: 5000,
-                  allowOutsideClick: false,
-                  timerProgressBar: true,
-                  didOpen: () => {
-                    Swal.showLoading();
-                    timerInterval = setInterval(() => {
-                      console.log(Swal.getContent());
-                      const content = Swal.getContent();
-                      if (content) {
-                        const b = content.querySelector("b");
-                        if (b) {
-                          b.textContent = Swal.getTimerLeft();
+          title: "GUARDAR CAMBIOS",
+          text: "¿Desea continuar?",
+          confirmButtonText:
+            '<i class="fas fa-check" style="color:white;"></i>   Si',
+          confirmButtonColor: "var(--colorAlto)",
+          showCancelButton: true,
+          cancelButtonText: '<i class="fas fa-times"></i>   No',
+          cancelButtonColor: "var(--plomoOscuroEmpresarial)",
+          allowOutsideClick: false,
+          preConfirm: (result) => {
+            self.$inertia.post(
+              route("congreso.guardar"),
+              self.frmRegistrarEvento,
+              {
+                preserveScroll: true,
+                onStart: (visit) => {
+                  let timerInterval;
+                  Swal.fire({
+                    title: "EN PROGRESO",
+                    html: "Espere porfavor...",
+                    timer: 5000,
+                    allowOutsideClick: false,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                      Swal.showLoading();
+                      timerInterval = setInterval(() => {
+                        // console.log(Swal.getContent());
+                        const content = Swal.getHtmlContainer();
+                        if (content) {
+                          const b = content.querySelector("b");
+                          if (b) {
+                            b.textContent = Swal.getTimerLeft();
+                          }
                         }
-                      }
-                    }, 100);
-                  },
-                  willClose: () => {
-                    clearInterval(timerInterval);
-                  },
-                });
-              },
-              onSuccess: () => {
-                Swal.fire({
-                  icon: "success",
-                  title: "¡ÉXITO!",
-                  allowOutsideClick: false,
-                  preConfirm: (result) => {
-                    self.submited = false;
-                    self.ActualizarTabla();
-                    $("#modalPreguntaForo").css("display", "none");
-                    $("#footer-navigator").css("display", "flex");
-                  },
-                });
-              },
-            }
-          );
-        },
-      });
+                      }, 100);
+                    },
+                    willClose: () => {
+                      clearInterval(timerInterval);
+                    },
+                  });
+                },
+                onSuccess: () => {
+                  Swal.fire({
+                    icon: "success",
+                    title: "¡ÉXITO!",
+                    allowOutsideClick: false,
+                    preConfirm: (result) => {
+                      self.submited = false;
+                      $("#tblCongresos").DataTable().destroy();
+                      self.TablaCongresos();
+                      $("#modalEventos").css("display", "none");
+                      $("#footer-navigator").css("display", "flex");
+                    },
+                  });
+                },
+              }
+            );
+          },
+        });
       }
-      //   {
-      
-      //     }
-      //   });
-      //   }
     },
   },
 };

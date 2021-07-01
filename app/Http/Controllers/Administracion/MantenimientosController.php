@@ -40,4 +40,27 @@ class MantenimientosController extends Controller{
             }
         } 
     }
+
+    public function guardar_categoria(Request $request){
+        //  dd($request);
+         $modal = $request->modal;
+         $id = $request->id;
+         $nombre = $request->nombre;
+         $x = session()->all();
+         $usuario_registro = $x['usuario_dni'];
+ 
+         if ($modal == 'NUEVO') {
+            Categoria::create(array(
+                 'nombre' => $nombre,
+             ));
+         } else 
+         if ($modal == 'EDITAR') {
+            Categoria::where('id', $id)
+             ->update([
+                 'nombre' => $nombre,
+             ]);
+         }
+ 
+         return redirect()->route('administrativa.categorias');
+    }
 }

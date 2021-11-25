@@ -42,31 +42,32 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-    <header class="site-header">
-        <div class="hero">
-            <div class="contenido-header">
-                <nav class="redes-sociales">
-                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </nav>
-                <div class="informacion-evento">
-                    <div class="clearfix">
-                        <p class="fecha"><i class="fa fa-calendar" aria-hidden="true"></i> 01-02 Julio</p>
-                        <p class="ciudad"><i class="fa fa-map-marker" aria-hidden="true"></i> Huancayo, Perú</p>
-                    </div>
-
-                    <h1 class="nombre-sitio">App Congreso</h1>
-                    <p class="slogan">Los mejores congresos de <span>Ingeniería</span></p>
+  <header class="site-header">
+    <div class="hero">
+        <div class="contenido-header">
+            <nav class="redes-sociales">
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </ul>
+            </nav>
+            <div class="informacion-evento">
+                <div class="clearfix">
+                    <p class="fecha"><i class="fa fa-calendar" aria-hidden="true"></i> 01-02 Julio</p>
+                    <p class="ciudad"><i class="fa fa-map-marker" aria-hidden="true"></i> Huancayo, Perú</p>
                 </div>
-                <!--.informacion-evento-->
 
+                <h1 class="nombre-sitio">Xonference</h1>
+                <p class="slogan">Los mejores congresos de <span>Ingeniería</span></p>
             </div>
+            <!--.informacion-evento-->
+
         </div>
-        <!--.hero-->
-    </header>
+    </div>
+    <!--.hero-->
+</header>
 
     <div class="barra">
         <div class="contenedor clearfix">
@@ -83,7 +84,6 @@
             </div>
 
             <nav class="navegacion-principal clearfix">
-                <a href="{{route('catalogo')}}">Conferencia</a>
                 <a href="{{route('calendario')}}">Calendario</a>
                 <a href="{{route('invitados')}}">Invitados</a>
                 <a href="{{route('registrar')}}">Registrarse</a>

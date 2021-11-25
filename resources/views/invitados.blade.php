@@ -42,31 +42,33 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-    <header class="site-header">
-        <div class="hero">
-            <div class="contenido-header">
-                <nav class="redes-sociales">
-                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </nav>
-                <div class="informacion-evento">
-                    <div class="clearfix">
-                        <p class="fecha"><i class="fa fa-calendar" aria-hidden="true"></i> 01-02 Julio</p>
-                        <p class="ciudad"><i class="fa fa-map-marker" aria-hidden="true"></i> Huancayo, Perú</p>
-                    </div>
-
-                    <h1 class="nombre-sitio">App Congreso</h1>
-                    <p class="slogan">Los mejores congresos de <span>Ingeniería</span></p>
+  <header class="site-header">
+    <div class="hero">
+        <div class="contenido-header">
+            <nav class="redes-sociales">
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </ul>
+            </nav>
+            <div class="informacion-evento">
+                <div class="clearfix">
+                    <p class="fecha"><i class="fa fa-calendar" aria-hidden="true"></i> 01-02 Julio</p>
+                    <p class="ciudad"><i class="fa fa-map-marker" aria-hidden="true"></i> Huancayo, Perú</p>
                 </div>
-                <!--.informacion-evento-->
 
+                <h1 class="nombre-sitio">Xonference</h1>
+                <p class="slogan">Los mejores congresos de <span>Ingeniería</span></p>
             </div>
+            <!--.informacion-evento-->
+
         </div>
-        <!--.hero-->
-    </header>
+    </div>
+    <!--.hero-->
+</header>
+
 
     <div class="barra">
         <div class="contenedor clearfix">
@@ -83,7 +85,6 @@
             </div>
 
             <nav class="navegacion-principal clearfix">
-                <a href="{{route('catalogo')}}">Conferencia</a>
                 <a href="{{route('calendario')}}">Calendario</a>
                 <a href="{{route('invitados')}}">Invitados</a>
                 <a href="{{route('registrar')}}">Registrarse</a>
@@ -96,14 +97,15 @@
 
     
     <section class="invitados contenedor seccion">
-        <h2>Ponentes del Congreso</h2>
+        <h2>Nuestros Ponentes</h2>
         <ul class="lista-invitados clearfix">
-            @foreach ($ponentes as $ponente)
+
+
             <li>
                 <div class="invitado">
-                    <a class="invitado-info" href="#invitado{{$ponente->id}}">
-                        <img src="/img/ponentes/invitado{{$ponente->id}}.jpg" alt="Imagen invitado">
-                        <p>{{$ponente->nombre}} {{$ponente->apellidoPaterno}} {{$ponente->apellidoMaterno}}</p>
+                    <a class="invitado-info" href="#invitado1">
+                        <img src="/img/ponentes/invitado1.jpg" alt="Imagen invitado">
+                        <p>Cesar Luis Lino Rosado</p>
                     </a>
                 </div>
                 <!-- END .invitado -->
@@ -111,15 +113,43 @@
 
             <div style="display:none;">
 
-                <div class="invitado-info" id="invitado{{$ponente->id}}">
-                    <h2>{{$ponente->nombre}} {{$ponente->apellidoPaterno}}</h2>
-                    <img src="img/invitado{{$ponente->id}}.jpg" alt="">
-                    <p>{{$ponente->email}}</p>
-                    <p>{{$ponente->descripcion}}</p>
+                <div class="invitado-info" id="invitado1">
+                    <h2>Cesar Luis Lino Rosado</h2>
+                    <img src="img/ponentes/invitado1.jpg" alt="">
+                    <p>- Director de la I.E.P. Andrés Bello</p>
+                    <p>- Magister en Educación</p>
+                    <p>- 15 Años de Experiencia en Educación</p>
                 </div>
 
             </div>
-            @endforeach
+
+
+            <li>
+                <div class="invitado">
+                    <a class="invitado-info" href="#invitado2">
+                        <img src="/img/ponentes/invitado2.jpg" alt="Imagen invitado">
+                        <p>Pedro Raul Rosado Nuñez</p>
+                    </a>
+                </div>
+                <!-- END .invitado -->
+            </li>
+
+            <div style="display:none;">
+
+                <div class="invitado-info" id="invitado2">
+                    <h2>Pedro Raul Rosado Nuñez</h2>
+                    <img src="img/ponentes/invitado2.jpg" alt="">
+                    <p>- Coordinador general de la I.E.P. Unión Latino</p>
+                    <p>- Magister en Educación</p>
+                    <p>- 20 Años de Experiencia en Educación</p>
+                </div>
+
+            </div>
+            </div>
+
+
+
+
         </ul>
         <!-- END lista-invitados -->
     </section>

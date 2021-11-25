@@ -30,7 +30,7 @@
     <meta name="theme-color" content="#fafafa">
     <script src="https://kit.fontawesome.com/1a2bd5a108.js" crossorigin="anonymous"></script>
 
-
+    @routes
 
 
 </head>
@@ -97,7 +97,6 @@
             </div>
 
             <nav class="navegacion-principal clearfix">
-                <a href="{{route('catalogo')}}">Conferencia</a>
                 <a href="{{route('calendario')}}">Calendario</a>
                 <a href="{{route('invitados')}}">Invitados</a>
                 <a href="{{route('registrar')}}">Registrarse</a>
@@ -110,10 +109,12 @@
 
 
     <section class="seccion contenedor">
-        <h2>La mejor conferencia de diseño web en español</h2>
+        <h2>El mejor sitio web para publicar y asistir a conferencias</h2>
         <p>
-            Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus massa non molestie. Curabitur urna metus, placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex blandit vehicula.
-            Morbi porttitor tempus euismod.
+            Nuestra aplicación web es una plataforma totalmente completa que trata
+            de eliminar las barreras de la educación. De esta manera, la aplicación transmite la conferencia
+            por un servicio interno de la aplicación. Además, nuestra propuesta de valor es entregar un certificado 
+            digital totalmente automático y dinámico.
         </p>
     </section>
     <!--seccion-->
@@ -352,7 +353,7 @@
                     <p class="numero">0</p> Talleres
                 </li>
                 <li>
-                    <p class="numero">0</p> Días
+                    <p class="numero">0</p> Charlas
                 </li>
                 <li>
                     <p class="numero">0</p> Conferencias
@@ -364,26 +365,22 @@
 
  
     <section class="precios seccion">
-    <h2>Precios</h2>
-    @foreach ($congresos as $congreso)
+    <h2>Precio promedio por conferencia</h2>
         <div class="contenedor">
             <ul class="lista-precios clearfix">
                 <li>
                     <div class="tabla-precio">
-                        <h3>{{$congreso->nombre}}</h3>
-                        <p class="numero">S/. {{$congreso->precio}}</p>
+                        <h3>Conferencias</h3>
+                        <p class="numero">S/. 50</p>
                         <ul>
-                            <li>Inicio: {{$congreso->fechaInicio}}</li>
-                            <li>Fin: {{$congreso->fechaFin}}</li>
+                            <li>Inicio: 2021-12-11</li>
+                            <li>Fin: 2021-12-16</li>
                             <!-- <li>Todos los talleres</li> -->
                         </ul>
-                        <a href="#" class="button">Comprar</a>
-                        <!-- <a href="{{url('/paypal/pay')}}" class="button">Comprar</a> -->
                     </div>
                 </li>
             </ul>
         </div>
-    @endforeach
     </section>
 
 
@@ -395,33 +392,43 @@
         <div class="testimoniales contenedor clearfix">
             <div class="testimonial">
                 <blockquote>
-                    <p>Sed mollis velit sit amet felis condimentum ultrices. Fusce vehicula ut sem vitae semper. Nullam blandit neque eu semper ullamcorper. Duis commodo quam in orci condimentum ultricies.
+                    <p>
+                        La plataforma permitió de una forma facil
+                        que las conferencias y capacitaciones brindadas 
+                        para el colegio estén organizadas correctamente lo cual
+                        favoreció con la participación de más docentes y alumnos.
                     <p>
                     <footer class="info-testimonial clearfix">
-                        <img src="img/testimonial.jpg" alt="imagen testimonial">
-                        <cite>Oswaldo Aponte Escobedo <span>Diseñador en @prisma</span></cite>
+                        <img src="img/testimonial1.jpg" alt="imagen testimonial">
+                        <cite>Clara Marisol Ramirez Prado<span>Docente del Colegio Unión Latino</span></cite>
                     </footer>
                 </blockquote>
             </div>
             <!--.testimonial-->
             <div class="testimonial">
                 <blockquote>
-                    <p>Sed mollis velit sit amet felis condimentum ultrices. Fusce vehicula ut sem vitae semper. Nullam blandit neque eu semper ullamcorper. Duis commodo quam in orci condimentum ultricies.
+                    <p>
+                        La página web contribuyó en la continuidad de la enseñanza 
+                        dentro del colegio. Lo cuál, promovió que los alumnos puedan obtener 
+                        un certificado digital por cada conferencia a la que hayan asistido.
                     <p>
                     <footer class="info-testimonial clearfix">
-                        <img src="img/testimonial.jpg" alt="imagen testimonial">
-                        <cite>Oswaldo Aponte Escobedo <span>Diseñador en @prisma</span></cite>
+                        <img src="img/testimonial2.jpg" alt="imagen testimonial">
+                        <cite>Oswaldo Escobedo Damian<span>Docente del Colegio Unión Latino</span></cite>
                     </footer>
                 </blockquote>
             </div>
             <!--.testimonial-->
             <div class="testimonial">
                 <blockquote>
-                    <p>Sed mollis velit sit amet felis condimentum ultrices. Fusce vehicula ut sem vitae semper. Nullam blandit neque eu semper ullamcorper. Duis commodo quam in orci condimentum ultricies.
+                    <p>
+                        La plataforma brinda una información estructurada
+                        que permite a los alumnos comprender los temas, horas y conocer a los ponentes 
+                        que van a brindar la ponencia.
                     <p>
                     <footer class="info-testimonial clearfix">
-                        <img src="img/testimonial.jpg" alt="imagen testimonial">
-                        <cite>Oswaldo Aponte Escobedo <span>Diseñador en @prisma</span></cite>
+                        <img src="img/testimonial3.jpg" alt="imagen testimonial">
+                        <cite>Juan Daniel Gamarra Canchucaja<span>Docente del Colegio Unión Latino</span></cite>
                     </footer>
                 </blockquote>
             </div>
@@ -430,20 +437,8 @@
     </section>
 
 
-
-
-    <div class="newsletter parallax">
-        <div class="contenido contenedor">
-            <p> regístrate al newsletter:</p>
-            <h3>gdlwebcamp</h3>
-            <a href="#mc_embed_signup" class="boton_newsletter button transparente">Registro</a>
-        </div>
-        <!--.contenido-->
-    </div>
-    <!--.newsletter-->
-
-    <section class="seccion">
-        <h2>Faltan</h2>
+    <section class="seccion clearfix-13">
+        <h2 class="title-clearfix">La próxima conferencia inicia en:</h2>
         <div class="cuenta-regresiva contenedor">
             <ul class="clearfix">
                 <li>

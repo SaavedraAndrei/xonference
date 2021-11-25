@@ -54,67 +54,15 @@
             <inertia-link
               class="collapse-item"
               :href="$route('usuario.asistencia')"
-              v-if="
-                $page.props.user_permissions.permisos.includes(
-                  'USUARIOS/CONFERENCIA ASISTENCIA'
-                )
-              "
-              >conferencias
+              >Jitsi Meet
             </inertia-link>
 
-            <inertia-link 
-            class="collapse-item"
-            href="#">
             
-              prueba
-            </inertia-link>
           </div>
         </div>
       </li>
 
-      <li class="nav-item">
-        <a
-          class="nav-link collapsed"
-          href="#"
-          data-toggle="collapse"
-          data-target="#menuCargos"
-          aria-expanded="true"
-          aria-controls="menuCargos"
-        >
-          <i class="fas fa-user-edit"></i>
-          <span>Foros</span>
-        </a>
-        <div
-          id="menuCargos"
-          class="collapse"
-          aria-labelledby="headingTwo"
-          data-parent="#accordionSidebar"
-        >
-          <div class="bg-white py-2 collapse-inner rounded">
-            <inertia-link 
-            class="collapse-item" 
-            :href="$route('usuario.foros')"
-            v-if="
-                $page.props.user_permissions.permisos.includes(
-                  'USUARIOS/FOROS'
-                )
-              "
-              >Foro de conferencia X</inertia-link
-            >
-
-            <inertia-link 
-            class="collapse-item" 
-            :href="$route('usuario.foros2')"
-            v-if="
-                $page.props.user_permissions.permisos.includes(
-                  'USUARIOS/FOROS'
-                )
-              "
-              >Foro 2</inertia-link
-            >
-          </div>
-        </div>
-      </li>
+      
 
 
       <!-- Divider -->

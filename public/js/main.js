@@ -174,7 +174,7 @@
         // Cuenta Regresiva
 
         $(".cuenta-regresiva").countdown(
-            "2021/07/01 09:00:00",
+            "2021/12/12 09:00:00",
             function (event) {
                 $("#dias").html(event.strftime("%D"));
                 $("#horas").html(event.strftime("%H"));

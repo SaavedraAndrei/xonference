@@ -87,82 +87,9 @@
         </div>
       </li>
 
-      <li class="nav-item">
-        <a
-          class="nav-link collapsed"
-          href="#"
-          data-toggle="collapse"
-          data-target="#menuCargos"
-          aria-expanded="true"
-          aria-controls="menuCargos"
-        >
-          <i class="fas fa-user-edit"></i>
-          <span>Ponentes</span>
-        </a>
-        <div
-          id="menuCargos"
-          class="collapse"
-          aria-labelledby="headingTwo"
-          data-parent="#accordionSidebar"
-        >
-          <div class="bg-white py-2 collapse-inner rounded">
-            <inertia-link
-              class="collapse-item"
-              :href="$route('administrativa.foros')"
-              v-if="
-                $page.props.user_permissions.permisos.includes(
-                  'GESTIÓN ADMINISTRATIVA/FOROS'
-                )
-              "
-              >Foro
-            </inertia-link>
+      
 
-            <inertia-link
-              class="collapse-item"
-              :href="$route('administrativa.recursos')"
-              v-if="
-                $page.props.user_permissions.permisos.includes(
-                  'GESTIÓN ADMINISTRATIVA/LISTAR RECURSOS'
-                )
-              "
-              >Recursos
-            </inertia-link>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a
-          class="nav-link collapsed"
-          href="#"
-          data-toggle="collapse"
-          data-target="#menuMantenimiento"
-          aria-expanded="true"
-          aria-controls="menuMantenimiento"
-        >
-          <i class="fas fa-cogs"></i>
-          <span>Mantenimiento</span>
-        </a>
-        <div
-          id="menuMantenimiento"
-          class="collapse"
-          aria-labelledby="headingTwo"
-          data-parent="#accordionSidebar"
-        >
-          <div class="bg-white py-2 collapse-inner rounded">
-            <inertia-link
-              class="collapse-item"
-              :href="$route('administrativa.categorias')"
-              v-if="
-                $page.props.user_permissions.permisos.includes(
-                  'GESTIÓN ADMINISTRATIVA/LISTAR CATEGORIAS'
-                )
-              "
-              >Categorias</inertia-link
-            >
-          </div>
-        </div>
-      </li>
+      
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block" />

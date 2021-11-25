@@ -2228,79 +2228,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {},
   mounted: function mounted() {
@@ -5523,58 +5450,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -33575,98 +33450,9 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "collapse",
-              attrs: {
-                id: "menuCargos",
-                "aria-labelledby": "headingTwo",
-                "data-parent": "#accordionSidebar"
-              }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "bg-white py-2 collapse-inner rounded" },
-                [
-                  _vm.$page.props.user_permissions.permisos.includes(
-                    "GESTIÓN ADMINISTRATIVA/FOROS"
-                  )
-                    ? _c(
-                        "inertia-link",
-                        {
-                          staticClass: "collapse-item",
-                          attrs: { href: _vm.$route("administrativa.foros") }
-                        },
-                        [_vm._v("Foro\n          ")]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.$page.props.user_permissions.permisos.includes(
-                    "GESTIÓN ADMINISTRATIVA/LISTAR RECURSOS"
-                  )
-                    ? _c(
-                        "inertia-link",
-                        {
-                          staticClass: "collapse-item",
-                          attrs: { href: _vm.$route("administrativa.recursos") }
-                        },
-                        [_vm._v("Recursos\n          ")]
-                      )
-                    : _vm._e()
-                ],
-                1
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _vm._m(2),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "collapse",
-              attrs: {
-                id: "menuMantenimiento",
-                "aria-labelledby": "headingTwo",
-                "data-parent": "#accordionSidebar"
-              }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "bg-white py-2 collapse-inner rounded" },
-                [
-                  _vm.$page.props.user_permissions.permisos.includes(
-                    "GESTIÓN ADMINISTRATIVA/LISTAR CATEGORIAS"
-                  )
-                    ? _c(
-                        "inertia-link",
-                        {
-                          staticClass: "collapse-item",
-                          attrs: {
-                            href: _vm.$route("administrativa.categorias")
-                          }
-                        },
-                        [_vm._v("Categorias")]
-                      )
-                    : _vm._e()
-                ],
-                1
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
         _c("hr", { staticClass: "sidebar-divider d-none d-md-block" }),
         _vm._v(" "),
-        _vm._m(3)
+        _vm._m(1)
       ]
     ),
     _vm._v(" "),
@@ -33685,16 +33471,16 @@ var render = function() {
                   "\n          navbar navbar-expand navbar-light\n          bg-white\n          topbar\n          static-top\n          shadow\n        "
               },
               [
-                _vm._m(4),
+                _vm._m(2),
                 _vm._v(" "),
-                _vm._m(5),
+                _vm._m(3),
                 _vm._v(" "),
                 _c("ul", { staticClass: "navbar-nav ml-auto" }, [
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _vm._m(5),
+                  _vm._v(" "),
                   _vm._m(6),
-                  _vm._v(" "),
-                  _vm._m(7),
-                  _vm._v(" "),
-                  _vm._m(8),
                   _vm._v(" "),
                   _c("div", {
                     staticClass: "topbar-divider d-none d-sm-block"
@@ -33737,7 +33523,7 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
-                    _vm._m(9)
+                    _vm._m(7)
                   ])
                 ])
               ]
@@ -33839,52 +33625,6 @@ var staticRenderFns = [
         _c("i", { staticClass: "fas fa-user-friends" }),
         _vm._v(" "),
         _c("span", [_vm._v("Administración")])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "nav-link collapsed",
-        attrs: {
-          href: "#",
-          "data-toggle": "collapse",
-          "data-target": "#menuCargos",
-          "aria-expanded": "true",
-          "aria-controls": "menuCargos"
-        }
-      },
-      [
-        _c("i", { staticClass: "fas fa-user-edit" }),
-        _vm._v(" "),
-        _c("span", [_vm._v("Ponentes")])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "nav-link collapsed",
-        attrs: {
-          href: "#",
-          "data-toggle": "collapse",
-          "data-target": "#menuMantenimiento",
-          "aria-expanded": "true",
-          "aria-controls": "menuMantenimiento"
-        }
-      },
-      [
-        _c("i", { staticClass: "fas fa-cogs" }),
-        _vm._v(" "),
-        _c("span", [_vm._v("Mantenimiento")])
       ]
     )
   },
@@ -38285,74 +38025,14 @@ var render = function() {
                 "div",
                 { staticClass: "bg-white py-2 collapse-inner rounded" },
                 [
-                  _vm.$page.props.user_permissions.permisos.includes(
-                    "USUARIOS/CONFERENCIA ASISTENCIA"
-                  )
-                    ? _c(
-                        "inertia-link",
-                        {
-                          staticClass: "collapse-item",
-                          attrs: { href: _vm.$route("usuario.asistencia") }
-                        },
-                        [_vm._v("conferencias\n          ")]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
                   _c(
                     "inertia-link",
-                    { staticClass: "collapse-item", attrs: { href: "#" } },
-                    [_vm._v("\n          \n            prueba\n          ")]
+                    {
+                      staticClass: "collapse-item",
+                      attrs: { href: _vm.$route("usuario.asistencia") }
+                    },
+                    [_vm._v("Jitsi Meet\n          ")]
                   )
-                ],
-                1
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "collapse",
-              attrs: {
-                id: "menuCargos",
-                "aria-labelledby": "headingTwo",
-                "data-parent": "#accordionSidebar"
-              }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "bg-white py-2 collapse-inner rounded" },
-                [
-                  _vm.$page.props.user_permissions.permisos.includes(
-                    "USUARIOS/FOROS"
-                  )
-                    ? _c(
-                        "inertia-link",
-                        {
-                          staticClass: "collapse-item",
-                          attrs: { href: _vm.$route("usuario.foros") }
-                        },
-                        [_vm._v("Foro de conferencia X")]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.$page.props.user_permissions.permisos.includes(
-                    "USUARIOS/FOROS"
-                  )
-                    ? _c(
-                        "inertia-link",
-                        {
-                          staticClass: "collapse-item",
-                          attrs: { href: _vm.$route("usuario.foros2") }
-                        },
-                        [_vm._v("Foro 2")]
-                      )
-                    : _vm._e()
                 ],
                 1
               )
@@ -38362,7 +38042,7 @@ var render = function() {
         _vm._v(" "),
         _c("hr", { staticClass: "sidebar-divider d-none d-md-block" }),
         _vm._v(" "),
-        _vm._m(2)
+        _vm._m(1)
       ]
     ),
     _vm._v(" "),
@@ -38381,16 +38061,16 @@ var render = function() {
                   "navbar navbar-expand navbar-light bg-white topbar static-top shadow"
               },
               [
+                _vm._m(2),
+                _vm._v(" "),
                 _vm._m(3),
                 _vm._v(" "),
-                _vm._m(4),
-                _vm._v(" "),
                 _c("ul", { staticClass: "navbar-nav ml-auto" }, [
+                  _vm._m(4),
+                  _vm._v(" "),
                   _vm._m(5),
                   _vm._v(" "),
                   _vm._m(6),
-                  _vm._v(" "),
-                  _vm._m(7),
                   _vm._v(" "),
                   _c("div", {
                     staticClass: "topbar-divider d-none d-sm-block"
@@ -38433,7 +38113,7 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
-                    _vm._m(8)
+                    _vm._m(7)
                   ])
                 ])
               ]
@@ -38531,29 +38211,6 @@ var staticRenderFns = [
         _c("i", { staticClass: "fas fa-user-friends" }),
         _vm._v(" "),
         _c("span", [_vm._v("Menu")])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "nav-link collapsed",
-        attrs: {
-          href: "#",
-          "data-toggle": "collapse",
-          "data-target": "#menuCargos",
-          "aria-expanded": "true",
-          "aria-controls": "menuCargos"
-        }
-      },
-      [
-        _c("i", { staticClass: "fas fa-user-edit" }),
-        _vm._v(" "),
-        _c("span", [_vm._v("Foros")])
       ]
     )
   },

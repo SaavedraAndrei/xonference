@@ -100,12 +100,11 @@
         <h2>Nuestros Ponentes</h2>
         <ul class="lista-invitados clearfix">
 
-
             <li>
                 <div class="invitado">
                     <a class="invitado-info" href="#invitado1">
-                        <img src="/img/ponentes/invitado1.jpg" alt="Imagen invitado">
-                        <p>Cesar Luis Lino Rosado</p>
+                        <img src="/img/ponentes/ponente1.jpg" alt="Imagen invitado">
+                        <p>Rolando Roger Zapata Maravi</p>
                     </a>
                 </div>
                 <!-- END .invitado -->
@@ -114,11 +113,11 @@
             <div style="display:none;">
 
                 <div class="invitado-info" id="invitado1">
-                    <h2>Cesar Luis Lino Rosado</h2>
-                    <img src="img/ponentes/invitado1.jpg" alt="">
-                    <p>- Director de la I.E.P. Andrés Bello</p>
-                    <p>- Magister en Educación</p>
-                    <p>- 15 Años de Experiencia en Educación</p>
+                    <h2>Rolando Roger Zapata Maravi</h2>
+                    <img src="img/ponentes/ponente1.jpg" alt="">
+                    <p>- Docente de talleres para la carrera profesional de Ingeniería empresarial</p>
+                    <p>- 11 de experiencia en educación</p>
+                    <p>- Ingeniero de Sistemas especialista en AI</p>
                 </div>
 
             </div>
@@ -127,8 +126,8 @@
             <li>
                 <div class="invitado">
                     <a class="invitado-info" href="#invitado2">
-                        <img src="/img/ponentes/invitado2.jpg" alt="Imagen invitado">
-                        <p>Pedro Raul Rosado Nuñez</p>
+                        <img src="/img/ponentes/ponente2.jpg" alt="Imagen invitado">
+                        <p>Manuel Salas Quincho</p>
                     </a>
                 </div>
                 <!-- END .invitado -->
@@ -137,14 +136,13 @@
             <div style="display:none;">
 
                 <div class="invitado-info" id="invitado2">
-                    <h2>Pedro Raul Rosado Nuñez</h2>
-                    <img src="img/ponentes/invitado2.jpg" alt="">
-                    <p>- Coordinador general de la I.E.P. Unión Latino</p>
-                    <p>- Magister en Educación</p>
-                    <p>- 20 Años de Experiencia en Educación</p>
+                    <h2>Manuel Salas Quincho</h2>
+                    <img src="img/ponentes/ponente2.jpg" alt="">
+                    <p>- Especialista en diseño gráfico y diseño de interiores</p>
+                    <p>- 6 años de experiencia en diseño gráfico</p>
+                    <p>- Ingenierio de Sistemas</p>
                 </div>
 
-            </div>
             </div>
 
 

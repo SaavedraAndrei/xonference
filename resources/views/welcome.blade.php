@@ -67,7 +67,7 @@
                 </nav>
                 <div class="informacion-evento">
                     <div class="clearfix">
-                        <p class="fecha"><i class="fa fa-calendar" aria-hidden="true"></i> 01-02 Julio</p>
+                        <p class="fecha"><i class="fa fa-calendar" aria-hidden="true"></i> 02-11 Diciembre</p>
                         <p class="ciudad"><i class="fa fa-map-marker" aria-hidden="true"></i> Huancayo, Perú</p>
                     </div>
 
